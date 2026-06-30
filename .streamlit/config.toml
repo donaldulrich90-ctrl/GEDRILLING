@@ -1,0 +1,18 @@
+[browser]
+gatherUsageStats = false
+
+[runner]
+# Rerun plus réactif après interaction (Streamlit récent)
+fastReruns = true
+
+[theme]
+base = "dark"
+primaryColor = "#F5B800"
+backgroundColor = "#121212"
+secondaryBackgroundColor = "#1E1E1E"
+textColor = "#EAEAEA"
+font = "sans serif"
+
+[server]
+# Évite des blocages derrière certains reverse-proxy (NPM / OpenResty)
+enableXsrfProtection = false

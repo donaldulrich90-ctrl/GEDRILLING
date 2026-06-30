@@ -1,0 +1,26 @@
+services:
+  good-engineers:
+    build: .
+    container_name: good-engineers-os
+    ports:
+      - "8501:8501"
+    environment:
+      GOOD_ENGINEERS_DATA_DIR: /data
+      # Indispensable derrière NPM en HTTPS (sinon WebSocket / chargement qui reste bloqué)
+      STREAMLIT_BROWSER_SERVER_ADDRESS: gemining.duckdns.org
+      STREAMLIT_BROWSER_SERVER_PORT: "443"
+      STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION: "false"
+    volumes:
+      - goodengineers_data:/data
+    restart: unless-stopped
+    networks:
+      - default
+      - nginx_network
+
+networks:
+  nginx_network:
+    external: true
+    name: nginx_network
+
+volumes:
+  goodengineers_data:

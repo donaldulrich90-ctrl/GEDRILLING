@@ -1,0 +1,15 @@
+.venv
+venv
+__pycache__
+*.pyc
+.git
+.gitignore
+*.md
+.env
+tenant_data
+geo_data.db
+app_database.json
+backups
+logos
+images_engins
+operator_notifications.json

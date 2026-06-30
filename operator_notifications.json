@@ -1,0 +1,26 @@
+[
+  {
+    "id": "notif_20260131141001_DT-01",
+    "from_operator": "mo",
+    "to_operator": "all_dumpers",
+    "truck": "DT-01",
+    "message": "Chargement terminé pour le camion DT-01. Vous pouvez bouger !",
+    "mineral_type": "OR",
+    "grade": "HAUT",
+    "timestamp": "2026-01-31 14:10:01",
+    "status": "acknowledged",
+    "type": "loading_complete"
+  },
+  {
+    "id": "notif_20260131154026_DT-01",
+    "from_operator": "mo",
+    "to_operator": "all_dumpers",
+    "truck": "DT-01",
+    "message": "Chargement terminé pour le camion DT-01. Vous pouvez bouger !",
+    "mineral_type": "OR",
+    "grade": "HAUT",
+    "timestamp": "2026-01-31 15:40:26",
+    "status": "acknowledged",
+    "type": "loading_complete"
+  }
+]

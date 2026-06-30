@@ -1,0 +1,199 @@
+{
+  "images_metadata": {},
+  "settings": {},
+  "backup_info": {
+    "last_backup": null,
+    "backup_count": 0
+  },
+  "version": "1.0",
+  "logo_metadata": {
+    "file_path": "logos\\good_engineers_logo.png",
+    "file_size": 1791928,
+    "upload_date": "2026-02-13 17:03:31",
+    "file_name": "ChatGPT Image 13 févr. 2026, 16_03_48.png"
+  },
+  "users_list": [
+    {
+      "user": "admin",
+      "pass": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+      "role": "Administrateur",
+      "tenant_id": "default",
+      "permissions": {
+        "dashboard": true,
+        "cycles": true,
+        "carburant": true,
+        "maintenance": true,
+        "stock": true,
+        "carte": true,
+        "finance": true,
+        "rh": true,
+        "admin": true,
+        "validation_operateur": true,
+        "donnees_ingenierie": true,
+        "can_add_users": true,
+        "can_modify_users": true,
+        "can_delete_users": true,
+        "can_view_all": true,
+        "can_export": true,
+        "can_modify_data": true,
+        "messagerie": true,
+        "sst": true
+      }
+    },
+    {
+      "user": "gestionnaire",
+      "pass": "1221f090f6b94bd05fbc21a5682a83b0ceece8a84322f6161beb58a78825be41",
+      "role": "Gestionnaire",
+      "tenant_id": "__platform__",
+      "permissions": {
+        "dashboard": false,
+        "cycles": false,
+        "carburant": false,
+        "maintenance": false,
+        "stock": false,
+        "carte": false,
+        "finance": false,
+        "rh": false,
+        "admin": false,
+        "donnees_ingenierie": false,
+        "validation_operateur": false,
+        "can_add_users": false,
+        "can_modify_users": false,
+        "can_delete_users": false,
+        "can_view_all": false,
+        "can_export": false,
+        "can_modify_data": false,
+        "platform_admin": true,
+        "messagerie": false,
+        "sst": false
+      }
+    },
+    {
+      "user": "rh",
+      "pass": "064369b841ea15785385cdcc3b6a9564150abb1e663150cbb928e9080cf2d803",
+      "role": "RH",
+      "tenant_id": "default",
+      "permissions": {
+        "dashboard": true,
+        "cycles": false,
+        "carburant": false,
+        "maintenance": false,
+        "stock": true,
+        "carte": false,
+        "finance": false,
+        "rh": true,
+        "admin": false,
+        "validation_operateur": false,
+        "can_add_users": false,
+        "can_modify_users": false,
+        "can_delete_users": false,
+        "can_view_all": false,
+        "can_export": true,
+        "can_modify_data": true,
+        "messagerie": true,
+        "sst": true
+      }
+    },
+    {
+      "user": "visiteur",
+      "pass": "359d6d57e0a84624a1ff4dae25b68bbc207c58ac0a98c1e648c7e6c97c333a42",
+      "role": "Invite",
+      "tenant_id": "default",
+      "permissions": {
+        "dashboard": true,
+        "cycles": true,
+        "carburant": false,
+        "maintenance": false,
+        "stock": false,
+        "carte": true,
+        "finance": false,
+        "rh": false,
+        "admin": false,
+        "validation_operateur": false,
+        "can_add_users": false,
+        "can_modify_users": false,
+        "can_delete_users": false,
+        "can_view_all": false,
+        "can_export": false,
+        "can_modify_data": false,
+        "messagerie": true,
+        "sst": true
+      }
+    },
+    {
+      "user": "VMS",
+      "pass": "9f1fa16d9bf7b095ce61cc552d7c468c05d13f5fbca9edf45d2dfd66f69545c1",
+      "role": "Administrateur",
+      "tenant_id": "vital-mining-vital-mining",
+      "permissions": {
+        "dashboard": true,
+        "cycles": true,
+        "carburant": true,
+        "maintenance": true,
+        "stock": true,
+        "carte": true,
+        "finance": true,
+        "rh": true,
+        "admin": true,
+        "validation_operateur": true,
+        "donnees_ingenierie": true,
+        "messagerie": true,
+        "sst": true,
+        "can_add_users": true,
+        "can_modify_users": true,
+        "can_delete_users": true,
+        "can_view_all": true,
+        "can_export": true,
+        "can_modify_data": true
+      }
+    },
+    {
+      "user": "gestionnaire2",
+      "pass": "2471a9eb4d709d78c59cb8141ec108cce7db9c71b901d76b01cb1efcc2913b94",
+      "role": "Gestionnaire",
+      "tenant_id": "__platform__",
+      "permissions": {
+        "dashboard": false,
+        "cycles": false,
+        "carburant": false,
+        "maintenance": false,
+        "stock": false,
+        "carte": false,
+        "finance": false,
+        "rh": false,
+        "admin": false,
+        "donnees_ingenierie": false,
+        "validation_operateur": false,
+        "can_add_users": false,
+        "can_modify_users": false,
+        "can_delete_users": false,
+        "can_view_all": false,
+        "can_export": false,
+        "can_modify_data": false,
+        "platform_admin": true,
+        "messagerie": false,
+        "sst": false
+      }
+    }
+  ],
+  "tenants": {
+    "default": {
+      "name": "Entreprise par défaut",
+      "plan": "standard",
+      "subscription_end": "",
+      "active": true
+    },
+    "vital-mining-vital-mining": {
+      "name": "VITAL MINING VITAL MINING",
+      "plan": "free",
+      "subscription_end": "2026-12-31",
+      "active": true,
+      "address": "",
+      "phone": "",
+      "email": "",
+      "tax_id": "",
+      "rccm": "",
+      "bank_info": ""
+    }
+  }
+}
