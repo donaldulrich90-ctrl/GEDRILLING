@@ -1,10 +1,10 @@
 # Pousse les fichiers du projet vers le VPS puis lance deploy.sh à distance.
 # Usage (PowerShell, depuis ce dossier ou en passant -LocalProject) :
 #   .\deploy-remote.ps1
-#   .\deploy-remote.ps1 -VpsHost "31.220.79.230" -RemotePath "/root/projets/GE-MINING"
+#   .\deploy-remote.ps1 -VpsHost "gemining.duckdns.org" -RemotePath "/root/projets/GE-MINING"
 
 param(
-    [string]$VpsHost = "31.220.79.230",
+    [string]$VpsHost = "gemining.duckdns.org",
     [string]$RemotePath = "/root/projets/GE-MINING",
     [string]$LocalProject = $PSScriptRoot,
     [string]$SshUser = "root"
@@ -14,6 +14,8 @@ $ErrorActionPreference = "Stop"
 
 $items = @(
     @{ Path = "app.py"; Required = $true },
+    @{ Path = "equipment_models_catalog.py"; Required = $true },
+    @{ Path = "assets"; Required = $true },
     @{ Path = "Dockerfile"; Required = $true },
     @{ Path = "docker-compose.yml"; Required = $true },
     @{ Path = "requirements.txt"; Required = $true },
@@ -47,8 +49,10 @@ $remote = "${SshUser}@${VpsHost}"
 Write-Host "`n=== Création du dossier distant ===" -ForegroundColor Cyan
 ssh $remote "mkdir -p $RemotePath/.streamlit"
 
-Write-Host "`n=== SCP vers $remote:$RemotePath ===" -ForegroundColor Cyan
+Write-Host "`n=== SCP vers ${remote}:$RemotePath ===" -ForegroundColor Cyan
 scp -q "$(Join-Path $LocalProject "app.py")" "${remote}:${RemotePath}/app.py"
+scp -q "$(Join-Path $LocalProject "equipment_models_catalog.py")" "${remote}:${RemotePath}/equipment_models_catalog.py"
+scp -q -r "$(Join-Path $LocalProject "assets")" "${remote}:${RemotePath}/"
 scp -q "$(Join-Path $LocalProject "Dockerfile")" "${remote}:${RemotePath}/Dockerfile"
 scp -q "$(Join-Path $LocalProject "docker-compose.yml")" "${remote}:${RemotePath}/docker-compose.yml"
 scp -q "$(Join-Path $LocalProject "requirements.txt")" "${remote}:${RemotePath}/requirements.txt"
