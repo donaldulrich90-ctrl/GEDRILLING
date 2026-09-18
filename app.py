@@ -83,7 +83,7 @@ def _styler_cell_map(styler, func, subset=None):
     return styler.applymap(func, subset=subset)
 
 def _normalize_login_secret(value):
-    """Mot de passe identique pour l’utilisateur même si tiret « spécial » ou espaces (copier-coller)."""
+    """Mot de passe identique pour l'utilisateur même si tiret « spécial » ou espaces (copier-coller)."""
     if value is None:
         return ""
     s = unicodedata.normalize("NFKC", str(value)).strip()
@@ -795,7 +795,7 @@ st.markdown(f"""
     div.element-container:has(.ge-hero) {{
         width: 100% !important;
     }}
-    /* Pleine largeur du panneau principal + bandeau figé (sticky) jusqu’au ticker — même zone que le tracé utilisateur */
+    /* Pleine largeur du panneau principal + bandeau figé (sticky) jusqu'au ticker — même zone que le tracé utilisateur */
     section[data-testid="stMain"] div.element-container:has(.ge-hero--main-fixed) {{
         width: calc(100% + 2 * clamp(0.75rem, 4vw, 5rem)) !important;
         max-width: none !important;
@@ -942,66 +942,99 @@ st.markdown(f"""
     }}
     
 
-    /* Navigation par onglets — style poste de contrôle */
-    .stTabs [data-baseweb="tab-list"] {{ 
-        display: flex; 
-        width: 100%; 
-        gap: 6px; 
-        background: {bg_card} !important; 
-        padding: 10px; 
-        border-radius: 8px; 
-        border: 1px solid {border_color};
+    /* Navigation par onglets — style poste de contrôle premium */
+    .stTabs [data-baseweb="tab-list"] {{
+        display: flex;
+        width: 100%;
+        gap: 5px;
+        background: rgba(15, 42, 68, 0.8) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(245, 184, 0, 0.22);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
         flex-wrap: wrap;
+        margin-bottom: 16px;
     }}
-    .stTabs [data-baseweb="tab"] {{ 
-        flex-grow: 1; 
-        min-height: 52px; 
-        background-color: {bg_secondary} !important; 
-        color: {text_secondary} !important; 
-        border: 1px solid {border_color}; 
-        border-radius: 8px; 
-        font-family: 'Inter', 'Segoe UI', sans-serif !important; 
-        font-size: 16px !important; 
-        font-weight: 600; 
-        text-transform: uppercase; 
-        transition: background-color var(--ge-transition), color var(--ge-transition), border-color var(--ge-transition), box-shadow var(--ge-transition); 
-        letter-spacing: 0.04em;
-    }}
-    
-    .stTabs [data-baseweb="tab"]:hover {{ 
-        background-color: {bg_hover} !important;
-        color: {text_primary} !important;
-        border-color: rgba(245, 184, 0, 0.35);
-    }}
-    .stTabs [aria-selected="true"] {{
-        background: {accent} !important; 
-        color: {primary_blue} !important; 
-        border-color: {accent} !important; 
-        font-weight: 800; 
-        box-shadow: 0 0 0 1px rgba(245, 184, 0, 0.5);
+    .stTabs [data-baseweb="tab"] {{
+        flex-grow: 1;
+        min-height: 58px;
+        background: rgba(47, 47, 47, 0.6) !important;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        color: {text_secondary} !important;
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 10px;
+        font-family: 'Inter', 'Segoe UI', sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        transition: all 180ms ease-out;
+        padding: 10px 8px !important;
+        white-space: nowrap;
     }}
 
-    /* Cartes KPI / contenu */
-    .content-card {{ 
-        background: {bg_card} !important; 
-        padding: 24px 28px; 
-        border-radius: 8px; 
-        border: 1px solid {border_color};
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28); 
-        margin-bottom: 20px; 
-        transition: box-shadow var(--ge-transition), border-color var(--ge-transition);
+    .stTabs [data-baseweb="tab"]:hover {{
+        background: rgba(70, 70, 70, 0.75) !important;
+        color: {text_primary} !important;
+        border-color: rgba(245, 184, 0, 0.4) !important;
+        box-shadow: 0 4px 16px rgba(245, 184, 0, 0.12);
+        transform: translateY(-1px);
+    }}
+    .stTabs [aria-selected="true"] {{
+        background: linear-gradient(135deg, {accent} 0%, #e6a800 100%) !important;
+        color: {primary_blue} !important;
+        border-color: {accent} !important;
+        font-weight: 900;
+        box-shadow: 0 4px 18px rgba(245, 184, 0, 0.45), 0 0 0 1px rgba(245, 184, 0, 0.6);
+        transform: translateY(-2px);
+    }}
+    .stTabs [aria-selected="true"] p, .stTabs [aria-selected="true"] span {{
+        color: {primary_blue} !important;
+        font-weight: 900 !important;
+    }}
+    /* Indicateur soulignement — on masque l'original Streamlit */
+    .stTabs [data-baseweb="tab-highlight"] {{
+        display: none !important;
+    }}
+    .stTabs [data-baseweb="tab-border"] {{
+        display: none !important;
+    }}
+
+    /* Cartes KPI / contenu — glassmorphism industriel */
+    .content-card {{
+        background: rgba(30, 35, 45, 0.72) !important;
+        backdrop-filter: blur(14px) !important;
+        -webkit-backdrop-filter: blur(14px) !important;
+        padding: 24px 28px;
+        border-radius: 16px;
+        border: 1px solid rgba(245, 184, 0, 0.14);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255,255,255,0.05);
+        margin-bottom: 20px;
+        transition: box-shadow 180ms ease-out, border-color 180ms ease-out, transform 180ms ease-out;
     }}
     .content-card:hover {{
-        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
-        border-color: rgba(245, 184, 0, 0.25);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.48);
+        border-color: rgba(245, 184, 0, 0.32);
+        transform: translateY(-2px);
     }}
     .kpi-card {{
-        background: {bg_card} !important;
-        border: 1px solid {border_color};
-        border-radius: 8px;
-        padding: 16px 20px;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.22);
+        background: rgba(20, 28, 42, 0.80) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 14px;
+        padding: 18px 22px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.04);
         border-left: 4px solid {accent};
+        transition: box-shadow 180ms ease-out, border-color 180ms ease-out, transform 180ms ease-out;
+    }}
+    .kpi-card:hover {{
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(0,0,0,0.38);
+        border-color: rgba(245, 184, 0, 0.30);
     }}
     
     /* Tableaux — en-têtes collants, zébrage discret */
@@ -1241,7 +1274,7 @@ st.markdown(f"""
         border-radius: 8px !important;
         min-height: 44px !important;
     }}
-    /* Glyphes Material Symbols des widgets Streamlit (sinon noms d’icônes visibles, ex. arrow_right) */
+    /* Glyphes Material Symbols des widgets Streamlit (sinon noms d'icônes visibles, ex. arrow_right) */
     .material-symbols-rounded,
     .stApp span[class*="material-symbols"] {{
         font-family: "Material Symbols Rounded", sans-serif !important;
@@ -1271,7 +1304,7 @@ st.markdown(f"""
     }}
     textarea {{ min-height: 5rem !important; }}
     
-    /* Expanders — ne pas forcer font-family sur l’en-tête (sinon la flèche Material devient du texte _arrow_right) */
+    /* Expanders — ne pas forcer font-family sur l'en-tête (sinon la flèche Material devient du texte _arrow_right) */
     .streamlit-expanderHeader {{
         background: {bg_card} !important;
         border-radius: 8px;
@@ -1297,7 +1330,7 @@ st.markdown(f"""
         font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24 !important;
     }}
     
-    /* Sidebar — fond bleu industriel, séparation nette       Streamlit replie la sidebar (min-width 0 + translateX) quand l’état « replié » est
+    /* Sidebar — fond bleu industriel, séparation nette       Streamlit replie la sidebar (min-width 0 + translateX) quand l'état « replié » est
        mémorisé (localStorage) ; le bouton pour rouvrir est dans stHeader, masqué par le thème.
        Forcer largeur + transform évite la disparition sur le domaine de prod vs localhost. */
     section[data-testid="stSidebar"] {{
@@ -1960,7 +1993,7 @@ def render_change_own_password_form(user_mgr, key_prefix="pwd_self"):
         st.error("Session invalide.")
         return
     with st.form(f"form_own_pwd_{key_prefix}"):
-        st.caption("Réservé à votre compte — les administrateurs peuvent aussi réinitialiser les mots de passe dans l’onglet **ADMIN**.")
+        st.caption("Réservé à votre compte — les administrateurs peuvent aussi réinitialiser les mots de passe dans l'onglet **ADMIN**.")
         cur = st.text_input("Mot de passe actuel", type="password", key=f"{key_prefix}_cur")
         nw = st.text_input("Nouveau mot de passe", type="password", key=f"{key_prefix}_nw")
         nw2 = st.text_input("Confirmer le nouveau mot de passe", type="password", key=f"{key_prefix}_nw2")
@@ -2470,7 +2503,7 @@ LEGACY_DB_FILE = os.path.join(_APP_DATA_ROOT, "geo_data.db")
 
 
 def _safe_tenant_id(tid):
-    """Normalise l’id tenant. « __platform__ » reste réservé au rôle Gestionnaire (ne pas mapper sur default)."""
+    """Normalise l'id tenant. « __platform__ » reste réservé au rôle Gestionnaire (ne pas mapper sur default)."""
     raw = (tid or "default").strip()
     low = raw.lower()
     if low == "__platform__":
@@ -2609,7 +2642,7 @@ def render_messagerie_tab(user_mgr, user_info):
             if "casque" in ql or "epi" in ql:
                 st.info(
                     "🔧 **EPI** : portez toujours le casque, chaussures de sécurité, gants adaptés "
-                    "et lunettes sur zones à risque. Signalez tout équipement défectueux à votre chef d’équipe."
+                    "et lunettes sur zones à risque. Signalez tout équipement défectueux à votre chef d'équipe."
                 )
             elif "urgence" in ql or "secours" in ql or "accident" in ql:
                 st.error(
@@ -2618,12 +2651,12 @@ def render_messagerie_tab(user_mgr, user_info):
                 )
             elif "incendie" in ql or "feu" in ql:
                 st.warning(
-                    "🔥 **Feu** : déclenchez l’alerte, évacuez si demandé, utilisez les extincteurs **uniquement** "
+                    "🔥 **Feu** : déclenchez l'alerte, évacuez si demandé, utilisez les extincteurs **uniquement** "
                     "si vous êtes formé et en sécurité."
                 )
             else:
                 st.caption(
-                    "Pour une consigne précise, utilisez l’onglet **SST** ou contactez votre **référent santé-sécurité**. "
+                    "Pour une consigne précise, utilisez l'onglet **SST** ou contactez votre **référent santé-sécurité**. "
                     "Ce panneau donne des rappels généraux, pas une procédure officielle."
                 )
 
@@ -2667,7 +2700,7 @@ def render_messagerie_tab(user_mgr, user_info):
     if is_admin:
         st.markdown("---")
         st.markdown("#### 📢 Publier un communiqué (administrateur)")
-        st.caption("Visible par **toute l’entreprise** dans cet espace.")
+        st.caption("Visible par **toute l'entreprise** dans cet espace.")
         c_title = st.text_input("Titre du communiqué", key="com_tit")
         c_body = st.text_area("Texte", key="com_body", height=140)
         c_up = st.file_uploader("Pièce jointe communiqué (PDF, image…)", key="com_file")
@@ -2733,7 +2766,7 @@ def _sst_type_choices():
         "PTO / Inspection véhicule",
         "Inspection SST",
         "Incident / accident",
-        "Presqu’accident (near miss)",
+        "Presqu'accident (near miss)",
         "Formation / sensibilisation",
         "Arrêt sécurité",
         "Autre",
@@ -2781,7 +2814,7 @@ def _safety_report_filter_by_period(items, date_key_candidates, ndays, today_d):
 
 
 def _safety_report_compute_metrics(entries, chk_records, ndays, today_d):
-    """Calcule filtres + KPI + lignes de synthèse pour l’écran et le PDF."""
+    """Calcule filtres + KPI + lignes de synthèse pour l'écran et le PDF."""
     today_d = today_d or date.today()
     ent_f = _safety_report_filter_by_period(entries, ("date_observation", "ts"), ndays, today_d)
     chk_f = _safety_report_filter_by_period(chk_records, ("date_controle", "ts"), ndays, today_d)
@@ -2825,7 +2858,7 @@ def _safety_report_compute_metrics(entries, chk_records, ndays, today_d):
         {"Indicateur": "Période (jours)", "Valeur": str(ndays if ndays is not None else "Tout")},
         {"Indicateur": "Fiches SST", "Valeur": len(ent_f)},
         {"Indicateur": "Incidents / accidents", "Valeur": n_inc},
-        {"Indicateur": "Presqu’accidents", "Valeur": n_near},
+        {"Indicateur": "Presqu'accidents", "Valeur": n_near},
         {"Indicateur": "Gravité élevée", "Valeur": n_high},
         {"Indicateur": "Fiches terrain prioritaires", "Valeur": n_prio_fiches},
         {"Indicateur": "Arrêts sécurité", "Valeur": n_arret},
@@ -3059,7 +3092,7 @@ def _render_safety_report(entries, chk_records):
     with m2:
         st.metric("Incidents / accidents", n_inc, help="Types de fiche contenant « incident » ou « accident »")
     with m3:
-        st.metric("Presqu’accidents", n_near)
+        st.metric("Presqu'accidents", n_near)
     with m4:
         st.metric("Gravité élevée", n_high)
     with m5:
@@ -3178,7 +3211,7 @@ def _render_safety_report(entries, chk_records):
         pdf_bytes = _build_safety_report_pdf_bytes(m, sfty_per, today_d)
     except Exception as ex:
         pdf_bytes = None
-        st.warning(f"Génération PDF indisponible ({ex}). Vérifiez l’installation : `pip install reportlab matplotlib`.")
+        st.warning(f"Génération PDF indisponible ({ex}). Vérifiez l'installation : `pip install reportlab matplotlib`.")
     if pdf_bytes:
         st.download_button(
             "Télécharger le rapport Safety (PDF)",
@@ -3472,7 +3505,7 @@ def render_sst_tab(user_info, staff_mgr=None):
             st.dataframe(pd.DataFrame(_rows_for(other)), width="stretch", hide_index=True)
         csv = pd.DataFrame(entries).to_csv(index=False).encode("utf-8-sig")
         st.download_button(
-            "Exporter l’historique SST (CSV)",
+            "Exporter l'historique SST (CSV)",
             csv,
             file_name=f"sst_export_{date.today().isoformat()}.csv",
             mime="text/csv",
@@ -3519,9 +3552,9 @@ def _ensure_machines_extra_columns(conn):
                 production_tonnes_at_pose REAL DEFAULT 0,
                 engine_hours_at_pose REAL DEFAULT 0,
                 pose_date TEXT NOT NULL,
-                maintenance_ref TEXT DEFAULT ‘’,
-                notes TEXT DEFAULT ‘’,
-                created_by TEXT DEFAULT ‘Système’,
+                maintenance_ref TEXT DEFAULT '',
+                notes TEXT DEFAULT '',
+                created_by TEXT DEFAULT 'Système',
                 created_at TEXT DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (machine_id) REFERENCES machines(id) ON DELETE CASCADE
             )
@@ -3749,7 +3782,7 @@ FEATURE_PLANS = {
 }
 
 def get_current_plan():
-    """Plan SaaS : priorité au plan enregistré pour l’entreprise (tenant), sinon fallback JSON global."""
+    """Plan SaaS : priorité au plan enregistré pour l'entreprise (tenant), sinon fallback JSON global."""
     try:
         tid = _safe_tenant_id(st.session_state.get("tenant_id", "default"))
     except Exception:
@@ -4642,7 +4675,7 @@ def render_gestionnaire_console(user_mgr_ref):
         st.markdown("##### Modifier une entreprise")
         st.caption(
             "Mettre à jour le nom, les identifiants fiscaux (**NIF / SIRET** et **RCCM**), les coordonnées, "
-            "le plan, la date de fin d’abonnement, le statut actif et le logo."
+            "le plan, la date de fin d'abonnement, le statut actif et le logo."
         )
         _reg_all = get_tenants_registry()
         _edit_list = sorted(k for k in _reg_all.keys() if k != "__platform__")
@@ -4658,7 +4691,7 @@ def render_gestionnaire_console(user_mgr_ref):
             ge1, ge2 = st.columns(2)
             with ge1:
                 ge_name = st.text_input(
-                    "Nom de l’entreprise",
+                    "Nom de l'entreprise",
                     value=str(em.get("name", "") or ""),
                     key=f"gest_edit_name_{edit_tid}",
                 )
@@ -4678,7 +4711,7 @@ def render_gestionnaire_console(user_mgr_ref):
                 except Exception:
                     _ge_end_d = date.today().replace(month=12, day=31)
                 ge_end = st.date_input(
-                    "Fin d’abonnement", value=_ge_end_d, key=f"gest_edit_end_{edit_tid}"
+                    "Fin d'abonnement", value=_ge_end_d, key=f"gest_edit_end_{edit_tid}"
                 )
                 ge_active = st.checkbox(
                     "Entreprise active",
@@ -4778,7 +4811,7 @@ def render_gestionnaire_console(user_mgr_ref):
         )
         deletable = sorted(k for k in tenants.keys() if k not in ("default", "__platform__"))
         if not deletable:
-            st.info("Aucune entreprise client supprimable (l’espace « default » est toujours conservé).")
+            st.info("Aucune entreprise client supprimable (l'espace « default » est toujours conservé).")
         else:
             d1, d2 = st.columns([2, 1])
             with d1:
@@ -4789,13 +4822,13 @@ def render_gestionnaire_console(user_mgr_ref):
                 st.write("")
                 st.write("")
             confirm_id = st.text_input(
-                "Confirmer en recopiant l’identifiant exact",
+                "Confirmer en recopiant l'identifiant exact",
                 placeholder=del_pick,
                 key="gest_del_confirm",
             )
             if st.button("Supprimer définitivement cette entreprise", type="primary", key="gest_del_go"):
                 if (confirm_id or "").strip() != del_pick:
-                    st.error("La confirmation doit correspondre exactement à l’identifiant sélectionné.")
+                    st.error("La confirmation doit correspondre exactement à l'identifiant sélectionné.")
                 else:
                     ok_del, msg_del = delete_tenant_and_data(del_pick, user_mgr_ref)
                     if ok_del:
@@ -4807,10 +4840,10 @@ def render_gestionnaire_console(user_mgr_ref):
     with tab_b:
         st.markdown("##### Assistant — entreprise + premier administrateur (recommandé)")
         st.caption(
-            "Une seule action : enregistre l’entreprise dans le registre SaaS, initialise sa base de données "
+            "Une seule action : enregistre l'entreprise dans le registre SaaS, initialise sa base de données "
             "et crée le compte **Administrateur** que le client utilisera pour se connecter."
         )
-        w_name = st.text_input("Nom de l’entreprise (affiché / facturation)", key="gest_wiz_name")
+        w_name = st.text_input("Nom de l'entreprise (affiché / facturation)", key="gest_wiz_name")
         c1, c2 = st.columns(2)
         with c1:
             w_tid = st.text_input(
@@ -4819,7 +4852,7 @@ def render_gestionnaire_console(user_mgr_ref):
         with c2:
             w_plan = st.selectbox("Plan SaaS", ["free", "standard", "premium"], key="gest_wiz_plan")
         w_end = st.date_input(
-            "Fin d’abonnement",
+            "Fin d'abonnement",
             value=date.today().replace(month=12, day=31),
             key="gest_wiz_end",
         )
@@ -4849,9 +4882,9 @@ def render_gestionnaire_console(user_mgr_ref):
             help="Affiché dans la barre latérale à la place du logo GOOD ENGINEERS pour cette entreprise.",
         )
         st.caption(
-            "Ces informations sont enregistrées dans la fiche SaaS ; le logo est stocké dans le dossier de l’entreprise."
+            "Ces informations sont enregistrées dans la fiche SaaS ; le logo est stocké dans le dossier de l'entreprise."
         )
-        st.markdown("**Compte administrateur de l’entreprise**")
+        st.markdown("**Compte administrateur de l'entreprise**")
         c3, c4 = st.columns(2)
         with c3:
             w_adm_u = st.text_input("Identifiant de connexion admin", key="gest_wiz_adm_user")
@@ -4860,18 +4893,18 @@ def render_gestionnaire_console(user_mgr_ref):
         w_adm_p2 = st.text_input(
             "Confirmer le mot de passe", type="password", key="gest_wiz_adm_pass2"
         )
-        if st.button("Créer l’espace client + administrateur", type="primary", key="gest_wiz_go"):
+        if st.button("Créer l'espace client + administrateur", type="primary", key="gest_wiz_go"):
             tid = (
                 _safe_tenant_id(w_tid.strip())
                 if w_tid.strip()
                 else _safe_tenant_id(slugify_tenant_name(w_name))
             )
             if not w_name.strip():
-                st.error("Indiquez un nom d’entreprise.")
+                st.error("Indiquez un nom d'entreprise.")
             elif tid == "default":
                 st.error("Réservez un identifiant autre que « default ».")
             elif tid in tenants:
-                st.error("Cet identifiant d’entreprise existe déjà.")
+                st.error("Cet identifiant d'entreprise existe déjà.")
             elif not w_adm_u.strip() or not w_adm_p.strip():
                 st.error("Identifiant et mot de passe administrateur requis.")
             elif w_adm_p != w_adm_p2:
@@ -4903,7 +4936,7 @@ def render_gestionnaire_console(user_mgr_ref):
                     del tenants[tid]
                     save_tenants_registry(tenants)
                     st.error(
-                        "Échec lors de la création de l’administrateur : l’entreprise n’a pas été conservée. Réessayez."
+                        "Échec lors de la création de l'administrateur : l'entreprise n'a pas été conservée. Réessayez."
                     )
                 else:
                     try:
@@ -4911,20 +4944,20 @@ def render_gestionnaire_console(user_mgr_ref):
                     except Exception:
                         pass
                     st.success(
-                        f"**Espace client prêt.** Entreprise `{tid}` — l’admin **{w_adm_u.strip()}** peut se connecter "
+                        f"**Espace client prêt.** Entreprise `{tid}` — l'admin **{w_adm_u.strip()}** peut se connecter "
                         "depuis la page de connexion habituelle (même URL que vos utilisateurs)."
                     )
                     st.rerun()
 
         with st.expander("Création en deux étapes (sans admin tout de suite, ou admin supplémentaire)", expanded=False):
             st.markdown("##### Créer uniquement une entreprise")
-            n_name = st.text_input("Nom de l’entreprise", key="gest_new_name")
+            n_name = st.text_input("Nom de l'entreprise", key="gest_new_name")
             n_tid = st.text_input(
                 "Identifiant technique (lettres, chiffres, tirets — vide = auto)", key="gest_new_tid"
             )
             n_plan = st.selectbox("Plan SaaS", ["free", "standard", "premium"], key="gest_new_plan")
             n_end = st.date_input(
-                "Fin d’abonnement", value=date.today().replace(month=12, day=31), key="gest_new_end"
+                "Fin d'abonnement", value=date.today().replace(month=12, day=31), key="gest_new_end"
             )
             n_addr = st.text_area("Adresse", key="gest_new_addr", height=60)
             na1, na2 = st.columns(2)
@@ -4944,7 +4977,7 @@ def render_gestionnaire_console(user_mgr_ref):
                 type=["png", "jpg", "jpeg", "webp"],
                 key="gest_new_logo",
             )
-            if st.button("Créer l’entreprise", key="gest_create_tenant"):
+            if st.button("Créer l'entreprise", key="gest_create_tenant"):
                 tid = (
                     _safe_tenant_id(n_tid.strip())
                     if n_tid.strip()
@@ -4952,7 +4985,7 @@ def render_gestionnaire_console(user_mgr_ref):
                 )
                 tenants2 = get_tenants_registry().copy()
                 if not n_name.strip():
-                    st.error("Indiquez un nom d’entreprise.")
+                    st.error("Indiquez un nom d'entreprise.")
                 elif tid == "default":
                     st.error("Réservez un identifiant autre que « default ».")
                 elif tid in tenants2:
@@ -4985,7 +5018,7 @@ def render_gestionnaire_console(user_mgr_ref):
             adm_tenant = st.selectbox("Entreprise cible", t_list, key="gest_adm_tenant")
             adm_u = st.text_input("Identifiant admin", key="gest_adm_user")
             adm_p = st.text_input("Mot de passe admin", type="password", key="gest_adm_pass")
-            if st.button("Créer l’administrateur", key="gest_create_adm"):
+            if st.button("Créer l'administrateur", key="gest_create_adm"):
                 if not adm_u.strip() or not adm_p.strip():
                     st.error("Identifiant et mot de passe requis.")
                 elif any(str(u.get("user", "")).strip().lower() == adm_u.strip().lower() for u in user_mgr_ref.users_db):
@@ -5000,7 +5033,7 @@ def render_gestionnaire_console(user_mgr_ref):
                     st.success(f"Administrateur **{adm_u.strip()}** créé pour `{adm_tenant}`.")
                     st.rerun()
                 else:
-                    st.error("Impossible de créer l’utilisateur.")
+                    st.error("Impossible de créer l'utilisateur.")
 
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -5191,7 +5224,7 @@ def _image_file_to_data_url(logo_path: str):
 
 
 def get_tenant_branding_dir(tenant_id: str) -> str:
-    """Dossier branding d’une entreprise (logo sidebar, etc.)."""
+    """Dossier branding d'une entreprise (logo sidebar, etc.)."""
     tid = _safe_tenant_id(tenant_id)
     d = os.path.join(TENANT_DATA_DIR, tid, "branding")
     os.makedirs(d, exist_ok=True)
@@ -5219,7 +5252,7 @@ def get_tenant_logo_path(tenant_id: str):
 
 
 def save_tenant_branding_logo(tenant_id, uploaded_file) -> bool:
-    """Enregistre le logo entreprise pour la sidebar (remplace l’ancien fichier)."""
+    """Enregistre le logo entreprise pour la sidebar (remplace l'ancien fichier)."""
     if uploaded_file is None:
         return False
     try:
@@ -6678,7 +6711,7 @@ if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
 # Session déjà authentifiée : recharger les comptes depuis le JSON et réaligner rôle / tenant / login
-# (évite après F5 ou reconnexion une session Streamlit incohérente où l’identification « ne marche plus »).
+# (évite après F5 ou reconnexion une session Streamlit incohérente où l'identification « ne marche plus »).
 if st.session_state.authenticated:
     try:
         user_mgr.reload_users_from_disk()
@@ -6814,20 +6847,208 @@ if not st.session_state.authenticated:
     </style>
     """, unsafe_allow_html=True)
     
-    # Bandeau identité (visuel officiel banner_good_engineers.png)
-    render_good_engineers_banner()
-    
-    # Formulaire de connexion — remonté, plus large (même charte)
-    st.markdown('<div class="login-card login-card--connexion">', unsafe_allow_html=True)
-    st.markdown('<h2 class="login-form-title">🔐 Connexion</h2>', unsafe_allow_html=True)
-    
-    col1, col2, col3 = st.columns([0.06, 0.88, 0.06])
-    with col2:
-        st.markdown('<p style="font-size: 17px; color: #F5B800; font-weight: 700; margin-bottom: 6px;">Identifiant</p>', unsafe_allow_html=True)
-        u = st.text_input("Identifiant", key="login_username", placeholder="Entrez votre identifiant", label_visibility="collapsed")
-        st.markdown('<p style="font-size: 17px; color: #F5B800; font-weight: 700; margin-bottom: 6px; margin-top: 10px;">Mot de passe</p>', unsafe_allow_html=True)
-        p = st.text_input("Mot de passe", type="password", key="login_password", placeholder="Entrez votre mot de passe", label_visibility="collapsed")
-        if st.button("🔓 CONNEXION", use_container_width=True, type="primary"):
+    # ── SPLIT-SCREEN LOGIN ────────────────────────────────────────────────────
+    st.markdown("""
+    <style>
+    /* Split-screen : hauteur page complète, sidebar masquée */
+    section[data-testid="stSidebar"] { display: none !important; }
+    section[data-testid="stMain"] .block-container {
+        padding-top: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        max-width: 100% !important;
+    }
+    /* Panel gauche — marque + formulaire */
+    .login-left-panel {
+        background: linear-gradient(175deg, #0a1827 0%, #0F2A44 50%, #081420 100%);
+        border-radius: 20px;
+        padding: clamp(28px, 5vw, 52px) clamp(20px, 4vw, 44px);
+        min-height: 88vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-right: 1px solid rgba(245, 184, 0, 0.15);
+        position: relative;
+        overflow: hidden;
+    }
+    .login-left-panel::before {
+        content: '';
+        position: absolute;
+        top: -60px; right: -60px;
+        width: 260px; height: 260px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(245,184,0,0.08) 0%, transparent 70%);
+        pointer-events: none;
+    }
+    .login-left-panel::after {
+        content: '';
+        position: absolute;
+        bottom: -40px; left: -40px;
+        width: 200px; height: 200px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(245,184,0,0.05) 0%, transparent 70%);
+        pointer-events: none;
+    }
+    .login-brand-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: clamp(28px, 3.5vw, 42px) !important;
+        font-weight: 900 !important;
+        color: #F5B800 !important;
+        letter-spacing: 0.06em;
+        text-shadow: 0 0 30px rgba(245,184,0,0.35);
+        margin-bottom: 4px !important;
+        line-height: 1.1;
+    }
+    .login-brand-sub {
+        font-size: clamp(11px, 1.2vw, 14px) !important;
+        color: rgba(245,184,0,0.7) !important;
+        letter-spacing: 0.20em;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 20px !important;
+    }
+    .login-brand-desc {
+        font-size: clamp(13px, 1.4vw, 16px) !important;
+        color: #8A9BB0 !important;
+        font-weight: 500;
+        line-height: 1.6;
+        margin-bottom: 32px !important;
+    }
+    .login-divider {
+        height: 1px;
+        background: linear-gradient(90deg, rgba(245,184,0,0.5) 0%, rgba(245,184,0,0.05) 100%);
+        margin: 20px 0 28px 0;
+        border: none;
+    }
+    .login-field-label {
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        color: #F5B800 !important;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 6px !important;
+        display: block;
+    }
+    /* Panel droit — vitrines fonctions + engins */
+    .login-right-panel {
+        background: #0d1520;
+        border-radius: 20px;
+        padding: clamp(24px, 4vw, 44px) clamp(18px, 3vw, 36px);
+        min-height: 88vh;
+    }
+    .login-feature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+    .login-feature-card {
+        background: rgba(15, 42, 68, 0.75);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(245,184,0,0.14);
+        border-radius: 14px;
+        padding: 18px 16px;
+        text-align: center;
+        transition: border-color 180ms ease, transform 180ms ease;
+    }
+    .login-feature-card:hover {
+        border-color: rgba(245,184,0,0.35);
+        transform: translateY(-2px);
+    }
+    .login-feature-icon { font-size: 28px; margin-bottom: 8px; }
+    .login-feature-label {
+        font-size: 12px;
+        font-weight: 800;
+        color: #EAEAEA;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+    .login-feature-desc { font-size: 11px; color: #7A8A9A; margin-top: 4px; font-weight: 500; }
+    .login-equip-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .login-equip-item {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid rgba(245,184,0,0.18);
+        text-align: center;
+        background: rgba(20,30,45,0.8);
+    }
+    .login-equip-item img { width: 100%; height: 80px; object-fit: cover; display: block; }
+    .login-equip-item span {
+        display: block;
+        font-size: 10px;
+        font-weight: 800;
+        color: #F5B800;
+        padding: 5px 4px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+    .login-values-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .login-value-chip {
+        background: rgba(245,184,0,0.1);
+        border: 1px solid rgba(245,184,0,0.25);
+        border-radius: 20px;
+        padding: 6px 14px;
+        font-size: 12px;
+        font-weight: 700;
+        color: #F5B800;
+        letter-spacing: 0.06em;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    _col_form, _col_vis = st.columns([1, 1.55], gap="small")
+
+    # ── PANNEAU GAUCHE : marque + formulaire ──────────────────────────────────
+    with _col_form:
+        st.markdown('<div class="login-left-panel">', unsafe_allow_html=True)
+
+        # Logo / marque
+        _lp_b64 = _hero_masthead_b64_for_banner()
+        if _lp_b64:
+            st.markdown(f"""
+            <div style="text-align:center; margin-bottom: 24px;">
+              <img src="data:image/png;base64,{_lp_b64}"
+                   style="max-width:100%; max-height:120px; object-fit:contain;"
+                   alt="GOOD ENGINEERS" />
+            </div>""", unsafe_allow_html=True)
+        else:
+            st.markdown(f"""
+            <div style="text-align:center; margin-bottom:8px;">
+              <div style="display:inline-block; width:70px; height:70px; margin-bottom:12px;">
+                {GOOD_ENGINEERS_BANNER_MARK_SVG}
+              </div>
+            </div>
+            <p class="login-brand-title" style="text-align:center;">GOOD ENGINEERS</p>
+            <p class="login-brand-sub" style="text-align:center;">DISCIPLINE &bull; RIGUEUR &bull; PERFORMANCE</p>
+            """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <p class="login-brand-desc" style="text-align:center;">
+          Système d'exploitation minière &amp; gestion de flotte.<br>
+          Plateforme SaaS multi-entreprise.
+        </p>
+        <hr class="login-divider"/>
+        <p style="font-size:18px; font-weight:800; color:#EAEAEA; margin-bottom:20px; text-align:center; letter-spacing:0.06em; text-transform:uppercase;">
+          🔐 Connexion
+        </p>
+        """, unsafe_allow_html=True)
+
+        st.markdown('<span class="login-field-label">Identifiant</span>', unsafe_allow_html=True)
+        u = st.text_input("Identifiant", key="login_username",
+                          placeholder="Entrez votre identifiant",
+                          label_visibility="collapsed")
+        st.markdown('<span class="login-field-label" style="margin-top:12px; display:block;">Mot de passe</span>', unsafe_allow_html=True)
+        p = st.text_input("Mot de passe", type="password", key="login_password",
+                          placeholder="••••••••••••",
+                          label_visibility="collapsed")
+
+        st.markdown('<div style="margin-top: 18px;"></div>', unsafe_allow_html=True)
+        if st.button("🔓 SE CONNECTER", use_container_width=True, type="primary"):
             try:
                 user_mgr.reload_users_from_disk()
             except Exception:
@@ -6851,99 +7072,83 @@ if not st.session_state.authenticated:
                 st.session_state.role = user_info['role']
                 st.session_state.tenant_id = user_info.get("tenant_id", "default")
                 st.rerun()
-            else: 
+            else:
                 st.error("❌ Identifiant ou mot de passe incorrect")
+
+        st.markdown('<hr class="login-divider"/>', unsafe_allow_html=True)
         st.caption(
-            "Plateforme SaaS : le rôle **Gestionnaire** permet de créer des comptes **entreprises** et leurs **administrateurs** "
-            "(accès fourni par l’hébergeur, pas les mêmes logins que vos utilisateurs métier)."
+            "Rôle **Gestionnaire** : créer des comptes entreprises et administrateurs "
+            "(accès fourni par l'hébergeur)."
         )
-    
-    st.markdown("</div>", unsafe_allow_html=True)
-    
-    # Contenu en deux colonnes - Organisé et lisible (responsive)
-    # Sur mobile, les colonnes seront empilées automatiquement
-    col_left, col_right = st.columns(2)
-    
-    with col_left:
-        # Carte Engins
-        st.markdown('<div class="login-card">', unsafe_allow_html=True)
-        st.markdown('<h2 class="section-title">🚛 Nos Engins de Travail</h2>', unsafe_allow_html=True)
-        
-        # Grille d'engins améliorée avec vraies images
-        equip_items_default = [
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    # ── PANNEAU DROIT : fonctions + engins + valeurs ───────────────────────────
+    with _col_vis:
+        st.markdown('<div class="login-right-panel">', unsafe_allow_html=True)
+        st.markdown("""
+        <p style="font-size:clamp(16px,2vw,22px); font-weight:900; color:#F5B800;
+                  text-transform:uppercase; letter-spacing:0.10em; margin-bottom:6px;">
+          ⛏ Centre de contrôle opérationnel
+        </p>
+        <p style="font-size:13px; color:#7A8A9A; font-weight:500; margin-bottom:20px; line-height:1.5;">
+          Pilotez votre flotte minière en temps réel — production, maintenance,
+          carburant, RH, finance et sécurité dans un seul OS.
+        </p>
+        """, unsafe_allow_html=True)
+
+        # Grille fonctions clés
+        _features = [
+            ("📊", "DASHBOARD", "KPI temps réel"),
+            ("🔄", "CYCLES", "Suivi chargements"),
+            ("⛽", "CARBURANT", "Consommations"),
+            ("🔧", "MAINTENANCE", "PM & réparations"),
+            ("📦", "STOCK", "Pièces & matériaux"),
+            ("💰", "FINANCE", "Coûts & revenus"),
+            ("👥", "RH", "Équipes & présences"),
+            ("🦺", "SST", "Sécurité & incidents"),
+        ]
+        st.markdown('<div class="login-feature-grid">', unsafe_allow_html=True)
+        for _icon, _lbl, _desc in _features:
+            st.markdown(f"""
+            <div class="login-feature-card">
+              <div class="login-feature-icon">{_icon}</div>
+              <div class="login-feature-label">{_lbl}</div>
+              <div class="login-feature-desc">{_desc}</div>
+            </div>""", unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+
+        # Galerie engins
+        st.markdown('<p style="font-size:13px; font-weight:800; color:#F5B800; text-transform:uppercase; letter-spacing:0.10em; margin:18px 0 12px;">🚛 Flotte d\'engins prise en charge</p>', unsafe_allow_html=True)
+        _equip_default = [
             ("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=200&fit=crop", "Camions"),
             ("https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=300&h=200&fit=crop", "Excavatrices"),
-            ("https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=300&h=200&fit=crop", "BULDOZER"),
+            ("https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=300&h=200&fit=crop", "Bulldozers"),
             ("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=300&h=200&fit=crop", "Chargeurs"),
             ("https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop", "Foreuses"),
-            ("https://images.unsplash.com/photo-1611522135884-5b90cc5c2fb4?w=300&h=200&fit=crop", "DUMPER")
+            ("https://images.unsplash.com/photo-1611522135884-5b90cc5c2fb4?w=300&h=200&fit=crop", "Dumpers"),
         ]
-        
-        # Utiliser les images locales si disponibles, sinon les URLs par défaut
-        equip_items = []
-        for default_url, label in equip_items_default:
-            img_url = get_equipment_image_url(label, default_url)
-            equip_items.append((img_url, label))
-        
-        # Affichage en grille responsive (3 colonnes sur desktop, 2 sur tablette, 1 sur mobile)
-        for i in range(0, len(equip_items), 3):
-            row_items = equip_items[i:i+3]
-            # Utiliser le nombre de colonnes approprié selon le nombre d'éléments
-            equip_cols = st.columns(min(3, len(row_items)))
-            for idx, (img_url, label) in enumerate(row_items):
-                with equip_cols[idx]:
-                    st.markdown(f"""
-                    <div style="text-align: center; padding: 15px; background: #252538; border-radius: 12px; margin-bottom: 15px; border: 1px solid #333344; max-width: 100%; box-sizing: border-box; overflow: hidden;">
-                        <img src="{img_url}" alt="{label}" style="width: 100%; height: clamp(100px, 15vw, 130px); object-fit: cover; border-radius: 8px; margin-bottom: 10px; border: 2px solid #F5B800; max-width: 100%;">
-                        <div class="equipment-label">{label}</div>
-                    </div>
-                    """, unsafe_allow_html=True)
-        
+        st.markdown('<div class="login-equip-grid">', unsafe_allow_html=True)
+        for _eurl, _elbl in _equip_default:
+            _eimg = get_equipment_image_url(_elbl, _eurl)
+            st.markdown(f"""
+            <div class="login-equip-item">
+              <img src="{_eimg}" alt="{_elbl}" loading="lazy"/>
+              <span>{_elbl}</span>
+            </div>""", unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
-        
-        # Carte Or avec vraie photo de lingot uniquement
-        st.markdown('<div class="login-card">', unsafe_allow_html=True)
-        st.markdown('<h2 class="section-title">🥇 Extraction d&apos;Or de Qualité</h2>', unsafe_allow_html=True)
-        
-        # Image principale de lingot d'or uniquement
-        gold_bar_default_url = "https://images.unsplash.com/photo-1619451330707-682e0ab47b5b?w=600&h=400&fit=crop"
-        gold_bar_image_url = get_gold_bar_image_url(gold_bar_default_url)
-        st.markdown(f"""
-        <div style="text-align: center; margin: 20px 0; max-width: 100%; box-sizing: border-box;">
-            <img src="{gold_bar_image_url}" 
-                 alt="Lingot d'Or" 
-                 style="width: 100%; max-width: 500px; height: clamp(200px, 40vw, 300px); object-fit: cover; border-radius: 15px; border: 4px solid #F5B800; box-shadow: 0 8px 20px rgba(245, 184, 0, 0.4);">
+
+        # Valeurs
+        st.markdown("""
+        <div class="login-values-row" style="margin-top:16px;">
+          <span class="login-value-chip">🏆 Excellence</span>
+          <span class="login-value-chip">🔒 Sécurité</span>
+          <span class="login-value-chip">⚙️ Efficacité</span>
+          <span class="login-value-chip">📊 Innovation</span>
+          <span class="login-value-chip">🌍 Durabilité</span>
         </div>
         """, unsafe_allow_html=True)
-        
-        st.markdown("<p style='text-align: center; color: #F5B800; font-size: 20px; font-weight: 700; margin-top: 20px; padding: 15px; background: #252538; border-radius: 10px; border: 1px solid #F5B800;'>Excellence dans l'Extraction Minière</p>", unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
-        
-    with col_right:
-        # Carte Missions
-        st.markdown('<div class="login-card">', unsafe_allow_html=True)
-        st.markdown('<h2 class="section-title">🎯 Nos Missions</h2>', unsafe_allow_html=True)
-        
-        missions = [
-            ("🏆 EXCELLENCE", "Maintenir les plus hauts standards dans l'exploitation minière."),
-            ("⚙️ EFFICACITÉ", "Optimiser les opérations pour maximiser la production."),
-            ("🔒 SÉCURITÉ", "Garantir un environnement de travail sûr pour tous."),
-            ("📊 INNOVATION", "Utiliser les dernières technologies pour améliorer les performances."),
-            ("🌍 DURABILITÉ", "Respecter l'environnement dans toutes nos opérations."),
-            ("👥 ÉQUIPE", "Valoriser et développer le talent de nos équipes.")
-        ]
-        
-        for icon_title, desc in missions:
-            st.markdown(f"""
-            <div style="background: #252538; padding: 18px; border-radius: 10px; 
-                        border-left: 4px solid #F5B800; margin-bottom: 15px; border: 1px solid #333344;">
-                <div class="mission-title">{icon_title}</div>
-                <div class="mission-text" style="margin-top: 8px;">{desc}</div>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        st.markdown('</div>', unsafe_allow_html=True)
-    
+
     st.stop()
 
 # ── Traitement envoi chat flottant (query param bridge) ──────────────────────
@@ -8104,7 +8309,24 @@ if user_role == "Operateur":
 if not authorized_tabs:
     authorized_tabs = ["DASHBOARD", "MARCHÉ OR"]  # Fallback si aucun onglet
 
-tabs = st.tabs(authorized_tabs)
+_TAB_ICONS = {
+    "DASHBOARD":          "📊 DASHBOARD",
+    "CYCLES":             "🔄 CYCLES",
+    "CARBURANT":          "⛽ CARBURANT",
+    "MAINT.":             "🔧 MAINT.",
+    "GESTION STOCK":      "📦 STOCK",
+    "CARTE":              "🗺️ CARTE",
+    "FINANCE":            "💰 FINANCE",
+    "RH":                 "👥 RH",
+    "ADMIN":              "⚙️ ADMIN",
+    "DONNÉES INGÉNIERIE": "📐 ING.",
+    "MESSAGERIE":         "💬 MESSAGERIE",
+    "SST":                "🦺 SST",
+    "MARCHÉ OR":          "🥇 OR",
+    "VALIDATION OPÉRATEUR": "✅ VALIDATION",
+}
+_display_tabs = [_TAB_ICONS.get(t, t) for t in authorized_tabs]
+tabs = st.tabs(_display_tabs)
 tab_dict = dict(zip(authorized_tabs, tabs))
 
 # --- DASHBOARD ---
@@ -8140,49 +8362,53 @@ if "DASHBOARD" in tab_dict:
             except Exception:
                 fuel_avg = None
         
-        # Cartes KPI — design industriel (cohérent avec .kpi-card global)
+        # Cartes KPI — glassmorphism industriel
         st.markdown("""
         <style>
         .dashboard-kpi {
-            background: #1E1E1E;
-            border: 1px solid #404040;
-            border-radius: 8px;
-            padding: 18px 20px;
+            background: rgba(20, 28, 45, 0.78);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            padding: 20px 22px;
             margin: 8px 0;
             min-height: 132px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.22);
-            transition: box-shadow 150ms ease, border-color 150ms ease;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
+            transition: box-shadow 180ms ease, border-color 180ms ease, transform 180ms ease;
         }
         .dashboard-kpi:hover {
-            box-shadow: 0 6px 22px rgba(0,0,0,0.3);
-            border-color: rgba(245, 184, 0, 0.35);
+            box-shadow: 0 12px 42px rgba(0,0,0,0.45);
+            border-color: rgba(245, 184, 0, 0.30);
+            transform: translateY(-2px);
         }
         .dashboard-kpi .kpi-lab {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: #A0A0A0;
+            letter-spacing: 0.10em;
+            color: #8A9BB0;
             margin-bottom: 10px;
             line-height: 1.3;
         }
         .dashboard-kpi .kpi-val {
-            font-size: clamp(28px, 2.8vw, 40px);
-            font-weight: 800;
+            font-size: clamp(28px, 2.8vw, 42px);
+            font-weight: 900;
             color: #EAEAEA;
-            line-height: 1.15;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
         }
         .dashboard-kpi .kpi-sub {
-            font-size: 14px;
-            color: #A0A0A0;
+            font-size: 13px;
+            color: #7A8A9A;
             margin-top: 10px;
             font-weight: 600;
         }
-        .dashboard-kpi.kpi-border-success { border-left: 4px solid #28A745; }
-        .dashboard-kpi.kpi-border-warning { border-left: 4px solid #FF6B00; }
-        .dashboard-kpi.kpi-border-danger { border-left: 4px solid #DC3545; }
-        .dashboard-kpi.kpi-border-accent { border-left: 4px solid #F5B800; }
-        .dashboard-kpi.kpi-border-muted { border-left: 4px solid #5A5A5A; }
+        .dashboard-kpi.kpi-border-success { border-left: 4px solid #28A745; box-shadow: 0 8px 32px rgba(0,0,0,0.35), -2px 0 16px rgba(40,167,69,0.12), inset 0 1px 0 rgba(255,255,255,0.05); }
+        .dashboard-kpi.kpi-border-warning { border-left: 4px solid #FF6B00; box-shadow: 0 8px 32px rgba(0,0,0,0.35), -2px 0 16px rgba(255,107,0,0.12), inset 0 1px 0 rgba(255,255,255,0.05); }
+        .dashboard-kpi.kpi-border-danger  { border-left: 4px solid #DC3545; box-shadow: 0 8px 32px rgba(0,0,0,0.35), -2px 0 16px rgba(220,53,69,0.12), inset 0 1px 0 rgba(255,255,255,0.05); }
+        .dashboard-kpi.kpi-border-accent  { border-left: 4px solid #F5B800; box-shadow: 0 8px 32px rgba(0,0,0,0.35), -2px 0 16px rgba(245,184,0,0.15), inset 0 1px 0 rgba(255,255,255,0.05); }
+        .dashboard-kpi.kpi-border-muted   { border-left: 4px solid #5A5A5A; }
         </style>
         """, unsafe_allow_html=True)
         
@@ -8866,13 +9092,13 @@ if "MAINT." in tab_dict:
         
         # --- TAB 2: AJOUTER UNE MACHINE ---
         with fleet_tabs[1]:
-            # Préréglage hors formulaire : on_change interdit à l’intérieur de st.form (Streamlit >= 1.33)
+            # Préréglage hors formulaire : on_change interdit à l'intérieur de st.form (Streamlit >= 1.33)
             _preset_opts_add = ["—"] + [
                 f"{v:g} t" if float(v) == int(float(v)) else f"{v} t"
                 for v in get_tonnage_preset_values()
             ]
             st.selectbox(
-                "Préréglage capacité (tonnes) — s’applique au champ « Capacité » ci‑dessous",
+                "Préréglage capacité (tonnes) — s'applique au champ « Capacité » ci‑dessous",
                 _preset_opts_add,
                 key="add_mach_ton_preset",
                 on_change=_apply_add_mach_ton_preset_cb,
@@ -8949,7 +9175,7 @@ if "MAINT." in tab_dict:
                         st.session_state[_add_cap_last] = ("manual_v1",)
                     if new_machine_type in _MACHINE_TYPES_WITH_BUCKET:
                         cap_help = (
-                            "Équivalent « charge par cycle » en tonnes si vous l’utilisez pour les calculs ; "
+                            "Équivalent « charge par cycle » en tonnes si vous l'utilisez pour les calculs ; "
                             "sinon 0. Précisez surtout le **godet (m³)** ci‑dessous."
                         )
                     elif new_machine_type in _MACHINE_TYPES_BLADE:
@@ -9072,7 +9298,7 @@ if "MAINT." in tab_dict:
                         for v in get_tonnage_preset_values()
                     ]
                     st.selectbox(
-                        "Préréglage capacité (tonnes) — s’applique au champ « Capacité » du formulaire d’édition",
+                        "Préréglage capacité (tonnes) — s'applique au champ « Capacité » du formulaire d'édition",
                         _preset_opts_edit,
                         key="edit_mach_ton_preset",
                         on_change=_apply_edit_mach_ton_preset_cb,
@@ -11044,7 +11270,7 @@ if "FINANCE" in tab_dict:
                 st.markdown("#### ⛽ Détails Carburant")
                 st.caption(
                     "Sources : pleins enregistrés dans **Carburant**, et **litres chargés** saisis dans **Données ingénierie** "
-                    "(coût = litres × prix USD indiqué à l’enregistrement)."
+                    "(coût = litres × prix USD indiqué à l'enregistrement)."
                 )
                 if fuel_logs_in_period:
                     fuel_data = []
@@ -13791,7 +14017,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
         if not _ingenierie_finance_visible:
             st.info(
                 "Les **indicateurs financiers** (montants $, revenus, coûts, marges) et les **exports détaillés en dollars** "
-                "ne sont pas affichés ici. Ils sont réservés aux profils avec accès à l’onglet **Finance**."
+                "ne sont pas affichés ici. Ils sont réservés aux profils avec accès à l'onglet **Finance**."
             )
 
         if _ingenierie_finance_visible:
@@ -13803,7 +14029,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                 <li><strong>Heures travaillées</strong> : calculées automatiquement (H-mètre fin − H-mètre début)</li>
                 <li><strong>Production</strong> : production en tonnes réalisée sur la période</li>
                 <li><strong>Carburant</strong> : saisir les <strong>litres chargés</strong> (pleins) — utilisés comme consommation pour les indicateurs</li>
-                <li>Le système calcule aussi les agrégats financiers (revenus, coûts, rentabilité) visibles avec l’accès Finance</li>
+                <li>Le système calcule aussi les agrégats financiers (revenus, coûts, rentabilité) visibles avec l'accès Finance</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -13826,7 +14052,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
         with st.expander("📅 Rapports journaliers — ingénierie, production & carburant (KPI + export)", expanded=False):
             st.markdown(
                 "Rapport basé sur les **entrées manuelles** du jour (onglet ci‑dessous) et les **ravitaillements** "
-                "enregistrés dans Carburant. L’état **flotte** est un instantané actuel."
+                "enregistrés dans Carburant. L'état **flotte** est un instantané actuel."
             )
             rep_date = st.date_input(
                 "Date du rapport",
@@ -14240,7 +14466,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                             # Temps de cycle moyen (en minutes)
                             avg_cycle_time = (new_h_jour * 60) / new_cycles if new_cycles > 0 else 0
                             
-                            # Afficher les calculs (sans montants $ si pas d’accès Finance)
+                            # Afficher les calculs (sans montants $ si pas d'accès Finance)
                             if _ingenierie_finance_visible:
                                 col_calc1, col_calc2, col_calc3, col_calc4 = st.columns(4)
                                 with col_calc1:
@@ -14300,8 +14526,8 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                             else:
                                 fuel_price = 1.5
                                 st.caption(
-                                    "Prix carburant : valeur interne par défaut (1,50 USD/L) pour l’enregistrement. "
-                                    "L’ajustement et la vision financière sont dans **Finance**."
+                                    "Prix carburant : valeur interne par défaut (1,50 USD/L) pour l'enregistrement. "
+                                    "L'ajustement et la vision financière sont dans **Finance**."
                                 )
                         
                         submitted = st.form_submit_button("✅ ENREGISTRER LES DONNÉES", use_container_width=True, type="primary")
@@ -14800,8 +15026,8 @@ if "ADMIN" in tab_dict:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("✏️ Modifier un Utilisateur")
             st.caption(
-                "Vous pouvez **définir un nouveau mot de passe** pour un utilisateur de votre entreprise sans connaître l’ancien "
-                "(réservé aux comptes disposant de l’onglet ADMIN)."
+                "Vous pouvez **définir un nouveau mot de passe** pour un utilisateur de votre entreprise sans connaître l'ancien "
+                "(réservé aux comptes disposant de l'onglet ADMIN)."
             )
             
             existing_users = [u['user'] for u in user_mgr.users_in_current_tenant()]
@@ -15090,12 +15316,12 @@ if "ADMIN" in tab_dict:
             if _is_plat_logo:
                 st.caption(
                     "Rôle **Gestionnaire** : logo **global** (dossier `logos/good_engineers_logo.png`), "
-                    "utilisé lorsqu’une entreprise n’a pas de logo dédié."
+                    "utilisé lorsqu'une entreprise n'a pas de logo dédié."
                 )
             else:
                 st.caption(
                     "Logo **de votre entreprise** : enregistré dans votre espace (`tenant_data/…/branding/`). "
-                    "Il s’affiche dans la sidebar (comme sur votre maquette) pour tous les utilisateurs du tenant."
+                    "Il s'affiche dans la sidebar (comme sur votre maquette) pour tous les utilisateurs du tenant."
                 )
 
             logo_url = get_logo_url()
@@ -15136,12 +15362,12 @@ if "ADMIN" in tab_dict:
                             st.rerun()
                         st.error(message)
                     elif not _tenant_lp and not _is_plat_logo:
-                        st.info("Aucun logo entreprise à supprimer ; le logo global s’affiche déjà.")
+                        st.info("Aucun logo entreprise à supprimer ; le logo global s'affiche déjà.")
                     else:
                         st.error("Suppression impossible.")
                 st.markdown("---")
             else:
-                st.info("Aucun logo configuré : le texte « GOOD ENGINEERS » s’affiche par défaut dans la sidebar.")
+                st.info("Aucun logo configuré : le texte « GOOD ENGINEERS » s'affiche par défaut dans la sidebar.")
                 st.markdown("---")
 
             st.markdown("#### 📤 Téléverser un logo")
@@ -15188,7 +15414,7 @@ if "ADMIN" in tab_dict:
                             st.rerun()
                         st.error(message)
                     else:
-                        st.error("Échec de l’enregistrement du logo entreprise.")
+                        st.error("Échec de l'enregistrement du logo entreprise.")
 
             st.markdown("</div>", unsafe_allow_html=True)
         
