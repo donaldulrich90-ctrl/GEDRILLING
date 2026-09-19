@@ -136,8 +136,8 @@ GOOD_ENGINEERS_BANNER_MARK_SVG = """
 # 1. CONFIGURATION & STYLE (DESIGN FAEST STORE)
 # ==============================================================================
 st.set_page_config(
-    page_title="GOOD ENGINEERS OS", 
-    page_icon="🏗️", 
+    page_title="GOOD ENGINEERS OS",
+    page_icon="🏗️",
     layout="wide",
     # Ouverte par défaut : en « collapsed », le bouton pour rouvrir la sidebar est dans stHeader,
     # or le thème masque stHeader (Déployer / menu) — la bande verticale devient invisible en ligne.
@@ -538,7 +538,7 @@ st.markdown(f"""
         display: block !important;
         white-space: normal !important;
     }}
-    .stApp {{ 
+    .stApp {{
         background: {bg_main} !important;
         min-height: 100vh;
         color-scheme: dark;
@@ -568,37 +568,87 @@ st.markdown(f"""
         50% {{ background-position: 100% 50%; }}
         100% {{ background-position: 0% 50%; }}
     }}
-    
+
     /* SIDEBAR */
-    .sidebar-logo-container {{ 
-        text-align: center; 
-        padding: 12px; 
-        background: linear-gradient(180deg, {primary_blue} 0%, #0a1f33 100%) !important; 
-        border-radius: 8px; 
-        margin-bottom: 20px; 
-        border: 1px solid rgba(255, 193, 7, 0.38);
-        box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+    .sidebar-logo-container {{
+        text-align: center;
+        padding: 12px 10px 11px;
+        background: linear-gradient(165deg, {primary_blue} 0%, #07251c 100%) !important;
+        border-radius: 12px 12px 0 0;
+        margin-bottom: 0;
+        border: 1px solid rgba(255, 193, 7, 0.42);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.28);
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-height: 120px;
+        gap: 9px;
+        min-height: 0;
         width: 100%;
         box-sizing: border-box;
+        overflow: hidden;
     }}
     .sidebar-logo-container img {{
         max-width: 100% !important;
-        max-height: 150px !important;
-        width: 100% !important;
+        max-height: 92px !important;
+        width: auto !important;
         height: auto !important;
         object-fit: contain !important;
         display: block;
+        margin: 0 auto;
     }}
-    .sidebar-logo-text {{ 
-        font-family: 'Montserrat', sans-serif; 
-        font-size: 36px !important; 
-        line-height: 1.2; 
+    .sidebar-company-banner {{
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 0 12px;
+        padding: 9px 9px 11px;
+        text-align: center;
+        background: linear-gradient(165deg, {primary_blue} 0%, #07251c 100%);
+        border: 1px solid rgba(255, 193, 7, 0.42);
+        border-top: 1px solid rgba(245, 184, 0, 0.25);
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.20);
+    }}
+    section[data-testid="stSidebar"] div.element-container:has(.sidebar-company-banner) {{
+        margin-top: -1rem !important;
+    }}
+    .sidebar-company-banner .sidebar-company-label,
+    .sidebar-company-banner .sidebar-company-name {{
+        text-align: center !important;
+    }}
+    .sidebar-company-meta {{
+        width: 100%;
+        padding-top: 9px;
+        border-top: 1px solid rgba(245, 184, 0, 0.28);
+        line-height: 1.2;
+    }}
+    .sidebar-company-label {{
+        display: block;
+        margin-bottom: 5px;
+        color: #a9bdb2 !important;
+        font-family: 'Inter', 'Segoe UI', sans-serif !important;
+        font-size: 9px !important;
+        font-weight: 700 !important;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+    }}
+    .sidebar-company-name {{
+        display: block;
         color: {accent} !important;
-        font-weight: 900; 
+        font-family: 'Montserrat', 'Inter', sans-serif !important;
+        font-size: clamp(12px, 1.05vw, 15px) !important;
+        font-weight: 900 !important;
+        line-height: 1.25 !important;
+        letter-spacing: .025em;
+        text-transform: uppercase;
+        overflow-wrap: anywhere;
+    }}
+    .sidebar-logo-text {{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 36px !important;
+        line-height: 1.2;
+        color: {accent} !important;
+        font-weight: 900;
         letter-spacing: 0.02em;
         width: 100%;
     }}
@@ -606,7 +656,7 @@ st.markdown(f"""
         0% {{ filter: brightness(1) drop-shadow(0 0 10px rgba(255, 193, 7, 0.5)); }}
         100% {{ filter: brightness(1.3) drop-shadow(0 0 20px rgba(255, 193, 7, 0.85)); }}
     }}
-    
+
     /* Hero GOOD ENGINEERS — logo complet, centré, pacing type landing industrielle */
     @keyframes geHeroFadeIn {{
         from {{ opacity: 0; transform: translateY(14px); }}
@@ -884,18 +934,18 @@ st.markdown(f"""
             max-height: min(17vh, 170px);
         }}
     }}
-    
+
     /* Bandeau / en-tête contrôle minière */
-    .hero-banner {{ 
+    .hero-banner {{
         background: linear-gradient(168deg, #063D2B 0%, #060d16 55%, #000000 100%);
-        padding: 9px 0; 
-        border-radius: 8px; 
-        border: 2px solid rgba(255, 193, 7, 0.55); 
+        padding: 9px 0;
+        border-radius: 8px;
+        border: 2px solid rgba(255, 193, 7, 0.55);
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 193, 7, 0.1);
-        margin-bottom: 10px; 
-        overflow: hidden; 
-        white-space: nowrap; 
-        position: relative; 
+        margin-bottom: 10px;
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
         min-height: 42px;
         max-width: 100%;
         box-sizing: border-box;
@@ -907,20 +957,20 @@ st.markdown(f"""
         background: radial-gradient(ellipse 80% 70% at 50% 40%, rgba(255, 193, 7, 0.07) 0%, transparent 55%);
         pointer-events: none;
     }}
-    .marquee-text {{ 
-        display: inline-block; 
-        font-family: 'Montserrat', sans-serif; 
-        font-size: clamp(14px, 2.6vw, 32px); 
-        font-weight: 900; 
-        color: {accent}; 
-        text-transform: uppercase; 
-        padding-left: 100%; 
-        animation: scroll-left 35s linear infinite; 
+    .marquee-text {{
+        display: inline-block;
+        font-family: 'Montserrat', sans-serif;
+        font-size: clamp(14px, 2.6vw, 32px);
+        font-weight: 900;
+        color: {accent};
+        text-transform: uppercase;
+        padding-left: 100%;
+        animation: scroll-left 35s linear infinite;
         letter-spacing: clamp(1px, 0.35vw, 3px);
         line-height: 1.15;
     }}
-    .gold-text {{ 
-        color: {accent}; 
+    .gold-text {{
+        color: {accent};
         font-weight: 900 !important;
         font-size: clamp(15px, 3vw, 38px);
         letter-spacing: clamp(1px, 0.45vw, 4px);
@@ -940,12 +990,32 @@ st.markdown(f"""
             letter-spacing: 2px !important;
         }}
     }}
-    
 
-    /* Navigation par onglets — style poste de contrôle premium */
+
+    /* Navigation principale — occupe tout l'espace disponible et reste vivante */
+    .stTabs {{
+        width: 100% !important;
+        max-width: 100% !important;
+    }}
+
+    /* Le premier groupe d'onglets est la navigation principale de la plateforme. */
+    section[data-testid="stMain"]
+    > div[data-testid="stMainBlockContainer"]
+    > div[data-testid="stVerticalBlock"]
+    > div[data-testid="stTabs"] {{
+        --ge-tabs-edge-space: clamp(0.65rem, 1vw, 1rem);
+        width: calc(100% + 2 * clamp(0.75rem, 8vw, 6rem) - var(--ge-tabs-edge-space) - var(--ge-tabs-edge-space)) !important;
+        max-width: none !important;
+        margin-left: calc(-1 * clamp(0.75rem, 8vw, 6rem) + var(--ge-tabs-edge-space)) !important;
+        margin-right: calc(-1 * clamp(0.75rem, 8vw, 6rem) + var(--ge-tabs-edge-space)) !important;
+    }}
+
     .stTabs [data-baseweb="tab-list"] {{
-        display: flex;
-        width: 100%;
+        display: flex !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        justify-content: stretch !important;
+        align-items: stretch !important;
         gap: 5px;
         background: rgba(15, 42, 68, 0.8) !important;
         backdrop-filter: blur(10px);
@@ -954,12 +1024,22 @@ st.markdown(f"""
         border-radius: 14px;
         border: 1px solid rgba(245, 184, 0, 0.22);
         box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
-        flex-wrap: wrap;
+        flex-wrap: wrap !important;
+        overflow: visible !important;
         margin-bottom: 16px;
+        animation: geTabsReveal 520ms cubic-bezier(.22, 1, .36, 1) both;
     }}
+
     .stTabs [data-baseweb="tab"] {{
-        flex-grow: 1;
+        flex: 1 1 105px !important;
+        min-width: 96px !important;
+        max-width: none !important;
         min-height: 58px;
+        justify-content: center !important;
+        text-align: center !important;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
         background: rgba(47, 47, 47, 0.6) !important;
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
@@ -967,34 +1047,128 @@ st.markdown(f"""
         border: 1px solid rgba(255,255,255,0.07);
         border-radius: 10px;
         font-family: 'Inter', 'Segoe UI', sans-serif !important;
-        font-size: 13px !important;
+        font-size: 12px !important;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.06em;
-        transition: all 180ms ease-out;
-        padding: 10px 8px !important;
-        white-space: nowrap;
+        letter-spacing: 0.015em;
+        transition: transform 220ms cubic-bezier(.22, 1, .36, 1),
+                    background 220ms ease, border-color 220ms ease,
+                    box-shadow 220ms ease, color 220ms ease;
+        padding: 9px 4px !important;
+        white-space: nowrap !important;
+        line-height: 1.15 !important;
+        animation: geTabEnter 440ms cubic-bezier(.22, 1, .36, 1) both;
     }}
 
+    .stTabs [data-baseweb="tab"] p,
+    .stTabs [data-baseweb="tab"] span {{
+        margin: 0 !important;
+        font-size: 12px !important;
+        line-height: 1.15 !important;
+        letter-spacing: 0.015em !important;
+        white-space: nowrap !important;
+    }}
+
+    .stTabs [data-baseweb="tab"]::after {{
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: -35%;
+        bottom: -35%;
+        left: -55%;
+        width: 34%;
+        transform: skewX(-20deg) translateX(-260%);
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+        pointer-events: none;
+    }}
+
+    .stTabs [data-baseweb="tab"]:nth-child(2)  {{ animation-delay: 35ms; }}
+    .stTabs [data-baseweb="tab"]:nth-child(3)  {{ animation-delay: 70ms; }}
+    .stTabs [data-baseweb="tab"]:nth-child(4)  {{ animation-delay: 105ms; }}
+    .stTabs [data-baseweb="tab"]:nth-child(5)  {{ animation-delay: 140ms; }}
+    .stTabs [data-baseweb="tab"]:nth-child(6)  {{ animation-delay: 175ms; }}
+    .stTabs [data-baseweb="tab"]:nth-child(7)  {{ animation-delay: 210ms; }}
+    .stTabs [data-baseweb="tab"]:nth-child(8)  {{ animation-delay: 245ms; }}
+    .stTabs [data-baseweb="tab"]:nth-child(9)  {{ animation-delay: 280ms; }}
+    .stTabs [data-baseweb="tab"]:nth-child(10) {{ animation-delay: 315ms; }}
+    .stTabs [data-baseweb="tab"]:nth-child(11) {{ animation-delay: 350ms; }}
+    .stTabs [data-baseweb="tab"]:nth-child(12) {{ animation-delay: 385ms; }}
+    .stTabs [data-baseweb="tab"]:nth-child(13) {{ animation-delay: 420ms; }}
+    .stTabs [data-baseweb="tab"]:nth-child(14) {{ animation-delay: 455ms; }}
+
     .stTabs [data-baseweb="tab"]:hover {{
-        background: rgba(70, 70, 70, 0.75) !important;
+        background: rgba(70, 70, 70, 0.82) !important;
         color: {text_primary} !important;
-        border-color: rgba(245, 184, 0, 0.4) !important;
-        box-shadow: 0 4px 16px rgba(245, 184, 0, 0.12);
-        transform: translateY(-1px);
+        border-color: rgba(245, 184, 0, 0.55) !important;
+        box-shadow: 0 8px 22px rgba(245, 184, 0, 0.18);
+        transform: translateY(-3px) scale(1.015);
+    }}
+    .stTabs [data-baseweb="tab"]:hover::after {{
+        animation: geTabShine 720ms ease-out;
+    }}
+    .stTabs [data-baseweb="tab"]:active {{
+        transform: translateY(0) scale(0.975);
+        transition-duration: 80ms;
     }}
     .stTabs [aria-selected="true"] {{
         background: linear-gradient(135deg, {accent} 0%, #e6a800 100%) !important;
         color: {primary_blue} !important;
         border-color: {accent} !important;
         font-weight: 900;
-        box-shadow: 0 4px 18px rgba(245, 184, 0, 0.45), 0 0 0 1px rgba(245, 184, 0, 0.6);
+        box-shadow: 0 5px 20px rgba(245, 184, 0, 0.42), 0 0 0 1px rgba(245, 184, 0, 0.62);
         transform: translateY(-2px);
+        animation: geActiveTabPulse 2.8s ease-in-out infinite;
     }}
     .stTabs [aria-selected="true"] p, .stTabs [aria-selected="true"] span {{
         color: {primary_blue} !important;
         font-weight: 900 !important;
     }}
+
+    @keyframes geTabsReveal {{
+        from {{ opacity: 0; transform: translateY(12px); }}
+        to   {{ opacity: 1; transform: translateY(0); }}
+    }}
+    @keyframes geTabEnter {{
+        from {{ opacity: 0; transform: translateY(10px) scale(0.96); }}
+        to   {{ opacity: 1; transform: translateY(0) scale(1); }}
+    }}
+    @keyframes geTabShine {{
+        from {{ transform: skewX(-20deg) translateX(-260%); }}
+        to   {{ transform: skewX(-20deg) translateX(620%); }}
+    }}
+    @keyframes geActiveTabPulse {{
+        0%, 100% {{
+            box-shadow: 0 5px 18px rgba(245, 184, 0, 0.38), 0 0 0 1px rgba(245, 184, 0, 0.56);
+        }}
+        50% {{
+            box-shadow: 0 7px 27px rgba(245, 184, 0, 0.62), 0 0 0 2px rgba(245, 184, 0, 0.32);
+        }}
+    }}
+
+    @media (max-width: 768px) {{
+        section[data-testid="stMain"]
+        > div[data-testid="stMainBlockContainer"]
+        > div[data-testid="stVerticalBlock"]
+        > div[data-testid="stTabs"] {{
+            width: 100% !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }}
+        .stTabs [data-baseweb="tab"] {{
+            flex-basis: 118px !important;
+            min-width: 104px !important;
+        }}
+    }}
+
+    @media (prefers-reduced-motion: reduce) {{
+        .stTabs [data-baseweb="tab-list"],
+        .stTabs [data-baseweb="tab"],
+        .stTabs [data-baseweb="tab"]::after {{
+            animation: none !important;
+            transition: none !important;
+        }}
+    }}
+
     /* Indicateur soulignement — on masque l'original Streamlit */
     .stTabs [data-baseweb="tab-highlight"] {{
         display: none !important;
@@ -1036,11 +1210,11 @@ st.markdown(f"""
         box-shadow: 0 8px 28px rgba(0,0,0,0.38);
         border-color: rgba(245, 184, 0, 0.30);
     }}
-    
+
     /* Tableaux — en-têtes collants, zébrage discret */
-    [data-testid="stDataFrame"] {{ 
-        border: 1px solid {border_color}; 
-        border-radius: 8px; 
+    [data-testid="stDataFrame"] {{
+        border: 1px solid {border_color};
+        border-radius: 8px;
         overflow: auto;
         background: {bg_card} !important;
         max-width: 100%;
@@ -1061,12 +1235,12 @@ st.markdown(f"""
             white-space: nowrap;
         }}
     }}
-    thead tr th {{ 
-        background: {primary_blue} !important; 
-        color: {text_primary} !important; 
-        font-family: 'Inter', 'Segoe UI', sans-serif !important; 
-        text-transform: uppercase; 
-        font-size: clamp(12px, 1.4vw, 15px) !important; 
+    thead tr th {{
+        background: {primary_blue} !important;
+        color: {text_primary} !important;
+        font-family: 'Inter', 'Segoe UI', sans-serif !important;
+        text-transform: uppercase;
+        font-size: clamp(12px, 1.4vw, 15px) !important;
         font-weight: 700;
         padding: 12px 14px !important;
         border-bottom: 2px solid {accent};
@@ -1088,15 +1262,15 @@ st.markdown(f"""
         padding: 12px !important;
         font-family: 'Inter', 'Segoe UI', sans-serif !important;
     }}
-    
+
     /* Hiérarchie boutons : primaire = jaune sécurité, secondaire = gris industriel */
     button[data-testid="baseButton-primary"],
     .stButton > button[kind="primary"] {{
-        font-family: 'Inter', 'Segoe UI', sans-serif !important; 
-        font-weight: 800 !important; 
+        font-family: 'Inter', 'Segoe UI', sans-serif !important;
+        font-weight: 800 !important;
         font-size: 16px !important;
-        border-radius: 8px !important; 
-        text-transform: uppercase; 
+        border-radius: 8px !important;
+        text-transform: uppercase;
         letter-spacing: 0.05em;
         background: linear-gradient(180deg, {accent} 0%, #D9A000 100%) !important;
         color: {primary_blue} !important;
@@ -1135,11 +1309,11 @@ st.markdown(f"""
     }}
     /* Boutons Streamlit sans kind explicite — traités comme primaires (actions terrain) */
     .stButton > button:not([kind="secondary"]) {{
-        font-family: 'Inter', 'Segoe UI', sans-serif !important; 
-        font-weight: 800 !important; 
+        font-family: 'Inter', 'Segoe UI', sans-serif !important;
+        font-weight: 800 !important;
         font-size: 16px !important;
-        border-radius: 8px !important; 
-        text-transform: uppercase; 
+        border-radius: 8px !important;
+        text-transform: uppercase;
         background: linear-gradient(180deg, {accent} 0%, #D9A000 100%) !important;
         color: {primary_blue} !important;
         border: 1px solid rgba(245, 184, 0, 0.9) !important;
@@ -1149,22 +1323,22 @@ st.markdown(f"""
         transform: translateY(-1px);
         filter: brightness(1.06);
     }}
-    
+
     /* Encarts taux / live */
-    .rate-box {{ 
-        background: {bg_card} !important; 
-        color: {accent}; 
-        padding: 14px; 
-        border-radius: 8px; 
-        text-align: center; 
-        margin-bottom: 10px; 
-        font-family: 'Inter', 'Segoe UI', sans-serif !important; 
+    .rate-box {{
+        background: {bg_card} !important;
+        color: {accent};
+        padding: 14px;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 10px;
+        font-family: 'Inter', 'Segoe UI', sans-serif !important;
         font-size: 17px !important;
         border: 1px solid {border_color};
         border-left: 4px solid {accent};
         box-shadow: 0 2px 12px rgba(0,0,0,0.2);
     }}
-    
+
     /* Titres — lisibilité maximale (hors hero : sr-only / titre éviter bordure + inline fantôme) */
     h1:not(.ge-hero__title):not(.ge-hero__sr-only) {{
         color: {text_primary} !important;
@@ -1197,7 +1371,7 @@ st.markdown(f"""
         font-weight: 600 !important;
         font-family: 'Inter', 'Segoe UI', sans-serif !important;
     }}
-    
+
     /* Métriques tableau de bord */
     [data-testid="stMetricContainer"] {{
         background: {bg_card} !important;
@@ -1219,7 +1393,7 @@ st.markdown(f"""
         font-weight: 600 !important;
         font-family: 'Inter', 'Segoe UI', sans-serif !important;
     }}
-    
+
     /* Champs & listes — surfaces sombres, focus jaune sécurité */
     .stSelectbox, .stTextInput, .stNumberInput {{
         border-radius: 8px;
@@ -1303,7 +1477,7 @@ st.markdown(f"""
         border-radius: 8px !important;
     }}
     textarea {{ min-height: 5rem !important; }}
-    
+
     /* Expanders — ne pas forcer font-family sur l'en-tête (sinon la flèche Material devient du texte _arrow_right) */
     .streamlit-expanderHeader {{
         background: {bg_card} !important;
@@ -1329,15 +1503,17 @@ st.markdown(f"""
         font-family: "Material Symbols Rounded", sans-serif !important;
         font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24 !important;
     }}
-    
+
     /* Sidebar — fond bleu industriel, séparation nette       Streamlit replie la sidebar (min-width 0 + translateX) quand l'état « replié » est
        mémorisé (localStorage) ; le bouton pour rouvrir est dans stHeader, masqué par le thème.
        Forcer largeur + transform évite la disparition sur le domaine de prod vs localhost. */
     section[data-testid="stSidebar"] {{
         background: linear-gradient(180deg, {primary_blue} 0%, #0c1f30 100%) !important;
         border-right: 1px solid {border_color};
-        min-width: min(21rem, 90vw) !important;
-        max-width: min(28rem, 40vw) !important;
+        width: clamp(14.5rem, 16vw, 16.5rem) !important;
+        min-width: clamp(14.5rem, 16vw, 16.5rem) !important;
+        max-width: clamp(14.5rem, 16vw, 16.5rem) !important;
+        flex-basis: clamp(14.5rem, 16vw, 16.5rem) !important;
         transform: translateX(0) !important;
         visibility: visible !important;
         transition: transform 0.28s ease, opacity 0.25s ease, flex-basis 0.28s ease,
@@ -1361,13 +1537,13 @@ st.markdown(f"""
         letter-spacing: normal !important;
         font-style: normal !important;
     }}
-    section[data-testid="stSidebar"] input {{ 
-        color: {text_primary} !important; 
+    section[data-testid="stSidebar"] input {{
+        color: {text_primary} !important;
         font-size: 18px !important;
         background-color: {bg_secondary} !important;
         border: 1px solid {border_color} !important;
     }}
-    
+
     /* Alertes Streamlit — mode sombre, codes couleur terrain */
     div[data-testid="stAlert"] {{
         border-radius: 8px !important;
@@ -1396,20 +1572,20 @@ st.markdown(f"""
         border-left: 4px solid {danger_c} !important;
         background: rgba(220, 53, 69, 0.12) !important;
     }}
-    
+
     /* Statuts équipements / flotte (à utiliser en HTML/markdown) */
     .status-active {{ color: {success_c} !important; font-weight: 700 !important; }}
     .status-idle {{ color: {text_secondary} !important; font-weight: 600 !important; }}
     .status-maintenance {{ color: {warning_c} !important; font-weight: 700 !important; }}
     .status-breakdown {{ color: {danger_c} !important; font-weight: 700 !important; }}
-    
+
     /* Graphiques */
     .js-plotly-plot {{
         border-radius: 8px;
         box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
         border: 1px solid {border_color};
     }}
-    
+
     /* Animations pour la page d'accueil */
     @keyframes float {{
         0%, 100% {{ transform: translateY(0px); }}
@@ -1449,7 +1625,7 @@ def get_exchange_rates():
         url = "https://open.er-api.com/v6/latest/USD"
         response = requests.get(url, timeout=5)
         data = response.json()
-        
+
         if data['result'] == 'success':
             rates = data['rates']
             return {
@@ -1500,7 +1676,7 @@ def get_gold_price():
                     'unit': 'once troy',
                     'timestamp': datetime.now()
                 }
-        
+
         # Alternative: API gratuite alternative
         url2 = "https://api.goldapi.io/api/xau/USD"
         headers = {
@@ -1519,7 +1695,7 @@ def get_gold_price():
                 }
     except:
         pass
-    
+
     # Valeur par défaut si l'API n'est pas disponible
     return {
         'price_per_ounce_usd': 2000.0,  # Prix approximatif
@@ -1536,7 +1712,7 @@ def get_gold_historical_data(period='daily'):
     """
     current_price = get_gold_price()['price_per_ounce_usd']
     base_price = current_price * 0.85  # Prix de base (15% inférieur)
-    
+
     if period == 'daily':
         days = 30
         dates = [(date.today() - timedelta(days=i)) for i in range(days, -1, -1)]
@@ -1562,7 +1738,7 @@ def get_gold_historical_data(period='daily'):
             d = date.today().replace(month=1, day=1)
             d = d.replace(year=d.year - i)
             dates.append(d)
-    
+
     # Générer des prix avec variation réaliste (seed déterministe → graphique stable entre les refreshs)
     rng = random.Random(f"{period}-{date.today().isoformat()}")
     prices = []
@@ -1574,7 +1750,7 @@ def get_gold_historical_data(period='daily'):
         cycle = 0.01 * math.sin(2 * math.pi * i / 7)
         price = base * (1 + variation + cycle)
         prices.append(round(price, 2))
-    
+
     return {
         'dates': dates,
         'prices': prices,
@@ -1597,7 +1773,7 @@ class AuditManager:
     """Gestionnaire des logs d'audit"""
     def __init__(self):
         self.logs = []
-    
+
     def log_action(self, action_type, entity_type, entity_id, entity_name, user, changes=None, details=""):
         """Enregistre une action dans les logs d'audit"""
         log = AuditLog(action_type, entity_type, entity_id, entity_name, user, changes=changes, details=details)
@@ -1605,11 +1781,11 @@ class AuditManager:
         # Garder seulement les 1000 derniers logs pour éviter la surcharge mémoire
         if len(self.logs) > 1000:
             self.logs = self.logs[-1000:]
-    
+
     def get_logs_df(self, entity_type=None, user=None, action_type=None, start_date=None, end_date=None):
         """Retourne un DataFrame avec les logs filtrés"""
         filtered_logs = self.logs
-        
+
         if entity_type:
             filtered_logs = [log for log in filtered_logs if log.entity_type == entity_type]
         if user:
@@ -1620,10 +1796,10 @@ class AuditManager:
             filtered_logs = [log for log in filtered_logs if log.timestamp >= start_date]
         if end_date:
             filtered_logs = [log for log in filtered_logs if log.timestamp <= end_date]
-        
+
         # Trier par date décroissante (plus récent en premier)
         filtered_logs.sort(key=lambda x: x.timestamp, reverse=True)
-        
+
         data = []
         for log in filtered_logs:
             changes_str = ""
@@ -1635,7 +1811,7 @@ class AuditManager:
                     else:
                         changes_list.append(f"{key}: {value}")
                 changes_str = " | ".join(changes_list)
-            
+
             data.append({
                 "Date/Heure": log.timestamp.strftime("%Y-%m-%d %H:%M:%S"),
                 "Utilisateur": log.user,
@@ -1646,12 +1822,12 @@ class AuditManager:
                 "Changements": changes_str,
                 "Détails": log.details
             })
-        
+
         if not data:
             return pd.DataFrame(columns=["Date/Heure", "Utilisateur", "Action", "Type d'Entité", "ID Entité", "Nom Entité", "Changements", "Détails"])
-        
+
         return pd.DataFrame(data)
-    
+
     def get_user_activity_summary(self, user):
         """Retourne un résumé des activités d'un utilisateur"""
         user_logs = [log for log in self.logs if log.user == user]
@@ -1728,10 +1904,10 @@ class UserManager:
                 "platform_admin": True,
             },
         }
-        
+
         self.users_db = []
         self._bootstrap_users()
-    
+
     def persist_users(self):
         db = get_database()
         db["users_list"] = self.users_db
@@ -1862,7 +2038,7 @@ class UserManager:
                 changed = True
         if changed:
             self.persist_users()
-    
+
     def verify_login(self, username, password):
         u_in = (username or "").strip()
         if not u_in or not password:
@@ -1879,14 +2055,14 @@ class UserManager:
             if u_name.lower() == u_in_lower and stored == p_hashed:
                 return u
         return None
-    
+
     def add_user(self, username, password, role, custom_permissions=None, tenant_id="default"):
         """Ajoute un nouvel utilisateur avec permissions (rattaché à une entreprise / tenant)."""
         ul = (username or "").strip().lower()
         for u in self.users_db:
             if str(u.get("user", "")).strip().lower() == ul:
                 return False
-        
+
         if custom_permissions:
             permissions = custom_permissions
         elif role in self.default_permissions:
@@ -1899,7 +2075,7 @@ class UserManager:
                 "can_add_users": False, "can_modify_users": False, "can_delete_users": False,
                 "can_view_all": False, "can_export": False, "can_modify_data": False
             }
-        
+
         user_entry = {
             "user": username.strip(),
             "pass": _hash_password(password),
@@ -1911,7 +2087,7 @@ class UserManager:
         self.users_db.append(user_entry)
         self.persist_users()
         return True
-    
+
     def update_user(self, username, password=None, role=None, permissions=None):
         """Met à jour un utilisateur existant"""
         un = (username or "").strip().lower()
@@ -1931,7 +2107,7 @@ class UserManager:
                 self.persist_users()
                 return True
         return False
-    
+
     def delete_user(self, username):
         """Supprime un utilisateur (comptes protégés)."""
         if username in ("admin", "gestionnaire"):
@@ -1939,7 +2115,7 @@ class UserManager:
         self.users_db = [u for u in self.users_db if u['user'] != username]
         self.persist_users()
         return True
-    
+
     def get_user(self, username):
         """Retourne un utilisateur par son nom (insensible à la casse, comme la connexion)."""
         un = (username or "").strip()
@@ -1953,7 +2129,7 @@ class UserManager:
             if u_name == ul:
                 return u
         return None
-    
+
     def get_users_df(self):
         """Retourne un DataFrame avec tous les utilisateurs (sans les mots de passe)"""
         data = []
@@ -2021,27 +2197,27 @@ class Employee:
             self.matricule = matricule
         else:
             self.matricule = f"MAT-{random.randint(1000,9999)}"
-        
+
         self.name = name
         self.role = role  # Operateur, Superviseur Production, Superviseur Mecanicien, Ingenieur, Mecanicien, Electricien
         self.team = team  # A, B, C, etc.
         self.shift_type = shift_type
-        
+
         # Date d'arrivée pour calculer l'ancienneté
         if date_arrivee:
             self.date_arrivee = date_arrivee
         else:
             self.date_arrivee = date.today()
-        
+
         # Statut de l'employé (Actif/Inactif) - pour soft delete
         self.statut = statut  # "Actif" ou "Inactif"
         self.date_depart = date_depart  # Date de départ si inactif
-        
+
         # Performance et assignation
         self.performance_score = 0
         self.assigned_machine = "Aucune"
         self.production_tonnes = 0  # Production totale en tonnes
-        
+
         # Suivi de présence
         self.presence_log = []  # Liste de dicts: {"date": "2024-01-15", "statut": "present", "retard": False}
         self.jours_sans_retard_absence = 0  # Compteur de jours consécutifs sans retard ni absence
@@ -2063,7 +2239,7 @@ class StaffManager:
         ]
         # S'assurer que tous les employés ont les attributs nécessaires (migration)
         self._migrate_employees()
-    
+
     def _migrate_employees(self):
         """Initialise les attributs manquants pour les employés existants (migration)"""
         for emp in self.staff:
@@ -2084,7 +2260,7 @@ class StaffManager:
                 emp.statut = "Actif"
             if not hasattr(emp, 'date_depart'):
                 emp.date_depart = None
-    
+
     def add_employee(self, name, role, team, shift_type, matricule=None, date_arrivee=None):
         """Ajoute un nouvel employé"""
         if not matricule:
@@ -2094,10 +2270,10 @@ class StaffManager:
             while f"MAT-{base_num}" in existing_matricules:
                 base_num += 1
             matricule = f"MAT-{base_num}"
-        
+
         self.staff.append(Employee(name, role, team, shift_type, matricule, date_arrivee, statut="Actif"))
         return True
-    
+
     def desactiver_employee(self, matricule, date_depart=None):
         """Désactive un employé (soft delete) - garde toutes les données historiques"""
         emp = self.get_employee_by_matricule(matricule)
@@ -2109,7 +2285,7 @@ class StaffManager:
                 emp.date_depart = date.today()
             return True
         return False
-    
+
     def reactiver_employee(self, matricule):
         """Réactive un employé précédemment désactivé"""
         emp = self.get_employee_by_matricule(matricule)
@@ -2118,15 +2294,15 @@ class StaffManager:
             emp.date_depart = None
             return True
         return False
-    
+
     def get_active_staff(self):
         """Retourne uniquement les employés actifs"""
         return [e for e in self.staff if getattr(e, 'statut', 'Actif') == 'Actif']
-    
+
     def get_inactive_staff(self):
         """Retourne uniquement les employés inactifs"""
         return [e for e in self.staff if getattr(e, 'statut', 'Actif') == 'Inactif']
-    
+
     def remove_employee(self, matricule):
         """Supprime définitivement un employé de la base de données (hard delete)"""
         emp = self.get_employee_by_matricule(matricule)
@@ -2134,20 +2310,20 @@ class StaffManager:
             self.staff.remove(emp)
             return True
         return False
-    
+
     def get_employee_by_matricule(self, matricule):
         """Retourne un employé par son matricule"""
         for e in self.staff:
             if e.matricule == matricule:
                 return e
         return None
-    
+
     def enregistrer_presence(self, matricule, date_presence, statut="present", retard=False):
         """Enregistre la présence d'un employé pour une date donnée"""
         emp = self.get_employee_by_matricule(matricule)
         if not emp:
             return False
-        
+
         # Initialiser les attributs s'ils n'existent pas
         if not hasattr(emp, 'presence_log'):
             emp.presence_log = []
@@ -2157,9 +2333,9 @@ class StaffManager:
             emp.total_retards = 0
         if not hasattr(emp, 'total_absences'):
             emp.total_absences = 0
-        
+
         date_str = date_presence.strftime("%Y-%m-%d") if isinstance(date_presence, date) else date_presence
-        
+
         # Vérifier si déjà enregistré pour cette date
         for log in emp.presence_log:
             if log["date"] == date_str:
@@ -2168,47 +2344,47 @@ class StaffManager:
                 log["retard"] = retard
                 self._recalculer_assiduite(emp)
                 return True
-        
+
         # Nouvel enregistrement
         emp.presence_log.append({
             "date": date_str,
             "statut": statut,  # "present", "absent", "retard"
             "retard": retard
         })
-        
+
         if statut == "absent":
             emp.total_absences += 1
         elif retard:
             emp.total_retards += 1
-        
+
         self._recalculer_assiduite(emp)
         return True
-    
+
     def _recalculer_assiduite(self, emp):
         """Recalcule les jours consécutifs sans retard ni absence"""
         if not hasattr(emp, 'presence_log') or not emp.presence_log:
             emp.jours_sans_retard_absence = 0
             return
-        
+
         # Trier par date décroissante
         sorted_logs = sorted(emp.presence_log, key=lambda x: x["date"], reverse=True)
-        
+
         count = 0
         today = date.today()
-        
+
         for log in sorted_logs:
             log_date = datetime.strptime(log["date"], "%Y-%m-%d").date()
             # Ne compter que les jours passés
             if log_date > today:
                 continue
-            
+
             if log["statut"] == "present" and not log["retard"]:
                 count += 1
             else:
                 break
-        
+
         emp.jours_sans_retard_absence = count
-    
+
     def ajouter_production(self, matricule, tonnes):
         """Ajoute de la production à un opérateur"""
         emp = self.get_employee_by_matricule(matricule)
@@ -2218,23 +2394,23 @@ class StaffManager:
                 emp.production_tonnes = 0
             if not hasattr(emp, 'performance_score'):
                 emp.performance_score = 0
-            
+
             emp.production_tonnes += tonnes
             emp.performance_score += tonnes
             return True
         return False
-    
+
     def get_all_staff_df(self, statut_filter=None):
         """Retourne un DataFrame avec tous les employés (ou filtrés par statut)"""
         data = []
         today = date.today()
-        
+
         for e in self.staff:
             # Filtrer par statut si demandé
             statut_emp = getattr(e, 'statut', 'Actif')
             if statut_filter and statut_emp != statut_filter:
                 continue
-            
+
             # Utiliser getattr avec valeurs par défaut pour compatibilité
             date_arrivee = getattr(e, 'date_arrivee', today)
             production_tonnes = getattr(e, 'production_tonnes', 0)
@@ -2242,11 +2418,11 @@ class StaffManager:
             total_retards = getattr(e, 'total_retards', 0)
             total_absences = getattr(e, 'total_absences', 0)
             date_depart = getattr(e, 'date_depart', None)
-            
+
             # Calculer l'ancienneté en jours
             anciennete_jours = (today - date_arrivee).days
             anciennete_annees = anciennete_jours / 365.25
-            
+
             data.append({
                 "Matricule": e.matricule,
                 "Nom": e.name,
@@ -2263,7 +2439,7 @@ class StaffManager:
                 "Total Absences": total_absences,
                 "Machine Assignée": getattr(e, 'assigned_machine', "Aucune")
             })
-        
+
         # Si pas de données, retourner un DataFrame vide avec les colonnes définies
         if not data:
             return pd.DataFrame(columns=[
@@ -2271,42 +2447,42 @@ class StaffManager:
                 "Ancienneté (ans)", "Production (T)", "Jours Sans Retard/Absence",
                 "Total Retards", "Total Absences", "Machine Assignée"
             ])
-        
+
         return pd.DataFrame(data)
-    
+
     def get_classement_anciennete(self):
         """Retourne les employés classés par ancienneté (plus ancien en premier)"""
         today = date.today()
         sorted_staff = sorted(self.staff, key=lambda e: getattr(e, 'date_arrivee', today))
         return sorted_staff
-    
+
     def get_classement_production(self):
         """Retourne les opérateurs classés par production (décroissant)"""
         operateurs = [e for e in self.staff if e.role == "Operateur"]
         sorted_ops = sorted(operateurs, key=lambda e: getattr(e, 'production_tonnes', 0), reverse=True)
         return sorted_ops
-    
+
     def get_classement_assiduite(self):
         """Retourne les opérateurs classés par jours sans retard/absence (décroissant)"""
         operateurs = [e for e in self.staff if e.role == "Operateur"]
         sorted_ops = sorted(operateurs, key=lambda e: getattr(e, 'jours_sans_retard_absence', 0), reverse=True)
         return sorted_ops
-    
+
     def get_team_by_shift(self, shift_name):
         mapping = {"Matin": "A", "Soir": "B", "Nuit": "C"}
         target = mapping.get(shift_name, "A")
         return [e for e in self.staff if e.team == target]
-    
+
     def assign_machine(self, operator_name, machine_id):
         for e in self.staff:
-            if e.name == operator_name: 
+            if e.name == operator_name:
                 e.assigned_machine = machine_id
                 return True
         return False
-    
+
     def add_score(self, operator_name, tonnes):
         for e in self.staff:
-            if e.name == operator_name: 
+            if e.name == operator_name:
                 e.performance_score += tonnes
                 e.production_tonnes += tonnes
                 return True
@@ -2327,40 +2503,40 @@ class MiningContract:
         self.start_date = start_date if start_date else date.today()
         self.end_date = None
         self.active = True
-        
+
         # Suivi des volumes/heures par période
         self.volume_jour = 0  # BCM transportés aujourd'hui
         self.volume_semaine = 0  # BCM transportés cette semaine
         self.volume_mois = 0  # BCM transportés ce mois
         self.volume_annee = 0  # BCM transportés cette année
-        
+
         self.heures_jour = 0  # Heures travaillées aujourd'hui (pour contrats horaires)
         self.heures_semaine = 0  # Heures travaillées cette semaine
         self.heures_mois = 0  # Heures travaillées ce mois
         self.heures_annee = 0  # Heures travaillées cette année
-        
+
         # Revenus calculés
         self.revenu_jour = 0
         self.revenu_semaine = 0
         self.revenu_mois = 0
         self.revenu_annee = 0
-        
+
         # Machines associées au contrat
         self.machines_ids = []  # Liste des IDs de machines sous ce contrat
-        
+
         # Conversion BCM : 1 tonne ≈ 0.7 BCM (variable selon densité du matériau)
         self.tonnes_to_bcm_factor = 0.7
-        
+
         # Convertir le taux initial en USD si nécessaire
         # Le taux est déjà en USD si rate_currency n'est pas spécifié
         # Cette conversion sera gérée lors de la création via add_contract
-    
+
     def update_rate(self, new_rate, currency="USD", exchange_rates=None):
         """Met à jour le taux du contrat avec conversion en USD"""
         if exchange_rates is None:
             # Taux par défaut si non fourni
             exchange_rates = get_exchange_rates()
-        
+
         # Convertir en USD
         if currency == "USD":
             self.rate = new_rate
@@ -2370,12 +2546,12 @@ class MiningContract:
             self.rate = new_rate / exchange_rates['CFA']
         else:
             self.rate = new_rate  # Par défaut, considérer comme USD
-        
+
         self.original_rate = new_rate
         self.rate_currency = currency
         # Recalculer les revenus
         self._recalculate_revenue()
-    
+
     def add_volume(self, bcm):
         """Ajoute du volume transporté (en BCM)"""
         self.volume_jour += bcm
@@ -2383,7 +2559,7 @@ class MiningContract:
         self.volume_mois += bcm
         self.volume_annee += bcm
         self._recalculate_revenue()
-    
+
     def add_hours(self, hours):
         """Ajoute des heures travaillées (pour contrats horaires)"""
         self.heures_jour += hours
@@ -2391,7 +2567,7 @@ class MiningContract:
         self.heures_mois += hours
         self.heures_annee += hours
         self._recalculate_revenue()
-    
+
     def _recalculate_revenue(self):
         """Recalcule les revenus selon le type de contrat"""
         if self.contract_type == "BCM":
@@ -2404,19 +2580,19 @@ class MiningContract:
             self.revenu_semaine = self.heures_semaine * self.rate
             self.revenu_mois = self.heures_mois * self.rate
             self.revenu_annee = self.heures_annee * self.rate
-    
+
     def reset_daily(self):
         """Remet à zéro les compteurs journaliers (à appeler à minuit)"""
         self.volume_jour = 0
         self.heures_jour = 0
         self.revenu_jour = 0
-    
+
     def reset_weekly(self):
         """Remet à zéro les compteurs hebdomadaires"""
         self.volume_semaine = 0
         self.heures_semaine = 0
         self.revenu_semaine = 0
-    
+
     def reset_monthly(self):
         """Remet à zéro les compteurs mensuels"""
         self.volume_mois = 0
@@ -3602,7 +3778,7 @@ def init_database_at_path(db_path):
     conn.row_factory = sqlite3.Row
     try:
         cursor = conn.cursor()
-        
+
         # Table machines - Stocke toutes les informations des machines
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS machines (
@@ -3642,7 +3818,7 @@ def init_database_at_path(db_path):
                 updated_at TEXT DEFAULT CURRENT_TIMESTAMP
             )
         """)
-        
+
         # Table fuel_logs - Historique complet des ravitaillements
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS fuel_logs (
@@ -3659,7 +3835,7 @@ def init_database_at_path(db_path):
                 FOREIGN KEY (machine_id) REFERENCES machines(id) ON DELETE CASCADE
             )
         """)
-        
+
         # Table maintenance_logs - Historique complet des maintenances
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS maintenance_logs (
@@ -3675,7 +3851,7 @@ def init_database_at_path(db_path):
                 FOREIGN KEY (machine_id) REFERENCES machines(id) ON DELETE CASCADE
             )
         """)
-        
+
         # Table breakdowns - Historique des pannes
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS breakdowns (
@@ -3690,7 +3866,7 @@ def init_database_at_path(db_path):
                 FOREIGN KEY (machine_id) REFERENCES machines(id) ON DELETE CASCADE
             )
         """)
-        
+
         # Table manual_entries - Historique des entrées manuelles par shift
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS manual_entries (
@@ -3717,7 +3893,7 @@ def init_database_at_path(db_path):
                 FOREIGN KEY (machine_id) REFERENCES machines(id) ON DELETE CASCADE
             )
         """)
-        
+
         # Table part_life_tracking — lie chaque pose de consommable à la production machine
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS part_life_tracking (
@@ -3746,7 +3922,7 @@ def init_database_at_path(db_path):
         cursor.execute("CREATE INDEX IF NOT EXISTS idx_manual_shift ON manual_entries(shift)")
         cursor.execute("CREATE INDEX IF NOT EXISTS idx_plt_machine ON part_life_tracking(machine_id)")
         cursor.execute("CREATE INDEX IF NOT EXISTS idx_plt_part ON part_life_tracking(part_name)")
-        
+
         _ensure_machines_extra_columns(conn)
         conn.commit()
     finally:
@@ -3800,11 +3976,11 @@ def set_plan(plan_name):
     """Définit le plan de l'instance"""
     if plan_name not in FEATURE_PLANS:
         return False, f"Plan '{plan_name}' n'existe pas"
-    
+
     db = get_database()
     if "subscription" not in db:
         db["subscription"] = {}
-    
+
     db["subscription"]["plan"] = plan_name
     db["subscription"]["updated_at"] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     save_database(db)
@@ -3814,10 +3990,10 @@ def has_feature(feature_name):
     """Vérifie si le plan actuel a accès à une fonctionnalité"""
     plan = get_current_plan()
     plan_config = FEATURE_PLANS.get(plan, FEATURE_PLANS["free"])
-    
+
     if "all" in plan_config["features"]:
         return True
-    
+
     # Mapping des noms d'onglets vers les noms de fonctionnalités
     feature_mapping = {
         "stock": "stock",
@@ -3828,7 +4004,7 @@ def has_feature(feature_name):
         "backup": "backup",  # Premium uniquement
         "audit": "audit"  # Premium uniquement
     }
-    
+
     mapped_feature = feature_mapping.get(feature_name, feature_name)
     return mapped_feature in plan_config["features"]
 
@@ -3837,20 +4013,20 @@ def check_machine_limit():
     plan = get_current_plan()
     plan_config = FEATURE_PLANS.get(plan, FEATURE_PLANS["free"])
     max_machines = plan_config["max_machines"]
-    
+
     if max_machines == -1:  # Illimité
         return True, None
-    
+
     # Obtenir l'instance manager
     try:
         manager_obj = globals().get('manager', None)
         current_count = len(manager_obj.machines) if manager_obj and hasattr(manager_obj, 'machines') else 0
     except:
         current_count = 0
-    
+
     if current_count >= max_machines:
         return False, f"Limite atteinte ({current_count}/{max_machines} machines). Passez au plan supérieur pour plus de machines."
-    
+
     return True, None
 
 def check_user_limit():
@@ -3858,10 +4034,10 @@ def check_user_limit():
     plan = get_current_plan()
     plan_config = FEATURE_PLANS.get(plan, FEATURE_PLANS["free"])
     max_users = plan_config["max_users"]
-    
+
     if max_users == -1:  # Illimité
         return True, None
-    
+
     try:
         user_mgr_obj = globals().get('user_mgr', None)
         tid = _current_tenant_id_for_limits()
@@ -3876,17 +4052,17 @@ def check_user_limit():
             current_count = 0
     except Exception:
         current_count = 0
-    
+
     if current_count >= max_users:
         return False, f"Limite atteinte ({current_count}/{max_users} utilisateurs). Passez au plan supérieur pour plus d'utilisateurs."
-    
+
     return True, None
 
 def get_plan_info():
     """Retourne les informations du plan actuel"""
     plan = get_current_plan()
     plan_config = FEATURE_PLANS.get(plan, FEATURE_PLANS["free"])
-    
+
     # Obtenir les instances globales
     try:
         manager_obj = globals().get('manager', None)
@@ -3905,7 +4081,7 @@ def get_plan_info():
     except Exception:
         current_machines = 0
         current_users = 0
-    
+
     return {
         "plan": plan,
         "max_machines": plan_config["max_machines"],
@@ -3919,10 +4095,10 @@ def get_plan_info():
 def get_upgrade_message(feature_name=None):
     """Génère un message d'upgrade selon la fonctionnalité"""
     plan = get_current_plan()
-    
+
     if plan == "premium":
         return None  # Déjà au plan maximum
-    
+
     messages = {
         "finance": "💎 Cette fonctionnalité est disponible avec le plan Standard ou Premium. Passez à un plan supérieur pour accéder à la gestion financière complète.",
         "rh": "💎 Cette fonctionnalité est disponible avec le plan Standard ou Premium. Passez à un plan supérieur pour accéder à la gestion RH complète.",
@@ -3932,15 +4108,15 @@ def get_upgrade_message(feature_name=None):
         "audit": "💎 Les logs d'audit avancés sont disponibles avec le plan Premium uniquement. Passez au plan Premium pour cette fonctionnalité.",
         "marche_or": "💎 Le suivi du marché de l'or est disponible avec le plan Standard ou Premium. Passez à un plan supérieur pour accéder à cette fonctionnalité."
     }
-    
+
     if feature_name and feature_name in messages:
         return messages[feature_name]
-    
+
     if plan == "free":
         return "💎 Passez au plan Standard ou Premium pour débloquer plus de fonctionnalités."
     elif plan == "standard":
         return "💎 Passez au plan Premium pour débloquer toutes les fonctionnalités."
-    
+
     return None
 
 # ==============================================================================
@@ -3954,16 +4130,16 @@ def clear_all_simulation_data():
         try:
             # Supprimer tous les logs de carburant
             cursor.execute("DELETE FROM fuel_logs")
-            
+
             # Supprimer tous les logs de maintenance
             cursor.execute("DELETE FROM maintenance_logs")
-            
+
             # Supprimer toutes les pannes
             cursor.execute("DELETE FROM breakdowns")
-            
+
             # Supprimer toutes les entrées manuelles
             cursor.execute("DELETE FROM manual_entries")
-            
+
             # Réinitialiser tous les compteurs des machines à 0
             cursor.execute("""
                 UPDATE machines SET
@@ -3988,7 +4164,7 @@ def clear_all_simulation_data():
                     next_maintenance = NULL,
                     updated_at = CURRENT_TIMESTAMP
             """)
-            
+
             return True, "Toutes les données de simulation ont été supprimées et tous les compteurs ont été réinitialisés à 0."
         except Exception as e:
             conn.rollback()
@@ -4007,7 +4183,7 @@ def get_current_shift():
     current_hour = now.hour
     current_minute = now.minute
     current_time = current_hour + (current_minute / 60)
-    
+
     # Shift Jour : 5h30 (5.5) à 18h00 (18.0)
     if 5.5 <= current_time < 18.0:
         return "Jour"
@@ -4015,7 +4191,7 @@ def get_current_shift():
     else:
         return "Nuit"
 
-def save_manual_entry(machine_id, shift, entry_date, hours_worked, production_tonnes, 
+def save_manual_entry(machine_id, shift, entry_date, hours_worked, production_tonnes,
                      fuel_consumed, fuel_price_usd, update_period, revenue_jour, revenue_hebdo,
                      revenue_mois, cost_fuel, profitability, cycles_added, cons_per_cycle,
                      cons_per_shift, avg_cycle_time, entered_by):
@@ -4043,7 +4219,7 @@ def get_manual_entries_history(machine_id=None, shift=None, start_date=None, end
         cursor = conn.cursor()
         query = "SELECT * FROM manual_entries WHERE 1=1"
         params = []
-        
+
         if machine_id:
             query += " AND machine_id = ?"
             params.append(machine_id)
@@ -4056,10 +4232,10 @@ def get_manual_entries_history(machine_id=None, shift=None, start_date=None, end
         if end_date:
             query += " AND entry_date <= ?"
             params.append(end_date)
-        
+
         query += " ORDER BY entry_date DESC, created_at DESC LIMIT ?"
         params.append(limit)
-        
+
         cursor.execute(query, params)
         rows = cursor.fetchall()
         return [dict(row) for row in rows]
@@ -4069,7 +4245,7 @@ def get_manual_entries_summary(machine_id=None, start_date=None, end_date=None):
     with get_connection() as conn:
         cursor = conn.cursor()
         query = """
-            SELECT 
+            SELECT
                 shift,
                 COUNT(*) as total_entries,
                 SUM(hours_worked) as total_hours,
@@ -4082,7 +4258,7 @@ def get_manual_entries_summary(machine_id=None, start_date=None, end_date=None):
             WHERE 1=1
         """
         params = []
-        
+
         if machine_id:
             query += " AND machine_id = ?"
             params.append(machine_id)
@@ -4092,7 +4268,7 @@ def get_manual_entries_summary(machine_id=None, start_date=None, end_date=None):
         if end_date:
             query += " AND entry_date <= ?"
             params.append(end_date)
-        
+
         query += " GROUP BY shift ORDER BY shift"
         cursor.execute(query, params)
         rows = cursor.fetchall()
@@ -5042,7 +5218,7 @@ def save_image_metadata(equipment_name, file_path, file_size, upload_date):
     """Sauvegarde les métadonnées d'une image"""
     db = get_database()
     safe_name = equipment_name.lower().replace(" ", "_").replace("é", "e").replace("è", "e")
-    
+
     db["images_metadata"][safe_name] = {
         "equipment_name": equipment_name,
         "file_path": file_path,
@@ -5050,7 +5226,7 @@ def save_image_metadata(equipment_name, file_path, file_size, upload_date):
         "upload_date": upload_date,
         "last_modified": upload_date
     }
-    
+
     return save_database(db)
 
 def get_image_metadata(equipment_name):
@@ -5063,7 +5239,7 @@ def delete_image_metadata(equipment_name):
     """Supprime les métadonnées d'une image"""
     db = get_database()
     safe_name = equipment_name.lower().replace(" ", "_").replace("é", "e").replace("è", "e")
-    
+
     if safe_name in db["images_metadata"]:
         del db["images_metadata"][safe_name]
         return save_database(db)
@@ -5075,29 +5251,29 @@ def create_backup():
         # Créer le dossier de sauvegarde s'il n'existe pas
         if not os.path.exists(BACKUP_DIR):
             os.makedirs(BACKUP_DIR)
-        
+
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         backup_folder = os.path.join(BACKUP_DIR, f"backup_{timestamp}")
         os.makedirs(backup_folder)
-        
+
         # Sauvegarder la base de données
         db = get_database()
         backup_db_path = os.path.join(backup_folder, "database.json")
         with open(backup_db_path, 'w', encoding='utf-8') as f:
             json.dump(db, f, indent=2, ensure_ascii=False)
-        
+
         # Sauvegarder les images
         images_dir = get_equipment_images_dir()
         if os.path.exists(images_dir):
             backup_images_dir = os.path.join(backup_folder, "images_engins")
             import shutil
             shutil.copytree(images_dir, backup_images_dir)
-        
+
         # Mettre à jour les informations de sauvegarde
         db["backup_info"]["last_backup"] = timestamp
         db["backup_info"]["backup_count"] = db["backup_info"].get("backup_count", 0) + 1
         save_database(db)
-        
+
         return True, backup_folder
     except Exception as e:
         return False, str(e)
@@ -5106,7 +5282,7 @@ def list_backups():
     """Liste toutes les sauvegardes disponibles"""
     if not os.path.exists(BACKUP_DIR):
         return []
-    
+
     backups = []
     for item in os.listdir(BACKUP_DIR):
         backup_path = os.path.join(BACKUP_DIR, item)
@@ -5117,7 +5293,7 @@ def list_backups():
                 "date": item.replace("backup_", "").replace("_", " "),
                 "size": get_folder_size(backup_path)
             })
-    
+
     # Trier par date (plus récent en premier)
     backups.sort(key=lambda x: x["name"], reverse=True)
     return backups
@@ -5137,19 +5313,19 @@ def restore_backup(backup_path):
     try:
         backup_db_path = os.path.join(backup_path, "database.json")
         backup_images_dir = os.path.join(backup_path, "images_engins")
-        
+
         # Restaurer la base de données
         if os.path.exists(backup_db_path):
             import shutil
             shutil.copy2(backup_db_path, DATABASE_FILE)
-        
+
         # Restaurer les images
         if os.path.exists(backup_images_dir):
             images_dir = get_equipment_images_dir()
             if os.path.exists(images_dir):
                 shutil.rmtree(images_dir)
             shutil.copytree(backup_images_dir, images_dir)
-        
+
         return True
     except Exception as e:
         return False, str(e)
@@ -5173,10 +5349,10 @@ def save_logo(uploaded_file):
     try:
         logo_dir = get_logo_dir()
         logo_path = os.path.join(logo_dir, "good_engineers_logo.png")
-        
+
         with open(logo_path, "wb") as f:
             f.write(uploaded_file.getbuffer())
-        
+
         # Sauvegarder les métadonnées dans la base de données
         db = get_database()
         db["logo_metadata"] = {
@@ -5186,7 +5362,7 @@ def save_logo(uploaded_file):
             "file_name": uploaded_file.name
         }
         save_database(db)
-        
+
         return True, "Logo sauvegardé avec succès"
     except Exception as e:
         return False, f"Erreur lors de la sauvegarde: {str(e)}"
@@ -5385,13 +5561,13 @@ def delete_logo():
         logo_path = get_logo_path()
         if logo_path and os.path.exists(logo_path):
             os.remove(logo_path)
-        
+
         # Supprimer les métadonnées
         db = get_database()
         if "logo_metadata" in db:
             del db["logo_metadata"]
         save_database(db)
-        
+
         return True, "Logo supprimé avec succès"
     except Exception as e:
         return False, f"Erreur lors de la suppression: {str(e)}"
@@ -5412,19 +5588,19 @@ def save_equipment_image(equipment_name, uploaded_file):
         # Déterminer l'extension du fichier
         file_extension = os.path.splitext(uploaded_file.name)[1] or ".jpg"
         file_path = os.path.join(images_dir, f"{safe_name}{file_extension}")
-        
+
         # Sauvegarder le fichier
         uploaded_file.seek(0)
         file_content = uploaded_file.read()
         file_size = len(file_content)
-        
+
         with open(file_path, "wb") as f:
             f.write(file_content)
-        
+
         # Sauvegarder les métadonnées dans la base de données
         upload_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         save_image_metadata(equipment_name, file_path, file_size, upload_date)
-        
+
         return True, file_path
     except Exception as e:
         return False, str(e)
@@ -5433,14 +5609,14 @@ def get_equipment_image_path(equipment_name):
     """Retourne le chemin de l'image locale si elle existe, sinon None"""
     images_dir = get_equipment_images_dir()
     safe_name = equipment_name.lower().replace(" ", "_").replace("é", "e").replace("è", "e")
-    
+
     # Chercher les extensions communes
     extensions = [".jpg", ".jpeg", ".png", ".gif", ".webp"]
     for ext in extensions:
         file_path = os.path.join(images_dir, f"{safe_name}{ext}")
         if os.path.exists(file_path):
             return file_path
-    
+
     return None
 
 def get_equipment_image_url(equipment_name, default_url):
@@ -5489,13 +5665,13 @@ class ContractManager:
         # Contrats par défaut
         self.contracts.append(MiningContract("CONT-001", "Contrat Mine A - BCM", "BCM", 15.0, None, 500000.0, "Mine A"))  # 15 $/BCM, 500K$ négociés
         self.contracts.append(MiningContract("CONT-002", "Contrat Mine B - Horaires", "HOURLY", 200.0, None, 1200000.0, "Mine B"))  # 200 $/heure, 1.2M$ négociés
-    
+
     def add_contract(self, contract_id, name, contract_type, rate, start_date=None, somme_negociee=None, client_name=None, rate_currency="USD", original_rate=None):
         """Ajoute un nouveau contrat"""
         for c in self.contracts:
             if c.contract_id == contract_id:
                 return False  # ID déjà utilisé
-        
+
         # Convertir le taux en USD si nécessaire
         if rate_currency != "USD":
             rates = get_exchange_rates()
@@ -5507,11 +5683,11 @@ class ContractManager:
                 rate_usd = rate
         else:
             rate_usd = rate
-        
+
         new_contract = MiningContract(contract_id, name, contract_type, rate_usd, start_date, somme_negociee, client_name, rate_currency, original_rate or rate)
         self.contracts.append(new_contract)
         return True
-    
+
     def update_contract_rate(self, contract_id, new_rate, currency="USD"):
         """Met à jour le taux d'un contrat"""
         contract = self.get_contract(contract_id)
@@ -5520,24 +5696,24 @@ class ContractManager:
             contract.update_rate(new_rate, currency, rates)
             return True
         return False
-    
+
     def get_contract(self, contract_id):
         """Retourne un contrat par son ID"""
         for c in self.contracts:
             if c.contract_id == contract_id:
                 return c
         return None
-    
+
     def update_contract_from_machines(self, fleet_manager):
         """Met à jour les volumes/heures des contrats à partir des machines de la flotte"""
         for contract in self.contracts:
             if not contract.active:
                 continue
-            
+
             # Réinitialiser les compteurs journaliers pour recalculer
             contract.volume_jour = 0
             contract.heures_jour = 0
-            
+
             # Traiter les machines associées à ce contrat
             machines_to_process = []
             if contract.machines_ids:
@@ -5549,7 +5725,7 @@ class ContractManager:
             else:
                 # Si aucune machine n'est assignée, utiliser toutes les machines actives
                 machines_to_process = [m for m in fleet_manager.machines if m.status == "Active"]
-            
+
             # Traiter chaque machine
             for machine in machines_to_process:
                 if contract.contract_type == "BCM":
@@ -5557,7 +5733,7 @@ class ContractManager:
                     # Chaque cycle transporte la capacité de la machine
                     # Volume BCM = Production (tonnes) × facteur de conversion (tonnes vers BCM)
                     # On utilise la production journalière, hebdomadaire, mensuelle et annuelle
-                    
+
                     # Production journalière (basée sur les cycles du jour)
                     # Approximation: cycles_jour ≈ cycles_totaux × (h_jour / h_total)
                     if machine.cycle > 0 and machine.engine_hours > 0:
@@ -5566,13 +5742,13 @@ class ContractManager:
                         production_semaine = (machine.production_tonnes * machine.h_semaine) / max(1, machine.engine_hours)
                         production_mois = (machine.production_tonnes * machine.h_mois) / max(1, machine.engine_hours)
                         production_annee = machine.production_tonnes  # Production totale
-                        
+
                         # Convertir en BCM
                         bcm_jour = production_jour * contract.tonnes_to_bcm_factor
                         bcm_semaine = production_semaine * contract.tonnes_to_bcm_factor
                         bcm_mois = production_mois * contract.tonnes_to_bcm_factor
                         bcm_annee = production_annee * contract.tonnes_to_bcm_factor
-                        
+
                         # Ajouter les volumes (la méthode add_volume les accumule)
                         contract.volume_jour += bcm_jour
                         contract.volume_semaine += bcm_semaine
@@ -5584,10 +5760,10 @@ class ContractManager:
                     contract.heures_semaine += machine.h_semaine
                     contract.heures_mois += machine.h_mois
                     contract.heures_annee += machine.h_mois  # Utiliser h_mois comme approximation annuelle (ou créer h_annee si disponible)
-            
+
             # Recalculer les revenus
             contract._recalculate_revenue()
-    
+
     def get_contracts_df(self):
         """Retourne un DataFrame avec tous les contrats et leurs revenus"""
         data = []
@@ -5630,33 +5806,33 @@ class ContractManager:
                     "Revenu Année ($)": round(c.revenu_annee, 2),
                     "Statut": "✅ Actif" if c.active else "❌ Inactif"
                 })
-        
+
         if not data:
             return pd.DataFrame(columns=[
                 "ID Contrat", "Nom", "Client", "Type", "Taux", "Somme Négociée ($)",
                 "Revenu Jour ($)", "Revenu Semaine ($)", "Revenu Mois ($)", "Revenu Année ($)", "Statut"
             ])
-        
+
         return pd.DataFrame(data)
-    
+
     def get_total_revenue_summary(self):
         """Retourne un résumé des revenus totaux"""
         total_jour = sum(c.revenu_jour for c in self.contracts if c.active)
         total_semaine = sum(c.revenu_semaine for c in self.contracts if c.active)
         total_mois = sum(c.revenu_mois for c in self.contracts if c.active)
         total_annee = sum(c.revenu_annee for c in self.contracts if c.active)
-        
+
         return {
             "Revenu Jour ($)": total_jour,
             "Revenu Semaine ($)": total_semaine,
             "Revenu Mois ($)": total_mois,
             "Revenu Année ($)": total_annee
         }
-    
+
     def generate_invoice_html(self, contract, period="mois", period_value=None):
         """Génère une facture HTML pour un contrat donné"""
         from datetime import datetime
-        
+
         if period == "mois":
             if period_value is None:
                 period_value = datetime.now().strftime("%B %Y")
@@ -5701,7 +5877,7 @@ class ContractManager:
                 quantity = contract.heures_annee
                 unit = "heures"
             period_label = f"Année {period_value}"
-        
+
         # Logo en base64 si disponible
         logo_html = ""
         if self.company_info.logo_base64:
@@ -5743,12 +5919,12 @@ class ContractManager:
                 _parts.append(f'<p style="font-size:11px;color:#666;margin-top:8px;">{html.escape(_leg)}</p>')
             _parts.append("</div></div></div>")
             stamp_sig_html = "".join(_parts)
-        
+
         # Ligne de somme négociée si disponible
         somme_negociee_row = ""
         if getattr(contract, 'somme_negociee', None):
             somme_negociee_row = f'<tr><td colspan="4"><strong>Somme Négociée Contractuelle:</strong></td><td>{contract.somme_negociee:,.2f} $</td></tr>'
-        
+
         _rccm_inv = (getattr(self.company_info, "rccm", None) or "").strip()
         _invoice_rccm_line = f"<p>RCCM : {html.escape(_rccm_inv)}</p>" if _rccm_inv else ""
 
@@ -5871,9 +6047,9 @@ class ContractManager:
             {logo_html}
         </div>
     </div>
-    
+
     <h2>FACTURE N° {contract.contract_id} - {period_label}</h2>
-    
+
     <div class="invoice-info">
         <div class="invoice-details">
             <strong>Informations Facture:</strong><br>
@@ -5887,7 +6063,7 @@ class ContractManager:
             {getattr(contract, 'client_name', None) if getattr(contract, 'client_name', None) else "Non spécifié"}<br>
         </div>
     </div>
-    
+
     <table>
         <thead>
             <tr>
@@ -5913,13 +6089,13 @@ class ContractManager:
             </tr>
         </tbody>
     </table>
-    
+
     <div class="amount-box">
         MONTANT TOTAL: {amount:,.2f} $ USD
     </div>
-    
+
     {stamp_sig_html}
-    
+
     <div class="footer">
         <p><strong>{self.company_info.company_name}</strong></p>
         <p>{self.company_info.address} | {self.company_info.phone} | {self.company_info.email}</p>
@@ -5938,27 +6114,27 @@ class Machine:
         self.id = id; self.model = model; self.type = m_type
         self.capacity = capacity; self.hourly_rate = hourly_rate # Taux en USD par défaut
         self.status = "Active"; self.operator = "Non Assigné"
-        
+
         # PRODUCTION
         self.cycle = 0; self.production_tonnes = 0
         self.breakdown_reason = ""; self.breakdown_time = ""
         self.load_type = "N/A"; self.load_time = None; self.destination = ""
         self.alert_trigger = False
-        
+
         # COMPTEURS TEMPS
         self.engine_hours = initial_hours
         self.h_jour = 0; self.h_semaine = 0; self.h_mois = 0
-        
+
         # MAINTENANCE
         self.last_pm_hours = 0; self.next_pm_interval = 250
         self.next_maintenance = None
-        
+
         # CARBURANT & RENTABILITÉ
         self.fuel_tank = 0
         self.fuel_logs = []
         # Consommation accumulée
         self.cons_jour = 0; self.cons_mois = 0; self.cons_annee = 0; self.cons_total = 0
-        
+
         self.lat = 12.3; self.lon = -1.5
 
         # Spécifications complémentaires (pelles, chargeuses, bulldozers…)
@@ -5968,7 +6144,7 @@ class Machine:
 
     def update_hours(self, hours):
         """Met à jour les heures moteur - PERSISTÉ EN SQLITE"""
-        if hours > self.engine_hours: 
+        if hours > self.engine_hours:
             self.engine_hours = hours
             self.save_to_db()
 
@@ -5976,12 +6152,12 @@ class Machine:
         """Ajoute du carburant avec traçabilité de la devise - PERSISTÉ EN SQLITE"""
         fuel_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         total_usd = liters * price_per_liter_usd
-        
+
         # Persister dans SQLite
         with get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute("""
-                INSERT INTO fuel_logs 
+                INSERT INTO fuel_logs
                 (machine_id, date, litres, price_per_liter_usd, currency_used, original_price, total_usd, engine_hours_at_refuel)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """, (self.id, fuel_date, liters, price_per_liter_usd, currency_used, original_price, total_usd, self.engine_hours))
@@ -5989,24 +6165,24 @@ class Machine:
         # Mettre à jour le réservoir et sauvegarder la machine
         self.fuel_tank = 100
         self.save_to_db()
-        
+
         # Garder une copie en mémoire pour compatibilité (optionnel, peut être supprimé)
         self.fuel_logs.append({
             "Date": fuel_date,
-            "Litres": liters, 
-            "Prix Unitaire ($)": price_per_liter_usd, 
+            "Litres": liters,
+            "Prix Unitaire ($)": price_per_liter_usd,
             "Devise Origine": currency_used,
             "Prix Origine": original_price,
             "Total ($)": total_usd,
             "H-Mètre": self.engine_hours
         })
-    
+
     def save_to_db(self):
         """Sauvegarde l'état actuel de la machine dans SQLite"""
         with get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute("""
-                INSERT OR REPLACE INTO machines 
+                INSERT OR REPLACE INTO machines
                 (id, model, type, capacity, hourly_rate, status, operator, engine_hours, fuel_tank,
                  lat, lon, cycle, production_tonnes, breakdown_reason, breakdown_time, load_type,
                  load_time, destination, alert_trigger, h_jour, h_semaine, h_mois, last_pm_hours,
@@ -6016,7 +6192,7 @@ class Machine:
             """, (
                 self.id, self.model, self.type, self.capacity, self.hourly_rate, self.status, self.operator,
                 self.engine_hours, self.fuel_tank, self.lat, self.lon, self.cycle, self.production_tonnes,
-                self.breakdown_reason, self.breakdown_time, self.load_type, 
+                self.breakdown_reason, self.breakdown_time, self.load_type,
                 str(self.load_time) if self.load_time else None, self.destination,
                 1 if self.alert_trigger else 0, self.h_jour, self.h_semaine, self.h_mois,
                 self.last_pm_hours, self.next_pm_interval,
@@ -6028,7 +6204,7 @@ class Machine:
                 datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             ))
             conn.commit()
-    
+
     def _apply_row_from_sqlite(self, row):
         """Applique une ligne `SELECT * FROM machines` (sqlite3.Row) sans nouvelle requête."""
         self.model = row["model"]
@@ -6074,7 +6250,7 @@ class Machine:
             row = cursor.fetchone()
             if row:
                 self._apply_row_from_sqlite(row)
-    
+
     def get_fuel_logs_from_db(self):
         """Récupère l'historique des ravitaillements depuis SQLite"""
         with get_connection() as conn:
@@ -6094,7 +6270,7 @@ class Machine:
                     "Total ($)": row['total_usd'],
                     "H-Mètre": row['engine_hours_at_refuel']
                 })
-            return logs 
+            return logs
 
     def get_maintenance_status(self):
         return self.next_pm_interval - (self.engine_hours - self.last_pm_hours)
@@ -6139,7 +6315,7 @@ class StockManager:
     def __init__(self):
         self.stock_levels = {}  # Dict: {"nom_piece": {"quantite": 10, "seuil_min": 5, "unite": "unité"}}
         self.movements = []  # Historique des mouvements de stock
-    
+
     def initialize_stock(self, part_name, initial_quantity=0, seuil_min=5, unite="unité"):
         """Initialise le stock pour une pièce"""
         if part_name not in self.stock_levels:
@@ -6148,67 +6324,67 @@ class StockManager:
                 "seuil_min": seuil_min,
                 "unite": unite
             }
-    
+
     def add_stock_entry(self, part_name, quantity, date_entry=None, reference=None, notes="", created_by=None, demandeur=None):
         """Ajoute une entrée de stock"""
         if date_entry is None:
             date_entry = date.today()
-        
+
         if part_name not in self.stock_levels:
             self.initialize_stock(part_name)
-        
+
         self.stock_levels[part_name]["quantite"] += quantity
-        
+
         movement = StockMovement(part_name, "ENTREE", quantity, date_entry, reference, notes)
         movement.created_by = created_by
         movement.demandeur = demandeur
         self.movements.append(movement)
-        
+
         return movement
-    
+
     def remove_stock_entry(self, part_name, quantity, date_exit=None, reference=None, notes="", created_by=None, demandeur=None):
         """Retire du stock (sortie)"""
         if date_exit is None:
             date_exit = date.today()
-        
+
         if part_name not in self.stock_levels:
             self.initialize_stock(part_name)
-        
+
         # Vérifier si le stock est suffisant
         if self.stock_levels[part_name]["quantite"] < quantity:
             return None  # Stock insuffisant
-        
+
         self.stock_levels[part_name]["quantite"] -= quantity
-        
+
         movement = StockMovement(part_name, "SORTIE", quantity, date_exit, reference, notes)
         movement.created_by = created_by
         movement.demandeur = demandeur
         self.movements.append(movement)
-        
+
         return movement
-    
+
     def set_stock_level(self, part_name, quantity, seuil_min=None):
         """Définit le niveau de stock manuellement"""
         if part_name not in self.stock_levels:
             self.initialize_stock(part_name)
-        
+
         self.stock_levels[part_name]["quantite"] = quantity
         if seuil_min is not None:
             self.stock_levels[part_name]["seuil_min"] = seuil_min
-    
+
     def set_seuil_min(self, part_name, seuil_min):
         """Définit le seuil minimum pour une pièce"""
         if part_name not in self.stock_levels:
             self.initialize_stock(part_name)
-        
+
         self.stock_levels[part_name]["seuil_min"] = seuil_min
-    
+
     def get_stock_level(self, part_name):
         """Retourne le niveau de stock d'une pièce"""
         if part_name in self.stock_levels:
             return self.stock_levels[part_name]
         return {"quantite": 0, "seuil_min": 5, "unite": "unité"}
-    
+
     def get_low_stock_items(self):
         """Retourne les pièces avec stock bas (en dessous du seuil minimum)"""
         low_stock = []
@@ -6221,7 +6397,7 @@ class StockManager:
                     "unite": stock_info.get("unite", "unité")
                 })
         return low_stock
-    
+
     def get_movements_for_part(self, part_name):
         """Retourne l'historique des mouvements pour une pièce"""
         return [m for m in self.movements if m.part_name == part_name]
@@ -6259,24 +6435,24 @@ class PartsCatalog:
             {"nom": "Disque de frein", "cout": 280.0, "categorie": "Freinage"},
             {"nom": "Maître-cylindre", "cout": 450.0, "categorie": "Freinage"},
         ]
-    
+
     def add_part(self, nom, cout, categorie="Divers"):
         """Ajoute une pièce au catalogue"""
         self.parts.append({"nom": nom, "cout": float(cout), "categorie": categorie})
-    
+
     def get_parts_by_category(self, categorie=None):
         """Retourne les pièces filtrées par catégorie"""
         if categorie:
             return [p for p in self.parts if p["categorie"] == categorie]
         return self.parts
-    
+
     def get_part_by_name(self, nom):
         """Retourne une pièce par son nom"""
         for p in self.parts:
             if p["nom"] == nom:
                 return p
         return None
-    
+
     def get_categories(self):
         """Retourne toutes les catégories disponibles"""
         return sorted(set(p["categorie"] for p in self.parts))
@@ -6288,40 +6464,40 @@ class MaintenanceManager:
         self.active_alerts = []  # Alertes actives de maintenance planifiée
         self.parts_catalog = PartsCatalog()  # Catalogue de pièces
         self.stock_manager = StockManager()  # Gestionnaire de stock
-    
+
     def create_maintenance_alert(self, machine_id, planned_date, maintenance_type, created_by):
         """Crée une alerte de maintenance planifiée visible par tous les utilisateurs"""
         alert = MaintenanceAlert(machine_id, planned_date, maintenance_type, created_by)
         self.active_alerts.append(alert)
         return alert
-    
+
     def add_maintenance_record(self, machine_id, maintenance_type, date_maintenance, mechanic_name, pieces_changed=None):
         """Ajoute un enregistrement de maintenance avec les pièces changées"""
         record = MaintenanceRecord(machine_id, maintenance_type, date_maintenance, mechanic_name, pieces_changed)
         self.maintenance_records.append(record)
-        
+
         # Marquer l'alerte correspondante comme terminée si elle existe
         for alert in self.active_alerts:
             if alert.machine_id == machine_id and alert.status == "Planifiée":
                 # Si le type correspond exactement, ou si c'est une réparation (qui peut couvrir n'importe quelle maintenance)
                 if alert.maintenance_type == maintenance_type or maintenance_type == "Réparation":
                     alert.status = "Terminée"
-        
+
         return record
-    
+
     def get_alerts_for_machine(self, machine_id):
         """Retourne toutes les alertes actives pour une machine"""
         return [a for a in self.active_alerts if a.machine_id == machine_id and a.status == "Planifiée"]
-    
+
     def get_all_active_alerts(self):
         """Retourne toutes les alertes actives"""
         return [a for a in self.active_alerts if a.status == "Planifiée"]
-    
+
     def acknowledge_alert(self, alert, username):
         """Marque une alerte comme vue par un utilisateur"""
         if username not in alert.acknowledged_by:
             alert.acknowledged_by.append(username)
-    
+
     def get_maintenance_history_for_machine(self, machine_id):
         """Retourne l'historique des maintenances pour une machine"""
         return [r for r in self.maintenance_records if r.machine_id == machine_id]
@@ -6377,7 +6553,7 @@ class FleetManager:
         self.maintenance_manager = MaintenanceManager()
         # Charger les machines depuis SQLite (plateforme vide au démarrage)
         self.machines = self.load_machines_from_db()
-    
+
     def load_machines_from_db(self):
         """Charge toutes les machines depuis SQLite (1 connexion, pas de N+1 requêtes)."""
         machines = []
@@ -6426,7 +6602,7 @@ class FleetManager:
                 machine.fuel_logs = fuel_by_mid.get(row["id"], [])
                 machines.append(machine)
         return machines
-    
+
     def save_all_machines_to_db(self):
         """Sauvegarde toutes les machines dans SQLite"""
         for machine in self.machines:
@@ -6464,7 +6640,7 @@ class FleetManager:
     def set_machine_rate(self, machine_id, new_rate):
         """Modifie le taux horaire - PERSISTÉ EN SQLITE"""
         for m in self.machines:
-            if m.id == machine_id: 
+            if m.id == machine_id:
                 m.hourly_rate = new_rate
                 m.save_to_db()
                 break
@@ -6484,7 +6660,7 @@ class FleetManager:
                 m.breakdown_time = breakdown_time
                 m.load_time = None
                 m.save_to_db()
-                
+
                 # Enregistrer la panne dans SQLite
                 with get_connection() as conn:
                     cursor = conn.cursor()
@@ -6503,7 +6679,7 @@ class FleetManager:
                 m.breakdown_reason = ""
                 m.alert_trigger = False
                 m.save_to_db()
-                
+
                 # Mettre à jour le statut de la panne dans SQLite
                 with get_connection() as conn:
                     cursor = conn.cursor()
@@ -6516,7 +6692,7 @@ class FleetManager:
                             ORDER BY id DESC LIMIT 1
                         )
                     """, (repair_time, mechanic_name, machine_id))
-                
+
                 # Enregistrer la réparation avec les pièces changées
                 if mechanic_name:
                     record = self.maintenance_manager.add_maintenance_record(
@@ -6524,10 +6700,10 @@ class FleetManager:
                     )
                     record.engine_hours_at_maintenance = m.engine_hours
                     record.notes = notes
-                    
+
                     # Persister la maintenance dans SQLite
                     self._save_maintenance_to_db(machine_id, "Réparation", date.today(), mechanic_name, m.engine_hours, notes, pieces_changed)
-                    
+
                     # Déduire automatiquement le stock + enregistrer pose durée de vie
                     if pieces_changed:
                         for piece in pieces_changed:
@@ -6559,7 +6735,7 @@ class FleetManager:
             cursor = conn.cursor()
             pieces_json = json.dumps(pieces_changed) if pieces_changed else "[]"
             cursor.execute("""
-                INSERT INTO maintenance_logs 
+                INSERT INTO maintenance_logs
                 (machine_id, maintenance_type, date_maintenance, mechanic_name, engine_hours_at_maintenance, notes, pieces_changed)
                 VALUES (?, ?, ?, ?, ?, ?, ?)
             """, (machine_id, maintenance_type, date_maintenance.strftime("%Y-%m-%d"), mechanic_name, engine_hours, notes, pieces_json))
@@ -6571,7 +6747,7 @@ class FleetManager:
                 m.last_pm_hours = m.engine_hours
                 m.status = "Active"
                 m.save_to_db()
-                
+
                 # Enregistrer la maintenance avec les pièces changées
                 if mechanic_name:
                     record = self.maintenance_manager.add_maintenance_record(
@@ -6579,10 +6755,10 @@ class FleetManager:
                     )
                     record.engine_hours_at_maintenance = m.engine_hours
                     record.notes = notes
-                    
+
                     # Persister la maintenance dans SQLite
                     self._save_maintenance_to_db(machine_id, maintenance_type, date.today(), mechanic_name, m.engine_hours, notes, pieces_changed)
-                    
+
                     # Déduire automatiquement le stock + enregistrer pose durée de vie
                     if pieces_changed:
                         for piece in pieces_changed:
@@ -6612,7 +6788,7 @@ class FleetManager:
     def get_summary_dataframe(self):
         data = []
         today = date.today()
-        fuel_price_avg = 1.5 
+        fuel_price_avg = 1.5
 
         for m in self.machines:
             alert_msg = "OK"
@@ -6621,7 +6797,7 @@ class FleetManager:
                 if delta < 0: alert_msg = "⚠️ RETARD"
                 elif delta <= 7: alert_msg = f"⚠️ J-{delta}"
                 else: alert_msg = f"Prévu: {m.next_maintenance}"
-            
+
             h_restantes = m.get_maintenance_status()
             pm_status = f"OK ({int(h_restantes)}h)"
             if h_restantes <= 0: pm_status = "⚠️ DUE"
@@ -6629,10 +6805,10 @@ class FleetManager:
             # ANALYTICS
             cons_par_cycle = m.cons_jour / m.cycle if m.cycle > 0 else 0
             cons_par_shift = m.cons_jour / 3
-            revenu_total = m.h_jour * m.hourly_rate 
+            revenu_total = m.h_jour * m.hourly_rate
             cout_total = m.cons_jour * fuel_price_avg
             rentabilite = revenu_total - cout_total
-            
+
             revenu_hebdo = m.h_semaine * m.hourly_rate
             revenu_mensuel = m.h_mois * m.hourly_rate
 
@@ -6641,14 +6817,14 @@ class FleetManager:
 
             data.append({
                 "ID": m.id, "Type": m.type, "Modèle": m.model, "Statut": m.status,
-                "Opérateur": m.operator, "Production (T)": int(m.production_tonnes), 
-                "Cycles": m.cycle, 
+                "Opérateur": m.operator, "Production (T)": int(m.production_tonnes),
+                "Cycles": m.cycle,
                 "Tps Cycle Moy (min)": avg_cycle,
                 "Prochaine PM": pm_status, "Maint. Date": alert_msg, "Carburant (%)": int(m.fuel_tank),
                 # DONNÉES CLÉS
                 "H. Total": int(m.engine_hours),
-                "H. Run Jour": m.h_jour, 
-                "H. Run Hebdo": m.h_semaine, 
+                "H. Run Jour": m.h_jour,
+                "H. Run Hebdo": m.h_semaine,
                 "H. Run Mois": m.h_mois,
                 "Conso. Jour (L)": int(m.cons_jour),
                 "Conso. Shift (L)": int(cons_par_shift),
@@ -7421,18 +7597,18 @@ elif user_info and 'permissions' in user_info:
     # Onglet marché de l'or accessible à tous les utilisateurs avec dashboard
     if perms.get('dashboard', False): authorized_tabs.append("MARCHÉ OR")
     # Onglet validation opérateur accessible aux superviseurs
-    if perms.get('validation_operateur', False) or perms.get('cycles', False) or user_role == "Superviseur Production": 
+    if perms.get('validation_operateur', False) or perms.get('cycles', False) or user_role == "Superviseur Production":
         authorized_tabs.append("VALIDATION OPÉRATEUR")
-    
+
     # Si aucun onglet n'a été ajouté, ajouter au moins DASHBOARD et MARCHÉ OR
     if not authorized_tabs:
         authorized_tabs = ["DASHBOARD", "MARCHÉ OR"]
 else:
     # Fallback pour les anciens utilisateurs sans permissions
-    if user_role == "Administrateur": 
+    if user_role == "Administrateur":
         authorized_tabs = ["DASHBOARD", "CYCLES", "CARBURANT", "MAINT.", "GESTION STOCK", "CARTE", "FINANCE", "RH", "ADMIN", "DONNÉES INGÉNIERIE", "MESSAGERIE", "SST", "MARCHÉ OR", "VALIDATION OPÉRATEUR"]
-    elif user_role == "Visiteur": 
-        authorized_tabs = ["DASHBOARD", "CYCLES", "CARTE", "MESSAGERIE", "SST", "MARCHÉ OR"] 
+    elif user_role == "Visiteur":
+        authorized_tabs = ["DASHBOARD", "CYCLES", "CARTE", "MESSAGERIE", "SST", "MARCHÉ OR"]
     elif user_role == "Ingenieur":
         authorized_tabs = ["DASHBOARD", "CYCLES", "MAINT.", "GESTION STOCK", "CARTE", "DONNÉES INGÉNIERIE", "MESSAGERIE", "SST", "MARCHÉ OR"]
     elif user_role == "Superviseur Production":
@@ -7441,7 +7617,7 @@ else:
         authorized_tabs = ["DASHBOARD", "CYCLES", "CARBURANT", "MAINT.", "GESTION STOCK", "CARTE", "DONNÉES INGÉNIERIE", "MESSAGERIE", "SST", "MARCHÉ OR"]
     elif user_role == "RH":
         authorized_tabs = ["DASHBOARD", "GESTION STOCK", "RH", "MESSAGERIE", "SST", "MARCHÉ OR"]
-    else: 
+    else:
         # Fallback par défaut pour tous les autres rôles
         authorized_tabs = ["DASHBOARD", "MESSAGERIE", "SST", "MARCHÉ OR"]
 
@@ -7452,24 +7628,29 @@ if not authorized_tabs:
 # Masquer la sidebar pour les opérateurs
 if user_role != "Operateur":
     with st.sidebar:
-        # Afficher le logo si disponible, sinon le texte
-        _logo_alt = "GOOD ENGINEERS"
+        # Identité de l'entreprise abonnée : logo du tenant si disponible, puis logo global.
+        _tenant_name_sidebar = "Entreprise par défaut"
         try:
             _r_sb = get_tenant_record(_safe_tenant_id(st.session_state.get("tenant_id", "default")))
             if _r_sb and _r_sb.get("name"):
-                _logo_alt = html.escape(str(_r_sb.get("name")).strip() or _logo_alt)
+                _tenant_name_sidebar = str(_r_sb.get("name")).strip() or _tenant_name_sidebar
         except Exception:
             pass
+        _tenant_name_sidebar = html.escape(_tenant_name_sidebar)
         logo_url = get_logo_url()
         if logo_url:
-            st.markdown(f"""
-            <div class="sidebar-logo-container">
-                <img src="{logo_url}" alt="{_logo_alt}">
-            </div>
-            """, unsafe_allow_html=True)
+            _sidebar_logo_html = f'<img src="{logo_url}" alt="{_tenant_name_sidebar}">'
         else:
-            st.markdown("""<div class="sidebar-logo-container"><div class="sidebar-logo-text">GOOD<br>ENGINEERS</div></div>""", unsafe_allow_html=True)
-        
+            _sidebar_logo_html = '<div class="sidebar-logo-text">GOOD<br>ENGINEERS</div>'
+        st.html(f"""
+        <div class="sidebar-logo-container">
+            {_sidebar_logo_html}
+        </div>
+        """)
+        # Composants natifs : affichage fiable du tenant dans tous les navigateurs Streamlit.
+        st.caption("ENTREPRISE ABONNÉE")
+        st.markdown(f"**{_tenant_name_sidebar}**")
+
         if not st.session_state.get("ge_sidebar_collapsed"):
             _sb_ar_l, _sb_ar_r = st.columns([5, 1])
             with _sb_ar_r:
@@ -7482,7 +7663,7 @@ if user_role != "Operateur":
                 ):
                     st.session_state.ge_sidebar_collapsed = True
                     st.rerun()
-        
+
         # Toggle Mode Jour/Nuit
         st.markdown("---")
         col_mode1, col_mode2 = st.columns([1, 1])
@@ -7493,14 +7674,14 @@ if user_role != "Operateur":
         with col_mode2:
             mode_text = "Mode Nuit" if st.session_state.theme_mode == 'dark' else "Mode Jour"
             st.markdown(f"<p style='text-align: center; color: #F5B800; font-size: 16px; font-weight: 700; margin-top: 8px;'>{mode_text}</p>", unsafe_allow_html=True)
-        
+
         # AFFICHAGE DES TAUX EN SIDEBAR
         st.markdown("---")
         st.markdown("**💱 TAUX DU JOUR (LIVE)**")
         rates = get_exchange_rates()
         st.markdown(f"1 USD = **{rates['CFA']:.0f} CFA**")
         st.markdown(f"1 USD = **{rates['EUR']:.2f} EUR**")
-        
+
         st.markdown("---")
         st.markdown("**🥇 PRIX DE L'OR (LIVE)**")
         gold_price = get_gold_price()
@@ -7512,7 +7693,7 @@ if user_role != "Operateur":
         st.markdown(f"**{price_cfa:,.0f} F/once**")
         st.caption(f"1 once = 31.1035 g")
         st.caption(f"1 g = ${price_per_gram_usd:,.2f} ({price_per_gram_cfa:,.0f} F)")
-        
+
         st.markdown("---")
         with st.expander("Mon mot de passe", expanded=False):
             render_change_own_password_form(user_mgr, key_prefix="sidebar_pwd")
@@ -7556,65 +7737,65 @@ if user_role == "Operateur":
     let isOnline = navigator.onLine;
     let offlineData = JSON.parse(localStorage.getItem('offline_validations') || '[]');
     let offlineNotifications = JSON.parse(localStorage.getItem('offline_notifications') || '[]');
-    
+
     // Détecter les changements de connexion
     window.addEventListener('online', function() {
         console.log('Connexion rétablie - Synchronisation en cours...');
         isOnline = true;
         syncOfflineData();
     });
-    
+
     window.addEventListener('offline', function() {
         console.log('Hors ligne - Mode hors ligne activé');
         isOnline = false;
     });
-    
+
     // Fonction de synchronisation
     function syncOfflineData() {
         if (!isOnline) return;
-        
+
         // Synchroniser les validations hors ligne
         if (offlineData.length > 0) {
             console.log('Synchronisation de ' + offlineData.length + ' validation(s)...');
             // Les données seront synchronisées lors du prochain rechargement de page
         }
-        
+
         // Synchroniser les notifications hors ligne
         if (offlineNotifications.length > 0) {
             console.log('Synchronisation de ' + offlineNotifications.length + ' notification(s)...');
         }
-        
+
         // Vider le localStorage après synchronisation
         localStorage.removeItem('offline_validations');
         localStorage.removeItem('offline_notifications');
         offlineData = [];
         offlineNotifications = [];
     }
-    
+
     // Vérifier la connexion au chargement de la page
     if (isOnline) {
         syncOfflineData();
     }
-    
+
     // Fonction pour stocker les données hors ligne
     function storeOfflineValidation(validation) {
         offlineData.push(validation);
         localStorage.setItem('offline_validations', JSON.stringify(offlineData));
         console.log('Validation stockée hors ligne:', validation);
     }
-    
+
     function storeOfflineNotification(notification) {
         offlineNotifications.push(notification);
         localStorage.setItem('offline_notifications', JSON.stringify(offlineNotifications));
         console.log('Notification stockée hors ligne:', notification);
     }
-    
+
     // Exposer les fonctions globalement
     window.storeOfflineValidation = storeOfflineValidation;
     window.storeOfflineNotification = storeOfflineNotification;
     window.isOnline = function() { return navigator.onLine; };
     window.syncOfflineData = syncOfflineData;
-    
+
     // Vérifier périodiquement la connexion
     setInterval(function() {
         if (navigator.onLine && !isOnline) {
@@ -7629,7 +7810,7 @@ if user_role == "Operateur":
     }, 5000); // Vérifier toutes les 5 secondes
     </script>
     """, unsafe_allow_html=True)
-    
+
     st.markdown("""
     <style>
     /* Masquer UNIQUEMENT la sidebar et le header - PAS le contenu */
@@ -7637,13 +7818,13 @@ if user_role == "Operateur":
     div[data-testid="stHeader"] { display: none !important; }
     #MainMenu { display: none !important; }
     footer { display: none !important; }
-    
+
     /* Poste opérateur — fond sombre haute lisibilité (soleil / poussière) */
     .stApp {
         background: #071A14 !important;
         background-image: linear-gradient(180deg, #063D2B 0%, #071A14 50%) !important;
     }
-    
+
     .main .block-container {
         background: #0D2A20 !important;
         border-radius: 8px !important;
@@ -7652,7 +7833,7 @@ if user_role == "Operateur":
         margin: 0.75rem !important;
         border: 1px solid #404040 !important;
     }
-    
+
     /* Forcer le plein écran */
     .main .block-container {
         padding-top: 2rem !important;
@@ -7661,7 +7842,7 @@ if user_role == "Operateur":
         padding-left: 2rem !important;
         padding-right: 2rem !important;
     }
-    
+
     /* Boutons tactiles — action primaire jaune sécurité */
     button[kind="primary"] {
         height: 170px !important;
@@ -7737,7 +7918,7 @@ if user_role == "Operateur":
         width: 100% !important;
         text-align: center !important;
     }
-    
+
     p, span, div, label {
         color: #EAEAEA !important;
         font-weight: 600 !important;
@@ -7761,7 +7942,7 @@ if user_role == "Operateur":
     h1[style*="color: #F5B800"], h2[style*="color: #F5B800"], h3[style*="color: #F5B800"] {
         color: #F5B800 !important;
     }
-    
+
     .stSelectbox {
         display: block !important;
         margin: 24px 0 !important;
@@ -7815,7 +7996,7 @@ if user_role == "Operateur":
         font-weight: 600 !important;
         color: #EAEAEA !important;
     }
-    
+
     .stInfo, .stSuccess, .stError, .stWarning {
         font-size: 48px !important;
         font-weight: 700 !important;
@@ -7869,11 +8050,11 @@ if user_role != "Operateur":
     st.markdown(f"""
     <div class="hero-banner">
         <div class="marquee-text">
-            CENTRE DE CONTRÔLE <span class="gold-text">GOOD ENGINEERS</span> • 
-            PRODUCTION: <span class="gold-text">{prod_txt}</span> • 
-            FLOTTE: <span class="gold-text">{active_txt}</span> • 
-            ATTENTION: <span class="gold-text">{panne_txt}</span> • 
-            OPERATIONS LIVE • SAFETY FIRST • 
+            CENTRE DE CONTRÔLE <span class="gold-text">GOOD ENGINEERS</span> •
+            PRODUCTION: <span class="gold-text">{prod_txt}</span> •
+            FLOTTE: <span class="gold-text">{active_txt}</span> •
+            ATTENTION: <span class="gold-text">{panne_txt}</span> •
+            OPERATIONS LIVE • SAFETY FIRST •
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -7889,10 +8070,10 @@ if user_role == "Operateur":
     st.success("✅ L'interface opérateur est chargée. Le contenu devrait apparaître ci-dessous.")
     st.write("**Rôle utilisateur:**", user_role)
     st.write("**Nom d'utilisateur:**", st.session_state.get('username', 'Non défini'))
-    
+
     # Fonctions pour gérer les notifications de manière partagée (fichier JSON)
     NOTIFICATIONS_FILE = os.path.join(_APP_DATA_ROOT, "operator_notifications.json")
-    
+
     def load_notifications():
         """Charge les notifications depuis le fichier JSON"""
         if os.path.exists(NOTIFICATIONS_FILE):
@@ -7902,7 +8083,7 @@ if user_role == "Operateur":
             except:
                 return []
         return []
-    
+
     def save_notifications(notifications):
         """Sauvegarde les notifications dans le fichier JSON"""
         try:
@@ -7910,7 +8091,7 @@ if user_role == "Operateur":
                 json.dump(notifications, f, ensure_ascii=False, indent=2)
         except Exception as e:
             st.error(f"Erreur lors de la sauvegarde: {e}")
-    
+
     def sync_offline_data():
         """Synchronise les données hors ligne avec le fichier partagé"""
         try:
@@ -7919,7 +8100,7 @@ if user_role == "Operateur":
             pass
         except:
             pass
-    
+
     # Initialiser les systèmes de notification dans session_state
     if 'validations' not in st.session_state:
         st.session_state.validations = []
@@ -7932,7 +8113,7 @@ if user_role == "Operateur":
         st.session_state.breakdown_reports = []
     if 'cycle_events' not in st.session_state:
         st.session_state.cycle_events = []
-    
+
     # Récupérer l'opérateur actuel
     current_operator = None
     # Trouver l'opérateur correspondant à l'utilisateur connecté
@@ -7940,7 +8121,7 @@ if user_role == "Operateur":
         if emp.role == "Operateur" and emp.name == st.session_state.username:
             current_operator = emp
             break
-    
+
     # Récupérer les machines de l'opérateur pour déterminer le type
     df_machines = manager.get_summary_dataframe()
     operator_machines_list = []
@@ -7948,41 +8129,41 @@ if user_role == "Operateur":
     if current_operator:
         operator_machines_list = df_machines[df_machines['Opérateur'] == current_operator.name]['ID'].tolist()
         machine_types = df_machines[df_machines['Opérateur'] == current_operator.name]['Type'].tolist()
-    
+
     # Déterminer le type d'opérateur depuis les données utilisateur ou les machines
     operator_type_from_user = None
     if user_info and 'operator_type' in user_info:
         operator_type_from_user = user_info['operator_type']
-    
+
     # Si le type est défini dans les données utilisateur, l'utiliser en priorité
     if operator_type_from_user:
         is_loader = (operator_type_from_user == "loader")
         is_dumper = (operator_type_from_user == "dumper")
     else:
         # Sinon, détecter automatiquement à partir des machines assignées
-        is_loader = any('CHARGE' in m.upper() or 'PELLE' in m.upper() or 'EXCAVATRICE' in m.upper() 
+        is_loader = any('CHARGE' in m.upper() or 'PELLE' in m.upper() or 'EXCAVATRICE' in m.upper()
                       for m in machine_types) if machine_types else False
-        is_dumper = any('DUMPER' in m.upper() or 'CAMION' in m.upper() 
+        is_dumper = any('DUMPER' in m.upper() or 'CAMION' in m.upper()
                       for m in machine_types) if machine_types else False
-    
+
     # CRÉER DES SOUS-ONGLETS SELON LE TYPE D'OPÉRATEUR
     show_loader_tab = True
     show_dumper_tab = True
-    
+
     if is_loader and not is_dumper:
         # Opérateur de chargement uniquement
         show_dumper_tab = False
     elif is_dumper and not is_loader:
         # Opérateur de transport uniquement
         show_loader_tab = False
-    
+
     # Créer les sous-onglets selon ce qui doit être affiché
     sub_tab_labels = []
     if show_loader_tab:
         sub_tab_labels.append("📦 Opérateur de Chargement")
     if show_dumper_tab:
         sub_tab_labels.append("🚚 Opérateur de Transport")
-    
+
     # S'assurer qu'il y a au moins un sous-onglet
     if not sub_tab_labels:
         # Si aucun sous-onglet n'est défini, afficher les deux par défaut
@@ -7995,25 +8176,25 @@ if user_role == "Operateur":
         sub_tab_labels.append("💬 Messagerie")
     if perms_op.get("sst"):
         sub_tab_labels.append("🦺 SST")
-    
+
     # Créer les sous-onglets - TOUJOURS CRÉER AU MOINS UN
     if sub_tab_labels:
         sub_tabs = st.tabs(sub_tab_labels)
     else:
         # Fallback absolu - ne devrait jamais arriver
         sub_tabs = st.tabs(["📦 Opérateur de Chargement", "🚚 Opérateur de Transport"])
-    
+
     loader_tab_idx = _sub_tab_index(sub_tab_labels, "📦 Opérateur de Chargement")
     dumper_tab_idx = _sub_tab_index(sub_tab_labels, "🚚 Opérateur de Transport")
     mess_idx = _sub_tab_index(sub_tab_labels, "💬 Messagerie")
     sst_idx = _sub_tab_index(sub_tab_labels, "🦺 SST")
-    
+
     # SOUS-ONGLET 1: OPÉRATEUR DE CHARGEMENT
     if show_loader_tab and loader_tab_idx >= 0:
         with sub_tabs[loader_tab_idx]:
             st.markdown("### 📦 OPÉRATEUR DE CHARGEMENT")
             st.info("Interface de validation pour opérateur de chargement")
-            
+
             # TYPE DE MINERAI - BOUTONS TOUJOURS VISIBLES
             st.markdown("""
             <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%);
@@ -8023,7 +8204,7 @@ if user_role == "Operateur":
                 </h2>
             </div>
             """, unsafe_allow_html=True)
-            
+
             col1, col2 = st.columns(2)
             with col1:
                 if st.button("🥇 OR", use_container_width=True, key="btn_or_loader", type="primary"):
@@ -8039,18 +8220,18 @@ if user_role == "Operateur":
                 if st.button("🔷 AUTRE", use_container_width=True, key="btn_other_loader"):
                     st.session_state.selected_mineral_type = "AUTRE"
                     st.rerun()
-            
+
             # Afficher le type sélectionné
             if 'selected_mineral_type' in st.session_state:
                 st.markdown(f"""
-                <div style="background: #4CAF50; color: #000000; padding: 30px; border-radius: 15px; 
-                            border: 4px solid #F5B800; margin: 20px 0; min-height: 150px; 
+                <div style="background: #4CAF50; color: #000000; padding: 30px; border-radius: 15px;
+                            border: 4px solid #F5B800; margin: 20px 0; min-height: 150px;
                             display: flex; align-items: center; justify-content: center;
                             font-size: 56px; font-weight: 900; text-align: center;">
                     ✅ TYPE DE MINERAI SÉLECTIONNÉ : <strong>{st.session_state.selected_mineral_type}</strong>
                 </div>
                 """, unsafe_allow_html=True)
-            
+
             # GRADE/TENEUR - BOUTONS TOUJOURS VISIBLES
             st.markdown("""
             <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%);
@@ -8060,7 +8241,7 @@ if user_role == "Operateur":
                 </h2>
             </div>
             """, unsafe_allow_html=True)
-            
+
             col3, col4, col5 = st.columns(3)
             with col3:
                 if st.button("⭐ HAUT", use_container_width=True, key="btn_high_loader", type="primary"):
@@ -8074,18 +8255,18 @@ if user_role == "Operateur":
                 if st.button("⭐ BAS", use_container_width=True, key="btn_low_loader"):
                     st.session_state.selected_grade = "BAS"
                     st.rerun()
-            
+
             # Afficher le grade sélectionné
             if 'selected_grade' in st.session_state:
                 st.markdown(f"""
-                <div style="background: #2196F3; color: #000000; padding: 30px; border-radius: 15px; 
-                            border: 4px solid #F5B800; margin: 20px 0; min-height: 150px; 
+                <div style="background: #2196F3; color: #000000; padding: 30px; border-radius: 15px;
+                            border: 4px solid #F5B800; margin: 20px 0; min-height: 150px;
                             display: flex; align-items: center; justify-content: center;
                             font-size: 56px; font-weight: 900; text-align: center;">
                     📊 GRADE SÉLECTIONNÉ : <strong>{st.session_state.selected_grade}</strong>
                 </div>
                 """, unsafe_allow_html=True)
-            
+
             # SÉLECTION DU NUMÉRO DE CAMION - TOUJOURS VISIBLE
             st.markdown("""
             <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%);
@@ -8095,7 +8276,7 @@ if user_role == "Operateur":
                 </h2>
             </div>
             """, unsafe_allow_html=True)
-            
+
             # Récupérer la liste des camions/dumpers disponibles
             df_machines_loader = manager.get_summary_dataframe()
             # Filtrer pour obtenir uniquement les dumpers et camions
@@ -8103,15 +8284,15 @@ if user_role == "Operateur":
                 (df_machines_loader['Type'].str.contains('DUMPER', case=False, na=False)) |
                 (df_machines_loader['Type'].str.contains('CAMION', case=False, na=False))
             ]
-            
+
             # Créer une liste des numéros de camions disponibles
             truck_list = ["Sélectionner un camion..."] + trucks_available['ID'].tolist()
-            
+
             # Si aucun camion n'est disponible, permettre la saisie manuelle
             if len(trucks_available) == 0:
                 st.markdown("""
-                <div style="background: #FF9800; color: #000000; padding: 30px; border-radius: 15px; 
-                            border: 4px solid #F5B800; margin: 20px 0; min-height: 150px; 
+                <div style="background: #FF9800; color: #000000; padding: 30px; border-radius: 15px;
+                            border: 4px solid #F5B800; margin: 20px 0; min-height: 150px;
                             display: flex; align-items: center; justify-content: center;
                             font-size: 56px; font-weight: 900; text-align: center;">
                     ⚠️ AUCUN CAMION DISPONIBLE DANS LE SYSTÈME. SAISIE MANUELLE POSSIBLE.
@@ -8133,7 +8314,7 @@ if user_role == "Operateur":
                         selected_truck_idx = truck_list.index(st.session_state.selected_truck_loader)
                     except ValueError:
                         selected_truck_idx = 0
-                
+
                 # Rendre le selectbox très visible avec un style personnalisé
                 st.markdown("""
                 <div style="background: rgba(245, 184, 0, 0.1); padding: 15px; border-radius: 10px; border: 2px solid #F5B800; margin: 20px 0;">
@@ -8142,7 +8323,7 @@ if user_role == "Operateur":
                     </p>
                 </div>
                 """, unsafe_allow_html=True)
-                
+
                 selected_truck = st.selectbox(
                     "",
                     truck_list,
@@ -8150,29 +8331,29 @@ if user_role == "Operateur":
                     key="truck_select_loader",
                     label_visibility="collapsed"
                 )
-                
+
                 if selected_truck and selected_truck != "Sélectionner un camion...":
                     st.session_state.selected_truck_loader = selected_truck
                     # Afficher les informations du camion sélectionné
                     truck_info = trucks_available[trucks_available['ID'] == selected_truck]
                     if not truck_info.empty:
                         st.markdown(f"""
-                        <div style="background: #4CAF50; color: #000000; padding: 30px; border-radius: 15px; 
-                                    border: 4px solid #F5B800; margin: 20px 0; min-height: 150px; 
+                        <div style="background: #4CAF50; color: #000000; padding: 30px; border-radius: 15px;
+                                    border: 4px solid #F5B800; margin: 20px 0; min-height: 150px;
                                     display: flex; align-items: center; justify-content: center;
                                     font-size: 56px; font-weight: 900; text-align: center;">
                             ✅ CAMION SÉLECTIONNÉ : <strong>{selected_truck}</strong>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
-                        <div style="background: #2196F3; color: #000000; padding: 30px; border-radius: 15px; 
-                                    border: 4px solid #F5B800; margin: 20px 0; min-height: 150px; 
+                        <div style="background: #2196F3; color: #000000; padding: 30px; border-radius: 15px;
+                                    border: 4px solid #F5B800; margin: 20px 0; min-height: 150px;
                                     display: flex; align-items: center; justify-content: center;
                                     font-size: 56px; font-weight: 900; text-align: center;">
                             📊 TYPE: {truck_info.iloc[0]['Type']} | STATUT: {truck_info.iloc[0]['Statut']}
                         </div>
                         """, unsafe_allow_html=True)
-            
+
             # BOUTON DE VALIDATION - TOUJOURS VISIBLE
             st.markdown("---")
             if st.button("✅ VALIDER LE CHARGEMENT", use_container_width=True, key="btn_validate_loader", type="primary"):
@@ -8183,7 +8364,7 @@ if user_role == "Operateur":
                     validation_errors.append("Grade/Teneur")
                 if 'selected_truck_loader' not in st.session_state or not st.session_state.selected_truck_loader:
                     validation_errors.append("Numéro de camion")
-                
+
                 if not validation_errors:
                     # Validation réussie
                     validation_data = {
@@ -8194,16 +8375,16 @@ if user_role == "Operateur":
                         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                         "type": "loading"
                     }
-                    
+
                     # Ajouter à la liste des validations
                     if 'validations' not in st.session_state:
                         st.session_state.validations = []
                     st.session_state.validations.append(validation_data)
-                    
+
                     # ENVOYER UNE NOTIFICATION À TOUS LES OPÉRATEURS DE DÉCHARGEMENT
                     # La notification sera visible par tous les opérateurs de déchargement
                     truck_id = st.session_state.selected_truck_loader
-                    
+
                     # Créer la notification pour les opérateurs de déchargement
                     notification = {
                         "id": f"notif_{datetime.now().strftime('%Y%m%d%H%M%S')}_{truck_id}",
@@ -8217,7 +8398,7 @@ if user_role == "Operateur":
                         "status": "pending",  # pending, acknowledged
                         "type": "loading_complete"
                     }
-                    
+
                     # Ajouter la notification au système global (accessible par tous les opérateurs de déchargement)
                     try:
                         # Charger les notifications existantes depuis le fichier
@@ -8244,11 +8425,11 @@ if user_role == "Operateur":
                         </script>
                         """, unsafe_allow_html=True)
                         st.warning("⚠️ Hors ligne - La notification sera synchronisée automatiquement lors de la reconnexion.")
-                    
+
                     # Message de validation avec style uniforme et grand
                     st.markdown(f"""
-                    <div style="background: #4CAF50; color: #000000; padding: 40px; border-radius: 15px; 
-                                border: 4px solid #F5B800; margin: 30px 0; min-height: 200px; 
+                    <div style="background: #4CAF50; color: #000000; padding: 40px; border-radius: 15px;
+                                border: 4px solid #F5B800; margin: 30px 0; min-height: 200px;
                                 display: flex; flex-direction: column; justify-content: center; align-items: center;
                                 font-size: 64px; font-weight: 900; text-align: center;">
                         <div style="font-size: 80px; font-weight: 900; margin-bottom: 20px;">✅</div>
@@ -8269,25 +8450,25 @@ if user_role == "Operateur":
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
-                    
+
                     # Message de confirmation d'envoi de notification
                     st.markdown(f"""
-                    <div style="background: #2196F3; color: #000000; padding: 30px; border-radius: 15px; 
-                                border: 4px solid #F5B800; margin: 20px 0; min-height: 150px; 
+                    <div style="background: #2196F3; color: #000000; padding: 30px; border-radius: 15px;
+                                border: 4px solid #F5B800; margin: 20px 0; min-height: 150px;
                                 display: flex; align-items: center; justify-content: center;
                                 font-size: 56px; font-weight: 900; text-align: center;">
                         🔔 NOTIFICATION ENVOYÉE AUX OPÉRATEURS DE DÉCHARGEMENT
                     </div>
                     """, unsafe_allow_html=True)
-                    
+
                     # Réinitialiser les sélections (optionnel)
                     # st.session_state.selected_mineral_type = None
                     # st.session_state.selected_grade = None
                     # st.session_state.selected_truck_loader = None
                 else:
                     st.markdown(f"""
-                    <div style="background: #FF9800; color: #000000; padding: 40px; border-radius: 15px; 
-                                border: 4px solid #F5B800; margin: 30px 0; min-height: 200px; 
+                    <div style="background: #FF9800; color: #000000; padding: 40px; border-radius: 15px;
+                                border: 4px solid #F5B800; margin: 30px 0; min-height: 200px;
                                 display: flex; flex-direction: column; justify-content: center; align-items: center;
                                 font-size: 64px; font-weight: 900; text-align: center;">
                         <div style="font-size: 80px; font-weight: 900; margin-bottom: 20px;">⚠️</div>
@@ -8299,12 +8480,12 @@ if user_role == "Operateur":
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
-    
+
     # SOUS-ONGLET 2: OPÉRATEUR DE TRANSPORT (DUMPER)
     if show_dumper_tab and dumper_tab_idx >= 0:
         with sub_tabs[dumper_tab_idx]:
             st.markdown("### 🚚 OPÉRATEUR DE TRANSPORT")
-            
+
             # SECTION NOTIFICATIONS - AFFICHER EN PREMIER
             col_notif_title, col_refresh = st.columns([4, 1])
             with col_notif_title:
@@ -8319,27 +8500,27 @@ if user_role == "Operateur":
             with col_refresh:
                 if st.button("🔄", use_container_width=True, key="refresh_notifications_dumper", help="Actualiser les notifications"):
                     st.rerun()
-            
+
             # Charger les notifications depuis le fichier partagé (pour avoir les dernières)
             all_notifications = load_notifications()
             # Mettre à jour session_state
             st.session_state.operator_notifications = all_notifications
-            
+
             # Récupérer les notifications pour cet opérateur
             if all_notifications:
                 # Filtrer les notifications de type "loading_complete" qui sont en attente
                 pending_notifications = [
-                    n for n in all_notifications 
+                    n for n in all_notifications
                     if n.get('type') == 'loading_complete' and n.get('status') == 'pending'
                 ]
-                
+
                 if pending_notifications:
                     # Afficher les notifications en attente avec les informations validées
                     for idx, notif in enumerate(pending_notifications):
                         # Afficher l'ordre de déchargement avec les informations validées
                         st.markdown(f"""
-                        <div style="background: #F5B800; color: #000000; padding: 40px; border-radius: 15px; 
-                                    border: 4px solid #F5B800; margin: 20px 0; min-height: 300px; 
+                        <div style="background: #F5B800; color: #000000; padding: 40px; border-radius: 15px;
+                                    border: 4px solid #F5B800; margin: 20px 0; min-height: 300px;
                                     display: flex; flex-direction: column; justify-content: center; align-items: center;
                                     font-size: 64px; font-weight: 900; text-align: center;">
                             <div style="font-size: 80px; font-weight: 900; margin-bottom: 20px;">📋</div>
@@ -8363,11 +8544,11 @@ if user_role == "Operateur":
                             </div>
                         </div>
                         """, unsafe_allow_html=True)
-                        
+
                         # Bouton unique pour confirmer le déchargement
                         st.markdown("---")
-                        if st.button(f"✅ J'AI DÉCHARGÉ LE CAMION {notif.get('truck', 'N/A')}", 
-                                   use_container_width=True, 
+                        if st.button(f"✅ J'AI DÉCHARGÉ LE CAMION {notif.get('truck', 'N/A')}",
+                                   use_container_width=True,
                                    key=f"unload_{notif.get('id')}",
                                    type="primary"):
                             # Créer une validation de déchargement
@@ -8381,12 +8562,12 @@ if user_role == "Operateur":
                                 "loading_operator": notif.get('from_operator'),
                                 "type": "unloading"
                             }
-                            
+
                             # Ajouter à la liste des validations
                             if 'validations' not in st.session_state:
                                 st.session_state.validations = []
                             st.session_state.validations.append(unload_validation)
-                            
+
                             # Marquer la notification comme traitée dans le fichier partagé
                             all_notifications = load_notifications()
                             for n in all_notifications:
@@ -8395,11 +8576,11 @@ if user_role == "Operateur":
                                     break
                             save_notifications(all_notifications)
                             st.session_state.operator_notifications = all_notifications
-                            
+
                             # Afficher un message de confirmation avec style uniforme
                             st.markdown(f"""
-                            <div style="background: #4CAF50; color: #000000; padding: 40px; border-radius: 15px; 
-                                        border: 4px solid #F5B800; margin: 30px 0; min-height: 200px; 
+                            <div style="background: #4CAF50; color: #000000; padding: 40px; border-radius: 15px;
+                                        border: 4px solid #F5B800; margin: 30px 0; min-height: 200px;
                                         display: flex; flex-direction: column; justify-content: center; align-items: center;
                                         font-size: 64px; font-weight: 900; text-align: center;">
                                 <div style="font-size: 80px; font-weight: 900; margin-bottom: 20px;">✅</div>
@@ -8423,8 +8604,8 @@ if user_role == "Operateur":
                             st.rerun()
                 else:
                     st.markdown("""
-                    <div style="background: #2196F3; color: #000000; padding: 30px; border-radius: 15px; 
-                                border: 4px solid #F5B800; margin: 20px 0; min-height: 150px; 
+                    <div style="background: #2196F3; color: #000000; padding: 30px; border-radius: 15px;
+                                border: 4px solid #F5B800; margin: 20px 0; min-height: 150px;
                                 display: flex; align-items: center; justify-content: center;
                                 font-size: 56px; font-weight: 900; text-align: center;">
                         📭 AUCUNE NOTIFICATION EN ATTENTE
@@ -8432,21 +8613,21 @@ if user_role == "Operateur":
                     """, unsafe_allow_html=True)
             else:
                 st.markdown("""
-                <div style="background: #2196F3; color: #000000; padding: 30px; border-radius: 15px; 
-                            border: 4px solid #F5B800; margin: 20px 0; min-height: 150px; 
+                <div style="background: #2196F3; color: #000000; padding: 30px; border-radius: 15px;
+                            border: 4px solid #F5B800; margin: 20px 0; min-height: 150px;
                             display: flex; align-items: center; justify-content: center;
                             font-size: 56px; font-weight: 900; text-align: center;">
                     📭 AUCUNE NOTIFICATION EN ATTENTE
                 </div>
                 """, unsafe_allow_html=True)
-            
+
             # Si aucune notification en attente, afficher un message
             # Recharger les notifications depuis le fichier pour être sûr d'avoir les dernières
             all_notifications_check = load_notifications()
             if not all_notifications_check:
                 st.markdown("""
-                <div style="background: #2196F3; color: #000000; padding: 40px; border-radius: 15px; 
-                            border: 4px solid #F5B800; margin: 30px 0; min-height: 200px; 
+                <div style="background: #2196F3; color: #000000; padding: 40px; border-radius: 15px;
+                            border: 4px solid #F5B800; margin: 30px 0; min-height: 200px;
                             display: flex; flex-direction: column; justify-content: center; align-items: center;
                             font-size: 64px; font-weight: 900; text-align: center;">
                     <div style="font-size: 80px; font-weight: 900; margin-bottom: 20px;">📭</div>
@@ -8458,7 +8639,7 @@ if user_role == "Operateur":
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
-    
+
     if mess_idx >= 0:
         with sub_tabs[mess_idx]:
             render_messagerie_tab(user_mgr, user_info)
@@ -8506,27 +8687,27 @@ if "DASHBOARD" in tab_dict:
         cycles_totaux = _fleet_col_sum_int(df, "Cycles")
         total_heures = _fleet_col_sum_int(df, "H. Total")
         heures_jour = _fleet_col_sum_int(df, "H. Run Jour")
-        
+
         # Revenus et rentabilité (si disponible)
         revenu_jour = int(df['Rev. Jour ($)'].sum()) if 'Rev. Jour ($)' in df.columns else 0
         rentabilite_totale = int(df['Rentabilité ($)'].sum()) if 'Rentabilité ($)' in df.columns else 0
-        
+
         # Alertes de maintenance
         active_alerts = manager.maintenance_manager.get_all_active_alerts()
         nb_alertes = len(active_alerts)
-        
+
         # Stock bas
         stock_mgr = manager.maintenance_manager.stock_manager
         low_stock_items = stock_mgr.get_low_stock_items()
         nb_stock_bas = len(low_stock_items)
-        
+
         fuel_avg = None
         if "Carburant (%)" in df.columns and not df.empty:
             try:
                 fuel_avg = round(float(df["Carburant (%)"].mean()), 1)
             except Exception:
                 fuel_avg = None
-        
+
         # Cartes KPI — glassmorphism industriel
         st.markdown("""
         <style>
@@ -8576,7 +8757,7 @@ if "DASHBOARD" in tab_dict:
         .dashboard-kpi.kpi-border-muted   { border-left: 4px solid #5A5A5A; }
         </style>
         """, unsafe_allow_html=True)
-        
+
         # HEADER DU DASHBOARD
         today_str = date.today().strftime('%d %B %Y')
         st.markdown(f"""
@@ -8589,7 +8770,7 @@ if "DASHBOARD" in tab_dict:
             </p>
         </div>
         """, unsafe_allow_html=True)
-        
+
         kpi_idle_count = _fleet_statut_count(df, "Idle")
         if kpi_idle_count == 0 and "Statut" in df.columns and not df.empty:
             try:
@@ -8597,14 +8778,14 @@ if "DASHBOARD" in tab_dict:
                 kpi_idle_count = int(sl.isin(("idle", "arrêt", "arret", "inactive", "en attente")).sum())
             except Exception:
                 kpi_idle_count = 0
-        
+
         cls_panne = "status-breakdown" if machines_pannes else "status-idle"
         cls_maint_ct = "status-maintenance" if nb_alertes else "status-idle"
         cls_stock_ct = "status-maintenance" if nb_stock_bas else "status-active"
-        
+
         # Rangée 1 — production, flotte, carburant, incidents
         col1, col2, col3, col4 = st.columns(4)
-        
+
         with col1:
             b1 = "kpi-border-success" if disponibilite >= 70 or total_machines == 0 else "kpi-border-warning"
             st.markdown(f"""
@@ -8614,7 +8795,7 @@ if "DASHBOARD" in tab_dict:
                 <div class="kpi-sub">Disponibilité <span class="status-active">{disponibilite}%</span>{f' • Arrêt {kpi_idle_count}' if kpi_idle_count else ''}</div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         with col2:
             b2 = "kpi-border-danger" if machines_pannes > 0 else "kpi-border-muted"
             st.markdown(f"""
@@ -8624,7 +8805,7 @@ if "DASHBOARD" in tab_dict:
                 <div class="kpi-sub">{"⚠️ Intervention requise" if machines_pannes > 0 else "OK — ligne opérationnelle"}</div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         with col3:
             st.markdown(f"""
             <div class="dashboard-kpi kpi-border-accent">
@@ -8633,7 +8814,7 @@ if "DASHBOARD" in tab_dict:
                 <div class="kpi-sub">🔄 {cycles_totaux:,} cycles • Shift {heures_jour} h</div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         with col4:
             if fuel_avg is not None:
                 fuel_state = "status-active" if fuel_avg >= 40 else ("status-maintenance" if fuel_avg >= 20 else "status-breakdown")
@@ -8652,11 +8833,11 @@ if "DASHBOARD" in tab_dict:
                     <div class="kpi-sub">Cumul total {total_heures:,} h</div>
                 </div>
                 """, unsafe_allow_html=True)
-        
+
         # Rangée 2 — finance ou cycles, maintenance, stock, perf cycle
         col5, col6, col7, col8 = st.columns(4)
         avg_cycle = round(df['Tps Cycle Moy (min)'].mean(), 1) if 'Tps Cycle Moy (min)' in df.columns and not df.empty else 0
-        
+
         with col5:
             if revenu_jour > 0:
                 st.markdown(f"""
@@ -8674,7 +8855,7 @@ if "DASHBOARD" in tab_dict:
                     <div class="kpi-sub">🛰️ Temps cycle moy. {avg_cycle} min</div>
                 </div>
                 """, unsafe_allow_html=True)
-        
+
         with col6:
             b6 = "kpi-border-warning" if nb_alertes > 0 else "kpi-border-success"
             st.markdown(f"""
@@ -8684,7 +8865,7 @@ if "DASHBOARD" in tab_dict:
                 <div class="kpi-sub">{"Planifier interventions" if nb_alertes else "Aucune alerte active"}</div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         with col7:
             b7 = "kpi-border-warning" if nb_stock_bas > 0 else "kpi-border-success"
             st.markdown(f"""
@@ -8694,7 +8875,7 @@ if "DASHBOARD" in tab_dict:
                 <div class="kpi-sub">{"Réappro. nécessaire" if nb_stock_bas else "Seuils OK"}</div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         with col8:
             st.markdown(f"""
             <div class="dashboard-kpi kpi-border-muted">
@@ -8703,12 +8884,12 @@ if "DASHBOARD" in tab_dict:
                 <div class="kpi-sub">Moyenne flotte • objectif terrain</div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         st.markdown("<br>", unsafe_allow_html=True)
-        
+
         # SECTION 3: GRAPHIQUES VISUELS
         col_graph1, col_graph2 = st.columns(2)
-        
+
         with col_graph1:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("📊 Répartition des Statuts")
@@ -8725,14 +8906,14 @@ if "DASHBOARD" in tab_dict:
                     },
                     hole=0.4
                 )
-                fig_status.update_traces(textposition='inside', textinfo='percent+label', 
+                fig_status.update_traces(textposition='inside', textinfo='percent+label',
                                         textfont_size=14, marker=dict(line=dict(color='#FFFFFF', width=2)))
                 fig_status.update_layout(showlegend=True, height=350, font=dict(size=12))
                 st.plotly_chart(fig_status, width='stretch')
             except:
                 st.info("Graphique disponible avec plotly")
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         with col_graph2:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("📈 Production par Machine")
@@ -8752,43 +8933,43 @@ if "DASHBOARD" in tab_dict:
             except:
                 st.info("Graphique disponible avec plotly")
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # SECTION 4: ALERTES ET ACTIONS REQUISES
         if machines_pannes > 0 or nb_alertes > 0 or nb_stock_bas > 0:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("🚨 ALERTES & ACTIONS REQUISES")
-            
+
             alert_col1, alert_col2, alert_col3 = st.columns(3)
-            
+
             with alert_col1:
                 if machines_pannes > 0:
                     st.error(f"**🔴 {machines_pannes} Machine(s) en Panne**")
                     for machine in df[df['Statut']=='Panne']['ID']:
                         st.write(f"- {machine}")
-            
+
             with alert_col2:
                 if nb_alertes > 0:
                     st.warning(f"**⚠️ {nb_alertes} Maintenance(s) Planifiée(s)**")
                     for alert in active_alerts[:5]:  # Afficher les 5 premières
                         st.write(f"- {alert.machine_id}: {alert.maintenance_type}")
-            
+
             with alert_col3:
                 if nb_stock_bas > 0:
                     st.warning(f"**📦 {nb_stock_bas} Pièce(s) en Stock Bas**")
                     for item in low_stock_items[:5]:  # Afficher les 5 premières
                         st.write(f"- {item['nom']}: {item['quantite']} {item['unite']}")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # SECTION 5: TABLEAU RÉCAPITULATIF
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.subheader("📋 VUE D'ENSEMBLE DE LA FLOTTE")
-        
+
         # Sélection des colonnes importantes
-        display_cols = ['ID', 'Type', 'Statut', 'Opérateur', 'Production (T)', 'Cycles', 
+        display_cols = ['ID', 'Type', 'Statut', 'Opérateur', 'Production (T)', 'Cycles',
                        'H. Run Jour', 'Prochaine PM', 'Carburant (%)']
         available_cols = [col for col in display_cols if col in df.columns]
-        
+
         # Style conditionnel pour les statuts
         def color_status(val):
             if val == 'Active':
@@ -8797,7 +8978,7 @@ if "DASHBOARD" in tab_dict:
                 return 'background-color: rgba(220, 53, 69, 0.22); color: #EAEAEA; font-weight: bold'
             else:
                 return 'background-color: rgba(255, 107, 0, 0.18); color: #EAEAEA; font-weight: bold'
-        
+
         styled_df = _styler_cell_map(df[available_cols].style, color_status, subset=['Statut'])
         st.dataframe(styled_df, width='stretch', hide_index=True)
         st.markdown('</div>', unsafe_allow_html=True)
@@ -8814,11 +8995,11 @@ if "CYCLES" in tab_dict:
         k3.metric("CYCLES TOTAUX", f"{_fleet_col_sum_int(df, 'Cycles')}")
         k4.metric("PRODUCTION TOTALE", f"{_fleet_col_sum_int(df, 'Production (T)')} T")
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TEMPS DE CYCLE DÉTAILLÉ ---
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.subheader("⏱️ TEMPS DE CYCLE - ANALYSE DÉTAILLÉE")
-        
+
         if not df.empty and 'Tps Cycle Moy (min)' in df.columns:
             # Statistiques globales du temps de cycle
             cycle_times = df[df['Tps Cycle Moy (min)'] > 0]['Tps Cycle Moy (min)']
@@ -8827,17 +9008,17 @@ if "CYCLES" in tab_dict:
                 max_cycle = cycle_times.max()
                 avg_cycle = cycle_times.mean()
                 median_cycle = cycle_times.median()
-                
+
                 col_stat1, col_stat2, col_stat3, col_stat4, col_stat5 = st.columns(5)
                 col_stat1.metric("⏱️ Temps Moyen", f"{avg_cycle:.1f} min")
                 col_stat2.metric("⚡ Meilleur Temps", f"{min_cycle:.1f} min", delta=f"-{max_cycle - min_cycle:.1f} min")
                 col_stat3.metric("🐌 Temps Max", f"{max_cycle:.1f} min", delta_color="inverse")
                 col_stat4.metric("📊 Médiane", f"{median_cycle:.1f} min")
-                
+
                 # Identifier les engins avec le meilleur et pire temps
                 best_machine = df.loc[df['Tps Cycle Moy (min)'].idxmin()] if 'ID' in df.columns else None
                 worst_machine = df.loc[df['Tps Cycle Moy (min)'].idxmax()] if 'ID' in df.columns else None
-                
+
                 if best_machine is not None and worst_machine is not None:
                     col_stat5.markdown(f"""
                     <div style="padding: 10px; background: #f0f0f0; border-radius: 5px;">
@@ -8845,21 +9026,21 @@ if "CYCLES" in tab_dict:
                         <strong>⚠️ À améliorer:</strong> {worst_machine['ID']}
                     </div>
                     """, unsafe_allow_html=True)
-                
+
                 st.markdown("---")
-                
+
                 # Tableau détaillé du temps de cycle par engin
                 cycle_cols = ['ID', 'Type', 'Opérateur', 'Cycles', 'Tps Cycle Moy (min)', 'H. Run Jour', 'Production (T)']
                 cycle_df = df[cycle_cols].copy()
-                
+
                 # Calculer tonnes/heure pour l'efficacité
                 cycle_df['Tonnes/Heure'] = (cycle_df['Production (T)'] / cycle_df['H. Run Jour']).round(2)
                 cycle_df['Tonnes/Heure'] = cycle_df['Tonnes/Heure'].replace([float('inf'), float('-inf')], 0)
                 cycle_df = cycle_df.fillna(0)
-                
+
                 # Trier par temps de cycle (du meilleur au pire)
                 cycle_df = cycle_df.sort_values('Tps Cycle Moy (min)')
-                
+
                 st.dataframe(
                     cycle_df.style.format({
                         "Tps Cycle Moy (min)": "{:.1f} min",
@@ -8871,13 +9052,13 @@ if "CYCLES" in tab_dict:
                 )
         else:
             st.info("Aucune donnée de cycle disponible.")
-        
+
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- PERFORMANCE DES ENGINS ---
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.subheader("🏭 PERFORMANCE DES ENGINS")
-        
+
         if not df.empty:
             # Préparer les données de performance
             perf_data = []
@@ -8886,7 +9067,7 @@ if "CYCLES" in tab_dict:
                 tonnes_heure = (row['Production (T)'] / row['H. Run Jour']) if row['H. Run Jour'] > 0 else 0
                 # Calculer les cycles/heure
                 cycles_heure = (row['Cycles'] / row['H. Run Jour']) if row['H. Run Jour'] > 0 else 0
-                
+
                 perf_data.append({
                     "ID": row['ID'],
                     "Type": row['Type'],
@@ -8900,33 +9081,33 @@ if "CYCLES" in tab_dict:
                     "Cycles/Heure": round(cycles_heure, 2),
                     "Efficacité (%)": round((row['H. Run Jour'] / 24) * 100, 1) if row['H. Run Jour'] > 0 else 0
                 })
-            
+
             df_perf = pd.DataFrame(perf_data)
-            
+
             # Trier par performance (tonnes/heure décroissant)
             df_perf = df_perf.sort_values('Tonnes/Heure', ascending=False)
-            
+
             # Classement
             df_perf.insert(0, 'Rang', range(1, len(df_perf) + 1))
-            
+
             # Métriques globales
             col_p1, col_p2, col_p3, col_p4 = st.columns(4)
             avg_tonnes_heure = df_perf['Tonnes/Heure'].mean()
             best_engin = df_perf.iloc[0] if len(df_perf) > 0 else None
             total_prod = df_perf['Production (T)'].sum()
             avg_cycles_heure = df_perf['Cycles/Heure'].mean()
-            
+
             col_p1.metric("📊 Moyenne Tonnes/Heure", f"{avg_tonnes_heure:.2f} T/h")
             col_p2.metric("🏆 Meilleur Engin", f"{best_engin['ID']}" if best_engin is not None else "N/A", f"{best_engin['Tonnes/Heure']:.2f} T/h" if best_engin is not None else "")
             col_p3.metric("📦 Production Totale", f"{total_prod:,.0f} T")
             col_p4.metric("⚡ Cycles/Heure Moy.", f"{avg_cycles_heure:.2f} cy/h")
-            
+
             st.markdown("---")
-            
+
             # Tableau de performance avec classement
-            perf_cols = ['Rang', 'ID', 'Type', 'Opérateur', 'Statut', 'Cycles', 'Production (T)', 
+            perf_cols = ['Rang', 'ID', 'Type', 'Opérateur', 'Statut', 'Cycles', 'Production (T)',
                         'Tps Cycle Moy (min)', 'H. Run Jour', 'Tonnes/Heure', 'Cycles/Heure', 'Efficacité (%)']
-            
+
             st.dataframe(
                 df_perf[perf_cols].style.format({
                     "Tps Cycle Moy (min)": "{:.1f} min",
@@ -8939,7 +9120,7 @@ if "CYCLES" in tab_dict:
                 width='stretch',
                 hide_index=True
             )
-            
+
             # Graphique de performance
             try:
                 import plotly.express as px
@@ -8956,34 +9137,34 @@ if "CYCLES" in tab_dict:
                 st.plotly_chart(fig_perf, width='stretch')
             except:
                 st.info("Graphique disponible avec plotly")
-        
+
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- PERFORMANCE DES OPÉRATEURS ---
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.subheader("👷 PERFORMANCE DES OPÉRATEURS")
-        
+
         # Récupérer les opérateurs et leur performance
         operateurs = [e for e in staff_mgr.staff if e.role == "Operateur"]
-        
+
         if operateurs and not df.empty:
             operator_perf = []
-            
+
             for op in operateurs:
                 # Trouver les machines assignées à cet opérateur
                 machines_op = df[df['Opérateur'] == op.name]
-                
+
                 total_cycles = machines_op['Cycles'].sum() if len(machines_op) > 0 else 0
                 total_production = machines_op['Production (T)'].sum() if len(machines_op) > 0 else 0
                 total_hours = machines_op['H. Run Jour'].sum() if len(machines_op) > 0 else 0
                 avg_cycle_time = machines_op['Tps Cycle Moy (min)'].mean() if len(machines_op) > 0 and machines_op['Tps Cycle Moy (min)'].mean() > 0 else 0
-                
+
                 tonnes_heure = (total_production / total_hours) if total_hours > 0 else 0
-                
+
                 # Nombre de machines assignées
                 nb_machines = len(machines_op)
                 machines_list = ", ".join(machines_op['ID'].tolist()) if len(machines_op) > 0 else "Aucune"
-                
+
                 operator_perf.append({
                     "Matricule": op.matricule,
                     "Nom": op.name,
@@ -8997,10 +9178,10 @@ if "CYCLES" in tab_dict:
                     "Tonnes/Heure": round(tonnes_heure, 2),
                     "Performance Score": int(getattr(op, 'performance_score', 0))
                 })
-            
+
             if operator_perf:
                 df_operators = pd.DataFrame(operator_perf)
-                
+
                 # Ajouter aussi les données de production depuis le StaffManager
                 for idx, row in df_operators.iterrows():
                     op_staff = next((o for o in operateurs if o.matricule == row['Matricule']), None)
@@ -9008,32 +9189,32 @@ if "CYCLES" in tab_dict:
                         # Utiliser la production totale de l'opérateur s'il n'a pas de machines assignées
                         if row['Nb Machines'] == 0 and hasattr(op_staff, 'production_tonnes'):
                             df_operators.loc[idx, 'Production Totale (T)'] = int(op_staff.production_tonnes)
-                
+
                 # Trier par production décroissante
                 df_operators = df_operators.sort_values('Production Totale (T)', ascending=False)
-                
+
                 # Ajouter le classement
                 df_operators.insert(0, 'Rang', range(1, len(df_operators) + 1))
-                
+
                 # Métriques globales opérateurs
                 col_o1, col_o2, col_o3, col_o4 = st.columns(4)
                 avg_op_tonnes_heure = df_operators['Tonnes/Heure'].mean()
                 best_op = df_operators.iloc[0] if len(df_operators) > 0 else None
                 total_op_prod = df_operators['Production Totale (T)'].sum()
                 total_op_cycles = df_operators['Cycles Totaux'].sum()
-                
+
                 col_o1.metric("👥 Nombre Opérateurs", len(df_operators))
                 col_o2.metric("🏆 Meilleur Opérateur", f"{best_op['Nom']}" if best_op is not None else "N/A", f"{best_op['Production Totale (T)']:,.0f} T" if best_op is not None else "")
                 col_o3.metric("📊 Moyenne Tonnes/Heure", f"{avg_op_tonnes_heure:.2f} T/h")
                 col_o4.metric("⚡ Cycles Totaux", f"{total_op_cycles:,}")
-                
+
                 st.markdown("---")
-                
+
                 # Tableau de performance des opérateurs
                 operator_cols = ['Rang', 'Nom', 'Matricule', 'Équipe', 'Machines Assignées', 'Nb Machines',
                                'Cycles Totaux', 'Production Totale (T)', 'Heures Travaillées',
                                'Tps Cycle Moy (min)', 'Tonnes/Heure', 'Performance Score']
-                
+
                 st.dataframe(
                     df_operators[operator_cols].style.format({
                         "Production Totale (T)": "{:.0f} T",
@@ -9045,7 +9226,7 @@ if "CYCLES" in tab_dict:
                     width='stretch',
                     hide_index=True
                 )
-                
+
                 # Graphique de classement des opérateurs
                 try:
                     import plotly.express as px
@@ -9066,24 +9247,24 @@ if "CYCLES" in tab_dict:
                 st.info("Aucune donnée de performance d'opérateur disponible.")
         else:
             st.info("Aucun opérateur trouvé ou aucune donnée de cycle disponible.")
-        
+
         st.markdown('</div>', unsafe_allow_html=True)
 
 # --- CARBURANT (MULTI-DEVISE) ---
 if "CARBURANT" in tab_dict:
     with tab_dict["CARBURANT"]:
-        
+
         # 1. KPI GLOBAUX
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.subheader("⛽ GESTION CARBURANT & FOREX")
-        
+
         c1, c2, c3 = st.columns(3)
         total_conso = int(df['Conso. Jour (L)'].sum())
         total_renta = int(df['Rentabilité ($)'].sum())
-        
+
         c1.metric("CONSO. JOUR PARC", f"{total_conso} L", delta="Estimé")
         c2.metric("RENTABILITÉ NETTE", f"{total_renta} $", delta="En Dollar")
-        
+
         # Affichage Taux Live
         with c3:
             st.markdown(f"""
@@ -9098,23 +9279,23 @@ if "CARBURANT" in tab_dict:
         # 2. TABLEAU DÉTAILLÉ
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown("#### 📋 TABLEAU DE BORD ÉNERGÉTIQUE")
-        
+
         cols_fuel = [
-            'ID', 'Type', 
-            'Conso. Voyage (L)', 'Conso. Shift (L)', 'Conso. Jour (L)', 
-            'Conso. Mois (L)', 
+            'ID', 'Type',
+            'Conso. Voyage (L)', 'Conso. Shift (L)', 'Conso. Jour (L)',
+            'Conso. Mois (L)',
             'Rev. Jour ($)', 'Coût Fuel ($)', 'Rentabilité ($)'
         ]
-        
+
         numeric_cols_to_format = ['Conso. Voyage (L)', 'Conso. Shift (L)', 'Conso. Jour (L)', 'Conso. Mois (L)', 'Rev. Jour ($)', 'Coût Fuel ($)', 'Rentabilité ($)']
-        
+
         def color_rentabilite(val):
             color = '#2ecc71' if val > 0 else '#e74c3c'
             return f'color: {color}; font-weight: bold'
 
         st.dataframe(
             _styler_cell_map(df[cols_fuel].style, color_rentabilite, subset=['Rentabilité ($)'])
-                               .format("{:.0f}", subset=numeric_cols_to_format), 
+                               .format("{:.0f}", subset=numeric_cols_to_format),
             width='stretch'
         )
         st.markdown('</div>', unsafe_allow_html=True)
@@ -9124,27 +9305,27 @@ if "CARBURANT" in tab_dict:
         with c_g:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("📉 RENTABILITÉ vs CONSOMMATION")
-            fig_renta = px.scatter(df, x="Conso. Jour (L)", y="Rentabilité ($)", 
+            fig_renta = px.scatter(df, x="Conso. Jour (L)", y="Rentabilité ($)",
                                    size="Production (T)", color="Type", hover_name="ID",
                                    color_discrete_sequence=['#F5B800', '#000', '#555'])
             st.plotly_chart(fig_renta, width='stretch')
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         with c_d:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("➕ SAISIE PLEIN")
-            
+
             with st.form("add_fuel"):
                 m = st.selectbox("Engin", df['ID'])
                 q = st.number_input("Quantité (Litres)", min_value=1)
-                
+
                 # SÉLECTEUR DE DEVISE
                 col_dev, col_prix = st.columns([1, 2])
                 with col_dev:
                     devise = st.selectbox("Devise", ["CFA", "EUR", "USD"])
                 with col_prix:
                     p_input = st.number_input("Prix du Litre", value=600.0 if devise=="CFA" else 1.5)
-                
+
                 if st.form_submit_button("VALIDER"):
                     # CONVERSION AUTOMATIQUE EN USD
                     if devise == "CFA":
@@ -9157,19 +9338,19 @@ if "CARBURANT" in tab_dict:
                         p_usd = p_input
 
                     for mac in manager.machines:
-                        if mac.id == m: 
+                        if mac.id == m:
                             mac.add_fuel(q, p_usd, devise, p_input)
-                    
+
                     st.success(f"Plein ajouté ! (Conv: {p_usd:.2f} $/L)")
                     st.rerun()
-                    
+
             st.markdown('</div>', unsafe_allow_html=True)
 
 # --- MAINTENANCE ---
 # --- MAINTENANCE (ONGLET 4 - EXPERT ATELIER) ---
 if "MAINT." in tab_dict:
     with tab_dict["MAINT."]:
-        
+
         # --- GESTION DE LA FLOTTE (BASE POUR RH ET ADMIN) ---
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.subheader("🚛 GESTION DE LA FLOTTE")
@@ -9181,7 +9362,7 @@ if "MAINT." in tab_dict:
             </p>
         </div>
         """, unsafe_allow_html=True)
-        
+
         # Liste des types de machines (utilisée dans plusieurs onglets)
         machine_types_list = [
             "Dumper", "Excavatrice", "Chargeuse", "Bulldozer",
@@ -9189,10 +9370,10 @@ if "MAINT." in tab_dict:
         ]
         _MACHINE_TYPES_WITH_BUCKET = frozenset({"Excavatrice", "Chargeuse", "Tractopelle"})
         _MACHINE_TYPES_BLADE = frozenset({"Bulldozer"})
-        
+
         # Créer des onglets pour la gestion de la flotte
         fleet_tabs = st.tabs(["📋 Liste de la Flotte", "➕ Ajouter une Machine", "✏️ Modifier une Machine", "🗑️ Supprimer une Machine"])
-        
+
         # --- TAB 1: LISTE DE LA FLOTTE ---
         with fleet_tabs[0]:
             if manager.machines:
@@ -9205,7 +9386,7 @@ if "MAINT." in tab_dict:
                         if hasattr(emp, 'assigned_machine') and emp.assigned_machine == m.id:
                             operator_name = emp.name
                             break
-                    
+
                     fleet_display_data.append({
                         "ID": m.id,
                         "Modèle": m.model,
@@ -9219,10 +9400,10 @@ if "MAINT." in tab_dict:
                         "Opérateur": operator_name,
                         "Taux Horaire ($)": f"{m.hourly_rate:,.2f}"
                     })
-                
+
                 df_fleet_display = pd.DataFrame(fleet_display_data)
                 st.dataframe(df_fleet_display, width='stretch', hide_index=True)
-                
+
                 # Statistiques
                 st.markdown("---")
                 st.markdown("#### 📊 Statistiques de la Flotte")
@@ -9238,7 +9419,7 @@ if "MAINT." in tab_dict:
                 with col_stat4:
                     types_unique = len(set([m.type for m in manager.machines]))
                     st.metric("Types Différents", types_unique)
-                
+
                 # Répartition par type
                 st.markdown("---")
                 st.markdown("#### 📈 Répartition par Type de Machine")
@@ -9254,7 +9435,7 @@ if "MAINT." in tab_dict:
                 st.plotly_chart(fig_types, width='stretch')
             else:
                 st.warning("⚠️ Aucune machine dans la flotte. Ajoutez des machines pour commencer.")
-        
+
         # --- TAB 2: AJOUTER UNE MACHINE ---
         with fleet_tabs[1]:
             # Préréglage hors formulaire : on_change interdit à l'intérieur de st.form (Streamlit >= 1.33)
@@ -9278,7 +9459,7 @@ if "MAINT." in tab_dict:
                 )
                 if CATALOG_NOTE and use_model_catalog:
                     st.caption(CATALOG_NOTE)
-                
+
                 col_id, col_model = st.columns(2)
                 with col_id:
                     new_machine_id = st.text_input("ID Machine *", placeholder="Ex: DT-03, EX-03", help="Identifiant unique de la machine")
@@ -9318,7 +9499,7 @@ if "MAINT." in tab_dict:
                             help="Modèle de la machine",
                             key="add_mach_model_manual",
                         )
-                
+
                 col_type, col_capacity = st.columns(2)
                 with col_type:
                     new_machine_type = st.selectbox("Type *", machine_types_list, help="Type de machine")
@@ -9364,7 +9545,7 @@ if "MAINT." in tab_dict:
                             f"Indicatif charge utile pour ce modèle : ≈ **{ref_tons:g} t** — à confirmer "
                             "(options, densité, réglementation)."
                         )
-                
+
                 new_bucket_m3 = 0.0
                 new_blade_m3 = 0.0
                 new_operating_weight_t = 0.0
@@ -9399,13 +9580,13 @@ if "MAINT." in tab_dict:
                         step=0.01,
                         help="Estimation du volume poussé par la lame (selon lame et matériau).",
                     )
-                
+
                 col_heures, col_taux = st.columns(2)
                 with col_heures:
                     new_machine_hours = st.number_input("Heures Moteur Initiales", min_value=0.0, value=0.0, step=1.0, help="Heures moteur actuelles")
                 with col_taux:
                     new_machine_rate = st.number_input("Taux Horaire ($)", min_value=0.0, value=100.0, step=1.0, help="Taux horaire en USD")
-                
+
                 if st.form_submit_button("✅ AJOUTER LA MACHINE", use_container_width=True):
                     if not new_machine_id or not new_machine_model or not new_machine_type:
                         st.warning("⚠️ Veuillez remplir tous les champs obligatoires (ID, Modèle, Type).")
@@ -9438,20 +9619,20 @@ if "MAINT." in tab_dict:
                                 new_machine.blade_capacity_m3 = 0.0
                                 new_machine.operating_weight_t = 0.0
                             new_machine.save_to_db()
-                            
+
                             # Ajouter à la flotte
                             manager.machines.append(new_machine)
                             st.success(f"✅ Machine '{new_machine_id}' ({new_machine_model} - {new_machine_type}) ajoutée avec succès à la flotte !")
                             st.rerun()
-        
+
         # --- TAB 3: MODIFIER UNE MACHINE ---
         with fleet_tabs[2]:
             if manager.machines:
                 machine_ids_list = [m.id for m in manager.machines]
                 selected_machine_to_edit = st.selectbox("Sélectionner la Machine à Modifier", machine_ids_list)
-                
+
                 machine_to_edit = next((m for m in manager.machines if m.id == selected_machine_to_edit), None)
-                
+
                 if machine_to_edit:
                     _edit_fleet_sid = "edit_fleet_selected_machine_id"
                     if st.session_state.get(_edit_fleet_sid) != machine_to_edit.id:
@@ -9478,7 +9659,7 @@ if "MAINT." in tab_dict:
                         )
                         if CATALOG_NOTE and use_cat_edit:
                             st.caption(CATALOG_NOTE)
-                        
+
                         col_id2, col_model2 = st.columns(2)
                         with col_id2:
                             edited_machine_id = st.text_input("ID Machine *", value=machine_to_edit.id, disabled=True, help="L'ID ne peut pas être modifié")
@@ -9511,7 +9692,7 @@ if "MAINT." in tab_dict:
                                 edited_machine_model = st.text_input(
                                     "Modèle *", value=machine_to_edit.model, key="edit_mach_model_manual"
                                 )
-                        
+
                         col_type2, col_capacity2 = st.columns(2)
                         with col_type2:
                             current_type_index = machine_types_list.index(machine_to_edit.type) if machine_to_edit.type in machine_types_list else 0
@@ -9557,7 +9738,7 @@ if "MAINT." in tab_dict:
                                 st.caption(
                                     f"Indicatif charge utile : ≈ **{ref_et:g} t** — à confirmer selon votre contexte."
                                 )
-                        
+
                         edit_bucket_m3 = float(getattr(machine_to_edit, "bucket_capacity_m3", 0) or 0)
                         edit_blade_m3 = float(getattr(machine_to_edit, "blade_capacity_m3", 0) or 0)
                         edit_operating_weight_t = float(getattr(machine_to_edit, "operating_weight_t", 0) or 0)
@@ -9587,13 +9768,13 @@ if "MAINT." in tab_dict:
                                 value=edit_blade_m3,
                                 step=0.01,
                             )
-                        
+
                         col_heures2, col_taux2 = st.columns(2)
                         with col_heures2:
                             edited_machine_hours = st.number_input("Heures Moteur", min_value=0.0, value=float(machine_to_edit.engine_hours), step=1.0)
                         with col_taux2:
                             edited_machine_rate = st.number_input("Taux Horaire ($)", min_value=0.0, value=float(machine_to_edit.hourly_rate), step=1.0)
-                        
+
                         col_status, col_prod = st.columns(2)
                         with col_status:
                             status_options = ["Active", "Panne", "En maintenance"]
@@ -9601,10 +9782,10 @@ if "MAINT." in tab_dict:
                             edited_machine_status = st.selectbox("Statut", status_options, index=current_status_index)
                         with col_prod:
                             edited_machine_production = st.number_input("Production Initiale (T)", min_value=0.0, value=float(machine_to_edit.production_tonnes), step=0.1)
-                        
+
                         # Le bouton doit toujours être présent dans le formulaire
                         submitted = st.form_submit_button("✅ ENREGISTRER LES MODIFICATIONS", use_container_width=True)
-                        
+
                         if submitted:
                             # Mettre à jour la machine
                             machine_to_edit.model = edited_machine_model
@@ -9627,27 +9808,27 @@ if "MAINT." in tab_dict:
                                 machine_to_edit.blade_capacity_m3 = 0.0
                                 machine_to_edit.operating_weight_t = 0.0
                             machine_to_edit.save_to_db()
-                            
+
                             st.success(f"✅ Machine '{machine_to_edit.id}' modifiée avec succès !")
                             st.rerun()
                 else:
                     st.info("⚠️ Machine non trouvée.")
             else:
                 st.info("Aucune machine dans la flotte. Ajoutez d'abord des machines.")
-        
+
         # --- TAB 4: SUPPRIMER UNE MACHINE ---
         with fleet_tabs[3]:
             if manager.machines:
                 st.warning("⚠️ **ATTENTION** : La suppression d'une machine est irréversible et affectera toutes les données associées (maintenance, assignations, etc.).")
-                
+
                 machine_ids_list_del = [m.id for m in manager.machines]
                 selected_machine_to_delete = st.selectbox("Sélectionner la Machine à Supprimer", machine_ids_list_del)
-                
+
                 machine_to_delete = next((m for m in manager.machines if m.id == selected_machine_to_delete), None)
-                
+
                 if machine_to_delete:
                     st.markdown(f"### 🗑️ Supprimer la Machine : {machine_to_delete.id}")
-                    
+
                     # Afficher les informations de la machine
                     col_info1, col_info2 = st.columns(2)
                     with col_info1:
@@ -9672,27 +9853,27 @@ if "MAINT." in tab_dict:
                         **Heures Moteur :** {machine_to_delete.engine_hours:,} h
                         **Statut :** {machine_to_delete.status}
                         """)
-                    
+
                     # Vérifier si la machine est assignée à un opérateur
                     assigned_to = None
                     for emp in staff_mgr.staff:
                         if hasattr(emp, 'assigned_machine') and emp.assigned_machine == machine_to_delete.id:
                             assigned_to = emp.name
                             break
-                    
+
                     if assigned_to:
                         st.error(f"⚠️ Cette machine est actuellement assignée à **{assigned_to}**. Retirez d'abord l'assignation dans RH.")
-                    
+
                     # Confirmation
                     confirm_delete = st.checkbox("✅ Je confirme vouloir supprimer cette machine", key="confirm_delete_machine")
-                    
+
                     if confirm_delete and not assigned_to:
                         if st.button("🗑️ SUPPRIMER DÉFINITIVEMENT", use_container_width=True, type="primary"):
                             # Retirer toutes les assignations
                             for emp in staff_mgr.staff:
                                 if hasattr(emp, 'assigned_machine') and emp.assigned_machine == machine_to_delete.id:
                                     emp.assigned_machine = "Aucune"
-                            
+
                             # Supprimer la machine
                             manager.remove_machine(machine_to_delete.id)
                             st.success(f"✅ Machine '{machine_to_delete.id}' supprimée avec succès !")
@@ -9701,16 +9882,16 @@ if "MAINT." in tab_dict:
                         st.warning("⚠️ Veuillez d'abord retirer l'assignation de cette machine dans RH.")
             else:
                 st.info("Aucune machine dans la flotte.")
-        
+
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- 0. ALERTES DE MAINTENANCE PLANIFIÉES (VISIBLE PAR TOUS) ---
         active_alerts = manager.maintenance_manager.get_all_active_alerts()
         if active_alerts:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("🔔 ALERTES DE MAINTENANCE PLANIFIÉES")
             st.info(f"📢 **{len(active_alerts)} maintenance(s) planifiée(s) - Visible par tous les utilisateurs**")
-            
+
             # Grouper les alertes par date
             today = date.today()
             alerts_by_date = {}
@@ -9719,7 +9900,7 @@ if "MAINT." in tab_dict:
                 if days_until not in alerts_by_date:
                     alerts_by_date[days_until] = []
                 alerts_by_date[days_until].append(alert)
-            
+
             # Afficher les alertes par date (trier par proximité)
             for days_until in sorted(alerts_by_date.keys()):
                 alerts_group = alerts_by_date[days_until]
@@ -9731,7 +9912,7 @@ if "MAINT." in tab_dict:
                     st.warning(f"🟡 **DANS {days_until} JOUR(S):**")
                 else:
                     st.info(f"🔵 **DANS {days_until} JOUR(S):**")
-                
+
                 for alert in alerts_group:
                     machine = next((m for m in manager.machines if m.id == alert.machine_id), None)
                     machine_type = machine.type if machine else "N/A"
@@ -9743,26 +9924,26 @@ if "MAINT." in tab_dict:
                     with col3:
                         st.write(f"👤 Créée par: {alert.created_by}")
                 st.markdown("---")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- 1. KPI DISPONIBILITÉ & SANTÉ ---
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.subheader("🔧 SANTÉ DU PARC")
-        
+
         # Calculs
         nb_total = len(df)
         nb_pannes = len(df[df['Statut']=='Panne'])
         nb_actives = len(df[df['Statut']=='Active'])
         # Disponibilité mécanique (Formule simplifiée instantanée)
         dispo_pct = round((nb_actives / nb_total) * 100, 1) if nb_total > 0 else 0
-        
+
         # Compter les PM en retard (celles qui ont "DUE" dans la colonne Prochaine PM)
         pm_retard = len(df[df['Prochaine PM'].str.contains("DUE")])
 
         # Compter les alertes actives
         nb_alertes = len(active_alerts)
-        
+
         k1, k2, k3, k4, k5 = st.columns(5)
         k1.metric("DISPONIBILITÉ", f"{dispo_pct} %", delta="Cible: 90%")
         k2.metric("MACHINES À L'ARRÊT", f"{nb_pannes}", delta_color="inverse")
@@ -9774,12 +9955,12 @@ if "MAINT." in tab_dict:
         # --- 2. GESTION DES PANNES (PRIORITÉ ABSOLUE) ---
         # On n'affiche ce bloc que s'il y a des pannes
         pannes_actives = [m for m in manager.machines if m.status == "Panne"]
-        
+
         if pannes_actives:
             st.error(f"🚨 IL Y A {len(pannes_actives)} MACHINE(S) EN PANNE ACTUELLEMENT")
-            
+
             cols_panne = st.columns(len(pannes_actives)) if len(pannes_actives) < 4 else st.columns(3)
-            
+
             for i, machine in enumerate(pannes_actives):
                 col = cols_panne[i % 3]
                 with col:
@@ -9797,12 +9978,12 @@ if "MAINT." in tab_dict:
                             repair_key = f"repair_pieces_{machine.id}"
                             if repair_key not in st.session_state:
                                 st.session_state[repair_key] = []
-                            
+
                             # ÉTAPE 1: SÉLECTION DES PIÈCES
                             st.markdown("**📦 ÉTAPE 1: Sélectionner les pièces changées**")
                             with st.form(f"select_parts_rep_form_{machine.id}"):
                                 st.markdown("**Pièces depuis le catalogue:**")
-                                
+
                                 # Sélection par catégorie
                                 catalog_rep = manager.maintenance_manager.parts_catalog
                                 categories_rep = catalog_rep.get_categories()
@@ -9811,23 +9992,23 @@ if "MAINT." in tab_dict:
                                     ["Toutes les catégories"] + categories_rep,
                                     key=f"cat_filter_rep_{machine.id}"
                                 )
-                                
+
                                 # Obtenir les pièces selon la catégorie sélectionnée
                                 if selected_category_rep == "Toutes les catégories":
                                     available_parts_rep = catalog_rep.get_parts_by_category()
                                 else:
                                     available_parts_rep = catalog_rep.get_parts_by_category(selected_category_rep)
-                                
+
                                 # Créer une liste de sélection avec nom et prix
                                 parts_options_rep = {f"{p['nom']} ({p['cout']:.2f} $)": p for p in available_parts_rep}
-                                
+
                                 # Multiselect pour choisir les pièces
                                 selected_parts_labels_rep = st.multiselect(
                                     "Choisir les pièces changées",
                                     list(parts_options_rep.keys()),
                                     key=f"selected_parts_rep_{machine.id}"
                                 )
-                                
+
                                 # Afficher les quantités pour les pièces sélectionnées
                                 pieces_temp = []
                                 if selected_parts_labels_rep:
@@ -9849,7 +10030,7 @@ if "MAINT." in tab_dict:
                                             "quantite": int(qte),
                                             "cout": float(part['cout'])
                                         })
-                                
+
                                 # Option pour ajouter des pièces personnalisées
                                 st.markdown("---")
                                 st.markdown("**Pièces personnalisées:**")
@@ -9860,7 +10041,7 @@ if "MAINT." in tab_dict:
                                     value=0,
                                     key=f"num_custom_rep_{machine.id}"
                                 )
-                                
+
                                 if num_custom_pieces_rep > 0:
                                     for i in range(num_custom_pieces_rep):
                                         col_c1, col_c2, col_c3 = st.columns([3, 1, 1])
@@ -9870,25 +10051,25 @@ if "MAINT." in tab_dict:
                                             qte_custom = st.number_input(f"Qté", min_value=1, value=1, key=f"custom_qte_rep_{machine.id}_{i}")
                                         with col_c3:
                                             cout_custom = st.number_input(f"Coût ($)", min_value=0.0, value=0.0, step=0.01, key=f"custom_cout_rep_{machine.id}_{i}")
-                                        
+
                                         if nom_custom:
                                             pieces_temp.append({
                                                 "nom": nom_custom,
                                                 "quantite": int(qte_custom),
                                                 "cout": float(cout_custom)
                                             })
-                                
+
                                 # Bouton pour valider la sélection des pièces
                                 if st.form_submit_button("✅ VALIDER LA SÉLECTION DES PIÈCES", use_container_width=True):
                                     st.session_state[repair_key] = pieces_temp
                                     st.success(f"✅ {len(pieces_temp)} pièce(s) sélectionnée(s) et validée(s) !")
                                     st.rerun()
-                            
+
                             # ÉTAPE 2: RÉSUMÉ ET VALIDATION FINALE
                             if st.session_state[repair_key]:
                                 st.markdown("---")
                                 st.markdown("**✅ ÉTAPE 2: Confirmer la fin de réparation**")
-                                
+
                                 # Afficher le résumé des pièces validées
                                 st.markdown("**📋 Résumé des pièces validées:**")
                                 total_cost_rep = 0
@@ -9896,24 +10077,24 @@ if "MAINT." in tab_dict:
                                     cost = piece["cout"] * piece["quantite"]
                                     total_cost_rep += cost
                                     st.write(f"  • {piece['nom']}: {piece['quantite']} × {piece['cout']:,.2f} $ = {cost:,.2f} $")
-                                
+
                                 st.info(f"💰 **Coût total des pièces: {total_cost_rep:,.2f} $**")
-                                
+
                                 # Formulaire final pour valider la réparation
                                 with st.form(f"final_repair_form_{machine.id}"):
                                     # Récupérer la liste des mécaniciens et superviseurs mécaniques depuis RH
                                     mechanics_list_rep = [
-                                        emp for emp in staff_mgr.staff 
+                                        emp for emp in staff_mgr.staff
                                         if emp.role in ["Mecanicien", "Superviseur Mecanicien"]
                                     ]
-                                    
+
                                     if mechanics_list_rep:
                                         # Créer une liste avec nom, matricule et rôle pour l'affichage
                                         mechanics_options_rep = {
                                             f"{emp.name} ({emp.matricule}) - {emp.role}": emp.name
                                             for emp in sorted(mechanics_list_rep, key=lambda e: e.name)
                                         }
-                                        
+
                                         mechanic_name = st.selectbox(
                                             "Mécanicien/Superviseur *",
                                             [""] + list(mechanics_options_rep.keys()),
@@ -9927,9 +10108,9 @@ if "MAINT." in tab_dict:
                                     else:
                                         st.warning("⚠️ Aucun mécanicien ou superviseur mécanique trouvé dans la liste RH. Ajoutez-en dans l'onglet RH.")
                                         mechanic_name = st.text_input("Nom du Mécanicien *", placeholder="Ex: Jean KOUANGA", key=f"mech_{machine.id}_final_fallback")
-                                    
+
                                     notes = st.text_area("Notes/Observations", key=f"notes_{machine.id}_final", height=60)
-                                    
+
                                     if st.form_submit_button(f"✅ TERMINER RÉPARATION ({machine.id})", use_container_width=True):
                                         if mechanic_name:
                                             manager.repair_machine(machine.id, mechanic_name, st.session_state[repair_key] if st.session_state[repair_key] else None, notes)
@@ -9940,7 +10121,7 @@ if "MAINT." in tab_dict:
                                             st.rerun()
                                         else:
                                             st.warning("⚠️ Veuillez sélectionner un mécanicien ou superviseur mécanique.")
-                                
+
                                 # Bouton pour annuler et recommencer
                                 if st.button(f"❌ Annuler et recommencer", key=f"cancel_rep_{machine.id}", use_container_width=True):
                                     st.session_state[repair_key] = []
@@ -9953,13 +10134,13 @@ if "MAINT." in tab_dict:
         with c_suivi:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("📋 SUIVI PRÉVENTIF (H-MÈTRE & DATES)")
-            
+
             # Fonction de style pour le tableau
             def highlight_status(val):
                 if 'Panne' in str(val): return 'background-color: #ffcccc; color: red; font-weight: bold'
                 if 'Active' in str(val): return 'background-color: #ccffcc; color: green'
                 return ''
-            
+
             def highlight_pm(val):
                 if 'DUE' in str(val): return 'color: red; font-weight: bold; text-decoration: underline'
                 if 'OK' in str(val): return 'color: green'
@@ -9967,7 +10148,7 @@ if "MAINT." in tab_dict:
 
             # Sélection des colonnes utiles pour la maintenance
             cols_maint = ['ID', 'Type', 'Statut', 'H. Total', 'Prochaine PM', 'Maint. Date']
-            
+
             st.dataframe(
                 df[cols_maint].style
                 .pipe(_styler_cell_map, highlight_status, subset=['Statut'])
@@ -9981,44 +10162,44 @@ if "MAINT." in tab_dict:
         with c_action:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("🛠️ ATELIER EXPRESS")
-            
+
             # A. VALIDATION PM
             st.markdown("#### 1. VALIDER UNE PM")
-            
+
             # Initialiser session_state pour stocker les pièces validées
             if 'pm_pieces_validated' not in st.session_state:
                 st.session_state.pm_pieces_validated = []
-            
+
             # ÉTAPE 1: SÉLECTION DES PIÈCES
             st.markdown("**📦 ÉTAPE 1: Sélectionner les pièces changées**")
             with st.form("select_parts_pm_form"):
                 mac_pm = st.selectbox("Engin sortant de maintenance", [m.id for m in manager.machines], key="mac_pm_select")
                 type_pm = st.selectbox("Type d'intervention", ["PM 250h", "PM 500h", "PM 1000h", "Changement Pneus", "Autre"], key="type_pm_select")
-                
+
                 st.markdown("---")
                 st.markdown("**Pièces depuis le catalogue:**")
-                
+
                 # Sélection par catégorie
                 catalog = manager.maintenance_manager.parts_catalog
                 categories = catalog.get_categories()
                 selected_category = st.selectbox("Filtrer par catégorie (optionnel)", ["Toutes les catégories"] + categories, key="cat_filter_pm")
-                
+
                 # Obtenir les pièces selon la catégorie sélectionnée
                 if selected_category == "Toutes les catégories":
                     available_parts = catalog.get_parts_by_category()
                 else:
                     available_parts = catalog.get_parts_by_category(selected_category)
-                
+
                 # Créer une liste de sélection avec nom et prix
                 parts_options = {f"{p['nom']} ({p['cout']:.2f} $)": p for p in available_parts}
-                
+
                 # Multiselect pour choisir les pièces
                 selected_parts_labels = st.multiselect(
                     "Choisir les pièces changées",
                     list(parts_options.keys()),
                     key="selected_parts_pm"
                 )
-                
+
                 # Afficher les quantités pour les pièces sélectionnées
                 pieces_temp = []
                 if selected_parts_labels:
@@ -10040,12 +10221,12 @@ if "MAINT." in tab_dict:
                             "quantite": int(qte),
                             "cout": float(part['cout'])
                         })
-                
+
                 # Option pour ajouter des pièces personnalisées
                 st.markdown("---")
                 st.markdown("**Pièces personnalisées:**")
                 num_custom_pieces = st.number_input("Nombre de pièces personnalisées", min_value=0, max_value=10, value=0, key="num_custom_pm")
-                
+
                 if num_custom_pieces > 0:
                     for i in range(num_custom_pieces):
                         col_c1, col_c2, col_c3 = st.columns([3, 1, 1])
@@ -10055,14 +10236,14 @@ if "MAINT." in tab_dict:
                             qte_custom = st.number_input(f"Qté", min_value=1, value=1, key=f"custom_qte_pm_{i}")
                         with col_c3:
                             cout_custom = st.number_input(f"Coût ($)", min_value=0.0, value=0.0, step=0.01, key=f"custom_cout_pm_{i}")
-                        
+
                         if nom_custom:
                             pieces_temp.append({
                                 "nom": nom_custom,
                                 "quantite": int(qte_custom),
                                 "cout": float(cout_custom)
                             })
-                
+
                 # Bouton pour valider la sélection des pièces
                 if st.form_submit_button("✅ VALIDER LA SÉLECTION DES PIÈCES", use_container_width=True):
                     st.session_state.pm_pieces_validated = pieces_temp
@@ -10070,12 +10251,12 @@ if "MAINT." in tab_dict:
                     st.session_state.pm_type = type_pm
                     st.success(f"✅ {len(pieces_temp)} pièce(s) sélectionnée(s) et validée(s) !")
                     st.rerun()
-            
+
             # ÉTAPE 2: RÉSUMÉ ET VALIDATION FINALE
             if st.session_state.pm_pieces_validated:
                 st.markdown("---")
                 st.markdown("**✅ ÉTAPE 2: Confirmer la sortie de l'engin**")
-                
+
                 # Afficher le résumé des pièces validées
                 st.markdown("**📋 Résumé des pièces validées:**")
                 total_cost_pm = 0
@@ -10083,24 +10264,24 @@ if "MAINT." in tab_dict:
                     cost = piece["cout"] * piece["quantite"]
                     total_cost_pm += cost
                     st.write(f"  • {piece['nom']}: {piece['quantite']} × {piece['cout']:,.2f} $ = {cost:,.2f} $")
-                
+
                 st.info(f"💰 **Coût total des pièces: {total_cost_pm:,.2f} $**")
-                
+
                 # Formulaire final pour valider la sortie
                 with st.form("final_validate_pm_form"):
                     # Récupérer la liste des mécaniciens et superviseurs mécaniques depuis RH
                     mechanics_list = [
-                        emp for emp in staff_mgr.staff 
+                        emp for emp in staff_mgr.staff
                         if emp.role in ["Mecanicien", "Superviseur Mecanicien"]
                     ]
-                    
+
                     if mechanics_list:
                         # Créer une liste avec nom, matricule et rôle pour l'affichage
                         mechanics_options = {
                             f"{emp.name} ({emp.matricule}) - {emp.role}": emp.name
                             for emp in sorted(mechanics_list, key=lambda e: e.name)
                         }
-                        
+
                         mechanic_name_pm = st.selectbox(
                             "Mécanicien/Superviseur *",
                             [""] + list(mechanics_options.keys()),
@@ -10114,15 +10295,15 @@ if "MAINT." in tab_dict:
                     else:
                         st.warning("⚠️ Aucun mécanicien ou superviseur mécanique trouvé dans la liste RH. Ajoutez-en dans l'onglet RH.")
                         mechanic_name_pm = st.text_input("Nom du Mécanicien *", placeholder="Ex: Jean KOUANGA", key="mech_name_pm_final_fallback")
-                    
+
                     notes_pm = st.text_area("Notes/Observations", key="notes_pm_final", height=60)
-                    
+
                     col_info1, col_info2 = st.columns(2)
                     with col_info1:
                         st.write(f"**Engin:** {st.session_state.pm_machine}")
                     with col_info2:
                         st.write(f"**Type:** {st.session_state.pm_type}")
-                    
+
                     if st.form_submit_button("✅ CONFIRMER LA SORTIE DE L'ENGIN", use_container_width=True):
                         if mechanic_name_pm:
                             manager.do_maintenance_pm(
@@ -10144,16 +10325,16 @@ if "MAINT." in tab_dict:
                             st.rerun()
                         else:
                             st.warning("⚠️ Veuillez sélectionner un mécanicien ou superviseur mécanique.")
-                
+
                 # Bouton pour annuler et recommencer
                 if st.button("❌ Annuler et recommencer", use_container_width=True):
                     st.session_state.pm_pieces_validated = []
                     st.session_state.pm_machine = None
                     st.session_state.pm_type = None
                     st.rerun()
-            
+
             st.divider()
-            
+
             # B. MISE A JOUR H-METRE MANUELLE
             st.markdown("#### 2. CORRECTION H-MÈTRE")
             with st.expander("Saisie manuelle index"):
@@ -10174,7 +10355,7 @@ if "MAINT." in tab_dict:
                 new_date = st.date_input("Date prévue")
                 maintenance_type_plan = st.selectbox("Type de maintenance", ["PM 250h", "PM 500h", "PM 1000h", "Changement Pneus", "Révision générale", "Autre"])
                 created_by_plan = st.text_input("Planifié par", value=st.session_state.username if 'username' in st.session_state else "", key="created_by_plan")
-                
+
                 if st.form_submit_button("📅 PROGRAMMER (CRÉE ALERTE POUR TOUS)", use_container_width=True):
                     if manager.set_maintenance_date(mac_date, new_date, maintenance_type_plan, created_by_plan):
                         st.success(f"✅ Maintenance planifiée le {new_date.strftime('%d/%m/%Y')} pour {mac_date}. Alerte créée pour tous les utilisateurs !")
@@ -10183,31 +10364,31 @@ if "MAINT." in tab_dict:
                         st.rerun()
                     else:
                         st.error("❌ Erreur lors de la planification.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- 4. HISTORIQUE DES MAINTENANCES ---
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.subheader("📜 HISTORIQUE DES MAINTENANCES")
-        
+
         if manager.maintenance_manager.maintenance_records:
             # Afficher l'historique par machine
             machine_options_hist = ["Toutes les machines"] + [m.id for m in manager.machines]
             selected_machine_hist = st.selectbox("Filtrer par machine", machine_options_hist)
-            
+
             if selected_machine_hist == "Toutes les machines":
                 records_to_show = manager.maintenance_manager.maintenance_records
             else:
                 records_to_show = manager.maintenance_manager.get_maintenance_history_for_machine(selected_machine_hist)
-            
+
             if records_to_show:
                 # Trier par date décroissante
                 records_to_show.sort(key=lambda x: x.date_maintenance, reverse=True)
-                
+
                 for record in records_to_show:
                     machine = next((m for m in manager.machines if m.id == record.machine_id), None)
                     machine_type = machine.type if machine else "N/A"
-                    
+
                     with st.expander(f"🔧 {record.machine_id} ({machine_type}) - {record.maintenance_type} - {record.date_maintenance.strftime('%d/%m/%Y')}", expanded=False):
                         col_h1, col_h2 = st.columns(2)
                         with col_h1:
@@ -10226,23 +10407,23 @@ if "MAINT." in tab_dict:
                                 st.markdown(f"**💰 Coût Total Pièces: {total_cost:,.2f} $**")
                             else:
                                 st.write("**Pièces Changées:** Aucune pièce enregistrée")
-                        
+
                         if record.notes:
                             st.markdown(f"**Notes/Observations:** {record.notes}")
             else:
                 st.info("Aucune maintenance trouvée pour cette machine.")
         else:
             st.info("Aucun historique de maintenance disponible.")
-        
+
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- 5. RAPPORT JOURNALIER ---
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.subheader("📄 RAPPORT JOURNALIER DE MAINTENANCE")
-        
+
         # Sélection de la date
         report_date = st.date_input("Sélectionner la date du rapport", value=date.today(), key="maintenance_report_date")
-        
+
         # Filtrer les maintenances du jour sélectionné
         maintenances_du_jour = []
         for record in manager.maintenance_manager.maintenance_records:
@@ -10253,24 +10434,24 @@ if "MAINT." in tab_dict:
                     record_date = datetime.strptime(str(record.date_maintenance), "%Y-%m-%d").date()
                 except:
                     continue
-            
+
             if record_date == report_date:
                 maintenances_du_jour.append(record)
-        
+
         if maintenances_du_jour:
             st.success(f"✅ **{len(maintenances_du_jour)} maintenance(s) trouvée(s) pour le {report_date.strftime('%d/%m/%Y')}**")
             st.markdown("---")
-            
+
             # Statistiques du jour
             total_cost_day = 0
             machines_concerned = set()
             mechanics_concerned = set()
             total_pieces = 0
-            
+
             for record in maintenances_du_jour:
                 machines_concerned.add(record.machine_id)
                 mechanics_concerned.add(record.mechanic_name)
-                
+
                 if record.pieces_changed:
                     for piece in record.pieces_changed:
                         piece_name = piece.get("nom", "")
@@ -10283,24 +10464,24 @@ if "MAINT." in tab_dict:
                             piece_cost = piece.get("cout", 0) * quantity
                         total_cost_day += piece_cost
                         total_pieces += quantity
-            
+
             # Métriques
             col_stat1, col_stat2, col_stat3, col_stat4 = st.columns(4)
             col_stat1.metric("Maintenances", len(maintenances_du_jour))
             col_stat2.metric("Machines", len(machines_concerned))
             col_stat3.metric("Mécaniciens", len(mechanics_concerned))
             col_stat4.metric("Coût Total", f"{total_cost_day:,.2f} $")
-            
+
             st.markdown("---")
-            
+
             # Détails du rapport
             st.markdown("#### 📋 Détails des Maintenances")
-            
+
             report_data = []
             for record in maintenances_du_jour:
                 machine = next((m for m in manager.machines if m.id == record.machine_id), None)
                 machine_type = machine.type if machine else "N/A"
-                
+
                 # Calculer le coût des pièces
                 record_cost = 0
                 pieces_list = []
@@ -10315,7 +10496,7 @@ if "MAINT." in tab_dict:
                             piece_cost = piece.get("cout", 0) * quantity
                         record_cost += piece_cost
                         pieces_list.append(f"{piece_name} (x{quantity})")
-                
+
                 report_data.append({
                     "Heure": record.date_maintenance.strftime("%H:%M") if isinstance(record.date_maintenance, datetime) else "N/A",
                     "Machine": record.machine_id,
@@ -10327,12 +10508,12 @@ if "MAINT." in tab_dict:
                     "Coût ($)": f"{record_cost:,.2f}",
                     "Notes": record.notes if hasattr(record, 'notes') and record.notes else "N/A"
                 })
-            
+
             df_report = pd.DataFrame(report_data)
             st.dataframe(df_report, width='stretch', hide_index=True)
-            
+
             st.markdown("---")
-            
+
             # Résumé par machine
             st.markdown("#### 📊 Résumé par Machine")
             machine_summary = {}
@@ -10345,7 +10526,7 @@ if "MAINT." in tab_dict:
                     }
                 machine_summary[record.machine_id]["count"] += 1
                 machine_summary[record.machine_id]["types"].append(record.maintenance_type)
-                
+
                 if record.pieces_changed:
                     for piece in record.pieces_changed:
                         piece_name = piece.get("nom", "")
@@ -10356,7 +10537,7 @@ if "MAINT." in tab_dict:
                         else:
                             piece_cost = piece.get("cout", 0) * quantity
                         machine_summary[record.machine_id]["cost"] += piece_cost
-            
+
             summary_data = []
             for machine_id, summary in machine_summary.items():
                 summary_data.append({
@@ -10365,16 +10546,16 @@ if "MAINT." in tab_dict:
                     "Types": ", ".join(set(summary["types"])),
                     "Coût Total ($)": f"{summary['cost']:,.2f}"
                 })
-            
+
             df_summary = pd.DataFrame(summary_data)
             st.dataframe(df_summary, width='stretch', hide_index=True)
-            
+
             st.markdown("---")
-            
+
             # Boutons d'export
             st.markdown("#### 📥 Exporter le Rapport")
             col_exp1, col_exp2, col_exp3 = st.columns(3)
-            
+
             with col_exp1:
                 try:
                     csv_report = df_report.to_csv(index=False).encode('utf-8')
@@ -10387,7 +10568,7 @@ if "MAINT." in tab_dict:
                     )
                 except:
                     st.info("Export CSV disponible")
-            
+
             with col_exp2:
                 try:
                     import openpyxl
@@ -10408,7 +10589,7 @@ if "MAINT." in tab_dict:
                     st.info("Pour Excel: pip install openpyxl")
                 except:
                     st.info("Export Excel disponible")
-            
+
             with col_exp3:
                 # Rapport texte formaté
                 report_text = f"""
@@ -10451,7 +10632,7 @@ DÉTAILS DES MAINTENANCES
                     if hasattr(record, 'notes') and record.notes:
                         report_text += f"Notes: {record.notes}\n"
                     report_text += "-" * 50 + "\n"
-                
+
                 st.download_button(
                     label="📄 Télécharger en TXT",
                     data=report_text.encode('utf-8'),
@@ -10461,7 +10642,7 @@ DÉTAILS DES MAINTENANCES
                 )
         else:
             st.info(f"ℹ️ Aucune maintenance enregistrée pour le {report_date.strftime('%d/%m/%Y')}.")
-        
+
         st.markdown('</div>', unsafe_allow_html=True)
 
 # ==============================================================================
@@ -10607,9 +10788,9 @@ if "GESTION STOCK" in tab_dict:
         st.subheader("📦 GESTIONNAIRE DE STOCK")
         st.markdown("Gérez les quantités en stock, les entrées, sorties et alertes de stock bas")
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
         stock_mgr = manager.maintenance_manager.stock_manager
-        
+
         # Alertes de stock bas
         low_stock_items = stock_mgr.get_low_stock_items()
         if low_stock_items:
@@ -10618,42 +10799,42 @@ if "GESTION STOCK" in tab_dict:
             for item in low_stock_items:
                 st.warning(f"🔴 **{item['nom']}**: {item['quantite']} {item['unite']} (Seuil minimum: {item['seuil_min']} {item['unite']})")
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # Onglets internes Gestion Stock
         gestion_stock_tabs = st.tabs(["📊 État du Stock", "➕ Entrée Stock", "➖ Sortie Stock", "⚙️ Configuration", "📜 Historique", "📈 Durée de Vie Pièces"])
-        
+
         with gestion_stock_tabs[0]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.markdown("#### 📊 État du Stock Actuel")
-            
+
             catalog = manager.maintenance_manager.parts_catalog
-            
+
             # Statistiques globales
             total_items = len(catalog.parts)
             items_with_stock = len([p for p in catalog.parts if p["nom"] in stock_mgr.stock_levels])
             total_value_stock = 0
-            
+
             for part in catalog.parts:
                 stock_info = stock_mgr.get_stock_level(part["nom"])
                 total_value_stock += stock_info["quantite"] * part["cout"]
-            
+
             col_stat1, col_stat2, col_stat3, col_stat4 = st.columns(4)
             col_stat1.metric("Pièces en Catalogue", total_items)
             col_stat2.metric("Pièces avec Stock", items_with_stock)
             col_stat3.metric("Stock Bas", len(low_stock_items), delta_color="inverse")
             col_stat4.metric("Valeur Totale Stock", f"{total_value_stock:,.2f} $")
-            
+
             st.markdown("---")
-            
+
             # Filtrer par catégorie
             categories = catalog.get_categories()
             filter_cat_stock = st.selectbox("Filtrer par catégorie", ["Toutes les catégories"] + categories, key="filter_cat_stock")
-            
+
             if filter_cat_stock == "Toutes les catégories":
                 parts_to_show_stock = catalog.get_parts_by_category()
             else:
                 parts_to_show_stock = catalog.get_parts_by_category(filter_cat_stock)
-            
+
             if parts_to_show_stock:
                 # Créer un DataFrame avec les niveaux de stock
                 stock_data = []
@@ -10664,7 +10845,7 @@ if "GESTION STOCK" in tab_dict:
                         status = "🔴 ÉPUISÉ"
                     elif stock_info["quantite"] <= stock_info["seuil_min"]:
                         status = "🟡 STOCK BAS"
-                    
+
                     stock_data.append({
                         "Pièce": p["nom"],
                         "Catégorie": p["categorie"],
@@ -10674,10 +10855,10 @@ if "GESTION STOCK" in tab_dict:
                         "Valeur Stock ($)": f"{stock_info['quantite'] * p['cout']:,.2f}",
                         "Statut": status
                     })
-                
+
                 df_stock = pd.DataFrame(stock_data)
                 st.dataframe(df_stock, width='stretch', hide_index=True)
-                
+
                 # Boutons d'export
                 col_exp1, col_exp2 = st.columns(2)
                 with col_exp1:
@@ -10694,28 +10875,28 @@ if "GESTION STOCK" in tab_dict:
                         st.info("Export CSV disponible")
             else:
                 st.info("Aucune pièce trouvée dans cette catégorie.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         with gestion_stock_tabs[1]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.markdown("#### ➕ Entrée de Stock (Réception)")
-            
+
             with st.form("stock_entry_form"):
                 catalog_entry = manager.maintenance_manager.parts_catalog
                 parts_list = [p["nom"] for p in catalog_entry.parts]
-                
+
                 selected_part = st.selectbox("Pièce *", parts_list, key="entry_part")
                 quantity_entry = st.number_input("Quantité *", min_value=1, value=1, key="entry_qty")
-                
+
                 col_ref, col_date = st.columns(2)
                 with col_ref:
                     reference_entry = st.text_input("Référence (ex: N° Commande)", key="entry_ref", placeholder="Ex: CMD-2024-001")
                 with col_date:
                     date_entry = st.date_input("Date de réception", value=date.today(), key="entry_date")
-                
+
                 notes_entry = st.text_area("Notes", key="entry_notes", height=60, placeholder="Ex: Commande fournisseur XYZ")
-                
+
                 if st.form_submit_button("✅ ENREGISTRER L'ENTRÉE", use_container_width=True):
                     created_by_entry = st.session_state.username if 'username' in st.session_state else "Système"
                     movement = stock_mgr.add_stock_entry(
@@ -10726,13 +10907,13 @@ if "GESTION STOCK" in tab_dict:
                         st.rerun()
                     else:
                         st.error("❌ Erreur lors de l'enregistrement de l'entrée.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         with gestion_stock_tabs[2]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.markdown("#### ➖ Sortie de Stock (Utilisation)")
-            
+
             with st.form("stock_exit_form"):
                 catalog_exit = manager.maintenance_manager.parts_catalog
                 parts_list_exit = [p["nom"] for p in catalog_exit.parts]
@@ -10803,31 +10984,31 @@ if "GESTION STOCK" in tab_dict:
                             st.error("❌ Erreur lors de l'enregistrement de la sortie.")
                     else:
                         st.error(f"❌ Stock insuffisant ! Stock disponible: {stock_available['quantite']} {stock_available['unite']}")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         with gestion_stock_tabs[3]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.markdown("#### ⚙️ Configuration du Stock")
-            
+
             catalog_config = manager.maintenance_manager.parts_catalog
             parts_list_config = [p["nom"] for p in catalog_config.parts]
-            
+
             selected_part_config = st.selectbox("Sélectionner une pièce", parts_list_config, key="config_part")
-            
+
             stock_info_config = stock_mgr.get_stock_level(selected_part_config)
-            
+
             with st.form("stock_config_form"):
                 st.markdown(f"**Configuration pour: {selected_part_config}**")
-                
+
                 col_qty, col_seuil = st.columns(2)
                 with col_qty:
                     new_quantity = st.number_input("Quantité actuelle", min_value=0, value=stock_info_config["quantite"], key="config_qty")
                 with col_seuil:
                     new_seuil = st.number_input("Seuil minimum", min_value=0, value=stock_info_config["seuil_min"], key="config_seuil")
-                
+
                 unite_config = st.selectbox("Unité", ["unité", "L", "kg", "lot", "paquet"], index=0, key="config_unite")
-                
+
                 if st.form_submit_button("✅ METTRE À JOUR LE STOCK", use_container_width=True):
                     stock_mgr.set_stock_level(selected_part_config, new_quantity, new_seuil)
                     if selected_part_config not in stock_mgr.stock_levels:
@@ -10836,27 +11017,27 @@ if "GESTION STOCK" in tab_dict:
                         stock_mgr.stock_levels[selected_part_config]["unite"] = unite_config
                     st.success(f"✅ Stock mis à jour pour '{selected_part_config}'")
                     st.rerun()
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         with gestion_stock_tabs[4]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.markdown("#### 📜 Historique des Mouvements")
-            
+
             if stock_mgr.movements:
                 # Filtrer par pièce
                 catalog_hist = manager.maintenance_manager.parts_catalog
                 parts_list_hist = ["Toutes les pièces"] + [p["nom"] for p in catalog_hist.parts]
                 selected_part_hist = st.selectbox("Filtrer par pièce", parts_list_hist, key="hist_part")
-                
+
                 if selected_part_hist == "Toutes les pièces":
                     movements_to_show = stock_mgr.movements
                 else:
                     movements_to_show = stock_mgr.get_movements_for_part(selected_part_hist)
-                
+
                 # Trier par date décroissante
                 movements_to_show.sort(key=lambda x: x.date_movement, reverse=True)
-                
+
                 if movements_to_show:
                     movements_data = []
                     for m in movements_to_show:
@@ -10870,7 +11051,7 @@ if "GESTION STOCK" in tab_dict:
                             "Créé par": m.created_by or "Système",
                             "Notes": m.notes or ""
                         })
-                    
+
                     df_movements = pd.DataFrame(movements_data)
                     st.dataframe(df_movements, width='stretch', hide_index=True)
                 else:
@@ -11069,7 +11250,7 @@ if "GESTION STOCK" in tab_dict:
 # --- CARTE (SUPER HUD : CLASSEMENT & TONNAGE) ---
 if "CARTE" in tab_dict:
     with tab_dict["CARTE"]:
-        
+
         # 1. CONTRÔLES
         c_ctrl_1, c_ctrl_2 = st.columns([1, 4])
         with c_ctrl_1:
@@ -11079,7 +11260,7 @@ if "CARTE" in tab_dict:
                 st.rerun()
 
         c_map, c_dispatch = st.columns([3, 1])
-        
+
         # 2. PRÉPARATION INTELLIGENTE DES DONNÉES
         def get_fleet_centroid(machines):
             if not machines:
@@ -11113,7 +11294,7 @@ if "CARTE" in tab_dict:
 
         if not df.empty:
             df_map = df.copy()
-            
+
             # --- A. CALCUL DU CLASSEMENT (RANKING) ---
             # On trie les dumpers par production décroissante pour savoir qui est le 1er, 2ème...
             if 'Production (T)' in df_map.columns and 'Type' in df_map.columns:
@@ -11128,13 +11309,13 @@ if "CARTE" in tab_dict:
                 if "Dumper" in str(row.get('Type')): icon = "🚛"
                 elif "Pelle" in str(row.get('Type')): icon = "🚜"
                 else: icon = "⚙️"
-                
+
                 # 2. ID
                 id_txt = row.get('ID', '?')
-                
+
                 # 3. Tonnage
                 prod = int(row.get('Production (T)', 0))
-                
+
                 # 4. Gestion du Classement (Médailles) pour les Dumpers
                 rank_txt = ""
                 if row.get('Type') == 'Dumper' and pd.notnull(row.get('Rank')):
@@ -11143,7 +11324,7 @@ if "CARTE" in tab_dict:
                     elif r == 2: rank_txt = "🥈 #2"
                     elif r == 3: rank_txt = "🥉 #3"
                     else: rank_txt = f"#{r}"
-                
+
                 # Assemblage final : "🚛 DT-01 (🥇 #1) | 🧱 4500 T"
                 # On met des retours à la ligne pour la clarté si besoin, mais Plotly préfère une ligne pour les labels simples
                 if rank_txt:
@@ -11153,7 +11334,7 @@ if "CARTE" in tab_dict:
 
             # Application
             df_map['Label'] = df_map.apply(get_super_label, axis=1)
-            
+
             # Taille des points
             if 'Type' in df_map.columns:
                 df_map['Size'] = df_map['Type'].apply(lambda x: 25 if "Pelle" in str(x) else 15)
@@ -11163,13 +11344,13 @@ if "CARTE" in tab_dict:
             # 3. AFFICHAGE CARTE
             with c_map:
                 st.markdown("### 📡 Radar de Production")
-                
+
                 color_map = {"Active": "#00E676", "Panne": "#FF1744", "Attente": "#FFC400", "Maintenance": "#2979FF"}
-                
+
                 fig_map = px.scatter_mapbox(
-                    df_map, 
-                    lat="lat", lon="lon", 
-                    color="Statut", 
+                    df_map,
+                    lat="lat", lon="lon",
+                    color="Statut",
                     text="Label", # <--- AFFICHE TOUT (ID, RANK, TONNAGE)
                     size="Size",
                     color_discrete_map=color_map,
@@ -11177,51 +11358,51 @@ if "CARTE" in tab_dict:
                     hover_data={"lat": False, "lon": False, "Size": False, "Label": False, "Type": False, "Statut": False},
                     zoom=14.5, height=650
                 )
-                
+
                 fig_map.update_layout(
-                    mapbox_style="carto-darkmatter", 
+                    mapbox_style="carto-darkmatter",
                     margin={"r":0,"t":0,"l":0,"b":0},
                     mapbox=dict(pitch=60)  # Vue drone améliorée
                 )
-                
+
                 # Texte blanc, gras, positionné sous le point
                 fig_map.update_traces(
                     textposition='bottom center',
                     textfont=dict(size=13, color='white', family="Arial Black"),
                     marker=dict(opacity=0.9)
                 )
-                
+
                 st.plotly_chart(fig_map, width='stretch', config={'scrollZoom': True})
 
             # 4. CLASSEMENT TEXTUEL (À DROITE)
             with c_dispatch:
                 st.markdown("### 🏆 Top Dumpers")
-                
+
                 # On filtre et trie pour le tableau
                 if 'Rank' in df_map.columns:
                     top_dumpers = df_map[df_map['Type'] == 'Dumper'].sort_values(by='Production (T)', ascending=False)
-                    
+
                     if not top_dumpers.empty:
                         # Petit tableau stylé
                         st.dataframe(
-                            top_dumpers[['ID', 'Production (T)', 'Carburant (%)']], 
+                            top_dumpers[['ID', 'Production (T)', 'Carburant (%)']],
                             hide_index=True,
                             width='stretch'
                         )
                     else:
                         st.info("Aucun dumper actif.")
-                
+
                 st.divider()
                 st.markdown("#### 🧠 IA Trajet")
                 # Logique distance simplifiée pour l'exemple
                 if not df_map.empty and 'Type' in df_map.columns:
                     dumpers = df_map[(df_map['Type'] == 'Dumper') & (df_map['Statut'] == 'Active')]
                     pelles = df_map[(df_map['Type'].isin(['Pelle', 'Excavateur'])) & (df_map['Statut'] == 'Active')]
-                    
+
                     if not dumpers.empty and not pelles.empty:
                         for _, dumper in dumpers.iterrows():
                             # Calcul simple vers la première pelle trouvée (simulation)
-                            pelle = pelles.iloc[0] 
+                            pelle = pelles.iloc[0]
                             dist = ((dumper['lat']-pelle['lat'])**2 + (dumper['lon']-pelle['lon'])**2)**0.5 * 111
                             st.success(f"🚛 **{dumper['ID']}** ➜ 🚜 **{pelle['ID']}** ({dist:.2f}km)")
                     else:
@@ -11236,11 +11417,11 @@ if "FINANCE" in tab_dict:
     with tab_dict["FINANCE"]:
         # Mettre à jour les contrats avec les données actuelles des machines
         contract_mgr.update_contract_from_machines(manager)
-        
+
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.subheader("💰 GESTION FINANCIÈRE - CONTRATS MINIERS")
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # Onglets internes Finance
         finance_tabs = st.tabs(
             [
@@ -11255,12 +11436,12 @@ if "FINANCE" in tab_dict:
                 "📈 Graphiques",
             ]
         )
-        
+
         # --- TAB 1: VUE D'ENSEMBLE ---
         with finance_tabs[0]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("📊 Résumé des Revenus - Tous Contrats Confondus")
-            
+
             # Résumé total
             summary = contract_mgr.get_total_revenue_summary()
             col1, col2, col3, col4 = st.columns(4)
@@ -11268,13 +11449,13 @@ if "FINANCE" in tab_dict:
             col2.metric("💰 Revenu Hebdomadaire", f"{summary['Revenu Semaine ($)']:,.2f} $")
             col3.metric("💰 Revenu Mensuel", f"{summary['Revenu Mois ($)']:,.2f} $")
             col4.metric("💰 Revenu Annuel", f"{summary['Revenu Année ($)']:,.2f} $")
-            
+
             st.markdown("---")
-            
+
             # Détail par type de contrat
             st.markdown("#### 📊 Répartition par Type de Contrat")
             col_bcm, col_hourly = st.columns(2)
-            
+
             with col_bcm:
                 bcm_contracts = [c for c in contract_mgr.contracts if c.contract_type == "BCM" and c.active]
                 if bcm_contracts:
@@ -11282,7 +11463,7 @@ if "FINANCE" in tab_dict:
                     total_bcm_semaine = sum(c.revenu_semaine for c in bcm_contracts)
                     total_bcm_mois = sum(c.revenu_mois for c in bcm_contracts)
                     total_bcm_annee = sum(c.revenu_annee for c in bcm_contracts)
-                    
+
                     st.markdown("**📋 Contrats BCM (Volume Transporté)**")
                     st.write(f"- Jour: **{total_bcm_jour:,.2f} $**")
                     st.write(f"- Semaine: **{total_bcm_semaine:,.2f} $**")
@@ -11290,7 +11471,7 @@ if "FINANCE" in tab_dict:
                     st.write(f"- Année: **{total_bcm_annee:,.2f} $**")
                 else:
                     st.info("Aucun contrat BCM actif")
-            
+
             with col_hourly:
                 hourly_contracts = [c for c in contract_mgr.contracts if c.contract_type == "HOURLY" and c.active]
                 if hourly_contracts:
@@ -11298,7 +11479,7 @@ if "FINANCE" in tab_dict:
                     total_hourly_semaine = sum(c.revenu_semaine for c in hourly_contracts)
                     total_hourly_mois = sum(c.revenu_mois for c in hourly_contracts)
                     total_hourly_annee = sum(c.revenu_annee for c in hourly_contracts)
-                    
+
                     st.markdown("**⏰ Contrats Horaire (Heures Travaillées)**")
                     st.write(f"- Jour: **{total_hourly_jour:,.2f} $**")
                     st.write(f"- Semaine: **{total_hourly_semaine:,.2f} $**")
@@ -11306,7 +11487,7 @@ if "FINANCE" in tab_dict:
                     st.write(f"- Année: **{total_hourly_annee:,.2f} $**")
                 else:
                     st.info("Aucun contrat horaire actif")
-            
+
             st.markdown("---")
             st.markdown("#### 📋 Tableau Récapitulatif de Tous les Contrats")
             df_contracts = contract_mgr.get_contracts_df()
@@ -11314,17 +11495,17 @@ if "FINANCE" in tab_dict:
                 st.dataframe(df_contracts, width='stretch', hide_index=True)
             else:
                 st.info("Aucun contrat enregistré.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 2: DÉPENSES & GAINS ---
         with finance_tabs[1]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("💰 Dépenses & Rapport Gain")
-            
+
             # Sélection de la période
             period_type = st.selectbox("Période", ["Journalier", "Hebdomadaire", "Mensuel", "Annuel"], key="expense_period")
-            
+
             # Calcul des dates selon la période
             today = date.today()
             if period_type == "Journalier":
@@ -11349,10 +11530,10 @@ if "FINANCE" in tab_dict:
                 start_date = today.replace(month=1, day=1)
                 end_date = today.replace(month=12, day=31)
                 period_label = f"de {start_date.year}"
-            
+
             st.info(f"📅 Période sélectionnée : **{period_label}**")
             st.markdown("---")
-            
+
             # Calcul des dépenses de maintenance
             maintenance_expenses = 0
             maintenance_records_in_period = []
@@ -11364,7 +11545,7 @@ if "FINANCE" in tab_dict:
                         record_date = datetime.strptime(str(record.date_maintenance), "%Y-%m-%d").date()
                     except:
                         continue
-                
+
                 if start_date <= record_date <= end_date:
                     # Calculer le coût des pièces changées
                     record_cost = 0
@@ -11382,10 +11563,10 @@ if "FINANCE" in tab_dict:
                             record_cost += piece_cost
                             maintenance_expenses += piece_cost
                     maintenance_records_in_period.append((record, record_cost))
-            
+
             # Dépenses carburant : SQLite (ravitaillements + saisie ingénierie)
             fuel_expenses, fuel_logs_in_period = collect_fuel_expenses_for_finance(start_date, end_date)
-            
+
             # Calcul des revenus
             revenue_summary = contract_mgr.get_total_revenue_summary()
             if period_type == "Journalier":
@@ -11396,23 +11577,23 @@ if "FINANCE" in tab_dict:
                 revenue = revenue_summary.get('Revenu Mois ($)', 0)
             else:  # Annuel
                 revenue = revenue_summary.get('Revenu Année ($)', 0)
-            
+
             # Calcul du rapport gain
             total_expenses = maintenance_expenses + fuel_expenses
             net_gain = revenue - total_expenses
-            
+
             # Affichage des métriques
             col1, col2, col3, col4 = st.columns(4)
             col1.metric("💰 Revenus", f"{revenue:,.2f} $", delta=None)
             col2.metric("🔧 Dépenses Maintenance", f"{maintenance_expenses:,.2f} $", delta=None, delta_color="inverse")
             col3.metric("⛽ Dépenses Carburant", f"{fuel_expenses:,.2f} $", delta=None, delta_color="inverse")
             col4.metric("📊 Gain Net", f"{net_gain:,.2f} $", delta=f"{net_gain:,.2f} $", delta_color="normal" if net_gain >= 0 else "inverse")
-            
+
             st.markdown("---")
-            
+
             # Détails des dépenses
             col_detail1, col_detail2 = st.columns(2)
-            
+
             with col_detail1:
                 st.markdown("#### 🔧 Détails Maintenance")
                 if maintenance_records_in_period:
@@ -11425,12 +11606,12 @@ if "FINANCE" in tab_dict:
                             "Mécanicien": record.mechanic_name,
                             "Coût ($)": f"{record_cost:,.2f}"
                         })
-                    
+
                     df_maint = pd.DataFrame(maint_data)
                     st.dataframe(df_maint, width='stretch', hide_index=True)
                 else:
                     st.info("Aucune dépense de maintenance pour cette période.")
-            
+
             with col_detail2:
                 st.markdown("#### ⛽ Détails Carburant")
                 st.caption(
@@ -11447,27 +11628,27 @@ if "FINANCE" in tab_dict:
                             "Litres": f"{log['liters']:,.2f}",
                             "Coût ($)": f"{log['cost']:,.2f}"
                         })
-                    
+
                     df_fuel = pd.DataFrame(fuel_data)
                     st.dataframe(df_fuel, width='stretch', hide_index=True)
-                    
+
                     # Total litres
                     total_liters = sum(log['liters'] for log in fuel_logs_in_period)
                     st.metric("Total Litres", f"{total_liters:,.2f} L")
                 else:
                     st.info("Aucune dépense de carburant pour cette période.")
-            
+
             st.markdown("---")
-            
+
             # Graphique de répartition
             try:
                 import plotly.express as px
-                
+
                 # Données pour le graphique
                 categories = ["Revenus", "Maintenance", "Carburant"]
                 values = [revenue, maintenance_expenses, fuel_expenses]
                 colors = ["#2ecc71", "#e74c3c", "#f39c12"]
-                
+
                 fig = px.bar(
                     x=categories,
                     y=values,
@@ -11480,14 +11661,14 @@ if "FINANCE" in tab_dict:
                 st.plotly_chart(fig, width='stretch')
             except:
                 st.info("Graphique disponible avec plotly")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 3: CONTRATS BCM ---
         with finance_tabs[2]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("📋 Contrats en BCM (Volume Transporté)")
-            
+
             bcm_contracts = [c for c in contract_mgr.contracts if c.contract_type == "BCM"]
             if bcm_contracts:
                 bcm_data = []
@@ -11510,10 +11691,10 @@ if "FINANCE" in tab_dict:
                         "Revenu Mois ($)": round(c.revenu_mois, 2),
                         "Revenu Année ($)": round(c.revenu_annee, 2)
                     })
-                
+
                 df_bcm = pd.DataFrame(bcm_data)
                 st.dataframe(df_bcm, width='stretch', hide_index=True)
-                
+
                 # Totaux
                 st.markdown("---")
                 col1, col2 = st.columns(2)
@@ -11524,7 +11705,7 @@ if "FINANCE" in tab_dict:
                     st.write(f"- Semaine: {total_volume['Volume Semaine (BCM)']:,.2f} BCM")
                     st.write(f"- Mois: {total_volume['Volume Mois (BCM)']:,.2f} BCM")
                     st.write(f"- Année: {total_volume['Volume Année (BCM)']:,.2f} BCM")
-                
+
                 with col2:
                     total_revenus = df_bcm[["Revenu Jour ($)", "Revenu Semaine ($)", "Revenu Mois ($)", "Revenu Année ($)"]].sum()
                     st.markdown("**Total Revenus BCM:**")
@@ -11534,14 +11715,14 @@ if "FINANCE" in tab_dict:
                     st.write(f"- Année: {total_revenus['Revenu Année ($)']:,.2f} $")
             else:
                 st.info("Aucun contrat BCM enregistré.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 4: CONTRATS HORAIRES ---
         with finance_tabs[3]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("⏰ Contrats à l'Heure")
-            
+
             hourly_contracts = [c for c in contract_mgr.contracts if c.contract_type == "HOURLY"]
             if hourly_contracts:
                 hourly_data = []
@@ -11564,10 +11745,10 @@ if "FINANCE" in tab_dict:
                         "Revenu Mois ($)": round(c.revenu_mois, 2),
                         "Revenu Année ($)": round(c.revenu_annee, 2)
                     })
-                
+
                 df_hourly = pd.DataFrame(hourly_data)
                 st.dataframe(df_hourly, width='stretch', hide_index=True)
-                
+
                 # Totaux
                 st.markdown("---")
                 col1, col2 = st.columns(2)
@@ -11578,7 +11759,7 @@ if "FINANCE" in tab_dict:
                     st.write(f"- Semaine: {total_heures['Heures Semaine']:,.2f} h")
                     st.write(f"- Mois: {total_heures['Heures Mois']:,.2f} h")
                     st.write(f"- Année: {total_heures['Heures Année']:,.2f} h")
-                
+
                 with col2:
                     total_revenus = df_hourly[["Revenu Jour ($)", "Revenu Semaine ($)", "Revenu Mois ($)", "Revenu Année ($)"]].sum()
                     st.markdown("**Total Revenus Horaire:**")
@@ -11588,23 +11769,23 @@ if "FINANCE" in tab_dict:
                     st.write(f"- Année: {total_revenus['Revenu Année ($)']:,.2f} $")
             else:
                 st.info("Aucun contrat horaire enregistré.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 5: AJOUTER CONTRAT ---
         with finance_tabs[4]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("➕ Ajouter un Nouveau Contrat")
-            
+
             with st.form("add_contract_form"):
                 col_id, col_name = st.columns(2)
                 with col_id:
                     contract_id = st.text_input("ID Contrat *", placeholder="Ex: CONT-003")
                 with col_name:
                     contract_name = st.text_input("Nom du Contrat *", placeholder="Ex: Contrat Mine C")
-                
+
                 contract_type = st.selectbox("Type de Contrat *", ["BCM", "HOURLY"])
-                
+
                 col_rate, col_currency, col_date = st.columns(3)
                 with col_rate:
                     if contract_type == "BCM":
@@ -11613,7 +11794,7 @@ if "FINANCE" in tab_dict:
                     else:
                         rate = st.number_input("Taux *", min_value=0.01, value=200.0, step=1.0)
                         st.caption("Revenu = Heures travaillées × Taux")
-                
+
                 with col_currency:
                     rate_currency = st.selectbox("Devise du Taux *", ["USD", "CFA", "EUR"], index=0)
                     # Afficher le taux de change actuel
@@ -11624,10 +11805,10 @@ if "FINANCE" in tab_dict:
                         st.caption(f"1 USD = {rates['EUR']:.2f} EUR")
                     else:
                         st.caption("Taux en USD")
-                
+
                 with col_date:
                     start_date = st.date_input("Date de Début", value=date.today())
-                
+
                 # Aperçu du taux en USD
                 if rate_currency != "USD":
                     rates_preview = get_exchange_rates()
@@ -11639,7 +11820,7 @@ if "FINANCE" in tab_dict:
                         rate_usd_preview = rate / rates_preview['EUR']
                         unit_label = "BCM" if contract_type == "BCM" else "heure"
                         st.info(f"💡 **Taux équivalent en USD:** {rate_usd_preview:,.2f} $/{unit_label}")
-                
+
                 st.markdown("---")
                 col_client, col_somme = st.columns(2)
                 with col_client:
@@ -11650,15 +11831,15 @@ if "FINANCE" in tab_dict:
                         somme_negociee = st.number_input("Somme Négociée", min_value=0.0, value=0.0, step=1000.0, help="Montant total négocié du contrat (optionnel)")
                     with col_somme_dev:
                         somme_currency = st.selectbox("Devise", ["USD", "CFA", "EUR"], index=0, key="somme_devise")
-                
+
                 # Sélection des machines associées
                 st.markdown("---")
                 st.markdown("#### 🚜 Machines Associées au Contrat")
                 st.caption("Sélectionnez les machines qui contribuent à ce contrat (optionnel - toutes les machines actives seront utilisées si aucune n'est sélectionnée)")
-                
+
                 machine_options = [m.id for m in manager.machines]
                 selected_machines = st.multiselect("Machines", machine_options)
-                
+
                 if st.form_submit_button("✅ CRÉER LE CONTRAT", use_container_width=True):
                     if contract_id and contract_name and client_name:
                         # Convertir la somme négociée en USD si nécessaire
@@ -11673,7 +11854,7 @@ if "FINANCE" in tab_dict:
                                 somme_usd = somme_negociee / rates_somme['CFA']
                             else:
                                 somme_usd = somme_negociee
-                        
+
                         if contract_mgr.add_contract(contract_id, contract_name, contract_type, rate, start_date, somme_usd, client_name, rate_currency, rate):
                             # Associer les machines au contrat
                             new_contract = contract_mgr.get_contract(contract_id)
@@ -11683,21 +11864,21 @@ if "FINANCE" in tab_dict:
                                 # Stocker aussi la devise de la somme négociée
                                 if somme_usd:
                                     new_contract.somme_negociee_currency = somme_currency
-                            
+
                             st.success(f"✅ Contrat {contract_id} créé avec succès ! Taux: {rate:,.2f} {rate_currency}")
                             st.rerun()
                         else:
                             st.error("❌ Erreur : Cet ID de contrat existe déjà.")
                     else:
                         st.warning("⚠️ Veuillez remplir tous les champs obligatoires.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 6: MODIFIER TAUX ---
         with finance_tabs[5]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("✏️ Modifier les Taux des Contrats")
-            
+
             if not contract_mgr.contracts:
                 st.info("Aucun contrat disponible.")
             else:
@@ -11705,7 +11886,7 @@ if "FINANCE" in tab_dict:
                 contract_options = {f"{c.contract_id} - {c.name}": c for c in contract_mgr.contracts}
                 selected_contract_label = st.selectbox("Sélectionner un Contrat *", list(contract_options.keys()))
                 selected_contract = contract_options[selected_contract_label]
-                
+
                 if selected_contract:
                     st.markdown("---")
                     st.markdown(f"**Contrat sélectionné:** {selected_contract.name}")
@@ -11715,9 +11896,9 @@ if "FINANCE" in tab_dict:
                         st.markdown(f"**Taux actuel en USD:** {selected_contract.rate:,.2f} $/BCM")
                     else:
                         st.markdown(f"**Taux actuel en USD:** {selected_contract.rate:,.2f} $/heure")
-                    
+
                     st.markdown("---")
-                    
+
                     with st.form("modify_rate_form"):
                         col_new_rate, col_new_currency = st.columns(2)
                         with col_new_rate:
@@ -11727,12 +11908,12 @@ if "FINANCE" in tab_dict:
                             else:
                                 new_rate = st.number_input("Nouveau Taux *", min_value=0.01, value=float(getattr(selected_contract, 'original_rate', selected_contract.rate)), step=1.0)
                                 st.caption("Taux par heure")
-                        
+
                         with col_new_currency:
                             current_currency = getattr(selected_contract, 'rate_currency', 'USD')
                             currency_index = ["USD", "CFA", "EUR"].index(current_currency) if current_currency in ["USD", "CFA", "EUR"] else 0
                             new_currency = st.selectbox("Devise du Taux *", ["USD", "CFA", "EUR"], index=currency_index)
-                            
+
                             # Afficher le taux de change actuel
                             rates = get_exchange_rates()
                             if new_currency == "CFA":
@@ -11750,7 +11931,7 @@ if "FINANCE" in tab_dict:
                                         st.info(f"≈ {equivalent:,.2f} EUR")
                             else:
                                 st.caption("Taux en USD")
-                        
+
                         # Aperçu de la conversion
                         st.markdown("---")
                         if new_currency != "USD":
@@ -11761,33 +11942,33 @@ if "FINANCE" in tab_dict:
                                 rate_usd = new_rate / rates['EUR']
                             else:
                                 rate_usd = new_rate
-                            
+
                             st.info(f"**Taux équivalent en USD:** {rate_usd:,.2f} $/{'BCM' if selected_contract.contract_type == 'BCM' else 'heure'}")
-                        
+
                         if st.form_submit_button("✅ MODIFIER LE TAUX", use_container_width=True):
                             if contract_mgr.update_contract_rate(selected_contract.contract_id, new_rate, new_currency):
                                 st.success(f"✅ Taux modifié avec succès ! Nouveau taux: {new_rate:,.2f} {new_currency}")
                                 st.rerun()
                             else:
                                 st.error("❌ Erreur lors de la modification du taux.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 7: INFORMATIONS ENTREPRISE ---
         with finance_tabs[6]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("⚙️ Informations de l'Entreprise")
             st.caption("Configurez les informations de votre entreprise pour l'affichage sur les factures")
-            
+
             with st.form("company_info_form"):
                 col_name, col_phone = st.columns(2)
                 with col_name:
                     company_name = st.text_input("Nom de l'Entreprise *", value=contract_mgr.company_info.company_name)
                 with col_phone:
                     phone = st.text_input("Téléphone *", value=contract_mgr.company_info.phone)
-                
+
                 address = st.text_area("Adresse *", value=contract_mgr.company_info.address, height=80)
-                
+
                 col_email, col_tax, col_rccm = st.columns(3)
                 with col_email:
                     email = st.text_input("Email *", value=contract_mgr.company_info.email)
@@ -11799,9 +11980,9 @@ if "FINANCE" in tab_dict:
                         value=getattr(contract_mgr.company_info, "rccm", "") or "",
                         help="Registre du Commerce et du Crédit Mobilier (affiché sur les factures si renseigné).",
                     )
-                
+
                 bank_info = st.text_input("Informations Bancaires", value=contract_mgr.company_info.bank_info)
-                
+
                 st.markdown("---")
                 st.markdown("#### 🖋️ Cachet & signature électroniques (factures)")
                 st.caption(
@@ -11827,7 +12008,7 @@ if "FINANCE" in tab_dict:
                     )
                 rm_stamp = st.checkbox("Retirer le cachet enregistré", key="fin_rm_stamp")
                 rm_sig = st.checkbox("Retirer la signature enregistrée", key="fin_rm_sig")
-                
+
                 if getattr(contract_mgr.company_info, "stamp_base64", None):
                     try:
                         from PIL import Image as _PILImage
@@ -11843,7 +12024,7 @@ if "FINANCE" in tab_dict:
                     except Exception:
                         st.caption("Cachet enregistré (aperçu indisponible)")
                 stamp_file = st.file_uploader("Télécharger un cachet", type=["png", "jpg", "jpeg", "webp"], key="fin_stamp_up")
-                
+
                 if getattr(contract_mgr.company_info, "signature_base64", None):
                     try:
                         from PIL import Image as _PILImage2
@@ -11861,10 +12042,10 @@ if "FINANCE" in tab_dict:
                 signature_file = st.file_uploader(
                     "Télécharger une image de signature", type=["png", "jpg", "jpeg", "webp"], key="fin_sig_up"
                 )
-                
+
                 st.markdown("---")
                 st.markdown("#### 🖼️ Logo de l'Entreprise")
-                
+
                 # Afficher le logo actuel si disponible (avant le formulaire)
                 if contract_mgr.company_info.logo_base64:
                     try:
@@ -11876,9 +12057,9 @@ if "FINANCE" in tab_dict:
                         st.image(img, width=200, caption="Logo actuel")
                     except Exception as e:
                         st.info(f"Logo actuel disponible mais erreur d'affichage: {e}")
-                
+
                 logo_file = st.file_uploader("Télécharger un nouveau Logo", type=['png', 'jpg', 'jpeg'], help="Format recommandé: PNG transparent, max 500x500px")
-                
+
                 if logo_file:
                     # Afficher un aperçu du nouveau logo
                     try:
@@ -11892,9 +12073,9 @@ if "FINANCE" in tab_dict:
                         logo_file.seek(0)
                     except Exception as e:
                         st.warning(f"Erreur lors de l'affichage de l'aperçu: {e}")
-                
+
                 submit_button = st.form_submit_button("✅ ENREGISTRER LES INFORMATIONS", use_container_width=True)
-                
+
                 if submit_button:
                     contract_mgr.company_info.company_name = company_name
                     contract_mgr.company_info.address = address
@@ -11916,26 +12097,26 @@ if "FINANCE" in tab_dict:
                     if signature_file and not rm_sig:
                         signature_file.seek(0)
                         contract_mgr.company_info.set_signature_from_file(signature_file)
-                    
+
                     if logo_file:
                         logo_file.seek(0)
                         if not contract_mgr.company_info.set_logo_from_file(logo_file):
                             st.warning("⚠️ Erreur lors de l'enregistrement du logo")
-                    
+
                     if save_finance_company_profile(contract_mgr.company_info, contract_mgr.tenant_id):
                         st.success("✅ Informations enregistrées (factures & cachet / signature).")
                     else:
                         st.error("Échec de la sauvegarde sur disque.")
-                    
+
                     st.rerun()
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 8: GÉNÉRER FACTURES ---
         with finance_tabs[7]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("🧾 Génération de Factures Mensuelles")
-            
+
             if not contract_mgr.contracts:
                 st.info("Aucun contrat disponible pour générer des factures.")
             else:
@@ -11945,7 +12126,7 @@ if "FINANCE" in tab_dict:
                     contract_options = {f"{c.contract_id} - {c.name} ({getattr(c, 'client_name', None) or 'N/A'})": c for c in active_contracts}
                     selected_contract_label = st.selectbox("Sélectionner un Contrat *", list(contract_options.keys()))
                     selected_contract = contract_options[selected_contract_label]
-                    
+
                     col_period, col_month = st.columns(2)
                     with col_period:
                         period = st.selectbox("Période *", ["mois", "semaine", "jour", "annuel"], index=0)
@@ -11958,23 +12139,23 @@ if "FINANCE" in tab_dict:
                             period_value = str(year)
                         else:
                             period_value = datetime.now().strftime("%d/%m/%Y")
-                    
+
                     st.markdown("---")
-                    
+
                     # Générer la facture automatiquement
                     invoice_html = contract_mgr.generate_invoice_html(selected_contract, period, period_value)
-                    
+
                     # Afficher l'aperçu
                     st.markdown("#### 📄 Aperçu de la Facture")
                     st.markdown(invoice_html, unsafe_allow_html=True)
-                    
+
                     # Boutons de téléchargement
                     st.markdown("---")
                     col_dl1, col_dl2 = st.columns(2)
-                    
+
                     # Nettoyer le nom du fichier
                     clean_period = period_value.replace(' ', '_').replace('/', '_').replace(',', '')
-                    
+
                     with col_dl1:
                         st.download_button(
                             label="📥 Télécharger en HTML",
@@ -11984,7 +12165,7 @@ if "FINANCE" in tab_dict:
                             width='stretch',
                             help="Téléchargez et ouvrez dans votre navigateur pour imprimer"
                         )
-                    
+
                     with col_dl2:
                         # Export pour impression PDF
                         st.download_button(
@@ -11997,28 +12178,28 @@ if "FINANCE" in tab_dict:
                         )
                 else:
                     st.info("Aucun contrat actif disponible.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 9: GRAPHIQUES ---
         with finance_tabs[8]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("📈 Visualisation des Revenus")
-            
+
             if not contract_mgr.contracts:
                 st.info("Aucun contrat pour générer des graphiques.")
             else:
                 # Graphique 1: Comparaison des revenus par période
                 fig1 = go.Figure()
-                
+
                 periods = ["Jour", "Semaine", "Mois", "Année"]
                 bcm_revenus = []
                 hourly_revenus = []
-                
+
                 bcm_total = sum(c.revenu_jour for c in contract_mgr.contracts if c.contract_type == "BCM" and c.active)
                 hourly_total = sum(c.revenu_jour for c in contract_mgr.contracts if c.contract_type == "HOURLY" and c.active)
-                
-                fig1.add_trace(go.Bar(name="BCM", x=["Jour", "Semaine", "Mois", "Année"], 
+
+                fig1.add_trace(go.Bar(name="BCM", x=["Jour", "Semaine", "Mois", "Année"],
                                       y=[
                                           sum(c.revenu_jour for c in contract_mgr.contracts if c.contract_type == "BCM" and c.active),
                                           sum(c.revenu_semaine for c in contract_mgr.contracts if c.contract_type == "BCM" and c.active),
@@ -12032,7 +12213,7 @@ if "FINANCE" in tab_dict:
                                           sum(c.revenu_mois for c in contract_mgr.contracts if c.contract_type == "HOURLY" and c.active),
                                           sum(c.revenu_annee for c in contract_mgr.contracts if c.contract_type == "HOURLY" and c.active)
                                       ]))
-                
+
                 fig1.update_layout(
                     title="Revenus par Type de Contrat et Période",
                     xaxis_title="Période",
@@ -12041,11 +12222,11 @@ if "FINANCE" in tab_dict:
                     height=500
                 )
                 st.plotly_chart(fig1, width='stretch')
-                
+
                 # Graphique 2: Répartition des revenus totaux
                 total_bcm = sum(c.revenu_annee for c in contract_mgr.contracts if c.contract_type == "BCM" and c.active)
                 total_hourly = sum(c.revenu_annee for c in contract_mgr.contracts if c.contract_type == "HOURLY" and c.active)
-                
+
                 if total_bcm > 0 or total_hourly > 0:
                     fig2 = px.pie(
                         values=[total_bcm, total_hourly],
@@ -12053,7 +12234,7 @@ if "FINANCE" in tab_dict:
                         title="Répartition des Revenus Annuels par Type de Contrat"
                     )
                     st.plotly_chart(fig2, width='stretch')
-            
+
         st.markdown('</div>', unsafe_allow_html=True)
 
 # --- RH ---
@@ -12062,15 +12243,15 @@ if "RH" in tab_dict:
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.subheader("👥 GESTION DES RESSOURCES HUMAINES")
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # ===== ONGLETS INTERNES RH =====
         rh_tabs = st.tabs(["📋 Liste Employés", "➕ Ajouter Employé", "🗑️ Désactiver/Supprimer Employé", "🚛 Assigner Machines", "✅ Présence", "🏆 Classements", "👥 Par Équipe"])
-        
+
         # --- TAB 1: LISTE DES EMPLOYÉS ---
         with rh_tabs[0]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("📋 Liste Complète des Employés")
-            
+
             df_staff = staff_mgr.get_all_staff_df()
             if not df_staff.empty and len(df_staff) > 0:
                 # Boutons d'export et d'impression
@@ -12114,7 +12295,7 @@ if "RH" in tab_dict:
                             width='stretch',
                             help="Format CSV (ouvrable dans Excel)"
                         )
-                
+
                 with col_export2:
                     # Export CSV supplémentaire (toujours disponible)
                     csv_data = df_staff.to_csv(index=False, encoding='utf-8-sig')
@@ -12126,7 +12307,7 @@ if "RH" in tab_dict:
                         width='stretch',
                         help="Format CSV standard (séparateur virgule)"
                     )
-                
+
                 # Bouton d'impression sur une nouvelle ligne
                 st.markdown("---")
                 col_print = st.columns(1)
@@ -12222,13 +12403,13 @@ if "RH" in tab_dict:
                         width='stretch',
                         help="Téléchargez et ouvrez le fichier HTML dans votre navigateur pour l'imprimer"
                     )
-                
+
                 st.markdown("---")
-                
+
                 # Enrichir le DataFrame avec le type d'opérateur
                 if "Machine Assignée" in df_staff.columns:
                     df_machines_display = manager.get_summary_dataframe()
-                    
+
                     def get_operator_type(row):
                         machine = row.get("Machine Assignée", "Aucune")
                         if machine != "Aucune":
@@ -12236,29 +12417,29 @@ if "RH" in tab_dict:
                             if not machine_row.empty:
                                 machine_type = machine_row.iloc[0]['Type']
                                 machine_type_upper = machine_type.upper()
-                                
+
                                 # Types de chargement : Pelle, Excavatrice, Chargeuse, Bulldozer, Tractopelle, Grader, Benne
                                 loader_types = ['PELLE', 'EXCAVATRICE', 'CHARGEUSE', 'CHARGEUR', 'BULLDOZER', 'TRACTOPELLE', 'GRADER', 'BENNE']
                                 if any(lt in machine_type_upper for lt in loader_types):
                                     return "🚛 Chargement"
-                                
+
                                 # Types de transport : Dumper, Camion, Citerne
                                 dumper_types = ['DUMPER', 'CAMION', 'CITERNE']
                                 if any(dt in machine_type_upper for dt in dumper_types):
                                     return "🚚 Camion"
                         return "❌ Non assigné"
-                    
+
                     df_staff['Type Opérateur'] = df_staff.apply(get_operator_type, axis=1)
-                    
+
                     # Ajouter une colonne pour indiquer si l'employé a un compte (même entreprise)
                     existing_usernames_list = [u['user'] for u in user_mgr.users_in_current_tenant()]
-                    
+
                     def has_account(row):
                         name = row.get("Nom", "")
                         # Chercher si un compte existe avec un nom d'utilisateur similaire au nom de l'employé
                         name_normalized = name.lower().replace(' ', '_').replace('-', '_')
                         name_words = set(name.lower().split())
-                        
+
                         for username in existing_usernames_list:
                             u_lower = username.lower()
                             # Correspondance exacte ou proche (nom d'utilisateur = nom employé normalisé)
@@ -12275,9 +12456,9 @@ if "RH" in tab_dict:
                             if len(u_lower) >= 4 and u_lower in name_normalized:
                                 return f"✅ {username}"
                         return "❌ Aucun compte"
-                    
+
                     df_staff['Compte Utilisateur'] = df_staff.apply(has_account, axis=1)
-                    
+
                     # Réorganiser les colonnes pour mettre "Type Opérateur" et "Compte Utilisateur" en avant
                     cols = df_staff.columns.tolist()
                     if "Type Opérateur" in cols and "Machine Assignée" in cols:
@@ -12290,9 +12471,9 @@ if "RH" in tab_dict:
                         else:
                             cols.append("Compte Utilisateur")
                         df_staff = df_staff[cols]
-                
+
                 st.dataframe(df_staff, width='stretch', hide_index=True)
-                
+
                 # Statistiques globales
                 st.markdown("---")
                 if "Rôle" in df_staff.columns:
@@ -12303,7 +12484,7 @@ if "RH" in tab_dict:
                     col4.metric("Sup. Mécanique", len(df_staff[df_staff["Rôle"] == "Superviseur Mecanicien"]))
                     col5.metric("Mécaniciens", len(df_staff[df_staff["Rôle"] == "Mecanicien"]))
                     col6.metric("Électriciens", len(df_staff[df_staff["Rôle"] == "Electricien"]))
-                    
+
                     # Deuxième ligne pour les ingénieurs
                     st.markdown("---")
                     col_eng = st.columns(1)
@@ -12318,20 +12499,20 @@ if "RH" in tab_dict:
             else:
                 st.info("Aucun employé enregistré.")
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 2: AJOUTER UN EMPLOYÉ ---
         with rh_tabs[1]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("➕ Enregistrer un Nouvel Employé")
             st.caption("ℹ️ Le numéro matricule sera généré automatiquement")
-            
+
             with st.form("add_employee_form"):
                 nom = st.text_input("Nom Complet *", placeholder="Ex: Moussa Koné")
-                
+
                 col_role, col_equipe = st.columns(2)
                 with col_role:
                     role = st.selectbox("Rôle *", [
-                        "Operateur", 
+                        "Operateur",
                         "Superviseur Production",
                         "Superviseur Mecanicien",
                         "Ingenieur",
@@ -12340,13 +12521,13 @@ if "RH" in tab_dict:
                     ])
                 with col_equipe:
                     equipe = st.selectbox("Équipe *", ["A", "B", "C"])
-                
+
                 col_shift, col_date = st.columns(2)
                 with col_shift:
                     shift = st.selectbox("Type de Shift", ["3x8", "Standard", "Jour", "Nuit"])
                 with col_date:
                     date_arrivee = st.date_input("Date d'Arrivée *", value=date.today())
-                
+
                 if st.form_submit_button("✅ ENREGISTRER L'EMPLOYÉ", use_container_width=True):
                     if nom:
                         # Le matricule sera généré automatiquement par add_employee
@@ -12368,7 +12549,7 @@ if "RH" in tab_dict:
                     else:
                         st.warning("⚠️ Veuillez remplir au moins le nom.")
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 3: DÉSACTIVER/SUPPRIMER EMPLOYÉ ---
         with rh_tabs[2]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
@@ -12401,7 +12582,7 @@ if "RH" in tab_dict:
             </div>
             """, unsafe_allow_html=True)
             st.markdown("---")
-            
+
             # Section 1: Désactiver un employé
             st.markdown("#### 🔴 Désactiver un Employé")
             with st.form("desactiver_employee_form"):
@@ -12414,26 +12595,26 @@ if "RH" in tab_dict:
                         ["Sélectionner..."] + employee_names_active,
                         key="deactivate_emp"
                     )
-                    
+
                     col_date1, col_reason = st.columns(2)
                     with col_date1:
                         date_depart = st.date_input("Date de départ", value=date.today(), key="date_depart_deactivate")
-                    
+
                     with col_reason:
                         raison_depart = st.text_area("Raison du départ (optionnel)", key="raison_depart", height=100)
-                    
+
                     if st.form_submit_button("🔴 DÉSACTIVER L'EMPLOYÉ", use_container_width=True, type="primary"):
                         if selected_employee_to_deactivate and selected_employee_to_deactivate != "Sélectionner...":
                             # Extraire le matricule
                             matricule = selected_employee_to_deactivate.split("(")[1].split(")")[0]
-                            
+
                             # Vérifier si l'employé a des machines assignées
                             emp = staff_mgr.get_employee_by_matricule(matricule)
                             if emp:
                                 machines_assignees = getattr(emp, 'assigned_machine', "Aucune")
                                 if machines_assignees != "Aucune":
                                     st.warning(f"⚠️ L'employé a une machine assignée ({machines_assignees}). Pensez à réassigner la machine avant de désactiver.")
-                                
+
                                 # Désactiver l'employé
                                 if staff_mgr.desactiver_employee(matricule, date_depart):
                                     # Enregistrer dans les logs d'audit
@@ -12455,9 +12636,9 @@ if "RH" in tab_dict:
                             st.warning("⚠️ Veuillez sélectionner un employé.")
                 else:
                     st.info("📭 Aucun employé actif à désactiver.")
-            
+
             st.markdown("---")
-            
+
             # Section 2: Réactiver un employé
             st.markdown("#### 🟢 Réactiver un Employé")
             with st.form("reactiver_employee_form"):
@@ -12470,12 +12651,12 @@ if "RH" in tab_dict:
                         ["Sélectionner..."] + employee_names_inactive,
                         key="reactivate_emp"
                     )
-                    
+
                     if st.form_submit_button("🟢 RÉACTIVER L'EMPLOYÉ", use_container_width=True, type="primary"):
                         if selected_employee_to_reactivate and selected_employee_to_reactivate != "Sélectionner...":
                             # Extraire le matricule
                             matricule = selected_employee_to_reactivate.split("(")[1].split(")")[0]
-                            
+
                             # Réactiver l'employé
                             if staff_mgr.reactiver_employee(matricule):
                                 emp = staff_mgr.get_employee_by_matricule(matricule)
@@ -12496,13 +12677,13 @@ if "RH" in tab_dict:
                             st.warning("⚠️ Veuillez sélectionner un employé.")
                 else:
                     st.info("📭 Aucun employé inactif à réactiver.")
-            
+
             st.markdown("---")
-            
+
             # Section 3: Supprimer définitivement un employé
             st.markdown("#### ⚠️ Supprimer Définitivement un Employé")
             st.warning("🚨 **ATTENTION** : La suppression est définitive et irréversible. Toutes les données de l'employé seront perdues. Utilisez la désactivation si vous souhaitez conserver les données historiques.")
-            
+
             with st.form("supprimer_employee_form"):
                 # Liste de tous les employés (actifs et inactifs) pour la suppression
                 all_employees_for_deletion = staff_mgr.staff
@@ -12513,20 +12694,20 @@ if "RH" in tab_dict:
                         ["Sélectionner..."] + employee_names_all,
                         key="delete_emp"
                     )
-                    
+
                     # Confirmation de suppression
                     confirm_delete = st.checkbox(
                         "⚠️ Je confirme vouloir supprimer définitivement cet employé et toutes ses données",
                         key="confirm_delete_checkbox"
                     )
-                    
+
                     # Avertissement supplémentaire
                     if selected_employee_to_delete and selected_employee_to_delete != "Sélectionner...":
                         matricule_to_delete = selected_employee_to_delete.split("(")[1].split(")")[0]
                         emp_to_delete = staff_mgr.get_employee_by_matricule(matricule_to_delete)
                         if emp_to_delete:
                             st.error(f"🚨 **SUPPRESSION DÉFINITIVE** : Vous êtes sur le point de supprimer définitivement {emp_to_delete.name} ({emp_to_delete.matricule}). Cette action est irréversible et toutes les données (production, cycles, présence, etc.) seront perdues.")
-                            
+
                             # Afficher les informations de l'employé
                             col_info1, col_info2 = st.columns(2)
                             with col_info1:
@@ -12537,32 +12718,32 @@ if "RH" in tab_dict:
                     st.info("📭 Aucun employé à supprimer.")
                     selected_employee_to_delete = None
                     confirm_delete = False
-                
+
                 # Le bouton doit toujours être présent dans le formulaire
                 submitted = st.form_submit_button("🗑️ SUPPRIMER DÉFINITIVEMENT", use_container_width=True, type="primary")
-                
+
                 if submitted:
                     if all_employees_for_deletion and selected_employee_to_delete and selected_employee_to_delete != "Sélectionner..." and confirm_delete:
                         # Extraire le matricule
                         matricule = selected_employee_to_delete.split("(")[1].split(")")[0]
-                        
+
                         # Vérifier si l'employé existe
                         emp = staff_mgr.get_employee_by_matricule(matricule)
                         if emp:
                             emp_name = emp.name
                             emp_matricule = emp.matricule
-                            
+
                             # Vérifier si l'employé a des machines assignées
                             machines_assignees = getattr(emp, 'assigned_machine', "Aucune")
                             if machines_assignees != "Aucune":
                                 st.warning(f"⚠️ L'employé a une machine assignée ({machines_assignees}). La machine sera libérée après suppression.")
-                            
+
                             # Vérifier si l'employé a un compte utilisateur (même entreprise)
                             existing_usernames = [u['user'] for u in user_mgr.users_in_current_tenant()]
                             has_account = any(emp.name.lower() in u.lower() or u.lower() in emp.name.lower() for u in existing_usernames)
                             if has_account:
                                 st.warning(f"⚠️ L'employé a un compte utilisateur associé. Le compte ne sera pas supprimé automatiquement.")
-                            
+
                             # Supprimer l'employé
                             if staff_mgr.remove_employee(matricule):
                                 # Enregistrer dans les logs d'audit
@@ -12586,9 +12767,9 @@ if "RH" in tab_dict:
                         st.warning("⚠️ Veuillez sélectionner un employé.")
                     else:
                         st.warning("⚠️ Aucun employé disponible pour suppression.")
-            
+
             st.markdown("---")
-            
+
             # Section 4: Statistiques
             st.markdown("#### 📊 Statistiques")
             col_stat1, col_stat2, col_stat3 = st.columns(3)
@@ -12601,9 +12782,9 @@ if "RH" in tab_dict:
             with col_stat3:
                 total_general = len(staff_mgr.staff)
                 st.metric("Total (Base de données)", total_general)
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 4: ASSIGNER MACHINES AUX OPÉRATEURS ---
         with rh_tabs[3]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
@@ -12632,10 +12813,10 @@ if "RH" in tab_dict:
             </div>
             """, unsafe_allow_html=True)
             st.markdown("---")
-            
+
             with st.form("assign_machine_form"):
                 col_op, col_mach = st.columns(2)
-                
+
                 with col_op:
                     # Liste des opérateurs
                     operateurs = [e for e in staff_mgr.get_active_staff() if e.role == "Operateur"]
@@ -12646,14 +12827,14 @@ if "RH" in tab_dict:
                             ["Sélectionner..."] + operateur_names,
                             key="assign_op"
                         )
-                        
+
                         # Afficher la machine actuellement assignée et le type
                         if selected_operator and selected_operator != "Sélectionner...":
                             current_emp = next((e for e in operateurs if e.name == selected_operator), None)
                             if current_emp:
                                 current_machine = getattr(current_emp, 'assigned_machine', "Aucune")
                                 st.info(f"**Machine actuellement assignée :** {current_machine}")
-                                
+
                                 # Déterminer le type d'opérateur
                                 if current_machine != "Aucune":
                                     df_machines_check = manager.get_summary_dataframe()
@@ -12663,7 +12844,7 @@ if "RH" in tab_dict:
                                         machine_type_upper = machine_type.upper()
                                         loader_types = ['PELLE', 'EXCAVATRICE', 'CHARGEUSE', 'CHARGEUR', 'BULLDOZER', 'TRACTOPELLE', 'GRADER', 'BENNE']
                                         dumper_types = ['DUMPER', 'CAMION', 'CITERNE']
-                                        
+
                                         if any(lt in machine_type_upper for lt in loader_types):
                                             st.success("✅ Type actuel: **Opérateur de Chargement** 🚛")
                                         elif any(dt in machine_type_upper for dt in dumper_types):
@@ -12677,19 +12858,19 @@ if "RH" in tab_dict:
                     else:
                         st.warning("⚠️ Aucun opérateur enregistré. Ajoutez d'abord un opérateur dans l'onglet 'Ajouter Employé'.")
                         selected_operator = None
-                
+
                 with col_mach:
                     # Liste des machines disponibles
                     df_machines_assign = manager.get_summary_dataframe()
                     available_machines = df_machines_assign['ID'].tolist()
-                    
+
                     if available_machines:
                         selected_machine = st.selectbox(
                             "Sélectionner la Machine *",
                             ["Aucune"] + available_machines,
                             key="assign_machine"
                         )
-                        
+
                         # Afficher le type de machine sélectionnée
                         if selected_machine and selected_machine != "Aucune":
                             machine_info = df_machines_assign[df_machines_assign['ID'] == selected_machine]
@@ -12697,12 +12878,12 @@ if "RH" in tab_dict:
                                 machine_type = machine_info.iloc[0]['Type']
                                 machine_model = machine_info.iloc[0].get('Modèle', 'N/A')
                                 st.info(f"**Type de machine :** {machine_type} ({machine_model})")
-                                
+
                                 # Prévisualiser le type d'opérateur qui sera créé
                                 machine_type_upper = machine_type.upper()
                                 loader_types = ['PELLE', 'EXCAVATRICE', 'CHARGEUSE', 'CHARGEUR', 'BULLDOZER', 'TRACTOPELLE', 'GRADER', 'BENNE']
                                 dumper_types = ['DUMPER', 'CAMION', 'CITERNE']
-                                
+
                                 if any(lt in machine_type_upper for lt in loader_types):
                                     st.markdown("""
                                     <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%);
@@ -12724,9 +12905,9 @@ if "RH" in tab_dict:
                     else:
                         st.warning("⚠️ Aucune machine disponible.")
                         selected_machine = None
-                
+
                 st.markdown("---")
-                
+
                 if st.form_submit_button("✅ ASSIGNER LA MACHINE", use_container_width=True):
                     if selected_operator and selected_operator != "Sélectionner..." and selected_machine:
                         if selected_machine == "Aucune":
@@ -12742,10 +12923,10 @@ if "RH" in tab_dict:
                                 machine_info = df_machines_assign[df_machines_assign['ID'] == selected_machine]
                                 machine_type = machine_info.iloc[0]['Type'] if not machine_info.empty else "N/A"
                                 machine_type_upper = machine_type.upper()
-                                
+
                                 loader_types = ['PELLE', 'EXCAVATRICE', 'CHARGEUSE', 'CHARGEUR', 'BULLDOZER', 'TRACTOPELLE', 'GRADER', 'BENNE']
                                 dumper_types = ['DUMPER', 'CAMION', 'CITERNE']
-                                
+
                                 if any(lt in machine_type_upper for lt in loader_types):
                                     st.success(f"✅ Machine {selected_machine} assignée à {selected_operator} ! Cet opérateur est maintenant un **Opérateur de Chargement** 🚛")
                                 elif any(dt in machine_type_upper for dt in dumper_types):
@@ -12757,10 +12938,10 @@ if "RH" in tab_dict:
                                 st.error("❌ Erreur lors de l'assignation.")
                     else:
                         st.warning("⚠️ Veuillez sélectionner un opérateur et une machine.")
-            
+
             st.markdown("---")
             st.markdown("#### 📋 Liste des Assignations Actuelles")
-            
+
             # Afficher la liste des assignations avec types
             assignation_data = []
             for emp in staff_mgr.staff:
@@ -12768,7 +12949,7 @@ if "RH" in tab_dict:
                     assigned_machine = getattr(emp, 'assigned_machine', "Aucune")
                     machine_type = "N/A"
                     operator_type = "❌ Non assigné"
-                    
+
                     if assigned_machine != "Aucune":
                         df_machines_display = manager.get_summary_dataframe()
                         machine_row = df_machines_display[df_machines_display['ID'] == assigned_machine]
@@ -12777,12 +12958,12 @@ if "RH" in tab_dict:
                             machine_type_upper = machine_type.upper()
                             loader_types = ['PELLE', 'EXCAVATRICE', 'CHARGEUSE', 'CHARGEUR', 'BULLDOZER', 'TRACTOPELLE', 'GRADER', 'BENNE']
                             dumper_types = ['DUMPER', 'CAMION', 'CITERNE']
-                            
+
                             if any(lt in machine_type_upper for lt in loader_types):
                                 operator_type = "🚛 Opérateur de Chargement"
                             elif any(dt in machine_type_upper for dt in dumper_types):
                                 operator_type = "🚚 Opérateur de Camion"
-                    
+
                     assignation_data.append({
                         "Nom": emp.name,
                         "Matricule": emp.matricule,
@@ -12790,11 +12971,11 @@ if "RH" in tab_dict:
                         "Type Machine": machine_type,
                         "Type Opérateur": operator_type
                     })
-            
+
             if assignation_data:
                 df_assignations = pd.DataFrame(assignation_data)
                 st.dataframe(df_assignations, width='stretch', hide_index=True)
-                
+
                 # Statistiques des types d'opérateurs
                 st.markdown("---")
                 st.markdown("#### 📊 Statistiques des Types d'Opérateurs")
@@ -12810,14 +12991,14 @@ if "RH" in tab_dict:
                     st.metric("🚚 Camion", dumpers)
             else:
                 st.info("Aucune assignation enregistrée.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 4: GESTION DE PRÉSENCE ---
         with rh_tabs[3]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("✅ Enregistrement de Présence")
-            
+
             with st.form("presence_form"):
                 col_mat, col_date = st.columns(2)
                 with col_mat:
@@ -12827,16 +13008,16 @@ if "RH" in tab_dict:
                     else:
                         st.warning("Aucun employé enregistré.")
                         matricule_sel = None
-                
+
                 with col_date:
                     date_presence = st.date_input("Date de Présence *", value=date.today())
-                
+
                 col_statut, col_retard = st.columns(2)
                 with col_statut:
                     statut = st.selectbox("Statut *", ["present", "absent"])
                 with col_retard:
                     retard = st.checkbox("Retard", value=False)
-                
+
                 if st.form_submit_button("✅ ENREGISTRER PRÉSENCE", use_container_width=True):
                     if matricule_sel:
                         if staff_mgr.enregistrer_presence(matricule_sel, date_presence, statut, retard):
@@ -12846,10 +13027,10 @@ if "RH" in tab_dict:
                             st.error("Erreur lors de l'enregistrement.")
                     else:
                         st.warning("⚠️ Veuillez sélectionner un matricule.")
-            
+
             st.markdown("---")
             st.markdown("#### 📊 Vue d'Ensemble des Présences")
-            
+
             # Tableau récapitulatif des présences
             presence_data = []
             for emp in staff_mgr.staff:
@@ -12863,17 +13044,17 @@ if "RH" in tab_dict:
                     "Total Retards": getattr(emp, 'total_retards', 0),
                     "Total Absences": getattr(emp, 'total_absences', 0)
                 })
-            
+
             if presence_data:
                 df_presence = pd.DataFrame(presence_data)
                 st.dataframe(df_presence, width='stretch', hide_index=True)
             else:
                 st.info("Aucune donnée de présence.")
-            
+
             st.markdown("---")
             st.markdown("#### 🏭 Enregistrement de Production")
             st.caption("Enregistrez la production quotidienne des opérateurs")
-            
+
             with st.form("production_form"):
                 col_mat_prod, col_tonnes = st.columns(2)
                 with col_mat_prod:
@@ -12884,10 +13065,10 @@ if "RH" in tab_dict:
                     else:
                         st.warning("Aucun opérateur enregistré.")
                         matricule_prod = None
-                
+
                 with col_tonnes:
                     tonnes = st.number_input("Production (Tonnes) *", min_value=0.0, value=0.0, step=0.1, key="prod_tonnes")
-                
+
                 if st.form_submit_button("✅ ENREGISTRER PRODUCTION", use_container_width=True):
                     if matricule_prod and tonnes > 0:
                         if staff_mgr.ajouter_production(matricule_prod, tonnes):
@@ -12898,15 +13079,15 @@ if "RH" in tab_dict:
                             st.error("Erreur lors de l'enregistrement.")
                     else:
                         st.warning("⚠️ Veuillez sélectionner un opérateur et saisir une quantité.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 5: CLASSEMENTS ---
         with rh_tabs[4]:
             # Classement par Ancienneté
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("📅 Classement par Ancienneté")
-            
+
             anciens = staff_mgr.get_classement_anciennete()
             if anciens:
                 anciennete_data = []
@@ -12923,17 +13104,17 @@ if "RH" in tab_dict:
                         "Date Arrivée": date_arrivee.strftime("%d/%m/%Y"),
                         "Ancienneté (ans)": round(anciennete_annees, 1)
                     })
-                
+
                 df_anciennete = pd.DataFrame(anciennete_data)
                 st.dataframe(df_anciennete, width='stretch', hide_index=True)
             else:
                 st.info("Aucun employé.")
             st.markdown('</div>', unsafe_allow_html=True)
-            
+
             # Classement par Production
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("🏭 Classement des Opérateurs par Production")
-            
+
             prod_ops = staff_mgr.get_classement_production()
             if prod_ops:
                 prod_data = []
@@ -12946,18 +13127,18 @@ if "RH" in tab_dict:
                         "Production (T)": int(getattr(emp, 'production_tonnes', 0)),
                         "Machine Assignée": getattr(emp, 'assigned_machine', "Aucune")
                     })
-                
+
                 df_prod = pd.DataFrame(prod_data)
                 st.dataframe(df_prod, width='stretch', hide_index=True)
             else:
                 st.info("Aucun opérateur enregistré.")
             st.markdown('</div>', unsafe_allow_html=True)
-            
+
             # Classement par Assiduité
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("⭐ Classement des Opérateurs par Assiduité")
             st.caption("Classement par nombre de jours consécutifs sans retard ni absence")
-            
+
             assid_ops = staff_mgr.get_classement_assiduite()
             if assid_ops:
                 assid_data = []
@@ -12966,7 +13147,7 @@ if "RH" in tab_dict:
                     if i == 1: medaille = "🥇"
                     elif i == 2: medaille = "🥈"
                     elif i == 3: medaille = "🥉"
-                    
+
                     assid_data.append({
                         "Rang": f"{medaille} {i}" if medaille else str(i),
                         "Matricule": emp.matricule,
@@ -12976,31 +13157,31 @@ if "RH" in tab_dict:
                         "Total Retards": getattr(emp, 'total_retards', 0),
                         "Total Absences": getattr(emp, 'total_absences', 0)
                     })
-                
+
                 df_assid = pd.DataFrame(assid_data)
                 st.dataframe(df_assid, width='stretch', hide_index=True)
             else:
                 st.info("Aucun opérateur enregistré.")
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 6: VUE PAR ÉQUIPE ---
         with rh_tabs[5]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("👥 Organisation par Équipe")
-            
+
             equipes = sorted(set([e.team for e in staff_mgr.staff]))
-            
+
             for equipe in equipes:
                 st.markdown(f"### Équipe {equipe}")
                 equipe_members = [e for e in staff_mgr.staff if e.team == equipe]
-                
+
                 if equipe_members:
                     equipe_data = []
                     for emp in equipe_members:
                         date_arrivee = getattr(emp, 'date_arrivee', date.today())
                         production_tonnes = getattr(emp, 'production_tonnes', 0)
                         jours_sans = getattr(emp, 'jours_sans_retard_absence', 0)
-                        
+
                         equipe_data.append({
                             "Matricule": emp.matricule,
                             "Nom": emp.name,
@@ -13010,10 +13191,10 @@ if "RH" in tab_dict:
                             "Production (T)": int(production_tonnes) if emp.role == "Operateur" else 0,
                             "Jours Sans Retard/Absence": jours_sans
                         })
-                    
+
                     df_equipe = pd.DataFrame(equipe_data)
                     st.dataframe(df_equipe, width='stretch', hide_index=True)
-                    
+
                     # Statistiques de l'équipe
                     col1, col2, col3 = st.columns(3)
                     col1.metric("Effectif", len(equipe_members))
@@ -13022,11 +13203,11 @@ if "RH" in tab_dict:
                     if operateurs_equipe:
                         prod_totale = sum(getattr(e, 'production_tonnes', 0) for e in operateurs_equipe)
                         col3.metric("Production Totale", f"{int(prod_totale)} T")
-                    
+
                     st.markdown("---")
                 else:
                     st.info(f"Aucun membre dans l'équipe {equipe}.")
-            
+
         st.markdown('</div>', unsafe_allow_html=True)
 
 # --- MARCHÉ OR ---
@@ -13036,27 +13217,27 @@ if "MARCHÉ OR" in tab_dict:
         st.subheader("🥇 ANALYSE DU MARCHÉ DE L'OR")
         st.markdown("Suivi en temps réel du prix de l'or et convertisseur")
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # Récupérer le prix de l'or
         gold_price = get_gold_price()
         rates = get_exchange_rates()
-        
+
         # Prix de l'or en différentes devises
         price_usd = gold_price['price_per_ounce_usd']
         price_eur = price_usd * rates['EUR']
         price_cfa = price_usd * rates['CFA']
-        
+
         # Prix par gramme
         price_per_gram_usd = price_usd / 31.1035  # 1 once troy = 31.1035 grammes
         price_per_gram_eur = price_per_gram_usd * rates['EUR']
         price_per_gram_cfa = price_per_gram_usd * rates['CFA']
-        
+
         # Section 1: Prix en temps réel
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown("#### 💰 Prix de l'Or en Temps Réel")
-        
+
         col_price1, col_price2, col_price3, col_price4 = st.columns(4)
-        
+
         with col_price1:
             st.markdown(f"""
             <div style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); padding: 20px; border-radius: 15px; text-align: center; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
@@ -13066,7 +13247,7 @@ if "MARCHÉ OR" in tab_dict:
                 </div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         with col_price2:
             st.markdown(f"""
             <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 20px; border-radius: 15px; text-align: center; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
@@ -13076,7 +13257,7 @@ if "MARCHÉ OR" in tab_dict:
                 </div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         with col_price3:
             st.markdown(f"""
             <div style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); padding: 20px; border-radius: 15px; text-align: center; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
@@ -13086,7 +13267,7 @@ if "MARCHÉ OR" in tab_dict:
                 </div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         with col_price4:
             st.markdown(f"""
             <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); padding: 20px; border-radius: 15px; text-align: center; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
@@ -13096,11 +13277,11 @@ if "MARCHÉ OR" in tab_dict:
                 </div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         # Ajouter une ligne supplémentaire pour les prix par gramme en EUR et FCFA
         st.markdown("<br>", unsafe_allow_html=True)
         col_price5, col_price6 = st.columns(2)
-        
+
         with col_price5:
             st.markdown(f"""
             <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 20px; border-radius: 15px; text-align: center; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
@@ -13110,7 +13291,7 @@ if "MARCHÉ OR" in tab_dict:
                 </div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         with col_price6:
             st.markdown(f"""
             <div style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); padding: 20px; border-radius: 15px; text-align: center; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
@@ -13120,14 +13301,14 @@ if "MARCHÉ OR" in tab_dict:
                 </div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         st.caption(f"🕐 Dernière mise à jour: {gold_price['timestamp'].strftime('%d/%m/%Y %H:%M:%S')}")
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # Section 2: Graphique de Trading Avancé
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown("#### 📈 GRAPHIQUE DE TRADING AVANCÉ - OR")
-        
+
         # Sélection de la période et du type de graphique
         col_select1, col_select2 = st.columns(2)
         with col_select1:
@@ -13142,7 +13323,7 @@ if "MARCHÉ OR" in tab_dict:
                 ["Chandeliers (Candlestick)", "Ligne", "Chandeliers + Indicateurs"],
                 key="chart_type"
             )
-        
+
         # Mapper la sélection à la période
         period_map = {
             "Journalier (30 jours)": "daily",
@@ -13151,14 +13332,14 @@ if "MARCHÉ OR" in tab_dict:
             "Annuel (10 ans)": "yearly"
         }
         selected_period = period_map[period_selection]
-        
+
         # Récupérer les données historiques
         hist_data = get_gold_historical_data(selected_period)
-        
+
         # Créer des données OHLC (Open, High, Low, Close) à partir des prix
         prices = hist_data['prices']
         dates = hist_data['dates']
-        
+
         # Générer des données OHLC simulées réalistes
         ohlc_data = []
         for i, price in enumerate(prices):
@@ -13167,13 +13348,13 @@ if "MARCHÉ OR" in tab_dict:
             else:
                 # Open price = close price du jour précédent avec une petite variation
                 open_price = ohlc_data[i-1]['Close'] * (1 + random.uniform(-0.02, 0.02))
-            
+
             # Générer High, Low, Close autour du prix
             daily_volatility = price * 0.02  # 2% de volatilité
             high_price = max(open_price, price) + random.uniform(0, daily_volatility * 0.5)
             low_price = min(open_price, price) - random.uniform(0, daily_volatility * 0.5)
             close_price = price
-            
+
             ohlc_data.append({
                 'Date': dates[i],
                 'Open': open_price,
@@ -13181,31 +13362,31 @@ if "MARCHÉ OR" in tab_dict:
                 'Low': low_price,
                 'Close': close_price
             })
-        
+
         df_gold = pd.DataFrame(ohlc_data)
         df_gold['Prix (USD/once)'] = prices
-        
+
         # Calculer les indicateurs techniques
         # Moyennes mobiles
         df_gold['MA_20'] = df_gold['Close'].rolling(window=min(20, len(df_gold)//2)).mean()
         df_gold['MA_50'] = df_gold['Close'].rolling(window=min(50, len(df_gold)//2)).mean()
-        
+
         # Bandes de Bollinger (MA ± 2 écarts-types)
         df_gold['BB_Middle'] = df_gold['Close'].rolling(window=min(20, len(df_gold)//2)).mean()
         df_gold['BB_Std'] = df_gold['Close'].rolling(window=min(20, len(df_gold)//2)).std()
         df_gold['BB_Upper'] = df_gold['BB_Middle'] + (df_gold['BB_Std'] * 2)
         df_gold['BB_Lower'] = df_gold['BB_Middle'] - (df_gold['BB_Std'] * 2)
-        
+
         # RSI (Relative Strength Index) - simplifié
         delta = df_gold['Close'].diff()
         gain = (delta.where(delta > 0, 0)).rolling(window=min(14, len(df_gold)//3)).mean()
         loss = (-delta.where(delta < 0, 0)).rolling(window=min(14, len(df_gold)//3)).mean()
         rs = gain / loss
         df_gold['RSI'] = 100 - (100 / (1 + rs))
-        
+
         # Volumes simulés
         df_gold['Volume'] = [random.uniform(1000000, 5000000) for _ in range(len(df_gold))]
-        
+
         # Calculer les statistiques
         min_price = df_gold['Low'].min()
         max_price = df_gold['High'].max()
@@ -13214,7 +13395,7 @@ if "MARCHÉ OR" in tab_dict:
         first_price = df_gold['Close'].iloc[0]
         variation_pct = ((current_price_hist - first_price) / first_price) * 100
         current_rsi = df_gold['RSI'].iloc[-1]
-        
+
         # Afficher les statistiques
         col_stat1, col_stat2, col_stat3, col_stat4, col_stat5, col_stat6 = st.columns(6)
         col_stat1.metric("Prix Actuel", f"${current_price_hist:,.2f}", f"{variation_pct:+.2f}%")
@@ -13224,14 +13405,14 @@ if "MARCHÉ OR" in tab_dict:
         col_stat5.metric("Variation", f"${max_price - min_price:,.2f}", delta_color="inverse")
         rsi_color = "normal" if 30 <= current_rsi <= 70 else "inverse"
         col_stat6.metric("RSI", f"{current_rsi:.1f}", delta_color=rsi_color)
-        
+
         st.markdown("---")
-        
+
         # Créer le graphique de trading avancé
         try:
             import plotly.graph_objects as go
             from plotly.subplots import make_subplots
-            
+
             if chart_type == "Chandeliers (Candlestick)" or chart_type == "Chandeliers + Indicateurs":
                 # Créer un graphique avec sous-graphiques si on veut les indicateurs
                 if chart_type == "Chandeliers + Indicateurs":
@@ -13247,7 +13428,7 @@ if "MARCHÉ OR" in tab_dict:
                     )
                 else:
                     fig = go.Figure()
-                
+
                 # Graphique en chandeliers (Candlestick)
                 candlestick = go.Candlestick(
                     x=df_gold['Date'],
@@ -13261,10 +13442,10 @@ if "MARCHÉ OR" in tab_dict:
                     increasing_fillcolor='#26a69a',
                     decreasing_fillcolor='#ef5350'
                 )
-                
+
                 if chart_type == "Chandeliers + Indicateurs":
                     fig.add_trace(candlestick, row=1, col=1)
-                    
+
                     # Ajouter les moyennes mobiles
                     fig.add_trace(go.Scatter(
                         x=df_gold['Date'],
@@ -13274,7 +13455,7 @@ if "MARCHÉ OR" in tab_dict:
                         line=dict(color='#FF9800', width=2),
                         opacity=0.8
                     ), row=1, col=1)
-                    
+
                     fig.add_trace(go.Scatter(
                         x=df_gold['Date'],
                         y=df_gold['MA_50'],
@@ -13283,7 +13464,7 @@ if "MARCHÉ OR" in tab_dict:
                         line=dict(color='#2196F3', width=2),
                         opacity=0.8
                     ), row=1, col=1)
-                    
+
                     # Ajouter les bandes de Bollinger
                     fig.add_trace(go.Scatter(
                         x=df_gold['Date'],
@@ -13293,7 +13474,7 @@ if "MARCHÉ OR" in tab_dict:
                         line=dict(color='rgba(128,128,128,0.3)', width=1, dash='dot'),
                         showlegend=False
                     ), row=1, col=1)
-                    
+
                     fig.add_trace(go.Scatter(
                         x=df_gold['Date'],
                         y=df_gold['BB_Lower'],
@@ -13304,9 +13485,9 @@ if "MARCHÉ OR" in tab_dict:
                         fillcolor='rgba(128,128,128,0.1)',
                         showlegend=False
                     ), row=1, col=1)
-                    
+
                     # Graphique des volumes
-                    colors_vol = ['#26a69a' if df_gold['Close'].iloc[i] >= df_gold['Open'].iloc[i] 
+                    colors_vol = ['#26a69a' if df_gold['Close'].iloc[i] >= df_gold['Open'].iloc[i]
                                  else '#ef5350' for i in range(len(df_gold))]
                     fig.add_trace(go.Bar(
                         x=df_gold['Date'],
@@ -13315,7 +13496,7 @@ if "MARCHÉ OR" in tab_dict:
                         marker_color=colors_vol,
                         opacity=0.6
                     ), row=2, col=1)
-                    
+
                     # Graphique RSI
                     fig.add_trace(go.Scatter(
                         x=df_gold['Date'],
@@ -13324,20 +13505,20 @@ if "MARCHÉ OR" in tab_dict:
                         name='RSI',
                         line=dict(color='#9c27b0', width=2)
                     ), row=3, col=1)
-                    
+
                     # Lignes de référence RSI
                     fig.add_hline(y=70, line_dash="dash", line_color="red", opacity=0.5, row=3, col=1)
                     fig.add_hline(y=30, line_dash="dash", line_color="green", opacity=0.5, row=3, col=1)
                     fig.add_hline(y=50, line_dash="dot", line_color="gray", opacity=0.3, row=3, col=1)
-                    
+
                     fig.update_yaxes(title_text="Prix (USD/once)", row=1, col=1)
                     fig.update_yaxes(title_text="Volume", row=2, col=1)
                     fig.update_yaxes(title_text="RSI", range=[0, 100], row=3, col=1)
                     fig.update_xaxes(title_text="Date", row=3, col=1)
-                    
+
                 else:
                     fig.add_trace(candlestick)
-                    
+
                     # Ajouter les moyennes mobiles
                     fig.add_trace(go.Scatter(
                         x=df_gold['Date'],
@@ -13346,7 +13527,7 @@ if "MARCHÉ OR" in tab_dict:
                         name='MA 20',
                         line=dict(color='#FF9800', width=2)
                     ))
-                    
+
                     fig.add_trace(go.Scatter(
                         x=df_gold['Date'],
                         y=df_gold['MA_50'],
@@ -13354,7 +13535,7 @@ if "MARCHÉ OR" in tab_dict:
                         name='MA 50',
                         line=dict(color='#2196F3', width=2)
                     ))
-                    
+
                     # Ajouter les bandes de Bollinger
                     fig.add_trace(go.Scatter(
                         x=df_gold['Date'],
@@ -13364,7 +13545,7 @@ if "MARCHÉ OR" in tab_dict:
                         line=dict(color='rgba(128,128,128,0.3)', width=1, dash='dot'),
                         showlegend=False
                     ))
-                    
+
                     fig.add_trace(go.Scatter(
                         x=df_gold['Date'],
                         y=df_gold['BB_Lower'],
@@ -13375,7 +13556,7 @@ if "MARCHÉ OR" in tab_dict:
                         fillcolor='rgba(128,128,128,0.1)',
                         showlegend=False
                     ))
-                
+
             else:
                 # Graphique en ligne simple
                 fig = go.Figure()
@@ -13388,7 +13569,7 @@ if "MARCHÉ OR" in tab_dict:
                     fill='tonexty',
                     fillcolor='rgba(245, 184, 0, 0.2)'
                 ))
-            
+
             # Mise en forme du graphique
             fig.update_layout(
                 title={
@@ -13429,7 +13610,7 @@ if "MARCHÉ OR" in tab_dict:
                     gridcolor='rgba(128, 128, 128, 0.2)'
                 )
             )
-            
+
             st.plotly_chart(fig, width='stretch', config={
                 'displayModeBar': True,
                 'displaylogo': False,
@@ -13442,21 +13623,21 @@ if "MARCHÉ OR" in tab_dict:
                     'scale': 1
                 }
             })
-            
+
         except Exception as e:
             st.error(f"Erreur lors de la création du graphique: {str(e)}")
             st.info("Affichage d'un graphique simplifié...")
             st.line_chart(df_gold.set_index('Date')['Close'])
-        
+
         # Graphique en barres pour la variation
         st.markdown("---")
         st.markdown("#### 📊 Analyse des Variations")
-        
+
         df_gold['Variation'] = df_gold['Close'].diff()
         df_gold['Variation %'] = (df_gold['Variation'] / df_gold['Close'].shift(1)) * 100
-        
+
         col_var1, col_var2 = st.columns(2)
-        
+
         with col_var1:
             st.markdown("**Variation Journalière**")
             fig_bar = px.bar(
@@ -13477,7 +13658,7 @@ if "MARCHÉ OR" in tab_dict:
                 template='plotly_dark'
             )
             st.plotly_chart(fig_bar, width='stretch', use_container_width=True)
-        
+
         with col_var2:
             st.markdown("**Volume vs Prix**")
             fig_scatter = px.scatter(
@@ -13498,7 +13679,7 @@ if "MARCHÉ OR" in tab_dict:
                 template='plotly_dark'
             )
             st.plotly_chart(fig_scatter, width='stretch', use_container_width=True)
-        
+
         # Tableau des données
         st.markdown("---")
         with st.expander("📋 Voir les données détaillées"):
@@ -13508,22 +13689,22 @@ if "MARCHÉ OR" in tab_dict:
                 display_df['Variation'] = display_df['Variation'].round(2)
                 display_df['Variation %'] = display_df['Variation %'].round(2)
             st.dataframe(display_df, width='stretch', hide_index=True)
-        
+
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # Section 3: Convertisseur d'or
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown("#### 🔄 Convertisseur d'Or")
-        
+
         col_conv1, col_conv2 = st.columns(2)
-        
+
         with col_conv1:
             st.markdown("##### 💰 Conversion Poids → Valeur")
             with st.form("gold_converter_form"):
                 amount = st.number_input("Quantité", min_value=0.0, value=1.0, step=0.01, key="gold_amount")
                 unit = st.selectbox("Unité", ["Grammes", "Onces troy", "Kilogrammes"], key="gold_unit")
                 currency = st.selectbox("Devise", ["USD", "EUR", "CFA"], key="gold_currency")
-                
+
                 if st.form_submit_button("🔄 Convertir", use_container_width=True):
                     # Conversion en grammes
                     if unit == "Grammes":
@@ -13532,10 +13713,10 @@ if "MARCHÉ OR" in tab_dict:
                         grams = amount * 31.1035
                     else:  # Kilogrammes
                         grams = amount * 1000
-                    
+
                     # Calcul de la valeur
                     value_usd = grams * price_per_gram_usd
-                    
+
                     if currency == "USD":
                         result_value = value_usd
                         result_symbol = "$"
@@ -13545,16 +13726,16 @@ if "MARCHÉ OR" in tab_dict:
                     else:  # CFA
                         result_value = value_usd * rates['CFA']
                         result_symbol = "F"
-                    
+
                     st.success(f"**Valeur:** {result_symbol}{result_value:,.2f}")
-        
+
         with col_conv2:
             st.markdown("##### 💵 Conversion Valeur → Poids")
             with st.form("value_to_weight_form"):
                 value_input = st.number_input("Valeur", min_value=0.0, value=1000.0, step=0.01, key="gold_value")
                 currency_input = st.selectbox("Devise", ["USD", "EUR", "CFA"], key="value_currency")
                 output_unit = st.selectbox("Unité de sortie", ["Grammes", "Onces troy", "Kilogrammes"], key="output_unit")
-                
+
                 if st.form_submit_button("🔄 Convertir", use_container_width=True):
                     # Conversion en USD
                     if currency_input == "USD":
@@ -13563,10 +13744,10 @@ if "MARCHÉ OR" in tab_dict:
                         value_usd = value_input / rates['EUR']
                     else:  # CFA
                         value_usd = value_input / rates['CFA']
-                    
+
                     # Calcul du poids en grammes
                     grams = value_usd / price_per_gram_usd
-                    
+
                     # Conversion selon l'unité demandée
                     if output_unit == "Grammes":
                         result_weight = grams
@@ -13577,25 +13758,25 @@ if "MARCHÉ OR" in tab_dict:
                     else:  # Kilogrammes
                         result_weight = grams / 1000
                         result_unit = "kg"
-                    
+
                     st.success(f"**Poids:** {result_weight:,.4f} {result_unit}")
-        
+
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # Section 3: Tableau de conversion rapide
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown("#### 📊 Tableau de Conversion Rapide")
-        
+
         # Créer un tableau avec différentes quantités
         conversion_data = []
         quantities = [1, 5, 10, 50, 100, 500, 1000]  # En grammes
-        
+
         for qty_grams in quantities:
             value_usd = qty_grams * price_per_gram_usd
             value_eur = value_usd * rates['EUR']
             value_cfa = value_usd * rates['CFA']
             qty_ounces = qty_grams / 31.1035
-            
+
             conversion_data.append({
                 "Grammes": f"{qty_grams:,} g",
                 "Onces troy": f"{qty_ounces:.4f} oz",
@@ -13603,39 +13784,39 @@ if "MARCHÉ OR" in tab_dict:
                 "Valeur EUR": f"€{value_eur:,.2f}",
                 "Valeur CFA": f"{value_cfa:,.0f} F"
             })
-        
+
         df_conversion = pd.DataFrame(conversion_data)
         st.dataframe(df_conversion, width='stretch', hide_index=True)
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # Section 4: Informations sur l'or
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown("#### ℹ️ Informations sur l'Or")
-        
+
         info_col1, info_col2 = st.columns(2)
-        
+
         with info_col1:
             st.markdown("""
             **📏 Unités de mesure:**
             - **Once troy (oz t)**: 31.1035 grammes
             - **Once avoirdupois (oz)**: 28.3495 grammes
             - **Kilogramme (kg)**: 1000 grammes
-            
+
             **💡 Note:** Le marché de l'or utilise généralement l'once troy.
             """)
-        
+
         with info_col2:
             st.markdown(f"""
             **📈 Prix actuel:**
             - **1 once troy**: ${price_usd:,.2f} USD
             - **1 gramme**: ${price_per_gram_usd:,.2f} USD
             - **1 kilogramme**: ${price_per_gram_usd * 1000:,.2f} USD
-            
+
             **🔄 Taux de change:**
             - 1 USD = {rates['EUR']:.2f} EUR
             - 1 USD = {rates['CFA']:.0f} CFA
             """)
-        
+
         st.markdown('</div>', unsafe_allow_html=True)
 
 # --- VALIDATION OPÉRATEUR ---
@@ -13649,7 +13830,7 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
         if user_role == "Operateur":
             with st.expander("🔐 Changer mon mot de passe", expanded=False):
                 render_change_own_password_form(user_mgr, key_prefix="operateur_pwd")
-        
+
         # Initialiser les systèmes de notification dans session_state
         if 'validations' not in st.session_state:
             st.session_state.validations = []
@@ -13661,7 +13842,7 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
             st.session_state.breakdown_reports = []
         if 'cycle_events' not in st.session_state:
             st.session_state.cycle_events = []
-        
+
         # Récupérer l'opérateur actuel
         current_operator = None
         if user_role == "Operateur":
@@ -13670,7 +13851,7 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                 if emp.role == "Operateur" and emp.name == st.session_state.username:
                     current_operator = emp
                     break
-        
+
         # Récupérer les machines de l'opérateur pour déterminer le type
         df_machines = manager.get_summary_dataframe()
         operator_machines_list = []
@@ -13678,30 +13859,30 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
         if current_operator:
             operator_machines_list = df_machines[df_machines['Opérateur'] == current_operator.name]['ID'].tolist()
             machine_types = df_machines[df_machines['Opérateur'] == current_operator.name]['Type'].tolist()
-        
+
         # Déterminer le type d'opérateur depuis les données utilisateur ou les machines
         operator_type_from_user = None
         if user_info and 'operator_type' in user_info:
             operator_type_from_user = user_info['operator_type']
-        
+
         # Si le type est défini dans les données utilisateur, l'utiliser en priorité
         if operator_type_from_user:
             is_loader = (operator_type_from_user == "loader")
             is_dumper = (operator_type_from_user == "dumper")
         else:
             # Sinon, détecter automatiquement à partir des machines assignées
-            is_loader = any('CHARGE' in m.upper() or 'PELLE' in m.upper() or 'EXCAVATRICE' in m.upper() 
+            is_loader = any('CHARGE' in m.upper() or 'PELLE' in m.upper() or 'EXCAVATRICE' in m.upper()
                           for m in machine_types) if machine_types else False
-            is_dumper = any('DUMPER' in m.upper() or 'CAMION' in m.upper() 
+            is_dumper = any('DUMPER' in m.upper() or 'CAMION' in m.upper()
                           for m in machine_types) if machine_types else False
-        
+
         # CRÉER DES SOUS-ONGLETS SELON LE TYPE D'OPÉRATEUR
         # Si opérateur de chargement : seulement sous-onglet chargement
         # Si opérateur de transport : seulement sous-onglet transport
         # Si les deux ou aucun : afficher les deux
         show_loader_tab = True
         show_dumper_tab = True
-        
+
         if user_role == "Operateur":
             if is_loader and not is_dumper:
                 # Opérateur de chargement uniquement
@@ -13709,21 +13890,21 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
             elif is_dumper and not is_loader:
                 # Opérateur de transport uniquement
                 show_loader_tab = False
-        
+
         # Créer les sous-onglets selon ce qui doit être affiché
         sub_tab_labels = []
         if show_loader_tab:
             sub_tab_labels.append("📦 Opérateur de Chargement")
         if show_dumper_tab:
             sub_tab_labels.append("🚚 Opérateur de Transport")
-        
+
         # S'assurer qu'il y a au moins un sous-onglet
         if not sub_tab_labels:
             # Si aucun sous-onglet n'est défini, afficher les deux par défaut
             sub_tab_labels = ["📦 Opérateur de Chargement", "🚚 Opérateur de Transport"]
             show_loader_tab = True
             show_dumper_tab = True
-        
+
         # Créer les sous-onglets - TOUJOURS CRÉER AU MOINS UN
         if sub_tab_labels:
             sub_tabs = st.tabs(sub_tab_labels)
@@ -13732,7 +13913,7 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
             sub_tabs = st.tabs(["📦 Opérateur de Chargement", "🚚 Opérateur de Transport"])
             show_loader_tab = True
             show_dumper_tab = True
-        
+
         loader_tab_index = sub_tab_labels.index("📦 Opérateur de Chargement") if show_loader_tab else -1
         dumper_tab_index = sub_tab_labels.index("🚚 Opérateur de Transport") if show_dumper_tab else -1
 
@@ -13742,18 +13923,18 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                 # Message de test - TOUJOURS AFFICHÉ EN PREMIER
                 st.markdown("### 📦 INTERFACE OPÉRATEUR DE CHARGEMENT")
                 st.write("**Test d'affichage : Si vous voyez ce message, le sous-onglet fonctionne.**")
-                
+
                 # Initialiser les variables
                 if 'loading_in_progress' not in st.session_state:
                     st.session_state.loading_in_progress = {}
-                
+
                 # Créer un opérateur temporaire si nécessaire
                 if not current_operator and st.session_state.get('username'):
                     class TempOperator:
                         def __init__(self, name):
                             self.name = name
                     current_operator = TempOperator(st.session_state.username)
-                
+
                 # Message d'accueil - TOUJOURS AFFICHÉ
                 if user_role == "Operateur":
                     if not current_operator:
@@ -13762,10 +13943,10 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                         st.success(f"✅ Connecté en tant qu'opérateur de chargement : {current_operator.name}")
                 else:
                     st.info("Mode superviseur : Vous pouvez valider les chargements.")
-                
+
                 # Toujours afficher l'interface - SANS CONDITIONS
                 auto_machine = operator_machines_list[0] if operator_machines_list else None
-                
+
                 # Récupérer les opérateurs dumper disponibles
                 dumper_operators = [e.name for e in staff_mgr.get_active_staff() if e.role == "Operateur"]
                 dumper_machines = df_machines[df_machines['Type'].isin(['Dumper', 'Camion', 'Benne'])]['ID'].tolist()
@@ -13774,17 +13955,17 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                     op_machines = df_machines[df_machines['Opérateur'] == op_name]['ID'].tolist()
                     if any(m in dumper_machines for m in op_machines):
                         dumper_operators_with_trucks.append(op_name)
-                
+
                 # ZONE DE VALIDATION SIMPLIFIÉE - TOUJOURS AFFICHÉE
                 st.markdown("""
-                <div style="background: #1a1a1a; padding: 40px; border-radius: 15px; margin-bottom: 30px; 
+                <div style="background: #1a1a1a; padding: 40px; border-radius: 15px; margin-bottom: 30px;
                             border: 4px solid #F5B800; box-shadow: 0 15px 40px rgba(245, 184, 0, 0.6);">
                     <h2 style="color: #F5B800; text-align: center; font-size: 48px; margin: 0 0 30px 0; font-weight: 900;">
                         📦 VALIDATION DE CHARGEMENT
                     </h2>
                 </div>
                 """, unsafe_allow_html=True)
-                
+
                 # Sélection opérateur dumper (si disponible)
                 if dumper_operators_with_trucks:
                     selected_dumper_operator = st.selectbox(
@@ -13792,7 +13973,7 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                         ["Sélectionner..."] + dumper_operators_with_trucks,
                         key="dumper_operator_selection"
                     )
-                    
+
                     if selected_dumper_operator and selected_dumper_operator != "Sélectionner...":
                         dumper_op_machines = df_machines[df_machines['Opérateur'] == selected_dumper_operator]['ID'].tolist()
                         dumper_trucks = [m for m in dumper_op_machines if m in dumper_machines]
@@ -13802,17 +13983,17 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                 else:
                     st.info("ℹ️ Aucun dumper disponible. Vous pouvez quand même sélectionner le type de minerai.")
                     selected_dumper_operator = None
-                
+
                 # TYPE DE MINERAI - BOUTONS TOUJOURS VISIBLES
                 st.markdown("""
-                <div style="background: #1a1a1a; padding: 30px; border-radius: 15px; margin: 30px 0; 
+                <div style="background: #1a1a1a; padding: 30px; border-radius: 15px; margin: 30px 0;
                             border: 3px solid #F5B800;">
                     <h3 style="color: #F5B800; text-align: center; font-size: 36px; margin: 0 0 20px 0; font-weight: 700;">
                         🥇 TYPE DE MINERAI
                     </h3>
                 </div>
                 """, unsafe_allow_html=True)
-                
+
                 col1, col2 = st.columns(2)
                 with col1:
                     if st.button("🥇 OR", use_container_width=True, key="btn_or", type="primary"):
@@ -13840,19 +14021,19 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                             'loading_start': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                         })
                         st.rerun()
-                
+
                 # GRADE - BOUTONS TOUJOURS VISIBLES (si type de minerai sélectionné)
                 if 'mineral_type' in st.session_state.loading_in_progress:
                     loading_info = st.session_state.loading_in_progress
                     st.markdown("""
-                    <div style="background: #1a1a1a; padding: 30px; border-radius: 15px; margin: 30px 0; 
+                    <div style="background: #1a1a1a; padding: 30px; border-radius: 15px; margin: 30px 0;
                                 border: 3px solid #F5B800;">
                         <h3 style="color: #F5B800; text-align: center; font-size: 36px; margin: 0 0 20px 0; font-weight: 700;">
                             📊 GRADE DU MINERAI
                         </h3>
                     </div>
                     """, unsafe_allow_html=True)
-                    
+
                     col_g1, col_g2, col_g3 = st.columns(3)
                     with col_g1:
                         if st.button("🟢 HIGH GRADE", use_container_width=True, key="btn_high_grade", type="primary"):
@@ -13866,11 +14047,11 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                         if st.button("🔴 LOW GRADE", use_container_width=True, key="btn_low_grade"):
                             st.session_state.loading_in_progress.update({'grade': 'Low Grade'})
                             st.rerun()
-                    
+
                     # VALIDATION FINALE - BOUTON TOUJOURS VISIBLE (si grade sélectionné)
                     if 'grade' in st.session_state.loading_in_progress:
                         st.markdown(f"""
-                        <div style="background: rgba(245, 184, 0, 0.3); padding: 40px; border-radius: 15px; 
+                        <div style="background: rgba(245, 184, 0, 0.3); padding: 40px; border-radius: 15px;
                                     border: 4px solid #F5B800; margin: 30px 0; text-align: center;">
                             <p style="color: #000; font-size: 42px; margin: 15px 0; font-weight: 900;">
                                 <strong>Minerai:</strong> {loading_info.get('mineral_type', 'N/A')} - {loading_info.get('grade', 'N/A')}
@@ -13879,8 +14060,8 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                             {f'<p style="color: #000; font-size: 42px; margin: 15px 0; font-weight: 900;"><strong>Opérateur Dumper:</strong> {loading_info.get("dumper_operator", "N/A")}</p>' if loading_info.get('dumper_operator') else ''}
                         </div>
                         """, unsafe_allow_html=True)
-                        
-                        if st.button("✅ VALIDER LE CHARGEMENT", use_container_width=True, 
+
+                        if st.button("✅ VALIDER LE CHARGEMENT", use_container_width=True,
                                    type="primary", key="btn_validate_loading"):
                             if not current_operator:
                                 st.error("❌ Impossible de valider : opérateur non trouvé")
@@ -13892,11 +14073,11 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                                     destination = "ROMPAD Medium Grade"
                                 else:
                                     destination = "ROMPAD Low Grade"
-                                
+
                                 # Utiliser les valeurs par défaut si pas de dumper sélectionné
                                 dumper_op = loading_info.get('dumper_operator', 'Non assigné')
                                 truck = loading_info.get('truck', 'Non assigné')
-                                
+
                                 loading_signal = {
                                     'id': len(st.session_state.loading_signals) + 1,
                                     'operator': current_operator.name,
@@ -13913,7 +14094,7 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                                     'status': 'Chargement validé - En attente de démarrage dumper'
                                 }
                                 st.session_state.loading_signals.append(loading_signal)
-                                
+
                                 if dumper_op != 'Non assigné':
                                     notification = {
                                         'type': 'loading_validated',
@@ -13929,7 +14110,7 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                                         'read': False
                                     }
                                     st.session_state.operator_notifications.append(notification)
-                                
+
                                 cycle_event = {
                                     'type': 'loading_complete',
                                     'id': loading_signal['id'],
@@ -13943,18 +14124,18 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                                 }
                                 st.session_state.cycle_events.append(cycle_event)
-                                
+
                                 st.session_state.loading_in_progress = {}
                                 st.success(f"✅ Chargement validé !")
                                 st.rerun()
-        
+
         # SOUS-ONGLET 2: OPÉRATEUR DE TRANSPORT (DUMPER) - INTERFACE SIMPLIFIÉE
         if show_dumper_tab and dumper_tab_index >= 0:
             with sub_tabs[dumper_tab_index]:
                 # Message de test - TOUJOURS AFFICHÉ EN PREMIER
                 st.markdown("### 🚚 INTERFACE OPÉRATEUR DE TRANSPORT")
                 st.write("**Test d'affichage : Si vous voyez ce message, le sous-onglet fonctionne.**")
-                
+
                 # Message d'accueil pour les opérateurs de transport
                 if user_role == "Operateur":
                     if not current_operator:
@@ -13963,48 +14144,48 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                         st.success(f"✅ Connecté en tant qu'opérateur de transport : {current_operator.name}")
                 else:
                     st.info("Mode superviseur : Vous pouvez valider les déchargements.")
-                
+
                 # Initialiser les variables
                 if 'loading_in_progress' not in st.session_state:
                     st.session_state.loading_in_progress = {}
-                
+
                 # Créer un opérateur temporaire si nécessaire
                 if not current_operator and st.session_state.get('username'):
                     class TempOperator:
                         def __init__(self, name):
                             self.name = name
                     current_operator = TempOperator(st.session_state.username)
-                
+
                 # Toujours afficher l'interface - SANS CONDITIONS
                 # Chargements en cours de transport pour ce camion
                 in_transit_loadings = []
                 pending_loadings = []
-                
+
                 if current_operator:
-                    in_transit_loadings = [l for l in st.session_state.loading_signals 
-                                          if l.get('status') == 'En transport' 
+                    in_transit_loadings = [l for l in st.session_state.loading_signals
+                                          if l.get('status') == 'En transport'
                                           and l.get('dumper_operator') == current_operator.name]
-                    
+
                     # Chargements validés en attente de démarrage
-                    pending_loadings = [l for l in st.session_state.loading_signals 
-                                       if l.get('status') == 'Chargement validé - En attente de démarrage dumper' 
+                    pending_loadings = [l for l in st.session_state.loading_signals
+                                       if l.get('status') == 'Chargement validé - En attente de démarrage dumper'
                                        and l.get('dumper_operator') == current_operator.name]
-                
+
                 # ZONE DE VALIDATION SIMPLIFIÉE
                 st.markdown("""
-                <div style="background: #1a1a1a; padding: 40px; border-radius: 15px; margin-bottom: 30px; 
+                <div style="background: #1a1a1a; padding: 40px; border-radius: 15px; margin-bottom: 30px;
                             border: 4px solid #F5B800; box-shadow: 0 15px 40px rgba(245, 184, 0, 0.6);">
                     <h2 style="color: #F5B800; text-align: center; font-size: 48px; margin: 0 0 30px 0; font-weight: 900;">
                         🚚 VALIDATION DE TRANSPORT
                     </h2>
                 </div>
                 """, unsafe_allow_html=True)
-                
+
                 # CHARGEMENTS EN ATTENTE DE DÉMARRAGE
                 if pending_loadings:
                     for loading in pending_loadings:
                         st.markdown(f"""
-                        <div style="background: #1a1a1a; padding: 40px; border-radius: 15px; margin: 20px 0; 
+                        <div style="background: #1a1a1a; padding: 40px; border-radius: 15px; margin: 20px 0;
                                     border: 4px solid #F5B800; box-shadow: 0 10px 30px rgba(245, 184, 0, 0.5);">
                             <h3 style="color: #F5B800; text-align: center; font-size: 36px; margin: 0 0 20px 0; font-weight: 700;">
                                 📦 NOUVEAU CHARGEMENT
@@ -14016,15 +14197,15 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                             </div>
                         </div>
                         """, unsafe_allow_html=True)
-                        
-                        if st.button(f"✅ VALIDER DÉMARRAGE", key=f"start_transport_{loading['id']}", 
+
+                        if st.button(f"✅ VALIDER DÉMARRAGE", key=f"start_transport_{loading['id']}",
                                    use_container_width=True, type="primary"):
                             if not current_operator:
                                 st.error("❌ Impossible de valider : opérateur non trouvé")
                             else:
                                 loading['status'] = 'En transport'
                                 loading['transport_start'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                                
+
                                 notification = {
                                     'type': 'transport_started',
                                     'from_operator': current_operator.name,
@@ -14036,7 +14217,7 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                                     'read': False
                                 }
                                 st.session_state.operator_notifications.append(notification)
-                                
+
                                 cycle_event = {
                                     'type': 'transport_start',
                                     'operator': current_operator.name,
@@ -14047,15 +14228,15 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                                 }
                                 st.session_state.cycle_events.append(cycle_event)
-                                
+
                                 st.success("✅ Démarrage validé !")
                                 st.rerun()
-                
+
                 # CHARGEMENTS EN TRANSPORT - VALIDATION DÉCHARGEMENT
                 if in_transit_loadings:
                     for loading in in_transit_loadings:
                         st.markdown(f"""
-                        <div style="background: #1a1a1a; padding: 40px; border-radius: 15px; margin: 20px 0; 
+                        <div style="background: #1a1a1a; padding: 40px; border-radius: 15px; margin: 20px 0;
                                     border: 4px solid #26a69a; box-shadow: 0 10px 30px rgba(38, 166, 154, 0.5);">
                             <h3 style="color: #26a69a; text-align: center; font-size: 36px; margin: 0 0 20px 0; font-weight: 700;">
                                 🚚 EN TRANSPORT
@@ -14067,8 +14248,8 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                             </div>
                         </div>
                         """, unsafe_allow_html=True)
-                        
-                        if st.button(f"✅ VALIDER DÉCHARGEMENT", key=f"unload_{loading['id']}", 
+
+                        if st.button(f"✅ VALIDER DÉCHARGEMENT", key=f"unload_{loading['id']}",
                                    use_container_width=True, type="primary"):
                             if not current_operator:
                                 st.error("❌ Impossible de valider : opérateur non trouvé")
@@ -14076,39 +14257,39 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                                 loading['status'] = 'Déchargé'
                                 loading['unload_time'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                                 loading['unload_operator'] = current_operator.name
-                                
+
                                 if loading.get('transport_start'):
                                     transport_start = datetime.strptime(loading['transport_start'], '%Y-%m-%d %H:%M:%S')
                                     unload_time = datetime.now()
                                     transport_duration = (unload_time - transport_start).total_seconds() / 60
                                     loading['transport_duration'] = transport_duration
-                                
+
                                 if loading.get('loading_end'):
                                     loading_end = datetime.strptime(loading['loading_end'], '%Y-%m-%d %H:%M:%S')
                                     unload_time = datetime.now()
                                     total_cycle = (unload_time - loading_end).total_seconds() / 60
                                     loading['total_cycle_time'] = total_cycle
-                                
+
                                 distance_km = 5.0
                                 fuel_consumption = (distance_km / 100) * 20
                                 loading['fuel_consumption'] = fuel_consumption
-                                
-                                loader_machines = df_machines[df_machines['Type'].isin(['Excavatrice', 'Chargeuse', 'Bulldozer', 'Tractopelle']) & 
+
+                                loader_machines = df_machines[df_machines['Type'].isin(['Excavatrice', 'Chargeuse', 'Bulldozer', 'Tractopelle']) &
                                                           (df_machines['Statut'] == 'Active')]
                                 available_loaders = []
                                 for idx, loader in loader_machines.iterrows():
-                                    loader_loadings = [l for l in st.session_state.loading_signals 
-                                                      if l.get('machine') == loader['ID'] 
+                                    loader_loadings = [l for l in st.session_state.loading_signals
+                                                      if l.get('machine') == loader['ID']
                                                       and l.get('status') in ['En chargement', 'Chargement validé - En attente de démarrage dumper']]
                                     if not loader_loadings:
                                         available_loaders.append(loader)
-                                
+
                                 next_loader = available_loaders[0] if available_loaders else None
-                                
+
                                 if next_loader is not None:
                                     loading['next_loader'] = next_loader['ID']
                                     loading['next_loader_operator'] = next_loader.get('Opérateur', 'Non Assigné')
-                                    
+
                                     notification = {
                                         'type': 'unload_complete',
                                         'from_operator': current_operator.name,
@@ -14120,7 +14301,7 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                                         'read': False
                                     }
                                     st.session_state.operator_notifications.append(notification)
-                                    
+
                                     cycle_event = {
                                         'type': 'unload_complete',
                                         'operator': current_operator.name,
@@ -14138,17 +14319,17 @@ if "VALIDATION OPÉRATEUR" in tab_dict:
                                         'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                                     }
                                     st.session_state.cycle_events.append(cycle_event)
-                                    
+
                                     st.success("✅ Déchargement validé !")
                                     st.rerun()
                                 else:
                                     st.warning("⚠️ Aucune pelle disponible")
                                     st.rerun()
-                
+
                 # AUCUN CHARGEMENT
                 if not pending_loadings and not in_transit_loadings:
                     st.markdown("""
-                    <div style="background: rgba(245, 184, 0, 0.2); padding: 60px; border-radius: 15px; 
+                    <div style="background: rgba(245, 184, 0, 0.2); padding: 60px; border-radius: 15px;
                                 border: 3px solid #F5B800; text-align: center;">
                         <p style="color: #F5B800; font-size: 48px; margin: 0; font-weight: 900;">📭 EN ATTENTE</p>
                         <p style="color: #F5B800; font-size: 32px; margin: 20px 0; font-weight: 700;">
@@ -14211,7 +14392,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
             </ul>
         </div>
         """, unsafe_allow_html=True)
-        
+
         st.markdown("---")
 
         with st.expander("📅 Rapports journaliers — ingénierie, production & carburant (KPI + export)", expanded=False):
@@ -14362,7 +14543,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
             )
 
         st.markdown("---")
-        
+
         # Sélectionner un engin
         machine_list = [f"{m.id} - {m.model} ({m.type})" for m in manager.machines]
         if not machine_list:
@@ -14374,15 +14555,15 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                 help="Choisissez l'engin pour lequel vous souhaitez entrer des données manuelles",
                 key="ingenierie_select_machine"
             )
-            
+
             if selected_machine_display:
                 # Extraire l'ID de l'engin sélectionné
                 selected_machine_id = selected_machine_display.split(" - ")[0]
                 selected_machine = next((m for m in manager.machines if m.id == selected_machine_id), None)
-                
+
                 if selected_machine:
                     st.markdown("---")
-                    
+
                     # Afficher les données actuelles
                     col_info1, col_info2, col_info3 = st.columns(3)
                     with col_info1:
@@ -14391,9 +14572,9 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                         st.metric("Production actuelle", f"{int(selected_machine.production_tonnes)} T")
                     with col_info3:
                         st.metric("Consommation journalière", f"{int(selected_machine.cons_jour)} L")
-                    
+
                     st.markdown("---")
-                    
+
                     # Raccourci pour voir l'historique
                     col_hist_btn, col_hist_info = st.columns([1, 3])
                     with col_hist_btn:
@@ -14401,13 +14582,13 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                     with col_hist_info:
                         if show_history:
                             st.info("ℹ️ Section historique affichée ci-dessous")
-                    
+
                     st.markdown("---")
-                    
+
                     # Section Historique (si demandé)
                     if show_history:
                         st.markdown("### 📜 Historique des Productions")
-                        
+
                         # Filtres pour l'historique
                         col_filt1, col_filt2, col_filt3 = st.columns(3)
                         with col_filt1:
@@ -14428,7 +14609,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                 value=date.today(),
                                 key="hist_end_date"
                             )
-                        
+
                         # Récupérer l'historique
                         shift_filter = None if filter_shift == "Tous" else filter_shift
                         history = get_manual_entries_history(
@@ -14438,7 +14619,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                             end_date=filter_end_date.strftime('%Y-%m-%d'),
                             limit=200
                         )
-                        
+
                         if history:
                             # Résumé par shift
                             summary = get_manual_entries_summary(
@@ -14446,7 +14627,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                 start_date=filter_start_date.strftime('%Y-%m-%d'),
                                 end_date=filter_end_date.strftime('%Y-%m-%d')
                             )
-                            
+
                             if summary:
                                 st.markdown("#### 📊 Résumé par Shift")
                                 summary_cols = st.columns(len(summary) if summary else 1)
@@ -14458,15 +14639,15 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                             f"{int(shift_summary['total_production'])} T",
                                             delta=f"{int(shift_summary['total_entries'])} entrées"
                                         )
-                            
+
                             st.markdown("---")
                             st.markdown("#### 📋 Détail des Entrées")
-                            
+
                             # Créer un DataFrame pour l'affichage
                             df_history = pd.DataFrame(history)
                             df_history['entry_date'] = pd.to_datetime(df_history['entry_date'])
                             df_history = df_history.sort_values('entry_date', ascending=False)
-                            
+
                             # Formater les colonnes pour l'affichage
                             shift_display = df_history['shift'].apply(lambda x: "🌅 Jour" if x == "Jour" else ("🌙 Nuit" if x == "Nuit" else x))
                             _hist_cols = {
@@ -14483,9 +14664,9 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                 _hist_cols['Coût ($)'] = df_history['cost_fuel'].round(0).astype(int)
                                 _hist_cols['Rentabilité ($)'] = df_history['profitability'].round(0).astype(int)
                             display_df = pd.DataFrame(_hist_cols)
-                            
+
                             st.dataframe(display_df, use_container_width=True, hide_index=True)
-                            
+
                             # Export
                             csv = display_df.to_csv(index=False, encoding='utf-8-sig')
                             st.download_button(
@@ -14497,13 +14678,13 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                             )
                         else:
                             st.info("ℹ️ Aucune entrée trouvée pour cette période.")
-                        
+
                         st.markdown("---")
-                    
+
                     # Formulaire d'entrée manuelle
                     with st.form("ingenierie_manual_entry_form", clear_on_submit=False):
                         st.markdown("### 📝 Entrée Manuelle des Données")
-                        
+
                         # Sélection du shift et de la date
                         col_shift_date1, col_shift_date2 = st.columns(2)
                         with col_shift_date1:
@@ -14528,11 +14709,11 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                 help="Date à laquelle ces données ont été collectées",
                                 key="ingenierie_entry_date"
                             )
-                        
+
                         st.markdown("---")
-                        
+
                         col_data1, col_data2, col_data3 = st.columns(3)
-                        
+
                         with col_data1:
                             st.markdown("#### ⏱️ Heures (H-mètre)")
                             compteur_debut = st.number_input(
@@ -14563,7 +14744,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                 )
                             st.caption(f"Heures travaillées (calculées): **{hours_worked:.2f} h** (fin − début)")
                             st.caption(f"Heures moteur en base: {selected_machine.engine_hours:.1f} h → après enregistrement: {selected_machine.engine_hours + hours_worked:.1f} h")
-                        
+
                         with col_data2:
                             st.markdown("#### 📦 Production")
                             production_tonnes = st.number_input(
@@ -14576,7 +14757,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                             )
                             st.caption(f"Production actuelle: {int(selected_machine.production_tonnes)} T")
                             st.caption(f"Nouvelle production: {int(selected_machine.production_tonnes + production_tonnes)} T")
-                        
+
                         with col_data3:
                             st.markdown("#### ⛽ Carburant (chargements)")
                             fuel_consumed = st.number_input(
@@ -14588,49 +14769,49 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                 key="ingenierie_fuel"
                             )
                             st.caption(f"Conso. jour en base: {selected_machine.cons_jour:.1f} L → après: {selected_machine.cons_jour + fuel_consumed:.1f} L")
-                        
+
                         st.markdown("---")
-                        
+
                         # Calculs automatiques (prévisualisation)
                         if hours_worked > 0 or production_tonnes > 0 or fuel_consumed > 0:
                             st.markdown("#### 📊 Calculs Automatiques (Prévisualisation)")
-                            
+
                             # Calculs basés sur les nouvelles valeurs
                             new_engine_hours = selected_machine.engine_hours + hours_worked
                             new_production = selected_machine.production_tonnes + production_tonnes
                             new_cons_jour = selected_machine.cons_jour + fuel_consumed
-                            
+
                             # Calculer les cycles (production / capacité)
                             if selected_machine.capacity > 0:
                                 new_cycles = selected_machine.cycle + (production_tonnes / selected_machine.capacity)
                             else:
                                 new_cycles = selected_machine.cycle
-                            
+
                             # Calculer les revenus
                             new_h_jour = selected_machine.h_jour + hours_worked
                             new_h_semaine = selected_machine.h_semaine + hours_worked
                             new_h_mois = selected_machine.h_mois + hours_worked
-                            
+
                             revenu_jour = new_h_jour * selected_machine.hourly_rate
                             revenu_hebdo = new_h_semaine * selected_machine.hourly_rate
                             revenu_mensuel = new_h_mois * selected_machine.hourly_rate
-                            
+
                             # Coût du carburant (prix moyen: 1.5 USD/L)
                             fuel_price_avg = 1.5
                             cout_fuel = new_cons_jour * fuel_price_avg
-                            
+
                             # Rentabilité
                             rentabilite = revenu_jour - cout_fuel
-                            
+
                             # Consommation par cycle
                             cons_par_cycle = new_cons_jour / new_cycles if new_cycles > 0 else 0
-                            
+
                             # Consommation par shift (3 shifts par jour)
                             cons_par_shift = new_cons_jour / 3
-                            
+
                             # Temps de cycle moyen (en minutes)
                             avg_cycle_time = (new_h_jour * 60) / new_cycles if new_cycles > 0 else 0
-                            
+
                             # Afficher les calculs (sans montants $ si pas d'accès Finance)
                             if _ingenierie_finance_visible:
                                 col_calc1, col_calc2, col_calc3, col_calc4 = st.columns(4)
@@ -14663,13 +14844,13 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                     st.metric("Temps cycle moyen", f"{round(avg_cycle_time, 1)} min")
                                     st.metric("H. jour", f"{round(new_h_jour, 1)} h")
                                     st.metric("H. semaine", f"{round(new_h_semaine, 1)} h")
-                            
+
                             st.markdown("---")
-                        
+
                         # Options supplémentaires
                         st.markdown("#### ⚙️ Options")
                         col_opt1, col_opt2 = st.columns(2)
-                        
+
                         with col_opt1:
                             update_period = st.selectbox(
                                 "Période de mise à jour",
@@ -14677,7 +14858,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                 help="Sélectionnez quelle période mettre à jour",
                                 key="ingenierie_period"
                             )
-                        
+
                         with col_opt2:
                             if _ingenierie_finance_visible:
                                 fuel_price = st.number_input(
@@ -14694,9 +14875,9 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                     "Prix carburant : valeur interne par défaut (1,50 USD/L) pour l'enregistrement. "
                                     "L'ajustement et la vision financière sont dans **Finance**."
                                 )
-                        
+
                         submitted = st.form_submit_button("✅ ENREGISTRER LES DONNÉES", use_container_width=True, type="primary")
-                        
+
                         if submitted:
                             # Recalcul fiable des heures à partir du compteur (fin − début)
                             if compteur_debut == 0.0 and compteur_fin == 0.0:
@@ -14719,33 +14900,33 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                     new_engine_hours = selected_machine.engine_hours + hours_worked
                                     new_production = selected_machine.production_tonnes + production_tonnes
                                     new_cons_jour = selected_machine.cons_jour + fuel_consumed
-                                    
+
                                     # Calculer les cycles
                                     cycles_added = 0
                                     if production_tonnes > 0 and selected_machine.capacity > 0:
                                         cycles_added = production_tonnes / selected_machine.capacity
-                                    
+
                                     # Calculer les revenus
                                     new_h_jour = selected_machine.h_jour + hours_worked
                                     new_h_semaine = selected_machine.h_semaine + hours_worked
                                     new_h_mois = selected_machine.h_mois + hours_worked
-                                    
+
                                     revenu_jour = new_h_jour * selected_machine.hourly_rate
                                     revenu_hebdo = new_h_semaine * selected_machine.hourly_rate
                                     revenu_mois = new_h_mois * selected_machine.hourly_rate
-                                    
+
                                     # Coût et rentabilité
                                     cout_fuel = new_cons_jour * fuel_price
                                     rentabilite = revenu_jour - cout_fuel
-                                    
+
                                     # Consommation par cycle et shift
                                     new_cycles = selected_machine.cycle + cycles_added
                                     cons_par_cycle = new_cons_jour / new_cycles if new_cycles > 0 else 0
                                     cons_par_shift = new_cons_jour / 3
-                                    
+
                                     # Temps de cycle moyen
                                     avg_cycle_time = (new_h_jour * 60) / new_cycles if new_cycles > 0 else 0
-                                    
+
                                     # Mettre à jour les heures
                                     if hours_worked > 0:
                                         selected_machine.engine_hours += hours_worked
@@ -14754,12 +14935,12 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                             selected_machine.h_semaine += hours_worked
                                         if update_period in ["Mensuelle", "Toutes"]:
                                             selected_machine.h_mois += hours_worked
-                                    
+
                                     # Mettre à jour la production
                                     if production_tonnes > 0:
                                         selected_machine.production_tonnes += production_tonnes
                                         selected_machine.cycle += cycles_added
-                                    
+
                                     # Mettre à jour le carburant (litres chargés = proxy de conso pour les indicateurs)
                                     if fuel_consumed > 0:
                                         selected_machine.cons_jour += fuel_consumed
@@ -14774,10 +14955,10 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                         selected_machine.fuel_tank = min(
                                             100, selected_machine.fuel_tank + fuel_tank_increase
                                         )
-                                    
+
                                     # Sauvegarder dans la base de données
                                     selected_machine.save_to_db()
-                                    
+
                                     # Sauvegarder dans l'historique des entrées manuelles
                                     current_user = st.session_state.get('username', 'Système')
                                     save_manual_entry(
@@ -14800,7 +14981,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                         avg_cycle_time=avg_cycle_time,
                                         entered_by=current_user
                                     )
-                                    
+
                                     # Enregistrer dans les logs d'audit
                                     audit_mgr.log_action(
                                         "UPDATE", "MACHINE", selected_machine_id, selected_machine_id,
@@ -14817,7 +14998,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                                         },
                                         details=f"Entrée manuelle ingénierie pour {selected_machine_id} - {shift}"
                                     )
-                                    
+
                                     st.success(f"✅ Données enregistrées avec succès pour {selected_machine_id} - {shift} !")
                                     st.rerun()
                                 except Exception as e:
@@ -14826,7 +15007,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
                     st.warning("⚠️ Engin non trouvé dans la flotte.")
             else:
                 st.info("ℹ️ Veuillez sélectionner un engin pour commencer.")
-        
+
         st.markdown('</div>', unsafe_allow_html=True)
 
 # --- ADMIN ---
@@ -14835,22 +15016,22 @@ if "ADMIN" in tab_dict:
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.subheader("⚙️ GESTION DES UTILISATEURS")
         st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # Onglets internes ADMIN
         admin_tabs = st.tabs(["📋 Liste Utilisateurs", "➕ Ajouter Utilisateur", "✏️ Modifier Utilisateur", "🗑️ Supprimer Utilisateur", "🖼️ Images Engins", "🎨 Logo Entreprise", "💳 Gestion Plan", "🗑️ Réinitialiser Données", "💾 Sauvegarde/Restauration", "📊 Logs d'Audit"])
-        
+
         # --- TAB 1: LISTE DES UTILISATEURS ---
         with admin_tabs[0]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("📋 Liste des Utilisateurs")
-            
+
             df_users = user_mgr.get_users_df()
             _utid_admin = _safe_tenant_id(st.session_state.get("tenant_id", "default"))
             if not df_users.empty and "Entreprise (id)" in df_users.columns:
                 df_users = df_users[df_users["Entreprise (id)"] == _utid_admin]
             if not df_users.empty:
                 st.dataframe(df_users, width='stretch', hide_index=True)
-                
+
                 st.markdown("---")
                 st.markdown("#### 📊 Statistiques")
                 col1, col2 = st.columns(2)
@@ -14864,12 +15045,12 @@ if "ADMIN" in tab_dict:
             else:
                 st.info("Aucun utilisateur enregistré.")
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 2: AJOUTER UN UTILISATEUR ---
         with admin_tabs[1]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("➕ Ajouter un Nouvel Utilisateur")
-            
+
             st.markdown("""
             <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
                         padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 2px solid #F5B800;">
@@ -14881,7 +15062,7 @@ if "ADMIN" in tab_dict:
                 </ul>
             </div>
             """, unsafe_allow_html=True)
-            
+
             with st.form("add_user_form"):
                 # Modes de création : Invité libre ou Employé RH
                 creation_mode = st.radio(
@@ -14890,27 +15071,27 @@ if "ADMIN" in tab_dict:
                     help="Sélectionnez si vous créez un compte pour un employé enregistré dans RH ou un compte Invité",
                     horizontal=True
                 )
-                
+
                 selected_employee = None
                 new_role = None
-                
+
                 if creation_mode == "👤 Compte pour un Employé RH":
                     # Afficher tous les employés RH disponibles, puis filtrer par rôle après sélection
                     st.markdown("---")
                     st.markdown("#### 👤 Sélectionner un Employé depuis RH")
-                    
+
                     # Récupérer uniquement les employés actifs (pour la création de compte)
                     all_employees = staff_mgr.get_active_staff()
                     existing_usernames = [u['user'] for u in user_mgr.users_in_current_tenant()]
                     employees_without_account = []
                     employees_with_account = []
-                    
+
                     for emp in all_employees:
                         # Vérifier si l'employé a déjà un compte (matching plus précis)
                         has_account = False
                         emp_name_normalized = emp.name.lower().replace(' ', '_').replace('-', '_')
                         emp_name_words = set(emp.name.lower().split())
-                        
+
                         for u in existing_usernames:
                             u_lower = u.lower()
                             # Correspondance exacte ou proche (nom d'utilisateur = nom employé normalisé)
@@ -14933,7 +15114,7 @@ if "ADMIN" in tab_dict:
                             if len(u_lower) >= 4 and u_lower in emp_name_normalized:
                                 has_account = True
                                 break
-                        
+
                         if not has_account:
                             # Générer un nom d'utilisateur suggéré
                             username_from_name = emp.name.lower().replace(' ', '_').replace('-', '_')
@@ -14943,27 +15124,27 @@ if "ADMIN" in tab_dict:
                             })
                         else:
                             employees_with_account.append(emp)
-                    
+
                     if employees_without_account:
                         # Afficher les employés sans compte
-                        employee_options = {f"{emp['employee'].name} ({emp['employee'].matricule}) - Rôle RH: {emp['employee'].role}": emp 
+                        employee_options = {f"{emp['employee'].name} ({emp['employee'].matricule}) - Rôle RH: {emp['employee'].role}": emp
                                           for emp in employees_without_account}
                         selected_employee_display = st.selectbox(
                             "Choisir un Employé *",
                             ["Sélectionner..."] + list(employee_options.keys()),
                             key="select_employee_admin"
                         )
-                        
+
                         if selected_employee_display and selected_employee_display != "Sélectionner...":
                             selected_employee = employee_options[selected_employee_display]
                             emp_info = selected_employee['employee']
-                            
+
                             # Le rôle est automatiquement défini selon le rôle RH de l'employé
                             new_role = emp_info.role  # Rôle depuis RH
-                            
+
                             # Nom d'utilisateur suggéré
                             suggested_username = selected_employee['suggested_username']
-                            
+
                             # Afficher les infos de l'employé sélectionné
                             st.markdown("---")
                             col_emp1, col_emp2, col_emp3 = st.columns(3)
@@ -14973,7 +15154,7 @@ if "ADMIN" in tab_dict:
                                 st.info(f"**📋 Rôle RH :** {emp_info.role}\n\n**👥 Équipe :** {emp_info.team}")
                             with col_emp3:
                                 st.info(f"**🕐 Shift :** {emp_info.shift_type}\n\n**📅 Arrivée :** {emp_info.date_arrivee.strftime('%d/%m/%Y') if hasattr(emp_info.date_arrivee, 'strftime') else 'N/A'}")
-                            
+
                             # Afficher le rôle qui sera assigné (non modifiable)
                             st.markdown(f"""
                             <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%);
@@ -14993,27 +15174,27 @@ if "ADMIN" in tab_dict:
                         selected_employee = None
                         suggested_username = ""
                         new_role = None
-                    
+
                     # Afficher les employés qui ont déjà un compte (pour information)
                     if employees_with_account:
                         with st.expander(f"ℹ️ Employés ayant déjà un compte ({len(employees_with_account)})"):
                             for emp in employees_with_account[:10]:  # Limiter à 10 pour l'affichage
                                 # Trouver le nom d'utilisateur correspondant
-                                matching_username = next((u for u in existing_usernames 
+                                matching_username = next((u for u in existing_usernames
                                                         if emp.name.lower() in u.lower() or u.lower() in emp.name.lower()), "N/A")
                                 st.write(f"- **{emp.name}** ({emp.matricule}) - Rôle: {emp.role} → Compte: `{matching_username}`")
                             if len(employees_with_account) > 10:
                                 st.caption(f"... et {len(employees_with_account) - 10} autres employés")
-                
+
                 else:  # Mode Invité
                     st.markdown("---")
                     st.markdown("#### 👥 Création de Compte Invité")
                     st.info("ℹ️ Les comptes Invité peuvent être créés librement sans être enregistrés dans RH.")
                     new_role = "Invite"
                     suggested_username = ""
-                
+
                 st.markdown("---")
-                
+
                 # Champs nom d'utilisateur et mot de passe
                 col_user, col_pass = st.columns(2)
                 with col_user:
@@ -15021,7 +15202,7 @@ if "ADMIN" in tab_dict:
                         if selected_employee:
                             # Pré-remplir avec le nom d'utilisateur suggéré
                             new_username = st.text_input(
-                                "Nom d'utilisateur *", 
+                                "Nom d'utilisateur *",
                                 value=suggested_username,
                                 placeholder="Ex: jean_dupont",
                                 key="username_input",
@@ -15032,12 +15213,12 @@ if "ADMIN" in tab_dict:
                             st.warning("⚠️ Veuillez sélectionner un employé dans RH pour continuer.")
                     else:  # Invité
                         new_username = st.text_input("Nom d'utilisateur *", placeholder="Ex: invite_01", key="username_input")
-                
+
                 with col_pass:
                     new_password = st.text_input("Mot de passe *", type="password", placeholder="Définir un mot de passe", key="password_input")
-                
+
                 st.markdown("---")
-                
+
                 # Sélection du type d'opérateur (seulement si le rôle est "Operateur")
                 operator_type = None
                 if new_role == "Operateur":
@@ -15052,17 +15233,17 @@ if "ADMIN" in tab_dict:
                         operator_type = "loader"
                     elif operator_type == "🚚 Opérateur de Déchargement (Transport)":
                         operator_type = "dumper"
-                
+
                 st.markdown("---")
                 st.markdown("#### 🔐 Permissions Personnalisées")
                 st.caption("Cochez les cases pour personnaliser les permissions (optionnel - les permissions par défaut du rôle seront utilisées si non modifiées)")
-                
+
                 # Permissions personnalisées (seulement si un rôle est défini)
                 if new_role:
                     st.markdown("---")
                     st.markdown("#### 🔐 Permissions Personnalisées")
                     st.caption("Cochez les cases pour personnaliser les permissions (optionnel - les permissions par défaut du rôle seront utilisées si non modifiées)")
-                    
+
                     # Permissions par onglets
                     col_perm1, col_perm2 = st.columns(2)
                     with col_perm1:
@@ -15080,7 +15261,7 @@ if "ADMIN" in tab_dict:
                         perm_validation_operateur = st.checkbox("Validation Opérateur", value=default_perms.get('validation_operateur', False))
                         perm_messagerie = st.checkbox("Messagerie / communiqués", value=default_perms.get('messagerie', True))
                         perm_sst = st.checkbox("Santé & sécurité (SST)", value=default_perms.get('sst', True))
-                    
+
                     with col_perm2:
                         st.markdown("**Actions Autorisées:**")
                         perm_export = st.checkbox("Export de données", value=default_perms.get('can_export', False))
@@ -15103,9 +15284,9 @@ if "ADMIN" in tab_dict:
                     perm_export = False
                     perm_modify = False
                     perm_view_all = False
-                
+
                 use_custom_permissions = st.checkbox("Utiliser les permissions personnalisées au lieu des permissions par défaut du rôle")
-                
+
                 if st.form_submit_button("✅ CRÉER L'UTILISATEUR", use_container_width=True):
                     # Vérifications
                     if not new_username or not new_password:
@@ -15145,7 +15326,7 @@ if "ADMIN" in tab_dict:
                                 }
                             else:
                                 custom_perms = None
-                            
+
                             _tid_new = st.session_state.get("tenant_id", "default")
                             if user_mgr.add_user(
                                 new_username, new_password, new_role, custom_perms, tenant_id=_tid_new
@@ -15156,7 +15337,7 @@ if "ADMIN" in tab_dict:
                                     if created_user:
                                         created_user['operator_type'] = operator_type
                                         user_mgr.persist_users()
-                                
+
                                 # Enregistrer dans les logs d'audit
                                 current_user = st.session_state.get('username', 'Système')
                                 changes = {"Rôle": new_role, "Mode": creation_mode}
@@ -15175,7 +15356,7 @@ if "ADMIN" in tab_dict:
                                     emp_matricule = selected_employee['employee'].matricule
                                     st.success(f"""
                                     ✅ **Compte créé avec succès !**
-                                    
+
                                     **👤 Employé :** {emp_name} ({emp_matricule})
                                     **👤 Nom d'utilisateur :** {new_username}
                                     **📋 Rôle :** {new_role} (basé sur le rôle RH de l'employé)
@@ -15183,9 +15364,9 @@ if "ADMIN" in tab_dict:
                                 st.rerun()
                             else:
                                 st.error("❌ Erreur lors de la création du compte.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 3: MODIFIER UN UTILISATEUR ---
         with admin_tabs[2]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
@@ -15194,16 +15375,16 @@ if "ADMIN" in tab_dict:
                 "Vous pouvez **définir un nouveau mot de passe** pour un utilisateur de votre entreprise sans connaître l'ancien "
                 "(réservé aux comptes disposant de l'onglet ADMIN)."
             )
-            
+
             existing_users = [u['user'] for u in user_mgr.users_in_current_tenant()]
             if existing_users:
                 selected_user = st.selectbox("Sélectionner l'utilisateur à modifier", existing_users)
                 user_data = user_mgr.get_user(selected_user)
-                
+
                 if user_data:
                     with st.form("modify_user_form"):
                         st.markdown(f"**Modification de : {selected_user}**")
-                        
+
                         col_pass, col_role = st.columns(2)
                         with col_pass:
                             new_pass = st.text_input("Nouveau mot de passe", type="password", placeholder="Laisser vide pour ne pas changer")
@@ -15223,7 +15404,7 @@ if "ADMIN" in tab_dict:
                                 roles_list,
                                 index=current_role_index
                             )
-                        
+
                         # Sélection du type d'opérateur (seulement si le rôle est "Operateur")
                         mod_operator_type = None
                         if new_role_sel == "Operateur":
@@ -15243,10 +15424,10 @@ if "ADMIN" in tab_dict:
                                 mod_operator_type = "loader"
                             elif mod_operator_type_selected == "🚚 Opérateur de Déchargement (Transport)":
                                 mod_operator_type = "dumper"
-                        
+
                         st.markdown("---")
                         st.markdown("#### 🔐 Modifier les Permissions")
-                        
+
                         current_perms = user_data.get('permissions', {})
                         col_perm1, col_perm2 = st.columns(2)
                         with col_perm1:
@@ -15263,13 +15444,13 @@ if "ADMIN" in tab_dict:
                             mod_perm_validation_operateur = st.checkbox("Validation Opérateur", value=current_perms.get('validation_operateur', False), key="mod_val_operateur")
                             mod_perm_messagerie = st.checkbox("Messagerie / communiqués", value=current_perms.get('messagerie', True), key="mod_msg")
                             mod_perm_sst = st.checkbox("Santé & sécurité (SST)", value=current_perms.get('sst', True), key="mod_sst")
-                        
+
                         with col_perm2:
                             st.markdown("**Actions Autorisées:**")
                             mod_perm_export = st.checkbox("Export de données", value=current_perms.get('can_export', False), key="mod_export")
                             mod_perm_modify = st.checkbox("Modifier les données", value=current_perms.get('can_modify_data', False), key="mod_modify")
                             mod_perm_view_all = st.checkbox("Voir toutes les données", value=current_perms.get('can_view_all', False), key="mod_view")
-                        
+
                         if st.form_submit_button("✅ MODIFIER L'UTILISATEUR", use_container_width=True):
                             pwd_err = None
                             if new_pass and new_pass != new_pass_confirm:
@@ -15347,15 +15528,15 @@ if "ADMIN" in tab_dict:
                                     st.error("❌ Erreur lors de la modification.")
             else:
                 st.info("Aucun utilisateur à modifier.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 4: SUPPRIMER UN UTILISATEUR ---
         with admin_tabs[3]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("🗑️ Supprimer un Utilisateur")
             st.warning("⚠️ Attention : Cette action est irréversible !")
-            
+
             users_to_delete = [
                 u['user']
                 for u in user_mgr.users_in_current_tenant()
@@ -15363,7 +15544,7 @@ if "ADMIN" in tab_dict:
             ]
             if users_to_delete:
                 user_to_delete = st.selectbox("Sélectionner l'utilisateur à supprimer", users_to_delete)
-                
+
                 if st.button("🗑️ SUPPRIMER L'UTILISATEUR", type="primary", use_container_width=True):
                     if user_mgr.delete_user(user_to_delete):
                         # Enregistrer dans les logs d'audit
@@ -15380,26 +15561,26 @@ if "ADMIN" in tab_dict:
                         st.error("❌ Erreur : Impossible de supprimer cet utilisateur (peut-être l'administrateur).")
             else:
                 st.info("Aucun utilisateur à supprimer (l'administrateur ne peut pas être supprimé).")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 5: IMAGES ENGINS ---
         with admin_tabs[4]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("🖼️ Gestion des Images d'Engins et Lingot d'Or")
             st.caption("Téléchargez vos propres images pour les engins et le lingot d'or affichés sur la page d'identification")
-            
+
             # Liste des engins disponibles + lingot d'or
             equipments_list = ["Camions", "Excavatrices", "BULDOZER", "Chargeurs", "Foreuses", "DUMPER", "Lingot d'Or"]
-            
+
             selected_equipment = st.selectbox(
                 "Sélectionnez un engin ou le lingot d'or",
                 equipments_list,
                 help="Choisissez l'engin ou le lingot d'or pour lequel vous souhaitez uploader une image"
             )
-            
+
             st.markdown("---")
-            
+
             # Afficher l'image actuelle si elle existe
             if selected_equipment == "Lingot d'Or":
                 current_image_path = get_equipment_image_path("Lingot_Or")
@@ -15427,16 +15608,16 @@ if "ADMIN" in tab_dict:
                     st.warning(f"Image actuelle disponible mais erreur d'affichage: {e}")
             else:
                 st.info(f"ℹ️ Aucune image personnalisée pour {selected_equipment}. L'image par défaut est utilisée.")
-            
+
             st.markdown("---")
-            
+
             # Upload de nouvelle image
             uploaded_file = st.file_uploader(
                 f"Télécharger une image pour {selected_equipment}",
                 type=['png', 'jpg', 'jpeg', 'gif', 'webp'],
                 help="Formats acceptés: PNG, JPG, JPEG, GIF, WEBP. Taille recommandée: 300x200px ou plus"
             )
-            
+
             if uploaded_file:
                 # Afficher un aperçu
                 try:
@@ -15449,7 +15630,7 @@ if "ADMIN" in tab_dict:
                     uploaded_file.seek(0)
                 except Exception as e:
                     st.warning(f"Erreur lors de l'affichage de l'aperçu: {e}")
-                
+
                 if st.button("✅ ENREGISTRER L'IMAGE", use_container_width=True):
                     # Utiliser "Lingot_Or" comme nom de fichier pour le lingot d'or
                     equipment_name = "Lingot_Or" if selected_equipment == "Lingot d'Or" else selected_equipment
@@ -15459,7 +15640,7 @@ if "ADMIN" in tab_dict:
                         st.rerun()
                     else:
                         st.error(f"❌ Erreur lors de l'enregistrement: {result}")
-            
+
             st.markdown("---")
             st.markdown("#### 📋 Instructions")
             st.markdown("""
@@ -15469,9 +15650,9 @@ if "ADMIN" in tab_dict:
             - Vous pouvez remplacer une image existante en uploadant une nouvelle
             - Pour revenir à l'image par défaut, supprimez l'image personnalisée
             """)
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 6: LOGO ENTREPRISE ---
         with admin_tabs[5]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
@@ -15582,17 +15763,17 @@ if "ADMIN" in tab_dict:
                         st.error("Échec de l'enregistrement du logo entreprise.")
 
             st.markdown("</div>", unsafe_allow_html=True)
-        
+
         # --- TAB 7: GESTION PLAN ---
         with admin_tabs[6]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("💳 Gestion du Plan d'Abonnement")
             st.caption("Gérez votre plan d'abonnement et consultez les limitations actuelles")
-            
+
             # Informations sur le plan actuel
             plan_info = get_plan_info()
             current_plan = plan_info["plan"]
-            
+
             st.markdown("#### 📊 Plan Actuel")
             col_plan1, col_plan2, col_plan3 = st.columns(3)
             with col_plan1:
@@ -15608,9 +15789,9 @@ if "ADMIN" in tab_dict:
             with col_plan3:
                 users_display = f"{plan_info['current_users']}/{plan_info['max_users']}" if plan_info['max_users'] != -1 else f"{plan_info['current_users']}/∞"
                 st.metric("Utilisateurs", users_display)
-            
+
             st.markdown("---")
-            
+
             # Changer de plan
             st.markdown("#### 🔄 Changer de Plan")
             new_plan = st.selectbox(
@@ -15624,7 +15805,7 @@ if "ADMIN" in tab_dict:
                 }.get(x, x),
                 key="select_plan"
             )
-            
+
             if new_plan != current_plan:
                 if st.button("✅ CHANGER DE PLAN", use_container_width=True, type="primary"):
                     success, message = set_plan(new_plan)
@@ -15634,15 +15815,15 @@ if "ADMIN" in tab_dict:
                         st.rerun()
                     else:
                         st.error(f"❌ {message}")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 8: RÉINITIALISER DONNÉES ---
         with admin_tabs[7]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("🗑️ Réinitialiser Toutes les Données de Simulation")
             st.caption("⚠️ Cette action est irréversible. Toutes les données de simulation seront supprimées et tous les compteurs seront remis à 0.")
-            
+
             st.markdown("""
             <div style="background: linear-gradient(135deg, rgba(255, 69, 0, 0.2) 0%, rgba(255, 140, 0, 0.2) 100%);
                         padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 2px solid #FF4500;">
@@ -15658,11 +15839,11 @@ if "ADMIN" in tab_dict:
                 <p style="color: #FF4500; margin: 15px 0 0 0; font-weight: 700;">Les machines elles-mêmes ne seront PAS supprimées, seulement leurs données de simulation.</p>
             </div>
             """, unsafe_allow_html=True)
-            
+
             # Initialiser l'état de validation si nécessaire
             if 'reset_validation_step' not in st.session_state:
                 st.session_state.reset_validation_step = 0
-            
+
             # Étape 1 : Première confirmation
             if st.session_state.reset_validation_step == 0:
                 st.markdown("""
@@ -15674,26 +15855,26 @@ if "ADMIN" in tab_dict:
                     </p>
                 </div>
                 """, unsafe_allow_html=True)
-                
+
                 if st.button("🗑️ COMMENCER LA RÉINITIALISATION", use_container_width=True, type="primary"):
                     st.session_state.reset_validation_step = 1
                     st.rerun()
-            
+
             # Étape 2 : Deuxième confirmation
             elif st.session_state.reset_validation_step == 1:
                 st.error("""
                 ⚠️ **PREMIÈRE VALIDATION REQUISE**
-                
+
                 Vous êtes sur le point de supprimer **TOUTES** les données de simulation.
                 Cette action est **IRRÉVERSIBLE**.
                 """)
-                
+
                 confirmation_text_1 = st.text_input(
                     "Tapez 'SUPPRIMER' pour confirmer la première étape :",
                     key="confirmation_1",
                     placeholder="Tapez SUPPRIMER ici"
                 )
-                
+
                 col_btn1, col_btn2 = st.columns(2)
                 with col_btn1:
                     if st.button("✅ CONFIRMER ÉTAPE 1", use_container_width=True, type="primary"):
@@ -15706,22 +15887,22 @@ if "ADMIN" in tab_dict:
                     if st.button("❌ ANNULER", use_container_width=True):
                         st.session_state.reset_validation_step = 0
                         st.rerun()
-            
+
             # Étape 3 : Troisième confirmation
             elif st.session_state.reset_validation_step == 2:
                 st.error("""
                 ⚠️ **DEUXIÈME VALIDATION REQUISE**
-                
+
                 Vous êtes toujours sur le point de supprimer **TOUTES** les données.
                 Êtes-vous vraiment sûr de vouloir continuer ?
                 """)
-                
+
                 confirmation_text_2 = st.text_input(
                     "Tapez 'JE CONFIRME' pour confirmer la deuxième étape :",
                     key="confirmation_2",
                     placeholder="Tapez JE CONFIRME ici"
                 )
-                
+
                 col_btn3, col_btn4 = st.columns(2)
                 with col_btn3:
                     if st.button("✅ CONFIRMER ÉTAPE 2", use_container_width=True, type="primary"):
@@ -15734,28 +15915,28 @@ if "ADMIN" in tab_dict:
                     if st.button("❌ ANNULER", use_container_width=True):
                         st.session_state.reset_validation_step = 0
                         st.rerun()
-            
+
             # Étape 4 : Dernière confirmation avant exécution
             elif st.session_state.reset_validation_step == 3:
                 st.error("""
                 ⚠️⚠️⚠️ **DERNIÈRE VALIDATION - ACTION IRRÉVERSIBLE** ⚠️⚠️⚠️
-                
+
                 **DERNIÈRE CHANCE** : Vous êtes sur le point de supprimer définitivement :
                 - Tous les logs de carburant
                 - Tous les logs de maintenance
                 - Toutes les pannes
                 - Toutes les entrées manuelles
                 - Tous les compteurs des machines
-                
+
                 **Cette action ne peut PAS être annulée !**
                 """)
-                
+
                 confirmation_text_3 = st.text_input(
                     "Tapez 'RÉINITIALISER MAINTENANT' pour exécuter la suppression :",
                     key="confirmation_3",
                     placeholder="Tapez RÉINITIALISER MAINTENANT ici"
                 )
-                
+
                 col_btn5, col_btn6 = st.columns(2)
                 with col_btn5:
                     if st.button("🗑️ EXÉCUTER LA RÉINITIALISATION", use_container_width=True, type="primary"):
@@ -15778,15 +15959,15 @@ if "ADMIN" in tab_dict:
                     if st.button("❌ ANNULER", use_container_width=True):
                         st.session_state.reset_validation_step = 0
                         st.rerun()
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 8: SAUVEGARDE/RESTAURATION ---
         with admin_tabs[8]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("💾 Sauvegarde et Restauration des Données")
             st.caption("Sauvegardez vos données pour éviter toute perte d'information")
-            
+
             # Informations sur la base de données
             db = get_database()
             col_info1, col_info2, col_info3 = st.columns(3)
@@ -15800,9 +15981,9 @@ if "ADMIN" in tab_dict:
             with col_info3:
                 backup_count = db.get("backup_info", {}).get("backup_count", 0)
                 st.metric("📦 Nombre de sauvegardes", backup_count)
-            
+
             st.markdown("---")
-            
+
             # Section Créer une sauvegarde
             st.markdown("#### 💾 Créer une Sauvegarde")
             st.markdown("""
@@ -15816,7 +15997,7 @@ if "ADMIN" in tab_dict:
                 </ul>
             </div>
             """, unsafe_allow_html=True)
-            
+
             if st.button("💾 CRÉER UNE SAUVEGARDE MAINTENANT", use_container_width=True, type="primary"):
                 with st.spinner("Création de la sauvegarde en cours..."):
                     success, result = create_backup()
@@ -15825,13 +16006,13 @@ if "ADMIN" in tab_dict:
                         st.rerun()
                     else:
                         st.error(f"❌ Erreur lors de la création de la sauvegarde: {result}")
-            
+
             st.markdown("---")
-            
+
             # Section Restaurer une sauvegarde
             st.markdown("#### 🔄 Restaurer une Sauvegarde")
             backups = list_backups()
-            
+
             if backups:
                 backup_options = {f"{b['name']} ({b['date']})": b for b in backups}
                 selected_backup_display = st.selectbox(
@@ -15839,11 +16020,11 @@ if "ADMIN" in tab_dict:
                     list(backup_options.keys()),
                     help="Choisissez la sauvegarde que vous souhaitez restaurer"
                 )
-                
+
                 if selected_backup_display:
                     selected_backup = backup_options[selected_backup_display]
                     st.warning("⚠️ Attention : La restauration remplacera toutes les données actuelles !")
-                    
+
                     if st.button("🔄 RESTAURER CETTE SAUVEGARDE", use_container_width=True, type="primary"):
                         with st.spinner("Restauration en cours..."):
                             success, result = restore_backup(selected_backup['path'])
@@ -15854,15 +16035,15 @@ if "ADMIN" in tab_dict:
                                 st.error(f"❌ Erreur lors de la restauration: {result}")
             else:
                 st.info("📭 Aucune sauvegarde disponible.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         # --- TAB 9: LOGS D'AUDIT ---
         with admin_tabs[9]:
             st.markdown('<div class="content-card">', unsafe_allow_html=True)
             st.subheader("📊 Logs d'Audit - Traçabilité des Modifications")
             st.caption("ℹ️ Consultez l'historique de toutes les modifications effectuées dans le système")
-            
+
             # Filtres
             col_filter1, col_filter2, col_filter3, col_filter4 = st.columns(4)
             with col_filter1:
@@ -15889,7 +16070,7 @@ if "ADMIN" in tab_dict:
                     ["Tous", "7 derniers jours", "30 derniers jours", "90 derniers jours"],
                     key="audit_filter_days"
                 )
-            
+
             # Calculer les dates selon le filtre
             start_date = None
             end_date = None
@@ -15899,12 +16080,12 @@ if "ADMIN" in tab_dict:
                 start_date = datetime.now() - timedelta(days=30)
             elif filter_days == "90 derniers jours":
                 start_date = datetime.now() - timedelta(days=90)
-            
+
             # Appliquer les filtres
             entity_type_filter = None if filter_entity == "Tous" else filter_entity
             user_filter = None if filter_user == "Tous" else filter_user
             action_filter = None if filter_action == "Toutes" else filter_action
-            
+
             # Récupérer les logs filtrés
             df_logs = audit_mgr.get_logs_df(
                 entity_type=entity_type_filter,
@@ -15913,10 +16094,10 @@ if "ADMIN" in tab_dict:
                 start_date=start_date,
                 end_date=end_date
             )
-            
+
             if not df_logs.empty:
                 st.markdown("---")
-                
+
                 # Statistiques
                 col_stat1, col_stat2, col_stat3, col_stat4 = st.columns(4)
                 with col_stat1:
@@ -15930,12 +16111,12 @@ if "ADMIN" in tab_dict:
                 with col_stat4:
                     deletes = len(df_logs[df_logs["Action"] == "DELETE"])
                     st.metric("Suppressions", deletes)
-                
+
                 st.markdown("---")
-                
+
                 # Tableau des logs
                 st.dataframe(df_logs, width='stretch', hide_index=True, height=600)
-                
+
                 # Export
                 st.markdown("---")
                 col_export1, col_export2 = st.columns(2)
@@ -15966,7 +16147,7 @@ if "ADMIN" in tab_dict:
                         st.info("💡 Installez 'openpyxl' pour l'export Excel: pip install openpyxl")
             else:
                 st.info("📭 Aucun log d'audit trouvé avec les filtres sélectionnés.")
-            
+
             st.markdown('</div>', unsafe_allow_html=True)
 
 # --- EQUIPE ---
