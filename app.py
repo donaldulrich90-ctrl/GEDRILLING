@@ -120,7 +120,7 @@ GOOD_ENGINEERS_BANNER_MARK_SVG = """
     <circle cx="100" cy="100" r="86" stroke="#F5B800" stroke-width="1.25" opacity="0.16"/>
     <path d="M100 22 L108 48 L136 38 L126 66 L158 74 L132 94 L156 122 L124 118 L118 150 L100 128 L82 150 L76 118 L44 122 L68 94 L42 74 L74 66 L64 38 L92 48 Z"
           stroke="#F5B800" stroke-width="3.5"/>
-    <circle cx="100" cy="100" r="17" fill="#0F2A44" stroke="#F5B800" stroke-width="3"/>
+    <circle cx="100" cy="100" r="17" fill="#063D2B" stroke="#F5B800" stroke-width="3"/>
     <path d="M58 54 L142 146" stroke="#F5E6A8" stroke-width="5"/>
     <path d="M142 54 L58 146" stroke="#F5E6A8" stroke-width="5"/>
     <path d="M58 54 L48 40 L66 50z" fill="#F5B800"/>
@@ -314,7 +314,7 @@ st.markdown("""
             font-weight: 900 !important;
             padding: 16px 28px !important;
             background: linear-gradient(180deg, #FFC107 0%, #E6AC00 100%) !important;
-            color: #0F2A44 !important;
+            color: #063D2B !important;
             border: 2px solid #FFC107 !important;
         }
         /* Boutons plus grands pour tablettes */
@@ -350,7 +350,7 @@ st.markdown("""
             font-weight: 900 !important;
             padding: 14px 22px !important;
             background: linear-gradient(180deg, #FFC107 0%, #E6AC00 100%) !important;
-            color: #0F2A44 !important;
+            color: #063D2B !important;
             border: 2px solid #FFC107 !important;
         }
         button[kind="primary"] {
@@ -451,7 +451,7 @@ if st.session_state.get("ge_sidebar_collapsed"):
     """
 
 # Design system industriel (minière — contraste élevé, mode sombre)
-primary_blue = '#0F2A44'
+primary_blue = '#063D2B'
 accent = '#FFC107'  # jaune sécurité industriel (charte GOOD ENGINEERS)
 warning_c = '#FF6B00'
 success_c = '#28A745'
@@ -459,22 +459,22 @@ danger_c = '#DC3545'
 
 # Variables CSS selon le mode (les deux variantes restent sombres / lisibles)
 if st.session_state.theme_mode == 'dark':
-    bg_main = '#121212'
-    bg_card = '#1E1E1E'
-    bg_secondary = '#2F2F2F'
-    bg_hover = '#383838'
-    bg_zebra = '#252525'
+    bg_main = '#071A14'
+    bg_card = '#0D2A20'
+    bg_secondary = '#173C30'
+    bg_hover = '#1C4638'
+    bg_zebra = '#102E24'
     text_primary = '#EAEAEA'
-    text_secondary = '#A0A0A0'
+    text_secondary = '#A9BDB2'
     border_color = '#404040'
 else:
     bg_main = '#161B22'
     bg_card = '#1E2329'
-    bg_secondary = '#2F2F2F'
+    bg_secondary = '#173C30'
     bg_hover = '#3D4349'
     bg_zebra = '#282E36'
     text_primary = '#EAEAEA'
-    text_secondary = '#A0A0A0'
+    text_secondary = '#A9BDB2'
     border_color = '#4A5058'
 
 st.markdown(f"""
@@ -633,7 +633,7 @@ st.markdown(f"""
         position: absolute;
         inset: 0;
         z-index: 0;
-        background: linear-gradient(165deg, #0F2A44 0%, #050d18 50%, #000000 100%);
+        background: linear-gradient(165deg, #063D2B 0%, #050d18 50%, #000000 100%);
     }}
     .ge-hero__layer--radial {{
         position: absolute;
@@ -767,7 +767,7 @@ st.markdown(f"""
         font-family: 'Inter', 'Segoe UI', sans-serif;
         font-size: clamp(11px, 1.65vw, 15px);
         font-weight: 500;
-        color: #A0A0A0;
+        color: #A9BDB2;
         margin: 0 auto;
         max-width: 640px;
         width: 100%;
@@ -840,7 +840,7 @@ st.markdown(f"""
     div[data-testid="stHtml"] .ge-hero p.ge-hero__subtitle,
     div[data-testid="stMarkdownContainer"] .ge-hero p.ge-hero__subtitle,
     .stMarkdown .ge-hero p.ge-hero__subtitle {{
-        color: #A0A0A0 !important;
+        color: #A9BDB2 !important;
         text-align: center !important;
         margin-left: auto !important;
         margin-right: auto !important;
@@ -887,7 +887,7 @@ st.markdown(f"""
     
     /* Bandeau / en-tête contrôle minière */
     .hero-banner {{ 
-        background: linear-gradient(168deg, #0F2A44 0%, #060d16 55%, #000000 100%); 
+        background: linear-gradient(168deg, #063D2B 0%, #060d16 55%, #000000 100%);
         padding: 9px 0; 
         border-radius: 8px; 
         border: 2px solid rgba(255, 193, 7, 0.55); 
@@ -2917,7 +2917,7 @@ def _build_safety_report_pdf_bytes(m, period_label, today_d):
         fontName=font_name,
         fontSize=16,
         spaceAfter=12,
-        textColor=colors.HexColor("#0F2A44"),
+        textColor=colors.HexColor("#063D2B"),
     )
     body_st = ParagraphStyle("RptBody", parent=styles["Normal"], fontName=font_name, fontSize=10, leading=14)
     h2_st = ParagraphStyle(
@@ -2926,7 +2926,7 @@ def _build_safety_report_pdf_bytes(m, period_label, today_d):
         fontName=font_name,
         fontSize=12,
         spaceAfter=8,
-        textColor=colors.HexColor("#0F2A44"),
+        textColor=colors.HexColor("#063D2B"),
     )
 
     buf = io.BytesIO()
@@ -2955,7 +2955,7 @@ def _build_safety_report_pdf_bytes(m, period_label, today_d):
     tbl.setStyle(
         TableStyle(
             [
-                ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#0F2A44")),
+                ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#063D2B")),
                 ("TEXTCOLOR", (0, 0), (-1, 0), colors.whitesmoke),
                 ("FONTNAME", (0, 0), (-1, 0), font_name),
                 ("FONTSIZE", (0, 0), (-1, 0), 10),
@@ -3002,7 +3002,7 @@ def _build_safety_report_pdf_bytes(m, period_label, today_d):
             zt.setStyle(
                 TableStyle(
                     [
-                        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#0F2A44")),
+                        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#063D2B")),
                         ("TEXTCOLOR", (0, 0), (-1, 0), colors.whitesmoke),
                         ("FONTNAME", (0, 0), (-1, -1), font_name),
                         ("FONTSIZE", (0, 0), (-1, -1), 9),
@@ -3182,7 +3182,7 @@ def _render_safety_report(entries, chk_records):
                 color=ctr_lbl,
                 title="Nombre de cases cochées (cumul des enregistrements)",
                 labels={"x": "", "y": "Nombre"},
-                color_discrete_sequence=["#0F2A44", "#F5B800", "#28A745"],
+                color_discrete_sequence=["#063D2B", "#F5B800", "#28A745"],
             )
             fig_checks.update_layout(showlegend=False, height=380)
             st.plotly_chart(fig_checks, width="stretch")
@@ -6750,305 +6750,542 @@ if st.session_state.authenticated:
     if _tid_sync is not None and str(_tid_sync).strip() != "":
         st.session_state.tenant_id = _safe_tenant_id(str(_tid_sync))
 
-# LOGIN
+# LOGIN — présentation GOOD ENGINEERS retenue par le client
 if not st.session_state.authenticated:
-    # Styles améliorés pour une meilleure lisibilité
+    _login_assets = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
+
+    def _login_image_data(name, mime):
+        path = os.path.join(_login_assets, name)
+        try:
+            with open(path, "rb") as image_file:
+                return f"data:{mime};base64,{base64.b64encode(image_file.read()).decode('ascii')}"
+        except OSError:
+            return ""
+
+    _login_logo = _login_image_data("good_engineers_logo.png", "image/png")
+    _login_photo = _login_image_data("mining_login_hero.jpg", "image/jpeg")
+
     st.markdown("""
     <style>
-        /* Connexion : remonter le contenu et élargir la zone utile (styles non présents après auth) */
-        section[data-testid="stMain"] .main .block-container {
-            padding-top: 0.1rem !important;
-            padding-left: clamp(0.35rem, 1.8vw, 1rem) !important;
-            padding-right: clamp(0.35rem, 1.8vw, 1rem) !important;
-            max-width: min(1320px, 100%) !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
-        section[data-testid="stMain"] div[data-testid="stVerticalBlockBorderWrapper"] {
-            gap: 0.35rem !important;
-        }
-        .login-card {
-            background: #1e1e2e !important;
-            padding: 20px !important;
-            border-radius: 15px;
-            border: 2px solid #333344;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            margin-bottom: 18px;
-        }
-        .login-card--connexion {
-            margin-top: -0.35rem !important;
-            margin-bottom: 16px !important;
-            max-width: min(960px, 100%) !important;
-            width: 100% !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            padding: 18px 22px !important;
-        }
-        .login-title {
-            color: #F5B800 !important;
-            font-size: 64px !important;
-            font-weight: 900 !important;
-            text-align: center;
-            margin-bottom: 15px !important;
-            text-shadow: 0 0 20px rgba(245, 184, 0, 0.6);
-            letter-spacing: 2px;
-        }
-        .login-subtitle {
-            color: #e0e0e0 !important;
-            font-size: 28px !important;
-            font-weight: 600 !important;
-            text-align: center;
-            margin-bottom: 30px !important;
-        }
-        .section-title {
-            color: #F5B800 !important;
-            font-size: 32px !important;
-            font-weight: 900 !important;
-            margin-bottom: 20px !important;
-            padding-bottom: 12px !important;
-            border-bottom: 3px solid #F5B800 !important;
-            text-align: center;
-        }
-        .equipment-label {
-            color: #e0e0e0 !important;
-            font-size: clamp(14px, 2vw, 18px) !important;
-            font-weight: 700 !important;
-            margin-top: 10px;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-        @media (max-width: 768px) {
-            .equipment-label {
-                font-size: 14px !important;
-            }
-        }
-        .rule-text, .mission-text {
-            color: #e0e0e0 !important;
-            font-size: 17px !important;
-            line-height: 1.8 !important;
-            font-weight: 400;
-        }
-        .rule-title, .mission-title {
-            color: #F5B800 !important;
-            font-size: 22px !important;
-            font-weight: 900 !important;
-            margin-bottom: 8px;
-        }
-        .login-form-title {
-            color: #F5B800 !important;
-            font-size: 32px !important;
-            font-weight: 900 !important;
-            text-align: center;
-            margin-bottom: 18px !important;
-            margin-top: 0 !important;
-            padding-bottom: 12px !important;
-            border-bottom: 3px solid #F5B800 !important;
-        }
-    </style>
-    """, unsafe_allow_html=True)
-    
-    # ── SPLIT-SCREEN LOGIN ────────────────────────────────────────────────────
-    st.markdown("""
-    <style>
-    /* Split-screen : hauteur page complète, sidebar masquée */
-    section[data-testid="stSidebar"] { display: none !important; }
-    section[data-testid="stMain"] .block-container {
-        padding-top: 0 !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        max-width: 100% !important;
+    section[data-testid="stSidebar"], header[data-testid="stHeader"] {
+        display: none !important;
     }
-    /* Panel gauche — marque + formulaire */
-    .login-left-panel {
-        background: linear-gradient(175deg, #0a1827 0%, #0F2A44 50%, #081420 100%);
-        border-radius: 20px;
-        padding: clamp(28px, 5vw, 52px) clamp(20px, 4vw, 44px);
-        min-height: 88vh;
+    section[data-testid="stMain"], [data-testid="stAppViewContainer"] {
+        background: #06291f !important;
+    }
+    section[data-testid="stMain"] .block-container,
+    [data-testid="stMainBlockContainer"] {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stHorizontalBlock"] {
+        gap: 0 !important;
+        align-items: stretch !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"] {
+        min-width: 0 !important;
+        padding: 0 !important;
+    }
+    .ge-login-hero {
+        min-height: 100svh;
+        background-color: #13251f;
+        background-size: cover;
+        background-position: center 50%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        border-right: 1px solid rgba(245, 184, 0, 0.15);
-        position: relative;
-        overflow: hidden;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: clamp(28px, 3vw, 48px);
+        font-family: 'Montserrat', 'Segoe UI', sans-serif;
     }
-    .login-left-panel::before {
-        content: '';
-        position: absolute;
-        top: -60px; right: -60px;
-        width: 260px; height: 260px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(245,184,0,0.08) 0%, transparent 70%);
-        pointer-events: none;
+    .ge-login-brand {
+        width: clamp(260px, 29vw, 430px);
+        max-width: 100%;
+        background: #032b1d;
+        box-shadow: 0 12px 35px rgba(0,0,0,.18);
     }
-    .login-left-panel::after {
-        content: '';
-        position: absolute;
-        bottom: -40px; left: -40px;
-        width: 200px; height: 200px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(245,184,0,0.05) 0%, transparent 70%);
-        pointer-events: none;
+    .ge-login-brand img {
+        width: 100%;
+        height: auto;
+        display: block;
     }
-    .login-brand-title {
-        font-family: 'Montserrat', sans-serif;
-        font-size: clamp(28px, 3.5vw, 42px) !important;
-        font-weight: 900 !important;
-        color: #F5B800 !important;
-        letter-spacing: 0.06em;
-        text-shadow: 0 0 30px rgba(245,184,0,0.35);
-        margin-bottom: 4px !important;
-        line-height: 1.1;
+    .ge-login-hero-copy {
+        max-width: 760px;
+        color: #f7f8f5;
+        padding-bottom: 10px;
     }
-    .login-brand-sub {
-        font-size: clamp(11px, 1.2vw, 14px) !important;
-        color: rgba(245,184,0,0.7) !important;
-        letter-spacing: 0.20em;
+    .ge-login-hero-copy h1 {
+        color: #fff !important;
+        font-size: clamp(38px, 4.25vw, 68px) !important;
+        line-height: 1.06 !important;
+        font-weight: 800 !important;
+        letter-spacing: -.035em;
+        margin: 0 0 14px !important;
+    }
+    .ge-login-hero-copy h1 span { color: #ffce61; }
+    .ge-login-hero-copy p {
+        color: #f3f5f0;
+        font-size: clamp(15px, 1.42vw, 22px);
+        line-height: 1.5;
+        margin: 0;
+    }
+    .ge-login-features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: clamp(12px, 1.4vw, 24px);
+        margin-top: 40px;
+        font-size: clamp(13px, 1.1vw, 17px);
+        color: #f8f9f6;
+    }
+    .ge-login-features span {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .ge-login-features span + span {
+        border-left: 1px solid rgba(245,184,0,.65);
+        padding-left: clamp(12px, 1.4vw, 24px);
+    }
+    .ge-login-features b {
+        width: 13px;
+        height: 13px;
+        border: 2px solid #f5b800;
+        border-radius: 3px;
+        display: inline-block;
+        box-sizing: border-box;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker) {
+        background: #052b20 !important;
+        min-height: 100svh;
+        box-sizing: border-box;
+        padding: clamp(64px, 11vh, 130px) clamp(28px, 4.3vw, 84px) 42px !important;
+    }
+    .ge-login-form-marker { display: none; }
+    .ge-login-form-head {
+        font-family: 'Montserrat', 'Segoe UI', sans-serif;
+        color: #fff;
+        margin-bottom: 46px;
+    }
+    .ge-login-eyebrow {
+        color: #f5b800;
         font-weight: 700;
+        font-size: 14px;
+        letter-spacing: .27em;
         text-transform: uppercase;
-        margin-bottom: 20px !important;
+        margin: 0 0 36px;
     }
-    .login-brand-desc {
-        font-size: clamp(13px, 1.4vw, 16px) !important;
-        color: #8A9BB0 !important;
-        font-weight: 500;
-        line-height: 1.6;
-        margin-bottom: 32px !important;
+    .ge-login-eyebrow::after {
+        content: '';
+        width: 38px;
+        height: 2px;
+        background: #f5b800;
+        display: block;
+        margin-top: 16px;
     }
-    .login-divider {
-        height: 1px;
-        background: linear-gradient(90deg, rgba(245,184,0,0.5) 0%, rgba(245,184,0,0.05) 100%);
-        margin: 20px 0 28px 0;
-        border: none;
+    .ge-login-form-head h2 {
+        color: #fff !important;
+        font-size: clamp(40px, 3.35vw, 54px) !important;
+        line-height: 1.1 !important;
+        font-weight: 800 !important;
+        margin: 0 0 14px !important;
     }
-    .login-field-label {
+    .ge-login-form-head p:last-child {
+        color: #d9e2dc;
+        font-size: clamp(16px, 1.25vw, 21px);
+        line-height: 1.45;
+        margin: 0;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        div[data-testid="stForm"] {
+        border: none !important;
+        padding: 0 !important;
+        background: transparent !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        div[data-testid="stTextInput"] label p {
+        color: #f6f8f5 !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        div[data-testid="stTextInput"] input {
+        min-height: 64px !important;
+        border: 1px solid #647e72 !important;
+        border-radius: 6px !important;
+        background: #12372d !important;
+        color: #fff !important;
+        font-size: 17px !important;
+        padding: 0 17px !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        div[data-testid="stTextInput"] input:focus {
+        border-color: #f5b800 !important;
+        box-shadow: 0 0 0 2px rgba(245,184,0,.22) !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        button[kind="primaryFormSubmit"] {
+        width: 100% !important;
+        min-height: 64px !important;
+        background: #f5b800 !important;
+        border: 1px solid #f5b800 !important;
+        border-radius: 6px !important;
+        color: #10251c !important;
+        font-size: 18px !important;
+        font-weight: 800 !important;
+        margin-top: 16px !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        button[kind="primaryFormSubmit"]:hover {
+        background: #ffcc35 !important;
+        border-color: #ffcc35 !important;
+    }
+    .ge-login-values {
+        color: #a6bcb0;
+        text-align: center;
+        font-size: clamp(10px, .85vw, 13px);
+        font-weight: 700;
+        letter-spacing: .28em;
+        margin-top: clamp(40px, 9vh, 100px);
+    }
+    @media (max-width: 800px) {
+        section[data-testid="stMain"] div[data-testid="stHorizontalBlock"] {
+            flex-direction: column !important;
+        }
+        section[data-testid="stMain"] div[data-testid="stColumn"] {
+            width: 100% !important;
+            flex: none !important;
+        }
+        .ge-login-hero {
+            min-height: 390px;
+            padding: 24px;
+        }
+        .ge-login-brand { width: min(290px, 80%); }
+        .ge-login-hero-copy h1 { font-size: clamp(30px, 8vw, 46px) !important; }
+        .ge-login-features { margin-top: 20px; }
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker) {
+            min-height: 0;
+            padding: 44px 24px 50px !important;
+        }
+        .ge-login-form-head { margin-bottom: 28px; }
+        .ge-login-eyebrow { margin-bottom: 26px; }
+        .ge-login-values { margin-top: 48px; }
+    }
+
+    /* GOOD ENGINEERS login layout v2 */
+    [data-testid="InputInstructions"] { display: none !important; }
+    html, body,
+    [data-testid="stAppViewContainer"],
+    section[data-testid="stMain"],
+    [data-testid="stMainBlockContainer"] {
+        width: 100% !important;
+        height: 100svh !important;
+        min-height: 100svh !important;
+        max-height: 100svh !important;
+        overflow: hidden !important;
+        overscroll-behavior: none !important;
+    }
+    [data-testid="stMainBlockContainer"] > div[data-testid="stVerticalBlock"] {
+        height: 100% !important;
+        gap: 0 !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stHorizontalBlock"] {
+        height: 100svh !important;
+        min-height: 100svh !important;
+        max-height: 100svh !important;
+        overflow: hidden !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"] {
+        height: 100svh !important;
+        min-height: 100svh !important;
+        max-height: 100svh !important;
+        overflow: hidden !important;
+    }
+    .ge-login-hero {
+        height: 100svh !important;
+        min-height: 100svh !important;
+        max-height: 100svh !important;
+        overflow: hidden !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker) {
+        height: 100svh !important;
+        min-height: 100svh !important;
+        max-height: 100svh !important;
+        padding: clamp(30px, 6vh, 64px) clamp(28px, 4.3vw, 84px) 24px !important;
+        overflow: hidden !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        > div[data-testid="stVerticalBlock"] {
+        height: 100% !important;
+        gap: 0 !important;
+    }
+    .ge-login-form-head {
+        margin-bottom: clamp(20px, 3.5vh, 34px) !important;
+    }
+    .ge-login-eyebrow {
+        margin-bottom: clamp(18px, 2.8vh, 28px) !important;
+    }
+    .ge-login-eyebrow::after {
+        margin-top: 10px !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        div[data-testid="stForm"] {
+        padding: clamp(18px, 2.4vh, 26px) !important;
+        border: 1px solid rgba(245, 184, 0, .24) !important;
+        border-radius: 18px !important;
+        background: linear-gradient(145deg, rgba(15, 67, 51, .94), rgba(7, 45, 34, .94)) !important;
+        box-shadow: 0 22px 55px rgba(0, 0, 0, .22), inset 0 1px 0 rgba(255, 255, 255, .035) !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        div[data-testid="stForm"] div[data-testid="stVerticalBlock"] {
+        gap: clamp(10px, 1.6vh, 16px) !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        div[data-testid="stTextInput"] label p {
+        color: #f8f4e8 !important;
+        font-family: 'Montserrat', 'Segoe UI', sans-serif !important;
         font-size: 13px !important;
         font-weight: 700 !important;
-        color: #F5B800 !important;
-        letter-spacing: 0.08em;
+        letter-spacing: .055em !important;
+        text-transform: uppercase !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        div[data-testid="stTextInput"] div[data-baseweb="input"] {
+        min-height: 60px !important;
+        border: 1px solid rgba(221, 235, 227, .42) !important;
+        border-radius: 12px !important;
+        background: rgba(4, 35, 26, .78) !important;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .22) !important;
+        overflow: hidden !important;
+        transition: border-color .2s ease, box-shadow .2s ease, background .2s ease !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        div[data-testid="stTextInput"] div[data-baseweb="input"]:focus-within {
+        border-color: #f5b800 !important;
+        background: rgba(5, 43, 32, .96) !important;
+        box-shadow: 0 0 0 3px rgba(245, 184, 0, .14), inset 0 1px 2px rgba(0, 0, 0, .16) !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        div[data-testid="stTextInput"] input {
+        min-height: 58px !important;
+        height: 58px !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        color: #ffffff !important;
+        caret-color: #f5b800 !important;
+        font-size: 16px !important;
+        padding: 0 17px !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        div[data-testid="stTextInput"] button {
+        height: 58px !important;
+        min-height: 58px !important;
+        border: 0 !important;
+        border-left: 1px solid rgba(221, 235, 227, .18) !important;
+        border-radius: 0 !important;
+        background: rgba(255, 255, 255, .035) !important;
+        color: #f5b800 !important;
+    }
+    section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+        button[kind="primaryFormSubmit"] {
+        min-height: 60px !important;
+        margin-top: 2px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 12px 26px rgba(0, 0, 0, .22) !important;
+    }
+    @keyframes geValuePulse {
+        0%, 100% {
+            color: #f5b800;
+            text-shadow: 0 0 0 rgba(245, 184, 0, 0);
+            transform: translateY(0) scale(1);
+        }
+        50% {
+            color: #ffd969;
+            text-shadow: 0 0 18px rgba(245, 184, 0, .48);
+            transform: translateY(-2px) scale(1.035);
+        }
+    }
+    .ge-login-values {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+        gap: clamp(10px, 1.1vw, 18px);
+        margin: clamp(20px, 3.5vh, 34px) 0 0 !important;
+        color: #f5b800 !important;
+        font-family: 'Oswald', 'Montserrat', 'Segoe UI', sans-serif !important;
+        font-size: clamp(17px, 1.42vw, 23px) !important;
+        font-weight: 800 !important;
+        letter-spacing: .08em !important;
+        line-height: 1.2 !important;
         text-transform: uppercase;
-        margin-bottom: 6px !important;
-        display: block;
+        white-space: nowrap;
     }
-    /* Panel droit — vitrines fonctions + engins */
-    .login-right-panel {
-        background: #0d1520;
-        border-radius: 20px;
-        padding: clamp(24px, 4vw, 44px) clamp(18px, 3vw, 36px);
-        min-height: 88vh;
+    .ge-login-values span {
+        display: inline-block;
+        animation: geValuePulse 3.2s ease-in-out infinite;
+        will-change: transform, text-shadow;
     }
-    .login-feature-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        margin-bottom: 24px;
+    .ge-login-values span:nth-of-type(2) { animation-delay: .35s; }
+    .ge-login-values span:nth-of-type(3) { animation-delay: .7s; }
+    .ge-login-values i {
+        color: rgba(255, 255, 255, .48);
+        font-style: normal;
+        font-size: .72em;
     }
-    .login-feature-card {
-        background: rgba(15, 42, 68, 0.75);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(245,184,0,0.14);
-        border-radius: 14px;
-        padding: 18px 16px;
-        text-align: center;
-        transition: border-color 180ms ease, transform 180ms ease;
+    @media (prefers-reduced-motion: reduce) {
+        .ge-login-values span { animation: none !important; }
     }
-    .login-feature-card:hover {
-        border-color: rgba(245,184,0,0.35);
-        transform: translateY(-2px);
+    @media (max-width: 800px) {
+        section[data-testid="stMain"] div[data-testid="stHorizontalBlock"] {
+            height: 100svh !important;
+            min-height: 100svh !important;
+            max-height: 100svh !important;
+        }
+        section[data-testid="stMain"] div[data-testid="stColumn"]:not(:has(.ge-login-form-marker)) {
+            height: 39svh !important;
+            min-height: 39svh !important;
+            max-height: 39svh !important;
+        }
+        .ge-login-hero {
+            height: 39svh !important;
+            min-height: 39svh !important;
+            max-height: 39svh !important;
+            padding: 12px 18px !important;
+        }
+        .ge-login-brand { width: min(210px, 62vw) !important; }
+        .ge-login-hero-copy { padding-bottom: 0 !important; }
+        .ge-login-hero-copy h1 {
+            font-size: clamp(23px, 7vw, 34px) !important;
+            margin-bottom: 4px !important;
+        }
+        .ge-login-hero-copy p { font-size: clamp(11px, 3vw, 14px) !important; }
+        .ge-login-features {
+            gap: 9px !important;
+            margin-top: 9px !important;
+            font-size: clamp(10px, 2.6vw, 12px) !important;
+        }
+        .ge-login-features span { gap: 5px !important; }
+        .ge-login-features span + span { padding-left: 9px !important; }
+        .ge-login-features b { width: 9px; height: 9px; border-width: 1px; }
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker) {
+            height: 61svh !important;
+            min-height: 61svh !important;
+            max-height: 61svh !important;
+            padding: 10px 20px 8px !important;
+        }
+        .ge-login-form-head { margin-bottom: 10px !important; }
+        .ge-login-eyebrow {
+            margin: 0 0 8px !important;
+            font-size: 10px !important;
+        }
+        .ge-login-eyebrow::after { margin-top: 4px !important; }
+        .ge-login-form-head h2 {
+            font-size: clamp(25px, 7vw, 32px) !important;
+            margin-bottom: 3px !important;
+        }
+        .ge-login-form-head p:last-child { font-size: 12px !important; }
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+            div[data-testid="stForm"] {
+            padding: 10px 13px !important;
+            border-radius: 13px !important;
+        }
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+            div[data-testid="stForm"] div[data-testid="stVerticalBlock"] {
+            gap: 6px !important;
+        }
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+            div[data-testid="stTextInput"] label p {
+            font-size: 10px !important;
+        }
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+            div[data-testid="stTextInput"] div[data-baseweb="input"] {
+            min-height: 42px !important;
+            border-radius: 9px !important;
+        }
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+            div[data-testid="stTextInput"] input,
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+            div[data-testid="stTextInput"] button {
+            height: 40px !important;
+            min-height: 40px !important;
+            font-size: 13px !important;
+        }
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+            button[kind="primaryFormSubmit"] {
+            min-height: 43px !important;
+            margin-top: 0 !important;
+            border-radius: 9px !important;
+            font-size: 14px !important;
+        }
+        .ge-login-values {
+            gap: 7px !important;
+            margin-top: 9px !important;
+            font-size: clamp(11px, 2.8vw, 15px) !important;
+            letter-spacing: .035em !important;
+        }
     }
-    .login-feature-icon { font-size: 28px; margin-bottom: 8px; }
-    .login-feature-label {
-        font-size: 12px;
-        font-weight: 800;
-        color: #EAEAEA;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-    }
-    .login-feature-desc { font-size: 11px; color: #7A8A9A; margin-top: 4px; font-weight: 500; }
-    .login-equip-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-    .login-equip-item {
-        border-radius: 10px;
-        overflow: hidden;
-        border: 1px solid rgba(245,184,0,0.18);
-        text-align: center;
-        background: rgba(20,30,45,0.8);
-    }
-    .login-equip-item img { width: 100%; height: 80px; object-fit: cover; display: block; }
-    .login-equip-item span {
-        display: block;
-        font-size: 10px;
-        font-weight: 800;
-        color: #F5B800;
-        padding: 5px 4px;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-    }
-    .login-values-row { display: flex; gap: 10px; flex-wrap: wrap; }
-    .login-value-chip {
-        background: rgba(245,184,0,0.1);
-        border: 1px solid rgba(245,184,0,0.25);
-        border-radius: 20px;
-        padding: 6px 14px;
-        font-size: 12px;
-        font-weight: 700;
-        color: #F5B800;
-        letter-spacing: 0.06em;
+    @media (min-width: 801px) and (max-height: 720px) {
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker) {
+            padding-top: 20px !important;
+            padding-bottom: 16px !important;
+        }
+        .ge-login-form-head { margin-bottom: 14px !important; }
+        .ge-login-eyebrow { margin-bottom: 12px !important; }
+        .ge-login-form-head h2 { font-size: 36px !important; margin-bottom: 6px !important; }
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+            div[data-testid="stForm"] { padding: 15px 18px !important; }
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+            div[data-testid="stTextInput"] div[data-baseweb="input"] { min-height: 50px !important; }
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+            div[data-testid="stTextInput"] input,
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+            div[data-testid="stTextInput"] button { min-height: 48px !important; height: 48px !important; }
+        section[data-testid="stMain"] div[data-testid="stColumn"]:has(.ge-login-form-marker)
+            button[kind="primaryFormSubmit"] { min-height: 50px !important; }
+        .ge-login-values { margin-top: 14px !important; font-size: 16px !important; }
     }
     </style>
     """, unsafe_allow_html=True)
 
-    _col_form, _col_vis = st.columns([1, 1.55], gap="small")
-
-    # ── PANNEAU GAUCHE : marque + formulaire ──────────────────────────────────
-    with _col_form:
-        st.markdown('<div class="login-left-panel">', unsafe_allow_html=True)
-
-        # Logo / marque
-        _lp_b64 = _hero_masthead_b64_for_banner()
-        if _lp_b64:
-            st.markdown(f"""
-            <div style="text-align:center; margin-bottom: 24px;">
-              <img src="data:image/png;base64,{_lp_b64}"
-                   style="max-width:100%; max-height:120px; object-fit:contain;"
-                   alt="GOOD ENGINEERS" />
-            </div>""", unsafe_allow_html=True)
-        else:
-            st.markdown(f"""
-            <div style="text-align:center; margin-bottom:8px;">
-              <div style="display:inline-block; width:70px; height:70px; margin-bottom:12px;">
-                {GOOD_ENGINEERS_BANNER_MARK_SVG}
-              </div>
+    _hero_style = (
+        "background-image:linear-gradient(180deg,rgba(2,27,20,.28) 0%,"
+        "rgba(2,20,17,.04) 38%,rgba(2,18,17,.78) 100%),"
+        f"url('{_login_photo}');"
+    ) if _login_photo else ""
+    _left, _right = st.columns([1.58, 1], gap="small")
+    with _left:
+        st.html(f"""
+        <div class="ge-login-hero" style="{_hero_style}">
+          <div class="ge-login-brand"><img src="{_login_logo}" alt="GOOD ENGINEERS — Services miniers et ingénierie" /></div>
+          <div class="ge-login-hero-copy">
+            <h1>Pilotez vos<br><span>opérations minières.</span></h1>
+            <p>Production, flotte et sécurité dans un seul espace.</p>
+            <div class="ge-login-features" aria-label="Fonctions principales">
+              <span><b></b>Production</span>
+              <span><b></b>Maintenance</span>
+              <span><b></b>Sécurité</span>
             </div>
-            <p class="login-brand-title" style="text-align:center;">GOOD ENGINEERS</p>
-            <p class="login-brand-sub" style="text-align:center;">DISCIPLINE &bull; RIGUEUR &bull; PERFORMANCE</p>
-            """, unsafe_allow_html=True)
+          </div>
+        </div>
+        """)
 
-        st.markdown("""
-        <p class="login-brand-desc" style="text-align:center;">
-          Système d'exploitation minière &amp; gestion de flotte.<br>
-          Plateforme SaaS multi-entreprise.
-        </p>
-        <hr class="login-divider"/>
-        <p style="font-size:18px; font-weight:800; color:#EAEAEA; margin-bottom:20px; text-align:center; letter-spacing:0.06em; text-transform:uppercase;">
-          🔐 Connexion
-        </p>
-        """, unsafe_allow_html=True)
+    with _right:
+        st.html("""
+        <div class="ge-login-form-marker"></div>
+        <div class="ge-login-form-head">
+          <p class="ge-login-eyebrow">Espace client</p>
+          <h2>Bienvenue</h2>
+          <p>Connectez-vous à votre espace de travail.</p>
+        </div>
+        """)
+        with st.form("ge_login_form", clear_on_submit=False):
+            u = st.text_input("Identifiant", key="login_username", autocomplete="username")
+            p = st.text_input("Mot de passe", type="password", key="login_password", autocomplete="current-password")
+            login_submitted = st.form_submit_button("Se connecter", use_container_width=True, type="primary")
 
-        st.markdown('<span class="login-field-label">Identifiant</span>', unsafe_allow_html=True)
-        u = st.text_input("Identifiant", key="login_username",
-                          placeholder="Entrez votre identifiant",
-                          label_visibility="collapsed")
-        st.markdown('<span class="login-field-label" style="margin-top:12px; display:block;">Mot de passe</span>', unsafe_allow_html=True)
-        p = st.text_input("Mot de passe", type="password", key="login_password",
-                          placeholder="••••••••••••",
-                          label_visibility="collapsed")
-
-        st.markdown('<div style="margin-top: 18px;"></div>', unsafe_allow_html=True)
-        if st.button("🔓 SE CONNECTER", use_container_width=True, type="primary"):
+        if login_submitted:
             try:
                 user_mgr.reload_users_from_disk()
             except Exception:
@@ -7068,86 +7305,14 @@ if not st.session_state.authenticated:
                     user_info = None
             if user_info:
                 st.session_state.authenticated = True
-                st.session_state.username = user_info['user']
-                st.session_state.role = user_info['role']
+                st.session_state.username = user_info["user"]
+                st.session_state.role = user_info["role"]
                 st.session_state.tenant_id = user_info.get("tenant_id", "default")
                 st.rerun()
             else:
-                st.error("❌ Identifiant ou mot de passe incorrect")
+                st.error("Identifiant ou mot de passe incorrect")
 
-        st.markdown('<hr class="login-divider"/>', unsafe_allow_html=True)
-        st.caption(
-            "Rôle **Gestionnaire** : créer des comptes entreprises et administrateurs "
-            "(accès fourni par l'hébergeur)."
-        )
-        st.markdown('</div>', unsafe_allow_html=True)
-
-    # ── PANNEAU DROIT : fonctions + engins + valeurs ───────────────────────────
-    with _col_vis:
-        st.markdown('<div class="login-right-panel">', unsafe_allow_html=True)
-        st.markdown("""
-        <p style="font-size:clamp(16px,2vw,22px); font-weight:900; color:#F5B800;
-                  text-transform:uppercase; letter-spacing:0.10em; margin-bottom:6px;">
-          ⛏ Centre de contrôle opérationnel
-        </p>
-        <p style="font-size:13px; color:#7A8A9A; font-weight:500; margin-bottom:20px; line-height:1.5;">
-          Pilotez votre flotte minière en temps réel — production, maintenance,
-          carburant, RH, finance et sécurité dans un seul OS.
-        </p>
-        """, unsafe_allow_html=True)
-
-        # Grille fonctions clés
-        _features = [
-            ("📊", "DASHBOARD", "KPI temps réel"),
-            ("🔄", "CYCLES", "Suivi chargements"),
-            ("⛽", "CARBURANT", "Consommations"),
-            ("🔧", "MAINTENANCE", "PM & réparations"),
-            ("📦", "STOCK", "Pièces & matériaux"),
-            ("💰", "FINANCE", "Coûts & revenus"),
-            ("👥", "RH", "Équipes & présences"),
-            ("🦺", "SST", "Sécurité & incidents"),
-        ]
-        st.markdown('<div class="login-feature-grid">', unsafe_allow_html=True)
-        for _icon, _lbl, _desc in _features:
-            st.markdown(f"""
-            <div class="login-feature-card">
-              <div class="login-feature-icon">{_icon}</div>
-              <div class="login-feature-label">{_lbl}</div>
-              <div class="login-feature-desc">{_desc}</div>
-            </div>""", unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-
-        # Galerie engins
-        st.markdown('<p style="font-size:13px; font-weight:800; color:#F5B800; text-transform:uppercase; letter-spacing:0.10em; margin:18px 0 12px;">🚛 Flotte d\'engins prise en charge</p>', unsafe_allow_html=True)
-        _equip_default = [
-            ("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=200&fit=crop", "Camions"),
-            ("https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=300&h=200&fit=crop", "Excavatrices"),
-            ("https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=300&h=200&fit=crop", "Bulldozers"),
-            ("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=300&h=200&fit=crop", "Chargeurs"),
-            ("https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop", "Foreuses"),
-            ("https://images.unsplash.com/photo-1611522135884-5b90cc5c2fb4?w=300&h=200&fit=crop", "Dumpers"),
-        ]
-        st.markdown('<div class="login-equip-grid">', unsafe_allow_html=True)
-        for _eurl, _elbl in _equip_default:
-            _eimg = get_equipment_image_url(_elbl, _eurl)
-            st.markdown(f"""
-            <div class="login-equip-item">
-              <img src="{_eimg}" alt="{_elbl}" loading="lazy"/>
-              <span>{_elbl}</span>
-            </div>""", unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-
-        # Valeurs
-        st.markdown("""
-        <div class="login-values-row" style="margin-top:16px;">
-          <span class="login-value-chip">🏆 Excellence</span>
-          <span class="login-value-chip">🔒 Sécurité</span>
-          <span class="login-value-chip">⚙️ Efficacité</span>
-          <span class="login-value-chip">📊 Innovation</span>
-          <span class="login-value-chip">🌍 Durabilité</span>
-        </div>
-        """, unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.html('<p class="ge-login-values">''<span>Discipline</span><i>•</i><span>Rigueur</span>''<i>•</i><span>Performance</span></p>')
 
     st.stop()
 
@@ -7475,12 +7640,12 @@ if user_role == "Operateur":
     
     /* Poste opérateur — fond sombre haute lisibilité (soleil / poussière) */
     .stApp {
-        background: #121212 !important;
-        background-image: linear-gradient(180deg, #0F2A44 0%, #121212 50%) !important;
+        background: #071A14 !important;
+        background-image: linear-gradient(180deg, #063D2B 0%, #071A14 50%) !important;
     }
     
     .main .block-container {
-        background: #1E1E1E !important;
+        background: #0D2A20 !important;
         border-radius: 8px !important;
         padding: 1.5rem !important;
         box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4) !important;
@@ -7503,7 +7668,7 @@ if user_role == "Operateur":
         min-height: 170px !important;
         font-size: 80px !important;
         font-weight: 800 !important;
-        color: #0F2A44 !important;
+        color: #063D2B !important;
         padding: 32px 22px !important;
         border-radius: 8px !important;
         border: 2px solid #F5B800 !important;
@@ -7520,7 +7685,7 @@ if user_role == "Operateur":
         filter: brightness(1.06) !important;
     }
     button[kind="primary"] span {
-        color: #0F2A44 !important;
+        color: #063D2B !important;
         font-weight: 800 !important;
         font-size: 80px !important;
         width: 100% !important;
@@ -7539,7 +7704,7 @@ if user_role == "Operateur":
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        background: #2F2F2F !important;
+        background: #173C30 !important;
         border: 2px solid #505050 !important;
         box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3) !important;
         transition: transform 150ms ease, border-color 150ms ease !important;
@@ -7557,7 +7722,7 @@ if user_role == "Operateur":
         display: block !important;
     }
     button[kind="primary"], button[kind="primary"] * {
-        color: #0F2A44 !important;
+        color: #063D2B !important;
     }
     button:not([kind="primary"]) {
         color: #EAEAEA !important;
@@ -7591,7 +7756,7 @@ if user_role == "Operateur":
     }
     h3 {
         font-size: 52px !important;
-        color: #A0A0A0 !important;
+        color: #A9BDB2 !important;
     }
     h1[style*="color: #F5B800"], h2[style*="color: #F5B800"], h3[style*="color: #F5B800"] {
         color: #F5B800 !important;
@@ -7601,7 +7766,7 @@ if user_role == "Operateur":
         display: block !important;
         margin: 24px 0 !important;
         padding: 16px !important;
-        background: #1E1E1E !important;
+        background: #0D2A20 !important;
         border: 1px solid #404040 !important;
         border-radius: 8px !important;
     }
@@ -7617,14 +7782,14 @@ if user_role == "Operateur":
         min-height: 120px !important;
         font-weight: 700 !important;
         color: #EAEAEA !important;
-        background: #2F2F2F !important;
+        background: #173C30 !important;
         border: 1px solid #F5B800 !important;
         border-radius: 8px !important;
     }
     section[data-testid="stSelectbox"] {
         margin: 20px 0 !important;
         padding: 16px !important;
-        background: #1E1E1E !important;
+        background: #0D2A20 !important;
         border: 1px solid #404040 !important;
         border-radius: 8px !important;
     }
@@ -7637,12 +7802,12 @@ if user_role == "Operateur":
         padding: 28px !important;
         font-weight: 700 !important;
         color: #EAEAEA !important;
-        background: #2F2F2F !important;
+        background: #173C30 !important;
         border-radius: 8px !important;
     }
     div[data-baseweb="popover"] {
         font-size: 48px !important;
-        background: #1E1E1E !important;
+        background: #0D2A20 !important;
     }
     div[data-baseweb="popover"] li {
         font-size: 48px !important;
@@ -8415,11 +8580,11 @@ if "DASHBOARD" in tab_dict:
         # HEADER DU DASHBOARD
         today_str = date.today().strftime('%d %B %Y')
         st.markdown(f"""
-        <div style="background: linear-gradient(90deg, #0F2A44 0%, #1E1E1E 100%); padding: 28px; border-radius: 8px; margin-bottom: 24px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid #404040;">
+        <div style="background: linear-gradient(90deg, #063D2B 0%, #0D2A20 100%); padding: 28px; border-radius: 8px; margin-bottom: 24px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid #404040;">
             <h1 style="color: #EAEAEA; margin: 0; font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em;">
                 🛰️ Centre de contrôle flotte
             </h1>
-            <p style="color: #A0A0A0; margin: 10px 0 0 0; font-size: 16px; font-weight: 600;">
+            <p style="color: #A9BDB2; margin: 10px 0 0 0; font-size: 16px; font-weight: 600;">
                 KPI temps réel • {today_str}
             </p>
         </div>
@@ -8556,7 +8721,7 @@ if "DASHBOARD" in tab_dict:
                         'Active': '#28A745',
                         'Panne': '#DC3545',
                         'Maintenance': '#FF6B00',
-                        'Idle': '#A0A0A0',
+                        'Idle': '#A9BDB2',
                     },
                     hole=0.4
                 )
@@ -9009,7 +9174,7 @@ if "MAINT." in tab_dict:
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.subheader("🚛 GESTION DE LA FLOTTE")
         st.markdown("""
-        <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%); 
+        <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
                     padding: 15px; border-radius: 10px; border: 2px solid #F5B800; margin-bottom: 20px;">
             <p style="color: #F5B800; font-size: 16px; font-weight: 700; margin: 0;">
                 ℹ️ <strong>Base de données centrale de la flotte</strong> : Cette liste est utilisée par RH et Admin pour assigner les machines aux opérateurs.
@@ -10809,7 +10974,7 @@ if "GESTION STOCK" in tab_dict:
                         if val == "En service":
                             return "color: #28A745; font-weight: bold"
                         if val == "Remplacée":
-                            return "color: #A0A0A0"
+                            return "color: #A9BDB2"
                         return ""
 
                     styled = df_hist.style.map(_color_status, subset=["Statut"])
@@ -12210,7 +12375,7 @@ if "RH" in tab_dict:
             st.subheader("🗑️ Désactiver/Supprimer un Employé")
             st.caption("ℹ️ La désactivation conserve les données historiques. La suppression est définitive.")
             st.markdown("""
-            <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%); 
+            <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%);
                         padding: 20px; border-radius: 15px; margin: 20px 0; border: 2px solid #F5B800;">
                 <h4 style="color: #F5B800; margin: 0 0 15px 0;">ℹ️ Différence entre Désactivation et Suppression :</h4>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
@@ -12445,7 +12610,7 @@ if "RH" in tab_dict:
             st.subheader("🚛 Assignation de Machines aux Opérateurs")
             st.caption("ℹ️ Assignez des machines aux opérateurs pour déterminer leur type (Chargement ou Camion)")
             st.markdown("""
-            <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%); 
+            <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%);
                         padding: 20px; border-radius: 15px; margin: 20px 0; border: 2px solid #F5B800;">
                 <h4 style="color: #F5B800; margin: 0 0 15px 0;">📋 Types d'Opérateurs :</h4>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
@@ -12540,7 +12705,7 @@ if "RH" in tab_dict:
                                 
                                 if any(lt in machine_type_upper for lt in loader_types):
                                     st.markdown("""
-                                    <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%); 
+                                    <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%);
                                                 padding: 15px; border-radius: 10px; border: 2px solid #F5B800; margin-top: 10px;">
                                         <p style="color: #F5B800; font-size: 16px; font-weight: 700; margin: 0;">
                                             🎯 Cet opérateur sera un <strong>Opérateur de Chargement</strong> 🚛
@@ -12549,7 +12714,7 @@ if "RH" in tab_dict:
                                     """, unsafe_allow_html=True)
                                 elif any(dt in machine_type_upper for dt in dumper_types):
                                     st.markdown("""
-                                    <div style="background: linear-gradient(135deg, rgba(38, 166, 154, 0.2) 0%, rgba(0, 137, 123, 0.2) 100%); 
+                                    <div style="background: linear-gradient(135deg, rgba(38, 166, 154, 0.2) 0%, rgba(0, 137, 123, 0.2) 100%);
                                                 padding: 15px; border-radius: 10px; border: 2px solid #26a69a; margin-top: 10px;">
                                         <p style="color: #26a69a; font-size: 16px; font-weight: 700; margin: 0;">
                                             🎯 Cet opérateur sera un <strong>Opérateur de Camion</strong> 🚚
@@ -14022,7 +14187,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
 
         if _ingenierie_finance_visible:
             st.markdown("""
-        <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%); 
+        <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
                     padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 2px solid #F5B800;">
             <h4 style="color: #F5B800; margin: 0 0 10px 0;">ℹ️ Comment ça fonctionne :</h4>
             <ul style="color: #e0e0e0; margin: 0; padding-left: 20px; font-size: 16px;">
@@ -14035,7 +14200,7 @@ if "DONNÉES INGÉNIERIE" in tab_dict:
         """, unsafe_allow_html=True)
         else:
             st.markdown("""
-        <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%); 
+        <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
                     padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 2px solid #F5B800;">
             <h4 style="color: #F5B800; margin: 0 0 10px 0;">ℹ️ Comment ça fonctionne :</h4>
             <ul style="color: #e0e0e0; margin: 0; padding-left: 20px; font-size: 16px;">
@@ -14706,7 +14871,7 @@ if "ADMIN" in tab_dict:
             st.subheader("➕ Ajouter un Nouvel Utilisateur")
             
             st.markdown("""
-            <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%); 
+            <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
                         padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 2px solid #F5B800;">
                 <h4 style="color: #F5B800; margin: 0 0 10px 0;">📋 Règles de Création de Compte :</h4>
                 <ul style="color: #e0e0e0; margin: 0; padding-left: 20px; font-size: 16px;">
@@ -14811,7 +14976,7 @@ if "ADMIN" in tab_dict:
                             
                             # Afficher le rôle qui sera assigné (non modifiable)
                             st.markdown(f"""
-                            <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%); 
+                            <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%);
                                         padding: 15px; border-radius: 10px; border: 2px solid #F5B800; margin: 15px 0;">
                                 <p style="color: #F5B800; font-size: 18px; font-weight: 700; margin: 0;">
                                     ✅ Rôle du compte : <strong>{new_role}</strong> (basé sur le rôle RH de l'employé)
@@ -15372,7 +15537,7 @@ if "ADMIN" in tab_dict:
 
             st.markdown("#### 📤 Téléverser un logo")
             st.markdown("""
-            <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%); 
+            <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
                         padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 2px solid #F5B800;">
                 <p style="color: #F5B800; margin: 0;">ℹ️ <strong>Recommandations :</strong></p>
                 <ul style="color: #e0e0e0; margin: 10px 0 0 0; padding-left: 20px;">
@@ -15479,7 +15644,7 @@ if "ADMIN" in tab_dict:
             st.caption("⚠️ Cette action est irréversible. Toutes les données de simulation seront supprimées et tous les compteurs seront remis à 0.")
             
             st.markdown("""
-            <div style="background: linear-gradient(135deg, rgba(255, 69, 0, 0.2) 0%, rgba(255, 140, 0, 0.2) 100%); 
+            <div style="background: linear-gradient(135deg, rgba(255, 69, 0, 0.2) 0%, rgba(255, 140, 0, 0.2) 100%);
                         padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 2px solid #FF4500;">
                 <p style="color: #F5B800; margin: 0; font-weight: 700;">⚠️ <strong>ATTENTION : Action Irréversible</strong></p>
                 <p style="color: #e0e0e0; margin: 10px 0 0 0;">Cette action va :</p>
@@ -15641,7 +15806,7 @@ if "ADMIN" in tab_dict:
             # Section Créer une sauvegarde
             st.markdown("#### 💾 Créer une Sauvegarde")
             st.markdown("""
-            <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%); 
+            <div style="background: linear-gradient(135deg, rgba(245, 184, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
                         padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 2px solid #F5B800;">
                 <p style="color: #F5B800; margin: 0;">ℹ️ <strong>Une sauvegarde inclut :</strong></p>
                 <ul style="color: #e0e0e0; margin: 10px 0 0 0; padding-left: 20px;">
@@ -15847,7 +16012,7 @@ components.html(f"""
     }}
     .ge-fab:hover {{ transform:scale(1.12); box-shadow:0 6px 24px rgba(0,0,0,.7); }}
     .ge-fab-left  {{ left:20px;  background:linear-gradient(135deg,#1565C0,#0D47A1); color:#fff; }}
-    .ge-fab-right {{ right:20px; background:linear-gradient(135deg,#F5B800,#E6AC00); color:#0F2A44; }}
+    .ge-fab-right {{ right:20px; background:linear-gradient(135deg,#F5B800,#E6AC00); color:#063D2B; }}
     .ge-panel {{
       position:fixed; bottom:90px; width:340px; max-height:480px;
       background:#1a1a2e; border:1.5px solid #333; border-radius:16px;
@@ -15858,7 +16023,7 @@ components.html(f"""
     .ge-panel-left  {{ left:20px; }}
     .ge-panel-right {{ right:20px; }}
     .ge-panel-head {{
-      background:#0F2A44; padding:12px 16px; display:flex; align-items:center;
+      background:#063D2B; padding:12px 16px; display:flex; align-items:center;
       justify-content:space-between; border-bottom:1px solid #333;
     }}
     .ge-panel-head h4 {{ margin:0; color:#F5B800; font-size:15px; font-weight:700; font-family:Inter,sans-serif; }}
@@ -15889,7 +16054,7 @@ components.html(f"""
     .ge-input-row input:focus {{ border-color:#F5B800; }}
     .ge-input-row button {{
       background:#F5B800; border:none; border-radius:20px; padding:8px 14px;
-      color:#0F2A44; font-weight:700; cursor:pointer; font-size:13px; white-space:nowrap;
+      color:#063D2B; font-weight:700; cursor:pointer; font-size:13px; white-space:nowrap;
     }}
     .ge-input-row button:hover {{ background:#ffd033; }}
     .ge-bot-msgs {{
@@ -15902,10 +16067,10 @@ components.html(f"""
       border-radius:14px 14px 14px 4px; font-size:13px; max-width:90%; font-family:Inter,sans-serif; line-height:1.5; }}
     .ge-bot-chips {{ display:flex; flex-wrap:wrap; gap:6px; padding:8px 12px 0; }}
     .ge-bot-chip {{
-      background:#0F2A44; border:1px solid #F5B800; color:#F5B800; border-radius:20px;
+      background:#063D2B; border:1px solid #F5B800; color:#F5B800; border-radius:20px;
       padding:4px 10px; font-size:12px; cursor:pointer; font-family:Inter,sans-serif;
     }}
-    .ge-bot-chip:hover {{ background:#F5B800; color:#0F2A44; }}
+    .ge-bot-chip:hover {{ background:#F5B800; color:#063D2B; }}
     .ge-unread {{
       position:absolute; top:-4px; right:-4px; background:#e53935; color:#fff;
       border-radius:50%; width:18px; height:18px; font-size:11px; font-weight:700;

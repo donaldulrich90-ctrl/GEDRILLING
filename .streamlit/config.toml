@@ -8,9 +8,9 @@ fastReruns = true
 [theme]
 base = "dark"
 primaryColor = "#F5B800"
-backgroundColor = "#121212"
-secondaryBackgroundColor = "#1E1E1E"
-textColor = "#EAEAEA"
+backgroundColor = "#071A14"
+secondaryBackgroundColor = "#0D2A20"
+textColor = "#F3F6F2"
 font = "sans serif"
 
 [server]
