@@ -270,6 +270,26 @@ def _inject_ge_hero_fixed_pin():
       wrap.style.minHeight = h + "px";
       wrap.style.boxSizing = "border-box";
     }
+    // Coller la bande d'annonces juste sous l'en-tete fige : on retranche
+    // l'ecart mesure de facon additive -> converge vers 0 (chargement, resize).
+    // On n'ajuste qu'en haut de page (scroll ~0) pour ne pas fausser au scroll.
+    try {
+      var scTop = Math.max(
+        (main && main.scrollTop) || 0,
+        (d.scrollingElement && d.scrollingElement.scrollTop) || 0,
+        (d.body && d.body.scrollTop) || 0
+      );
+      var band = d.querySelector(".hero-banner");
+      if (band && scTop < 6) {
+        var gap = Math.round(
+          band.getBoundingClientRect().top - hero.getBoundingClientRect().bottom
+        );
+        if (Math.abs(gap) > 1) {
+          var curMt = parseFloat(getComputedStyle(band).marginTop) || 0;
+          band.style.setProperty("margin-top", (curMt - gap) + "px", "important");
+        }
+      }
+    } catch (e) {}
   }
   function schedule() {
     clearTimeout(debounce);
