@@ -946,7 +946,9 @@ st.markdown(f"""
         overflow: hidden;
         white-space: nowrap;
         position: relative;
-        min-height: 42px;
+        display: flex;
+        align-items: center;
+        min-height: clamp(150px, 30vh, 300px);
         box-sizing: border-box;
         /* Pleine largeur : deborde jusqu'aux bords, aligne sur les onglets */
         --ge-hero-edge-space: clamp(0.65rem, 1vw, 1rem);
@@ -990,7 +992,7 @@ st.markdown(f"""
     @media (max-width: 768px) {{
         .hero-banner {{
             padding: 6px 0 !important;
-            min-height: 34px !important;
+            min-height: clamp(110px, 22vh, 180px) !important;
         }}
         .marquee-text {{
             font-size: 15px !important;
