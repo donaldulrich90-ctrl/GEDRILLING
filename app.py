@@ -254,11 +254,6 @@ def _inject_ge_hero_fixed_pin():
     var hdr = d.querySelector('[data-testid="stHeader"]');
     var topPx = hdr ? Math.ceil(hdr.getBoundingClientRect().height) : 56;
     var mr = main.getBoundingClientRect();
-    var h = Math.max(Math.round(hero.offsetHeight), Math.round(hero.getBoundingClientRect().height));
-    if (wrap && h > 20) {
-      wrap.style.minHeight = h + "px";
-      wrap.style.boxSizing = "border-box";
-    }
     hero.style.setProperty("position", "fixed", "important");
     hero.style.setProperty("top", topPx + "px", "important");
     hero.style.setProperty("left", Math.round(mr.left) + "px", "important");
@@ -266,6 +261,15 @@ def _inject_ge_hero_fixed_pin():
     hero.style.setProperty("max-width", "none", "important");
     hero.style.setProperty("z-index", "999", "important");
     hero.style.setProperty("box-sizing", "border-box", "important");
+    // Mesurer la hauteur reelle APRES fixation : sinon on reserve la hauteur
+    // non contrainte (image masthead a sa taille naturelle) -> grand vide vert
+    // sous l'en-tete. On force un reflow puis on reserve la bonne hauteur.
+    void hero.offsetHeight;
+    var h = Math.max(Math.round(hero.offsetHeight), Math.round(hero.getBoundingClientRect().height));
+    if (wrap && h > 20) {
+      wrap.style.minHeight = h + "px";
+      wrap.style.boxSizing = "border-box";
+    }
   }
   function schedule() {
     clearTimeout(debounce);
