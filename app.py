@@ -947,8 +947,13 @@ st.markdown(f"""
         white-space: nowrap;
         position: relative;
         min-height: 42px;
-        max-width: 100%;
         box-sizing: border-box;
+        /* Pleine largeur : deborde jusqu'aux bords, aligne sur les onglets */
+        --ge-hero-edge-space: clamp(0.65rem, 1vw, 1rem);
+        width: calc(100% + 2 * clamp(0.75rem, 8vw, 6rem) - var(--ge-hero-edge-space) - var(--ge-hero-edge-space)) !important;
+        max-width: none !important;
+        margin-left: calc(-1 * clamp(0.75rem, 8vw, 6rem) + var(--ge-hero-edge-space)) !important;
+        margin-right: calc(-1 * clamp(0.75rem, 8vw, 6rem) + var(--ge-hero-edge-space)) !important;
     }}
     .hero-banner::before {{
         content: '';
@@ -974,6 +979,12 @@ st.markdown(f"""
         font-weight: 900 !important;
         font-size: clamp(15px, 3vw, 38px);
         letter-spacing: clamp(1px, 0.45vw, 4px);
+    }}
+    .marquee-annonce {{
+        color: #FF3B30;
+        font-weight: 900 !important;
+        text-transform: uppercase;
+        letter-spacing: clamp(1px, 0.35vw, 3px);
     }}
     @keyframes scroll-left {{ 0% {{ transform: translateX(0); }} 100% {{ transform: translateX(-100%); }} }}
     @media (max-width: 768px) {{
@@ -2719,6 +2730,77 @@ def _save_collab_messages(data):
         json.dump(data, f, indent=2, ensure_ascii=False)
 
 
+def _clean_marquee_text(txt, max_len=140):
+    """Nettoie un texte pour le bandeau defilant (retire markdown, sauts de ligne, tronque)."""
+    s = str(txt or "")
+    for token in ("**", "__", "##", "#", "`", ">"):
+        s = s.replace(token, "")
+    s = " ".join(s.split()).strip()
+    if len(s) > max_len:
+        s = s[:max_len].rstrip() + "\u2026"
+    return s
+
+
+def _load_banner_annonce():
+    """Message d'annonce dedie au bandeau defilant du haut (par tenant)."""
+    default = {"text": "", "active": True, "ts": ""}
+    path = os.path.join(_collaboration_base_dir(), "banner_annonce.json")
+    if not os.path.isfile(path):
+        return default
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if not isinstance(data, dict):
+            return default
+        return {
+            "text": str(data.get("text", "")),
+            "active": bool(data.get("active", True)),
+            "ts": str(data.get("ts", "")),
+        }
+    except Exception:
+        return default
+
+
+def _save_banner_annonce(text, active=True):
+    path = os.path.join(_collaboration_base_dir(), "banner_annonce.json")
+    data = {
+        "text": str(text or "").strip(),
+        "active": bool(active),
+        "ts": datetime.now().isoformat(),
+    }
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    return data
+
+
+def _get_marquee_annonces(max_communiques=5, max_len=140):
+    """Annonces a faire defiler dans le bandeau du haut : message dedie + communiques publies."""
+    items = []
+    try:
+        banner = _load_banner_annonce()
+        if banner.get("active") and str(banner.get("text", "")).strip():
+            for line in str(banner["text"]).splitlines():
+                cleaned = _clean_marquee_text(line, max_len)
+                if cleaned:
+                    items.append(cleaned)
+    except Exception:
+        pass
+    try:
+        msgs = _load_collab_messages().get("messages", [])
+        communs = [
+            m for m in msgs
+            if m.get("kind") == "communique" and m.get("to") == "__all__"
+        ]
+        communs.sort(key=lambda x: x.get("ts", ""), reverse=True)
+        for c in communs[:max_communiques]:
+            cleaned = _clean_marquee_text(c.get("body", ""), max_len)
+            if cleaned:
+                items.append(cleaned)
+    except Exception:
+        pass
+    return items
+
+
 def _load_sst_entries():
     path = os.path.join(_collaboration_base_dir(), "sst_records.json")
     if not os.path.isfile(path):
@@ -2906,6 +2988,37 @@ def render_messagerie_tab(user_mgr, user_info):
                 data.setdefault("messages", []).append(rec)
                 _save_collab_messages(data)
                 st.success("Communiqué publié.")
+                st.rerun()
+
+        st.markdown("---")
+        st.markdown("#### 📣 Bande d'annonces défilante (bandeau du haut)")
+        st.caption(
+            "Ce texte défile en haut de la plateforme, avec les communiqués publiés. "
+            "Une ligne = une annonce."
+        )
+        _cur_banner = _load_banner_annonce()
+        _ba_text = st.text_area(
+            "Texte de l'annonce",
+            value=_cur_banner.get("text", ""),
+            key="banner_annonce_text",
+            height=100,
+            placeholder="Ex. Réunion sécurité vendredi 8h • Nouvelle procédure de chargement en vigueur…",
+        )
+        _ba_active = st.checkbox(
+            "Afficher dans le bandeau défilant",
+            value=bool(_cur_banner.get("active", True)),
+            key="banner_annonce_active",
+        )
+        _col_ba1, _col_ba2 = st.columns(2)
+        with _col_ba1:
+            if st.button("💾 Enregistrer l'annonce du bandeau", key="banner_annonce_save", type="primary"):
+                _save_banner_annonce(_ba_text, _ba_active)
+                st.success("Bande d'annonces mise à jour.")
+                st.rerun()
+        with _col_ba2:
+            if st.button("🗑️ Effacer l'annonce", key="banner_annonce_clear"):
+                _save_banner_annonce("", _ba_active)
+                st.success("Annonce du bandeau effacée.")
                 st.rerun()
 
     st.markdown("#### Fil récent")
@@ -8047,6 +8160,13 @@ if user_role != "Operateur":
     prod_txt = f"{_fleet_col_sum_int(df, 'Production (T)')} T"
     active_txt = f"{_fleet_statut_count(df, 'Active')} ACTIVES"
     panne_txt = f"{_fleet_statut_count(df, 'Panne')} PANNES"
+    _annonces_marquee = _get_marquee_annonces()
+    _annonces_html = ""
+    for _a in _annonces_marquee:
+        _annonces_html += (
+            ' <span class="marquee-annonce">\U0001F4E2 ANNONCE :</span> '
+            f'<span class="gold-text">{html.escape(_a)}</span> •'
+        )
     st.markdown(f"""
     <div class="hero-banner">
         <div class="marquee-text">
@@ -8054,7 +8174,7 @@ if user_role != "Operateur":
             PRODUCTION: <span class="gold-text">{prod_txt}</span> •
             FLOTTE: <span class="gold-text">{active_txt}</span> •
             ATTENTION: <span class="gold-text">{panne_txt}</span> •
-            OPERATIONS LIVE • SAFETY FIRST •
+            OPERATIONS LIVE • SAFETY FIRST •{_annonces_html}
         </div>
     </div>
     """, unsafe_allow_html=True)
