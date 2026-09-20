@@ -280,13 +280,18 @@ def _inject_ge_hero_fixed_pin():
         (d.body && d.body.scrollTop) || 0
       );
       var band = d.querySelector(".hero-banner");
-      if (band && scTop < 6) {
+      var bandCont = band && (
+        band.closest('[data-testid="stElementContainer"]') ||
+        band.closest(".element-container") ||
+        band.parentElement
+      );
+      if (band && bandCont && scTop < 6) {
         var gap = Math.round(
           band.getBoundingClientRect().top - hero.getBoundingClientRect().bottom
         );
         if (Math.abs(gap) > 1) {
-          var curMt = parseFloat(getComputedStyle(band).marginTop) || 0;
-          band.style.setProperty("margin-top", (curMt - gap) + "px", "important");
+          var curMt = parseFloat(getComputedStyle(bandCont).marginTop) || 0;
+          bandCont.style.setProperty("margin-top", (curMt - gap) + "px", "important");
         }
       }
     } catch (e) {}
@@ -966,7 +971,7 @@ st.markdown(f"""
         border-radius: 8px;
         border: 2px solid rgba(255, 193, 7, 0.55);
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 193, 7, 0.1);
-        margin-bottom: 10px;
+        margin-bottom: 0;
         overflow: hidden;
         white-space: nowrap;
         position: relative;
