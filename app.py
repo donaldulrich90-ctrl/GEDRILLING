@@ -11496,7 +11496,8 @@ if "CARTE" in tab_dict:
 
                 color_map = {"Active": "#00E676", "Panne": "#FF1744", "Attente": "#FFC400", "Maintenance": "#2979FF"}
 
-                fig_map = px.scatter_mapbox(
+                _use_new_map = hasattr(px, "scatter_map")
+                fig_map = (px.scatter_map if _use_new_map else px.scatter_mapbox)(
                     df_map,
                     lat="lat", lon="lon",
                     color="Statut",
@@ -11508,11 +11509,18 @@ if "CARTE" in tab_dict:
                     zoom=14.5, height=650
                 )
 
-                fig_map.update_layout(
-                    mapbox_style="carto-darkmatter",
-                    margin={"r":0,"t":0,"l":0,"b":0},
-                    mapbox=dict(pitch=60)  # Vue drone améliorée
-                )
+                if _use_new_map:
+                    fig_map.update_layout(
+                        map_style="carto-darkmatter",
+                        margin={"r":0,"t":0,"l":0,"b":0},
+                        map=dict(pitch=60)  # Vue drone amelioree
+                    )
+                else:
+                    fig_map.update_layout(
+                        mapbox_style="carto-darkmatter",
+                        margin={"r":0,"t":0,"l":0,"b":0},
+                        mapbox=dict(pitch=60)  # Vue drone amelioree
+                    )
 
                 # Texte blanc, gras, positionné sous le point
                 fig_map.update_traces(
