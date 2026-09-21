@@ -1,4 +1,4 @@
-# Pousse les fichiers du projet vers le VPS puis lance deploy.sh à distance.
+# Pousse les fichiers du projet vers le VPS puis lance deploy.sh a distance.
 # Usage (PowerShell, depuis ce dossier ou en passant -LocalProject) :
 #   .\deploy-remote.ps1
 #   .\deploy-remote.ps1 -VpsHost "gemining.duckdns.org" -RemotePath "/root/projets/GE-MINING"
@@ -23,7 +23,7 @@ $items = @(
     @{ Path = ".streamlit\config.toml"; Required = $true }
 )
 
-Write-Host "=== Vérification fichiers locaux ($LocalProject) ===" -ForegroundColor Cyan
+Write-Host "=== Verification fichiers locaux ($LocalProject) ===" -ForegroundColor Cyan
 foreach ($item in $items) {
     $full = Join-Path $LocalProject $item.Path
     if (-not (Test-Path -LiteralPath $full)) {
@@ -42,11 +42,11 @@ if ($len -lt 50000) {
 }
 
 if (-not (Select-String -Path $appPy -Pattern "_ensure_fleet_summary_df" -Quiet)) {
-    throw "app.py ne contient pas _ensure_fleet_summary_df — déploiement refusé."
+    throw "app.py ne contient pas _ensure_fleet_summary_df - deploiement refuse."
 }
 
 $remote = "${SshUser}@${VpsHost}"
-Write-Host "`n=== Création du dossier distant ===" -ForegroundColor Cyan
+Write-Host "`n=== Creation du dossier distant ===" -ForegroundColor Cyan
 ssh $remote "mkdir -p $RemotePath/.streamlit"
 
 Write-Host "`n=== SCP vers ${remote}:$RemotePath ===" -ForegroundColor Cyan
@@ -59,8 +59,8 @@ scp -q "$(Join-Path $LocalProject "requirements.txt")" "${remote}:${RemotePath}/
 scp -q "$(Join-Path $LocalProject "deploy.sh")" "${remote}:${RemotePath}/deploy.sh"
 scp -q "$(Join-Path $LocalProject ".streamlit\config.toml")" "${remote}:${RemotePath}/.streamlit/config.toml"
 
-Write-Host "`n=== Déploiement distant (bash deploy.sh) ===" -ForegroundColor Cyan
-# Retrait éventuel des CRLF si le fichier a été édité sous Windows
+Write-Host "`n=== Deploiement distant (bash deploy.sh) ===" -ForegroundColor Cyan
+# Retrait eventuel des CRLF si le fichier a ete edite sous Windows
 ssh $remote "sed -i 's/\r$//' $RemotePath/deploy.sh ; chmod +x $RemotePath/deploy.sh && cd $RemotePath && bash deploy.sh"
 
-Write-Host "`nTerminé." -ForegroundColor Green
+Write-Host "`nTermine." -ForegroundColor Green
